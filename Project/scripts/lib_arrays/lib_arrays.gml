@@ -1,7 +1,6 @@
 #region Definitions
 #macro	sort_ascending		function (a,b) {return a - b}
 #macro	sort_descending		function (a,b) {return b - a}
-#macro	sort_shuffle		function (a,b) {return irandom_range(-1,1)}
 #macro	sort_elem_size_asc	function (a,b) {return size(a) > size(b)}
 #macro	sort_elem_size_desc	function (a,b) {return size(b) < size(b)}
 #endregion
@@ -136,5 +135,12 @@ function array_map(_array, _callback, _use_index=false) {
 /// @func	array_shuffle(array)
 /// @desc	Returns a shuffled array.
 function array_shuffle(_array) {
-	return array_sort(_array, sort_shuffle);
+	for (var n_pair__=0; n_pair__<array_length(_array)/2; n_pair__++) {
+		var n1__ = irandom(array_length(_array));
+		var n2__ = irandom(array_length(_array));
+		var tmp__= _array[n1__];
+		_array[n1__] = _array[n2__];
+		_array[n2__] = tmp__;
+	}
+	return _array;
 }
