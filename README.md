@@ -7,13 +7,19 @@
 ### Last updated: 2022-11-12
 
 ### Author & Collaborators
-Originally created by [**@DAndrewBox**](#https://twitter.com/DAndrewBox_).
+Originally created by [**@DAndrewBox**](https://twitter.com/DAndrewBox_).
 
+[![github](https://img.shields.io/badge/DAndrewBox-000?style=for-the-badge&logo=github&label=Github&logoColor=white)](https://github.com/DAndrewBox)
+
+Collaborators:
+
+[![github](https://img.shields.io/badge/Shynif-000?style=for-the-badge&logo=github&label=Github&logoColor=white)](https://github.com/Shynif)
+[![github](https://img.shields.io/badge/Gizmo199-000?style=for-the-badge&logo=github&label=Github&logoColor=white)](https://github.com/Gizmo199)
 
 ### Special Thanks
 - [**YoYo Games**](https://www.yoyogames.com/) for creating GameMaker.
 - [**Xot**](https://twitter.com/xotmatrix) for a way to get the [unix timestamp](https://www.gmlscripts.com/script/unix_timestamp) used as a base for the `lib_time`.
-- [**Shaun Spalding**](https://twitter.com/shaunspalding) for the `array_shuffle` script.
+- [**Shaun Spalding**](https://twitter.com/shaunspalding) for the original `array_shuffle` script.
 
 ---
 
