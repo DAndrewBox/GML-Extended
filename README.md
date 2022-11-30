@@ -71,7 +71,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ### Versioning & Compatibility
 Any of the releases of this extension are compatible with GameMaker Studio from versions 2.3 to 2022.9 (Including 2022.x LTS). But the table below shows the compatibility of each release.
 
-✅: Fully compatible.
+✅: Fully compatible. (*: Recommended for this version.)
+
 
 ⚠️: Compatible but could have some compatibility issues with the new features of the version.
 
@@ -80,13 +81,15 @@ Any of the releases of this extension are compatible with GameMaker Studio from 
 | GameMaker Version | GML-Ext v1.0.0 | GML-Ext v1.1.x | GML-Ext v1.2.x |
 | ---: | :---: | :---: | :---: |
 | Studio 1.4.x      | ❌ | ❌ | ❌ |
-| Studio 2.3.x      | ✅ | ✅ | ✅ |
-| 2022.x LTS        | ✅ | ✅ | ✅ |
-| 2022.1 - 2022.9   | ✅ | ✅ | ✅ |
-| 2022.11           | ❌ | ⚠️ | ✅ |
+| Studio 2.3.x      | ✅ | ✅* | ✅ |
+| 2022.x LTS        | ✅ | ✅* | ✅ |
+| 2022.1 - 2022.9   | ✅ | ✅* | ✅ |
+| 2022.11           | ❌ | ⚠️ | ✅* |
 
 There's also branches for each GameMaker version. You can find them in the [branches page](https://github.com/DAndrewBox/GML-Extended/branches), or by clicking the links below.
 - [**main**](https://github.com/DAndrewBox/GML-Extended) for the most recent version in the compatibility table (GameMaker Versions 2.11+ by the time I wrote this).
 - [**GML-Ext-v1.1.x**](https://github.com/DAndrewBox/GML-Extended/tree/GML-Ext-v1.1.x) for GameMaker Versions 2.3.x, 2022.1-9 and 2022.x LTS.
+
+#### For versions before 2022.11 I recommend using [**GML-Ext-v1.1.x**](https://github.com/DAndrewBox/GML-Extended/tree/GML-Ext-v1.1.x) due to versions 2022.11+ have new array and string functions that were not available in previous versions and now share the same name and functionality than the ones in the GML-Extended, so those functions were removed from the extension to prioritize compatibility and prevent conflicts.
 
 ---
