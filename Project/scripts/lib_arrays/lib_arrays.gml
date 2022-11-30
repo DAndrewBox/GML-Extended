@@ -29,11 +29,11 @@ function array_empty(_array) {
 	return (array_length(_array) == 0);
 }
 
-///	@func array_find_index(array, value)
+///	@func array_find_index_by_value(array, value)
 /// @param	{array}	array
 /// @param	{any}	value
 /// @desc	Checks if a value is inside the array, and then returns its index, else, returns -1.
-function array_find_index(_array, _val) {
+function array_find_index_by_value(_array, _val) {
 	for (var i = 0; i < array_length(_array); i++) {
 		if (_array[@ i] == _val) {
 			return i;
@@ -100,38 +100,7 @@ function array_write(_array) {
 	
 	return _new_str;
 }
-
-/// @func array_foreach(array, callback_fn)
-/// @param	{array} array
-/// @param	{func}	callback_fn
-/// @desc	Execute a callback into every element of the array.
-function array_foreach(_array, _callback) {
-	var _len = array_length(_array);
-	for (var i = 0; i < _len; i++) {
-		_callback(_array[@ i]);
-	}
-}
-
-/// @func	array_map(array, callback_fn, use_index)
-/// @param	{array} array
-/// @param	{func}	callback_fn
-/// @param	{bool}	use_index
-/// @desc	Returns the value of a function on every element of the array
-function array_map(_array, _callback, _use_index=false) {
-	var _new_array = [];
-	var _len = array_length(_array);
-	
-	for (var i = 0; i < _len; i++) {
-		if (_use_index) {
-			array_push(_new_array, _callback(_array[@ i], i));
-		} else {
-			array_push(_new_array, _callback(_array[@ i]));
-		}
-	}
-		
-	return _new_array;
-}
-
+ 
 /// @func	array_shuffle(array)
 /// @desc	Returns a shuffled array.
 function array_shuffle(_array) {

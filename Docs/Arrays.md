@@ -3,13 +3,11 @@
 - [array_fill](#array_fill)
 - [array_clear](#array_clear)
 - [array_empty](#array_empty)
-- [array_find_index](#array_find_index)
+- [array_find_index_by_value](#array_find_index_by_value)
 - [array_to_ds_list](#array_to_ds_list)
 - [ds_list_to_array](#ds_list_to_array)
 - [array_to_struct](#array_to_struct)
 - [array_write](#array_write)
-- [array_foreach](#array_foreach)
-- [array_map](#array_map)
 - [array_shuffle](#array_shuffle)
 
 ---
@@ -91,12 +89,12 @@ show_debug_message(_is_empty);
 The above code will return `false` since the var `_array` is not empty.
 
 ---
-# array_find_index
+# array_find_index_by_value
 Checks if a value is inside the array, and then returns its index, else, returns -1.
 
 ### Syntax
   ```js
-  array_find_index(array, value);
+  array_find_index_by_value(array, value);
   ```
 
 | Argument | Type | Description |
@@ -112,7 +110,7 @@ Checks if a value is inside the array, and then returns its index, else, returns
 ### Example
 ```js
 var _array = ["a", 1, 3, "b", 5];
-var _index = array_find_index(_array, "b");
+var _index = array_find_index_by_value(_array, "b");
 show_debug_message(_index);
 ```
 The above code will return `3` since `b` is on the array and it"s index is 3 from 0 to it"s position.
@@ -230,67 +228,6 @@ var _string = array_write(_array);
 show_debug_message(_string);
 ```
 The above code will show `["a", 1, 3, 4]`.
-
----
-# array_foreach
-Execute a callback into every element of the array. This function is executed on the original array and doesn't return a new array (same behavior as `Array.forEach()` on JavaScript).
-
-### Syntax
-  ```js
-  array_foreach(array, callback);
-  ```
-
-| Argument | Type | Description |
-| :--- | :---: | :--- |
-| array | array | The array to execute callbacks |
-| callback | function | The callback to execute on every element |
-
-### Returns
-  ```js
-  None
-  ```
-
-### Example
-```js
-var _array = [0, 1, 2, 3];
-array_foreach(_array, function(element) {
-  element += 10;
-});
-
-show_debug_message(_array);
-```
-The above code will show `[10, 11, 12, 13]` since the callback added 10 to every elemnt in the array.
-
----
-# array_map
-Execute a callback into every element of the array. **This function is executed on a copy of the original array** and it returns a new array (same behavior as `Array.map()` on JavaScript).
-
-### Syntax
-  ```js
-  array_map(array, callback, [index=false]);
-  ```
-
-| Argument | Type | Description |
-| :--- | :---: | :--- |
-| array | array | The array to execute callbacks |
-| callback | function | The callback to execute on every element |
-| index | bool | Add the index of the element as the second argument of the callback. (default: `false`) |
-
-### Returns
-  ```js
-  Array
-  ```
-
-### Example
-```js
-var _array = [0, 1, 2, 3];
-var _new_array = array_map(_array, function(element, index) {
-  element += index;
-});
-
-show_debug_message(_new_array);
-```
-The above code will show `[0, 2, 4, 6]` since the callback added `index` to every element in the new array.
 
 ---
 # array_shuffle
