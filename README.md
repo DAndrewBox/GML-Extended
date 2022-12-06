@@ -4,7 +4,7 @@
 
 # GameMaker Language Extended
 ## A GameMaker extension to complement GameMaker Studio 2.3+ built-in functions.
-### Last updated: 2022-11-30
+### Last updated: 2022-12-06
 
 ### Author & Collaborators
 Originally created by [**@DAndrewBox**](https://twitter.com/DAndrewBox_).
@@ -20,6 +20,7 @@ Collaborators:
 - [**YoYo Games**](https://www.yoyogames.com/) for creating GameMaker.
 - [**Xot**](https://twitter.com/xotmatrix) for a way to get the [unix timestamp](https://www.gmlscripts.com/script/unix_timestamp) used as a base for the `lib_time`.
 - [**Shaun Spalding**](https://twitter.com/shaunspalding) for the original `array_shuffle` script.
+- [**YellowAfterLife**](https://yal.cc) for `layer_get_element_ids_fixed` script base using tilemaps.
 
 ---
 
@@ -55,6 +56,11 @@ The documentation is also available in the `Docs` folder of this repository or p
 - [**Structs**](Docs/Structs.md)
 - [**Surfaces**](Docs/Surfaces.md)
 - [**Time**](Docs/Time.md)
+- [**Draw**](Docs/Draw.md)
+- [**Game**](Docs/Game.md)
+- [**Instances & Events**](Docs/Instances_and_Events.md)
+- [**Layers**](Docs/Layers.md)
+- [**Images**](Docs/Images.md)
 
 ---
 

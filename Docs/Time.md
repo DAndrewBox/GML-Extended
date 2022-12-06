@@ -174,4 +174,11 @@ The above code will show the current time in format `<HH:MM:SS>`.
     </h3>
   </div>
 
+  <div style="text-align: right; width: 50%">
+    <h3>
+      Next: 
+      <a href="Draw.md">Draw</a>
+    </h3>
+  </div>
+
 </div>

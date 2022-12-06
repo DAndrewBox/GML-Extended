@@ -35,7 +35,7 @@ function server_tcp_init(_url, _port, _size) {
 	SERVER_BUFFER = buffer_create(_size, buffer_fixed, _size);
 }
 
-/// @function server_tcp_send_data(data)
+/// @func	server_tcp_send_data(data)
 /// @param	{any}	data
 function server_tcp_send_data(_data) {
 	// Convert data from JSON to String
@@ -50,7 +50,7 @@ function server_tcp_send_data(_data) {
 	network_send_raw(SERVER_SOCKET, SERVER_BUFFER, buffer_tell(SERVER_BUFFER));
 }
 
-/// @function server_send_ping()
+/// @func	server_send_ping()
 function server_tcp_send_ping() {
 	var _data = {
 		type: SERVER_MESSAGE_TYPE.PING,
@@ -59,7 +59,7 @@ function server_tcp_send_ping() {
 	server_tcp_send_data(_data);
 }
 
-/// @function server_tcp_get_data()
+/// @func	server_tcp_get_data()
 function server_tcp_get_data() {
 	var _buffer = async_load[? "buffer"];
 	
@@ -82,7 +82,7 @@ function server_tcp_get_data() {
 	}
 }
 
-/// @function server_tcp_handle_request(json)
+/// @func	server_tcp_handle_request(json)
 /// @param	{any}	json
 function server_tcp_handle_request(_json) {
 	try {
