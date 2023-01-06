@@ -105,14 +105,17 @@ function draw_rectangle_rotated(_x, _y, _w, _h, _rot, _outline = true) {
 	draw_primitive_end();
 }
 
-/// @func	draw_text_outline(x, y, string, outline_width, colour, outline_colour)
+/// @func	draw_text_outline(x, y, string, outline_width, colour, outline_colour, xscale, yscale, angle)
 /// @param	{real}	x
 /// @param	{real}	y
 /// @param	{str}	string
 /// @param	{real}	outline_width
 /// @param	{str}	colour
 /// @param	{str}	outline_colour
-function draw_text_outline(_x, _y, _string, _width, _colour=c_white, _outline_colour=c_black) {
+/// @param	{real}	xscale
+/// @param	{real}	yscale
+/// @param	{real}	angle
+function draw_text_outline(_x, _y, _string, _width, _colour=c_white, _outline_colour=c_black, _xscale=1, _yscale=1, _angle=0) {
 	draw_set_colour(_outline_colour);
 	var i = -_width, j = -_width;
 	while (i < _width || j < _width) {
@@ -121,12 +124,12 @@ function draw_text_outline(_x, _y, _string, _width, _colour=c_white, _outline_co
 			i = -_width;
 		}
 		
-		draw_text(_x + i, _y + j, _string);
+		draw_text_transformed(_x + i, _y + j, _string, _xscale, _yscale, _angle);
 		i++;
 	}
 	
 	draw_set_colour(_colour);
-	draw_text(_x, _y, _string);
+	draw_text_transformed(_x, _y, _string, _xscale, _yscale, _angle);
 }
 
 /// @func	draw_text_shadow(x, y, string, shadow_xoff, shadow_yoff, text_colour, shadow_colour)
@@ -138,12 +141,15 @@ function draw_text_outline(_x, _y, _string, _width, _colour=c_white, _outline_co
 /// @param	{real}	shadow_height
 /// @param	{real}	text_colour
 /// @param	{real}	shadow_colour
-function draw_text_shadow(_x, _y, _string, _shadow_xoff = 1, _shadow_yoff = 1, _text_col = c_white, _shadow_col = c_black) {
+/// @param	{real}	xscale
+/// @param	{real}	yscale
+/// @param	{real}	angle
+function draw_text_shadow(_x, _y, _string, _shadow_xoff = 1, _shadow_yoff = 1, _text_col = c_white, _shadow_col = c_black, _xscale = 1, _yscale = 1, _angle = 0) {
 	draw_set_colour(_shadow_col);
-	draw_text(_x + _shadow_xoff, _y + _shadow_yoff, _string);
+	draw_text_transformed(_x + _shadow_xoff, _y + _shadow_yoff, _string, _xscale, _yscale, _angle);
 
 	draw_set_colour(_text_col);
-	draw_text(_x, _y, _string);
+	draw_text_transformed(_x, _y, _string, _xscale, _yscale, _angle);
 }
 
 /// @func	draw_text_size(x, y, string, size)
@@ -155,7 +161,7 @@ function draw_text_shadow(_x, _y, _string, _shadow_xoff = 1, _shadow_yoff = 1, _
 function draw_text_size(_x, _y, _string, _font_size) {
 	var _scale = _font_size / font_get_size(draw_get_font());
 	
-	draw_text_transformed(_x, _y - 4, _string, _scale, _scale, 0);
+	draw_text_transformed(_x, _y, _string, _scale, _scale, 0);
 }
 
 /// @func draw_fps(x, y)

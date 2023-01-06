@@ -4,6 +4,8 @@
 - [instance_create_unique](#instance_create_unique)
 - [instance_any_exists](#instance_any_exists)
 - [instance_in_room](#instance_in_room)
+- [instance_get_all](#instance_get_all)
+- [instance_number_if](#instance_number_if)
 - [del](#del)
 - [event_user_exec](#event_user_exec)
 
@@ -136,6 +138,66 @@ if (instance_in_room(obj_Player)) {
 The above code will show a debug message if there is a player inside the room.
 
 ---
+
+# instance_get_all
+Returns an array of all instances of the object passed as argument.
+
+### Syntax
+  ```js
+  instance_get_all(object_index);
+  ```
+
+| Argument | Type | Description |
+| :--- | :---: | :--- |
+| object_index | Real Ref | The index of the object |
+
+### Returns
+  ```js
+  Array
+  ```
+
+### Example
+```js
+var _players = instance_get_all(obj_Player);
+for (var i = 0; i < _players.length; i++) {
+    show_debug_message("Player " + i + " x: " + _players[i].x);
+}
+```
+
+The above code will show the x position of all players in the room.
+
+---
+
+# instance_number_if
+Returns a number of instances of the object passed as argument that match the condition passed as callback argument.
+
+### Syntax
+  ```js
+  instance_number_if(object_index, callback);
+  ```
+
+| Argument | Type | Description |
+| :--- | :---: | :--- |
+| object_index | Real Ref | The index of the object |
+| callback | Function | The callback function |
+
+### Returns
+  ```js
+  Real
+  ```
+
+### Example
+```js
+var _players_with_guns = instance_number_if(obj_Player, function() {
+    return gun_id > -1;
+});
+show_debug_message("There are " + _players_with_guns + " players with guns");
+```
+
+The above code will show the number of players with guns in the room. The callback function will be executed for each player and will return true if the player has a gun.
+
+---
+
 # del
 Deletes an instance and executes the destroy event of the object. Serves as a shortcut for `instance_destroy`.
 

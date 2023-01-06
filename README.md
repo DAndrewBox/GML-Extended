@@ -4,7 +4,7 @@
 
 # GameMaker Language Extended
 ## A GameMaker extension to complement GameMaker Studio 2.3+ built-in functions.
-### Last updated: 2022-12-06
+### Last updated: 2023-01-06
 
 ### Author & Collaborators
 Originally created by [**@DAndrewBox**](https://twitter.com/DAndrewBox_).

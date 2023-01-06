@@ -35,16 +35,8 @@ function http_async_get_message(_show_on_console = false) {
 	} catch(e) {
 		show_debug_message(e.message);
 	}
-
-	var _msgType = -1;
-	try {
-		_msgType = json_parse(async_load[? "result"]).msgType;
-	} catch(e) {
-		show_debug_message(e.message);
-		exit;
-	}
 	
-	return _msgType;
+	return async_load;
 }
 
 /// @func	http_async_handle_request(message_type)

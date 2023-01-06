@@ -22,8 +22,8 @@ draw_rectangle_rotated(x + 128, y, 64, 32, -65, false);
 
 /*
 draw_set_font(Font1);
-// draw_text_outline(x, y, "Hello World!", 2, c_yellow, c_dkgray);
-// draw_text_shadow(x, y, "Hello World!", 1, 1, c_white, c_red);
+draw_text_outline(x, y, "Hello World!", 2, c_yellow, c_dkgray);
+draw_text_shadow(x, y, "Hello World!", 1, 1, c_white, c_red);
 draw_set_align(fa_center, fa_top);
 draw_text_size(x, y, "Hello World!", 32);
 draw_text_size(x, y + 32, "Hello World!", 24);

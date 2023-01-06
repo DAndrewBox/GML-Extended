@@ -2,6 +2,7 @@
 ### Table of Contents
 - [string_fill_zero](#string_fill_zero)
 - [string_contains](#string_contains)
+- [string_title](#string_title)
 
 ---
 # string_fill_zero
@@ -93,6 +94,33 @@ if (string_contains(_str, _sub)) {
 ```
 
 The above code will show on console the message `World Found!` since the string contains the substring.
+
+---
+
+# string_title
+Returns a string with the first letter of each word capitalized.
+
+### Syntax
+  ```js
+  string_title(string);
+  ```
+
+| Argument | Type | Description |
+| :--- | :---: | :--- |
+| string | String | The string to check |
+
+### Returns
+  ```js
+  String
+  ```
+
+### Example
+```js
+var _str = "hello world!";
+show_debug_message(string_title(_str));
+```
+
+The above code will show on console the message `Hello World!`.
 
 ---
 

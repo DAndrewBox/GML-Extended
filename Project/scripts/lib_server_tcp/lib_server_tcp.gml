@@ -32,7 +32,7 @@ function server_tcp_init(_url, _port, _size) {
 	SERVER_SOCKET = network_create_socket(network_socket_tcp);
 	network_set_config(network_config_connect_timeout, SERVER_TIMEOUT);
 	network_connect_raw_async(SERVER_SOCKET, _url, _port);
-	SERVER_BUFFER = buffer_create(_size, buffer_fixed, _size);
+	SERVER_BUFFER = buffer_create(_size, buffer_fixed, 8);
 }
 
 /// @func	server_tcp_send_data(data)

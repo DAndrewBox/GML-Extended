@@ -24,7 +24,7 @@ function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 /// @desc	Create a new instance only if it doesn't exists
 function instance_create_unique(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 	if !(instance_exists(_obj)) {
-		return instance_create_unique(_x, _y, _obj, _depth_or_layer, _params);
+		return instance_create(_x, _y, _obj, _depth_or_layer, _params);
 	}
 	
 	return -1;
@@ -50,6 +50,36 @@ function instance_any_exists() {
 function instance_in_room(_inst) {
 	return	(_inst.bbox_right >= 0 && _inst.bbox_left <= room_width) &&
 			(_inst.bbox_bottom >= 0 && _inst.bbox_top <= room_height);
+}
+
+/// @func	instance_get_all(object_index)
+/// @param	{ref}	object_index
+function instance_get_all(_obj) {
+	var _inst_count = instance_number(_obj);
+	var _inst_ids = [];
+	
+	var _inst = -1;
+	for (var i = 0; i < size(_inst_count); i++) {
+		_inst = instance_find(_obj, i);
+		array_push(_inst_ids, _inst);
+	}
+	
+	return _inst_ids;
+}
+
+/// @func	instance_number_if(object_index, callback)
+/// @param	{ref}	object_index
+/// @param	{ref}	callback
+function instance_number_if(_obj, _callback) {
+	var _inst_ids = instance_get_all(_obj);
+	var _count = 0;
+	for (var i = 0; i < size(_inst_ids); i++) {
+		if (_callback(_inst_ids[@ i])) {
+			_count++;
+		}
+	}
+	
+	return _count;
 }
 
 /// @func	del(object_index|id);

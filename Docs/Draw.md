@@ -194,7 +194,7 @@ Draw a text on the specified position with a outline specified by the user.
 
 ### Syntax
   ```js
-  draw_text_outline(x, y, string, width, [color = c_white], [color_outline = c_black])
+  draw_text_outline(x, y, string, width, [color = c_white], [color_outline = c_black], [xscale = 1], [yscale = 1], [angle = 0])
   ```
 
 | Argument | Type | Description |
@@ -205,6 +205,9 @@ Draw a text on the specified position with a outline specified by the user.
 | width | Real | The width of the outline |
 | color | Real | The color of the text (Default: c_white) |
 | color_outline | Real | The color of the outline (Default: c_black) |
+| xscale | Real | The x scale of the text (Default: 1) |
+| yscale | Real | The y scale of the text (Default: 1) |
+| angle | Real | The angle of the text (Default: 0) |
 
 ### Returns
   ```js
@@ -228,7 +231,7 @@ Draw a text on the specified position with a shadow specified by the user. The s
 
 ### Syntax
   ```js
-  draw_text_shadow(x, y, string, [shadow_xoff = 1], [shadow_yoff = 1], [color = c_white], [color_shadow = c_black])
+  draw_text_shadow(x, y, string, [shadow_xoff = 1], [shadow_yoff = 1], [color = c_white], [color_shadow = c_black], [xscale = 1], [yscale = 1], [angle = 0])
   ```
 
 | Argument | Type | Description |
@@ -240,6 +243,9 @@ Draw a text on the specified position with a shadow specified by the user. The s
 | shadow_yoff | Real | The y offset of the shadow (Default: 1) |
 | color | Real | The color of the text (Default: c_white) |
 | color_shadow | Real | The color of the shadow (Default: c_black) |
+| xscale | Real | The x scale of the text (Default: 1) |
+| yscale | Real | The y scale of the text (Default: 1) |
+| angle | Real | The angle of the text (Default: 0) |
 
 ### Returns
   ```js
