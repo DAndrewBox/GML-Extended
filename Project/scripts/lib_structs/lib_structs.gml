@@ -10,12 +10,12 @@ function struct_keys(_struct) {
 /// @param	{any}	struct2
 /// @param	{bool}	override
 /// @desc	Return a merged struct from 2 different structs.
-function struct_merge(_st_1, _st_2, _override=true) {
+function struct_merge(_st_1, _st_2, _override = true) {
 	var _new_struct = _st_1;
 	var _new_keys = variable_struct_get_names(_st_2);
 	
 	for (var i = 0; i < array_length(_new_keys); i++) {
-		var _key_exists = (variable_struct_get(_new_struct, _new_keys[i]) == undefined);
+		var _key_exists = is_undefined(variable_struct_get(_new_struct, _new_keys[i]));
 		if (_key_exists && !_override) continue;
 
 		_new_struct[$ _new_keys[i]] = _st_2[$ _new_keys[i]];

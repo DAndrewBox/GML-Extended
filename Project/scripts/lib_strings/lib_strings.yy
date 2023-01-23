@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Libraries",
-    "path": "folders/Libraries.yy",
+    "name": "Functions",
+    "path": "folders/Libraries/GML-Extended/Functions.yy",
   },
 }

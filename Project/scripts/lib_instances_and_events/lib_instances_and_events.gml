@@ -82,13 +82,6 @@ function instance_number_if(_obj, _callback) {
 	return _count;
 }
 
-/// @func	del(object_index|id);
-/// @param	{ref}	object_index|id
-/// @desc	A short way to destroy an element
-function del(_obj = id) {
-	instance_destroy(_obj, true);
-}
-
 /// @func	event_user_exec(inst, ev_number)
 /// @param	{real}	inst
 /// @param	{real}	ev_number
