@@ -69,24 +69,6 @@ function range(_to, _from = 0, _step = 1) {
 	return _arr;
 }
 
-/// @func	size(element)
-/// @param	{any}	element
-/// @desc	Returns the size or length of the element.
-function size(_e) {
-	var _type = typeof(_e);
-	
-	switch(_type) {
-		case "array":	return array_length(_e);
-		case "struct":	return size(struct_keys(_e));
-		case "string":	return string_length(_e);
-		case "number":
-		case "int32":
-		case "int64":	return size(string(_e));
-		case "bool":	return 1;
-		default:		return -1;
-	}
-}
-
 /// @func	wrap(value, min, max)
 /// @param	{real}	value
 /// @param	{real}	min

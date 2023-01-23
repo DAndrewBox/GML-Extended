@@ -70,23 +70,31 @@ function instance_get_all(_obj) {
 /// @func	instance_number_if(object_index, callback)
 /// @param	{ref}	object_index
 /// @param	{ref}	callback
+/// @desc	Return the number of instances that make the callback return true
 function instance_number_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
 	var _count = 0;
 	for (var i = 0; i < size(_inst_ids); i++) {
-		if (_callback(_inst_ids[@ i])) {
-			_count++;
-		}
+		if !(_callback(_inst_ids[@ i])) continue;
+		_count++;
 	}
 	
 	return _count;
 }
 
-/// @func	del(object_index|id);
-/// @param	{ref}	object_index|id
-/// @desc	A short way to destroy an element
-function del(_obj = id) {
-	instance_destroy(_obj, true);
+/// @func	instance_get_if(object_index, callback)
+/// @param	{ref}	object_index
+/// @param	{ref}	callback
+/// @desc	Return the instance ids that make the callback returns true
+function instance_get_if(_obj, _callback) {
+	var _inst_ids = instance_get_all(_obj);
+	var _inst_got = [];
+	for (var i = 0; i < size(_inst_ids); i++) {
+		if (_callback(_inst_ids[@ i])) continue;
+		array_push(_inst_got, _inst_ids[@ i]);
+	}
+	
+	return _inst_got;
 }
 
 /// @func	event_user_exec(inst, ev_number)

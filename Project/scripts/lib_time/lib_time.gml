@@ -47,6 +47,12 @@ global.__DAY_ABBR = [
 ];
 #endregion
 
+/// @func	now()
+/// @desc	Returns the unix timestamp from now datetime.
+function now() {
+	return unix_timestamp(date_current_datetime());
+}
+
 /// @func   unix_timestamp(datetime)
 /// @param  {datetime}  datetime    date-time value (default current time)
 /// @desc   Returns a Unix timestamp for the current or given GameMaker datetime.
@@ -54,12 +60,6 @@ global.__DAY_ABBR = [
 function unix_timestamp(_datetime) {
     var _epoch = floor(date_create_datetime(1970, 1, 1, 0, 0, 0));
     return floor(date_second_span(_epoch, _datetime));
-}
-
-/// @func	now()
-/// @desc	Returns the unix timestamp from now datetime.
-function now() {
-	return unix_timestamp(date_current_datetime());
 }
 
 /// @func	unix_to_datetime(timestamp)
@@ -77,7 +77,7 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 	var _day_names = global.__DAY_NAMES;
 	var _day_abbr = global.__DAY_ABBR;
 	
-	var _dt_values = {
+	static _dt_values = {
 		year:		date_get_year(_dt),
 		month:		date_get_month(_dt),
 		day:		date_get_month(_dt),
@@ -86,7 +86,7 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 		second:		date_get_second(_dt),
 		weekday:	date_get_weekday(_dt),
 	};
-	var _dt_formats = {
+	static _dt_formats = {
 		YYYY:	_dt_values[$ "year"],
 		YY:		string_copy(_dt_values[$ "year"], 3, 2),
 		MM:		string_fill_zero(string(_dt_values[$ "month"]), 2),
@@ -119,6 +119,5 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 /// @func	datetime_get_timestamp()
 /// @desc	Returns a string of the current time in format "<%HH:%NN:%SS>"
 function datetime_get_timestamp() {
-	var _now = now();
-	return unix_timestamp_format(_now, "<%HH:%NN:%SS>");
+	return unix_timestamp_format(now(), "<%HH:%NN:%SS>");
 }
