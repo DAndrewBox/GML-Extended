@@ -2,7 +2,10 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "o_tests_draw",
-  "spriteId": null,
+  "spriteId": {
+    "name": "s_test",
+    "path": "sprites/s_test/s_test.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,

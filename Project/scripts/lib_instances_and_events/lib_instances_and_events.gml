@@ -70,6 +70,7 @@ function instance_get_all(_obj) {
 /// @func	instance_number_if(object_index, callback)
 /// @param	{ref}	object_index
 /// @param	{ref}	callback
+/// @desc	Return the number of instances that make the callback return true
 function instance_number_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
 	var _count = 0;
@@ -80,6 +81,20 @@ function instance_number_if(_obj, _callback) {
 	}
 	
 	return _count;
+}
+
+/// @func	instance_get_if(object_index, callback)
+/// @param	{ref}	object_index
+/// @param	{ref}	callback
+/// @desc	Return the instance ids that make the callback returns true
+function instance_get_if(_obj, _callback) {
+	var _inst_ids = instance_get_all(_obj);
+	for (var i = 0; i < size(_inst_ids); i++) {
+		if !(_callback(_inst_ids[@ i])) continue;
+		array_delete(_inst_ids, i, 1);
+	}
+	
+	return _inst_ids;
 }
 
 /// @func	event_user_exec(inst, ev_number)

@@ -28,19 +28,31 @@ function size(_e) {
 /// @param	{any}	*args
 /// @desc	A short way to use show_debug_message
 function trace() {
-	script_execute_ext(show_debug_message, argument);
+	var _str = "";
+	for (var i = 0; i < argument_count; i++) {
+		_str += string(argument[i]);
+	}
+	show_debug_message(_str);
 }
 
 /// @func	alert(*args)
 /// @param	{any}	*args
 /// @desc	A short way to use show_message
 function alert() {
-	script_execute_ext(show_message, argument);
+	var _args = [];
+	for (var i = 0; i < argument_count; i++) {
+		array_push(_args, argument[i]);
+	}
+	script_execute_ext(show_message, _args);
 }
 
 /// @func	alert_async(*args)
 /// @param	{any}	*args
 /// @desc	A short way to use show_message_async
 function alert_async() {
-	script_execute_ext(show_message_async, argument);
+	var _args = [];
+	for (var i = 0; i < argument_count; i++) {
+		array_push(_args, argument[i]);
+	}
+	script_execute_ext(show_message_async, _args);
 }

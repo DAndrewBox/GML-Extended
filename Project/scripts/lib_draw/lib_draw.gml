@@ -188,6 +188,25 @@ function draw_set_align(_h, _v) {
 	draw_set_valign(_v);
 }
 
+/// @func	draw_sprite_recolor(sprite, index, x, y, xscale, yscale, rot, alpha, mix_color, blend)
+/// @param	{real}	sprite
+/// @param	{real}	index
+/// @param	{real}	x
+/// @param	{real}	y
+/// @param	{real}	xscale
+/// @param	{real}	yscale
+/// @param	{real}	rot
+/// @param	{real}	alpha
+/// @param	{array}	mix_color
+/// @param	{real}	blend
+function draw_sprite_recolor(_spr = sprite_index, _index = image_index, _x = x, _y = y, _xscale = image_xscale, _yscale = image_yscale, _rot = 0, _alpha = 1, _mix = [1, 1, 1], _blend = 1) {
+	shader_set_ext(shd_gml_ext_recolor, {
+		u_color:	_mix,
+		u_mix:		_blend
+	});
+	draw_sprite_ext(_spr, _index, _x, _y, _xscale, _yscale, _rot, -1, _alpha);
+	shader_reset();
+}
 /// @function	gpu_set_alpha_overwrite(flag)
 /// @param	{bool}	flag
 function gpu_set_alpha_overwrite(_flag) {

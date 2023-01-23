@@ -1,4 +1,5 @@
 /// @description Draw tests
+draw_sprite_recolor(,,,,,,,, [.5, .0, .0], .5);
 /*
 draw_set_colour(c_lime);
 draw_figure(x - 100, 128, 3, 32, 25, 2);
