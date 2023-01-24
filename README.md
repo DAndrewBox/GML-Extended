@@ -4,7 +4,7 @@
 
 # GameMaker Language Extended
 ## A GameMaker extension to complement GameMaker Studio 2.3+ built-in functions.
-### Last updated: 2023-01-06
+### Last updated: 2023-01-24
 
 ### Author & Collaborators
 Originally created by [**@DAndrewBox**](https://twitter.com/DAndrewBox_).
@@ -40,6 +40,22 @@ Collaborators:
 
 2. (B) You can also import it into your project using the top toolbar on Tools > Import Local Package > Select the `gml-extended-[version].yymps` file.
 
+3. A window should appear asking you to select the resources you want to import. Here, you can select what resources you want to import from the project (Importing all is recommended but you can select just the ones you need.
+
+4. Select the `GML-Extended` folder, press `Add All`, and then click `Import`.
+
+<p style="text-align: center;">
+  <img src="https://i.imgur.com/ErUhn3b.png" width="75%"/>
+<p>
+
+5. Resources should now be imported into your project in a main folder named `GML-Extended` or as a sub folder of `Libraries`, be sure to check both if exists.
+
+<p style="text-align: center;">
+  <img src="https://i.imgur.com/BfU9Tnw.png" width="75%"/>
+<p>
+
+6. You can now use the extension in your project.
+
 ---
 
 ### Documentation
@@ -61,11 +77,13 @@ The documentation is also available in the `Docs` folder of this repository or p
 - [**Instances & Events**](Docs/Instances_and_Events.md)
 - [**Layers**](Docs/Layers.md)
 - [**Images**](Docs/Images.md)
+- [**Shortcuts**](Docs/Shortcuts.md)
 
 ---
 
 ### Contributing
 If you want to contribute to this project, you can do so by forking this repository, finding the addecuate branch and submitting a pull request.
+You can also submit an issue if you find a bug or want to suggest a new feature, I'm open to add new features to this extension as long as I can see a use for it.
 
 ---
 
@@ -87,9 +105,10 @@ Any of the releases of this extension are compatible with GameMaker Studio from 
 | GameMaker Version | GML-Ext v1.0.0 | GML-Ext v1.1.x | GML-Ext v1.2.x |
 | ---: | :---: | :---: | :---: |
 | Studio 1.4.x      | ❌ | ❌ | ❌ |
-| Studio 2.3.x      | ✅ | ✅* | ✅ |
-| 2022.x LTS        | ✅ | ✅* | ✅ |
-| 2022.1 - 2022.9   | ✅ | ✅* | ✅ |
+| Studio 2 - 2.2    | ❌ | ❌ | ❌ |
+| Studio 2.3.x      | ✅ | ✅* | ❌ |
+| 2022.x LTS        | ✅ | ✅* | ❌ |
+| 2022.1 - 2022.9   | ✅ | ✅* | ⚠️ |
 | 2022.11           | ❌ | ⚠️ | ✅* |
 
 There's also branches for each GameMaker version. You can find them in the [branches page](https://github.com/DAndrewBox/GML-Extended/branches), or by clicking the links below.
