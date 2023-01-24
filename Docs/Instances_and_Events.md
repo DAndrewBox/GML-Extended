@@ -6,7 +6,6 @@
 - [instance_in_room](#instance_in_room)
 - [instance_get_all](#instance_get_all)
 - [instance_number_if](#instance_number_if)
-- [del](#del)
 - [event_user_exec](#event_user_exec)
 
 ---
@@ -198,30 +197,6 @@ The above code will show the number of players with guns in the room. The callba
 
 ---
 
-# del
-Deletes an instance and executes the destroy event of the object. Serves as a shortcut for `instance_destroy`.
-
-### Syntax
-  ```js
-  del(object_index | id);
-  ```
-
-| Argument | Type | Description |
-| :--- | :---: | :--- |
-| object_index or id | Real or Ref | The index of the object or the id of the instance |
-
-### Returns
-  ```js
-  None
-  ```
-
-### Example
-```js
-del(obj_Player);
-```
-The above code will delete the player and execute the destroy event of the object.
-
----
 # event_user_exec
 Executes an event of an object. The event must be a user event. The event_number is the id of the event to execute.
 

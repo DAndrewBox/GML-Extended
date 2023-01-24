@@ -6,7 +6,6 @@
 - [rng](#rng)
 - [choice_weighted](#choice_weighted)
 - [range](#range)
-- [size](#size)
 
 ---
 # round_dec
@@ -189,46 +188,6 @@ for (var i = 0; i < array_length_1d(global.hp_per_level); i++) {
 ```
 
 The above code will create an array of numbers from 75 to 1000 with a step of 25 for player's hp. Then it will show the values on console.
-
----
-# size
-Returns the size or length of the element. If the element is an array, it will return the length of the array. If the element is a string, it will return the length of the string. If the element is a struct, it will return the number of variables in the struct. If the element is a real, it will return the length of a string of the value.
-
-### Syntax
-  ```js
-  size(element);
-  ```
-
-| Argument | Type | Description |
-| :--- | :---: | :--- |
-| element | Real, String, Bool, Array or Struct | The element to get the size of |
-### Returns
-  ```js
-  Real
-  ```
-
-### Example
-```js
-var _array = [0, 1, 2, 3];
-var _string = "Hello World!";
-var _struct = {a: 0, b: 1, c: 2};
-var _real = 123;
-
-show_debug_message("Array size: " + string(size(_array)));
-show_debug_message("String size: " + string(size(_string)));
-show_debug_message("Struct size: " + string(size(_struct)));
-show_debug_message("Real size: " + string(size(_real)));
-```
-
-The above code will show the size of the `_array`, `_string`, `_struct`, and `_real` on console.
-
-The output will be:
-```
-Array size: 4
-String size: 12
-Struct size: 3
-Real size: 3
-```
 
 ---
 # wrap
