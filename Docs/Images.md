@@ -38,4 +38,11 @@ The above code will loop the image_index between 0 and 3 with a speed of 0.5. So
       <a href="Layers.md">Layers</a>
     </h3>
   </div>
+  
+  <div style="text-align: right; width: 50%">
+    <h3>
+      Next: 
+      <a href="Shortcuts.md">Shortcuts</a>
+    </h3>
+  </div>
 </div>

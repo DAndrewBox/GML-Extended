@@ -142,3 +142,14 @@ alert_async("Hello World!");
 ```
 
 The above code will show an alert dialog with the message "Hello World!".
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <div style="text-align: left; width: 50%">
+    <h3>
+      Prev: 
+      <a href="Images.md">Images</a>
+    </h3>
+  </div>
+</div>

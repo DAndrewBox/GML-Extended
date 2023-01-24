@@ -6,6 +6,7 @@
 - [instance_in_room](#instance_in_room)
 - [instance_get_all](#instance_get_all)
 - [instance_number_if](#instance_number_if)
+- [instance_get_if](#instance_get_if)
 - [event_user_exec](#event_user_exec)
 
 ---
@@ -194,6 +195,39 @@ show_debug_message("There are " + _players_with_guns + " players with guns");
 ```
 
 The above code will show the number of players with guns in the room. The callback function will be executed for each player and will return true if the player has a gun.
+
+---
+
+# instance_get_if
+Returns an array of instances of the object passed as argument that match the condition passed as callback argument.
+
+### Syntax
+  ```js
+  instance_get_if(object_index, callback);
+  ```
+
+| Argument | Type | Description |
+| :--- | :---: | :--- |
+| object_index | Real Ref | The index of the object |
+| callback | Function | The callback function |
+
+### Returns
+  ```js
+  Array
+  ```
+
+### Example
+```js
+var _players_with_guns = instance_get_if(obj_Player, function() {
+    return gun_id > -1;
+});
+
+for (var i = 0; i < _players_with_guns.length; i++) {
+    show_debug_message("Player " + i + " x: " + _players_with_guns[i].x + " y: " + _players_with_guns[i].y);
+}
+```
+
+The above code will show the x and y position of all players with guns in the room. The callback function will be executed for each player and will return true if the player has a gun.
 
 ---
 

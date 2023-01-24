@@ -232,7 +232,7 @@ function draw_sprite_blur(_spr, _index, _x, _y, _amount, _xscale = 1, _yscale = 
 	_h = sprite_get_height(_spr);
 	shader_set_ext(shd_gml_ext_blur_gauss, {
 		u_float: {
-			size: [_w, _h, 50 * _amount],
+			size: [_w, _h, 25 * _amount],
 		}
 	});
 	draw_sprite_ext(_spr, _index, _x, _y, _xscale, _yscale, _rot, _col, _alpha);
@@ -257,7 +257,7 @@ function draw_surface_blur(_surf, _amount, _x, _y, _xscale = 1, _yscale = 1, _ro
 	_h = surface_get_height(_surf);
 	shader_set_ext(shd_gml_ext_blur_gauss, {
 		u_float: {
-			size: [_w, _h, 50 * _amount],
+			size: [_w, _h, 25 * _amount],
 		}
 	});
 	draw_surface_ext(_surf, _x, _y, _xscale, _yscale, _rot, _col, _alpha);
