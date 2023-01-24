@@ -6,5 +6,5 @@ if (surface_exists(surf)) {
 	draw_surface_part(application_surface, x - 100, y - 100, 200, 200, 0, 0);
 	surface_reset_target();
 	
-	draw_surface_blur(surf, 4, x - 100, y - 100);
+	draw_surface_blur(surf, abs(dsin(current_time / 25)), x - 100, y - 100);
 }

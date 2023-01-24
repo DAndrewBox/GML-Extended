@@ -199,7 +199,7 @@ function draw_set_align(_h, _v) {
 /// @param	{real}	alpha
 /// @param	{real}	mix_color
 /// @param	{real}	blend
-function draw_sprite_recolor(_spr = sprite_index, _index = image_index, _x = x, _y = y, _xscale = image_xscale, _yscale = image_yscale, _rot = 0, _alpha = 1, _mix = #FFFFFF, _blend = 1) {
+function draw_sprite_recolor(_spr, _index, _x, _y, _xscale = image_xscale, _yscale = image_yscale, _rot = 0, _alpha = 1, _mix = #FFFFFF, _blend = 1) {
 	var _color = [
 		color_get_red(_mix) / 255,
 		color_get_green(_mix) / 255,
@@ -212,6 +212,30 @@ function draw_sprite_recolor(_spr = sprite_index, _index = image_index, _x = x, 
 		}
 	});
 	draw_sprite_ext(_spr, _index, _x, _y, _xscale, _yscale, _rot, -1, _alpha);
+	shader_reset();
+}
+
+/// @func	draw_sprite_blur(sprite, index, x, y, blur_amount, xscale, yscale, rot, col, alpha)
+/// @param	{real}	sprite
+/// @param	{real}	index
+/// @param	{real}	x
+/// @param	{real}	y
+/// @param	{real}	blur_amount
+/// @param	{real}	xscale
+/// @param	{real}	yscale
+/// @param	{real}	rot
+/// @param	{real}	col
+/// @param	{real}	alpha
+function draw_sprite_blur(_spr, _index, _x, _y, _amount, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = 1) {
+	var _w, _h;
+	_w = sprite_get_width(_spr);
+	_h = sprite_get_height(_spr);
+	shader_set_ext(shd_gml_ext_blur_gauss, {
+		u_float: {
+			size: [_w, _h, 50 * _amount],
+		}
+	});
+	draw_sprite_ext(_spr, _index, _x, _y, _xscale, _yscale, _rot, _col, _alpha);
 	shader_reset();
 }
 
@@ -231,9 +255,9 @@ function draw_surface_blur(_surf, _amount, _x, _y, _xscale = 1, _yscale = 1, _ro
 	var _w, _h;
 	_w = surface_get_width(_surf);
 	_h = surface_get_height(_surf);
-	shader_set_ext(shd_gml_ext_blur, {
+	shader_set_ext(shd_gml_ext_blur_gauss, {
 		u_float: {
-			size: [_w, _h, _amount],
+			size: [_w, _h, 50 * _amount],
 		}
 	});
 	draw_surface_ext(_surf, _x, _y, _xscale, _yscale, _rot, _col, _alpha);
