@@ -22,6 +22,7 @@
     {"id":{"name":"lib_server_tcp","path":"scripts/lib_server_tcp/lib_server_tcp.yy",},"order":11,},
     {"id":{"name":"lib_shortcuts","path":"scripts/lib_shortcuts/lib_shortcuts.yy",},"order":0,},
     {"id":{"name":"lib_strings","path":"scripts/lib_strings/lib_strings.yy",},"order":3,},
+    {"id":{"name":"shd_gml_ext_blur","path":"shaders/shd_gml_ext_blur/shd_gml_ext_blur.yy",},"order":1,},
     {"id":{"name":"lib_game","path":"scripts/lib_game/lib_game.yy",},"order":17,},
     {"id":{"name":"shd_gml_ext_recolor","path":"shaders/shd_gml_ext_recolor/shd_gml_ext_recolor.yy",},"order":0,},
     {"id":{"name":"lib_files","path":"scripts/lib_files/lib_files.yy",},"order":6,},
