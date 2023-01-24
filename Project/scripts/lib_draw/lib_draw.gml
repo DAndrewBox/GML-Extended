@@ -251,6 +251,7 @@ function draw_sprite_blur(_spr, _index, _x, _y, _amount, _xscale = 1, _yscale = 
 /// @param	{real}	alpha
 function draw_surface_blur(_surf, _amount, _x, _y, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = 1) {
 	if !(surface_exists(_surf)) return;
+	
 	var _w, _h;
 	_w = surface_get_width(_surf);
 	_h = surface_get_height(_surf);
