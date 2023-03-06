@@ -77,7 +77,7 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 	var _day_names = global.__DAY_NAMES;
 	var _day_abbr = global.__DAY_ABBR;
 	
-	static _dt_values = {
+	var _dt_values = {
 		year:		date_get_year(_dt),
 		month:		date_get_month(_dt),
 		day:		date_get_month(_dt),
@@ -86,7 +86,7 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 		second:		date_get_second(_dt),
 		weekday:	date_get_weekday(_dt),
 	};
-	static _dt_formats = {
+	var _dt_formats = {
 		YYYY:	_dt_values[$ "year"],
 		YY:		string_copy(_dt_values[$ "year"], 3, 2),
 		MM:		string_fill_zero(string(_dt_values[$ "month"]), 2),
@@ -112,7 +112,6 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 		_format = string_replace_all(_format, "%" + _key, _dt_formats[$ _key]);
 	}
 	
-	delete _dt_values;
 	return _format;
 }
 
@@ -121,3 +120,30 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 function datetime_get_timestamp() {
 	return unix_timestamp_format(now(), "<%HH:%NN:%SS>");
 }
+
+/// @func	time_performance(function, arguments, iterations)
+/// @param	{ref}	function
+/// @param	{array}	argument
+/// @param	{real}	iterations
+function time_performance(_func, _args = [], _iter = 1) {
+	var _time_start = current_time;
+	
+	repeat (_iter) {
+		script_execute_ext(_func, _args);
+	}
+	
+	var _time_end = current_time;
+	var _time_delta = _time_end - _time_end;
+	
+	trace(
+		string(
+			"[Iterations: {0}] Function {1} with arguments {2} finished in {3}ms.",
+			_iter,
+			script_get_name(_func),
+			_args,
+			_time_delta
+		)
+	);
+}
+
+time_performance(now,, 100000000);

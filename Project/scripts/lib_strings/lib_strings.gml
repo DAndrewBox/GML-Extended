@@ -1,20 +1,3 @@
-/// @func	string_fill_zero(string, size, [on_left])
-/// @param	{string}	string
-/// @param	{real}		size
-/// @param	{bool}		[on_left]
-/// @desc	Returns a string filled with 0's on any side.
-function string_fill_zero(_org_str, _size, _on_left = true) {
-	// Calculate how many 0's need to be padded on to the string
-	var _str = string(_org_str);
-	var _pad = "";
-
-	for (var i = 0; i < _size - string_length(_str); i++) {
-		_pad += "0";
-	}
-	
-	return ( _on_left ? _pad + _str : _str + _pad );
-}
-
 /// @func	string_contains(string, substring)
 /// @param	{str}	string
 /// @param	{str}	substring
@@ -41,6 +24,21 @@ function string_title(_str) {
 	}
 	
     return _out;
+}
+
+/// @func	string_remove(string, substring)
+/// @param	{str}		string
+/// @param	{str|array}	substring
+function string_remove(_str, _substr) {
+	if (is_array(_substr)) {
+		for (var i = 0; i < array_length(_substr); i++) {
+			_str = string_remove(_str, _substr[i]);
+		}
+		
+		return _str;
+	}
+	
+	return string_replace_all(_str, _substr, "");
 }
 
 /// @func	string_pad_left(string, char, size)
