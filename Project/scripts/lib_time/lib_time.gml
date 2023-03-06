@@ -77,7 +77,7 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 	var _day_names = global.__DAY_NAMES;
 	var _day_abbr = global.__DAY_ABBR;
 	
-	static _dt_values = {
+	var _dt_values = {
 		year:		date_get_year(_dt),
 		month:		date_get_month(_dt),
 		day:		date_get_month(_dt),
@@ -86,16 +86,16 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 		second:		date_get_second(_dt),
 		weekday:	date_get_weekday(_dt),
 	};
-	static _dt_formats = {
+	var _dt_formats = {
 		YYYY:	_dt_values[$ "year"],
 		YY:		string_copy(_dt_values[$ "year"], 3, 2),
-		MM:		string_fill_zero(string(_dt_values[$ "month"]), 2),
-		DD:		string_fill_zero(string(_dt_values[$ "day"]), 2),
+		MM:		string_pad_left(string(_dt_values[$ "month"]), "0", 2),
+		DD:		string_pad_left(string(_dt_values[$ "day"]), "0" , 2),
 		mm:		_month_names[_dt_values[$ "month"] - 1],
 		dd:		_day_names[_dt_values[$ "weekday"] - 1],
-		HH:		string_fill_zero(string(_dt_values[$ "hour"]), 2),
-		NN:		string_fill_zero(string(_dt_values[$ "minute"]), 2),
-		SS:		string_fill_zero(string(_dt_values[$ "second"]), 2),
+		HH:		string_pad_left(string(_dt_values[$ "hour"]), "0" , 2),
+		NN:		string_pad_left(string(_dt_values[$ "minute"]), "0" , 2),
+		SS:		string_pad_left(string(_dt_values[$ "second"]), "0" , 2),
 		M:		_dt_values[$ "month"],
 		D:		_dt_values[$ "day"],
 		m:		_month_abbr[_dt_values[$ "month"] - 1],
@@ -107,12 +107,13 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 	var _keys = struct_keys(_dt_formats);
 	array_sort(_keys, sort_elem_size_asc);
 	
-	for (var i = 0; i < size(_keys); i++) {
+	for (var i = 0; i < get_size(_keys); i++) {
 		var _key = _keys[i];
 		_format = string_replace_all(_format, "%" + _key, _dt_formats[$ _key]);
 	}
 	
 	delete _dt_values;
+	delete _dt_formats;
 	return _format;
 }
 
@@ -120,4 +121,29 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 /// @desc	Returns a string of the current time in format "<%HH:%NN:%SS>"
 function datetime_get_timestamp() {
 	return unix_timestamp_format(now(), "<%HH:%NN:%SS>");
+}
+
+/// @func	time_performance(function, arguments, iterations)
+/// @param	{ref}	function
+/// @param	{array}	argument
+/// @param	{real}	iterations
+function time_performance(_func, _args = [], _iter = 1) {
+	var _time_start = get_timer();
+	
+	repeat (_iter) {
+		script_execute_ext(_func, _args);
+	}
+	
+	var _time_end = get_timer();
+	var _time_delta = (_time_end - _time_start) / 1000;
+	
+	trace(
+		string(
+			"[Iterations: {0}] Function {1} with arguments {2} finished in {3}ms.",
+			_iter,
+			script_get_name(_func),
+			_args,
+			_time_delta
+		)
+	);
 }

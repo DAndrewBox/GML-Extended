@@ -13,7 +13,7 @@ function round_dec(_x, _dec = 0) {
 /// @param	{real}	offset
 /// @desc	Returns TRUE if VALUE is near (VALUE_TO - OFFSET).
 function near(_val, _val_to, _offset) {
-	return abs(_val) <= abs(_val_to - _offset);
+	return _val >= _val_to - abs(_offset) && _val <= _val_to + abs(_offset);
 }
 
 /// @func	between(value, min, max)
@@ -74,6 +74,19 @@ function range(_to, _from = 0, _step = 1) {
 /// @param	{real}	min
 /// @param	{real}	max
 function wrap(_val, _min, _max) {
-	var _mod = ( _val - _min ) mod ( _max - _min );
-	return ( _mod < 0 ? _mod + _max : _mod + _min );
+	if (_min > _max) {
+		var _tmp = _max;
+		_max = _min;
+		_min = _tmp;
+	}
+	
+	while (_val < _min || _val > _max) {
+		if (_val > _max) {
+			_val = _val mod _max;
+		} else if (_val < _min) {
+			_val = _max - abs(_val);
+		}
+	}
+	
+	return _val;
 }

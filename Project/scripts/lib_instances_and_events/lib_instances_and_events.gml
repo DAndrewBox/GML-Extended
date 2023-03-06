@@ -23,11 +23,12 @@ function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 /// @param	{any}	params
 /// @desc	Create a new instance only if it doesn't exists
 function instance_create_unique(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
-	if !(instance_exists(_obj)) {
+	var _inst = instance_find(_obj, 0);
+	if (_inst == noone) {
 		return instance_create(_x, _y, _obj, _depth_or_layer, _params);
 	}
 	
-	return -1;
+	return _inst;
 }
 
 /// @func	instance_any_exists(*args)
@@ -59,7 +60,7 @@ function instance_get_all(_obj) {
 	var _inst_ids = [];
 	
 	var _inst = -1;
-	for (var i = 0; i < size(_inst_count); i++) {
+	for (var i = 0; i < get_size(_inst_count); i++) {
 		_inst = instance_find(_obj, i);
 		array_push(_inst_ids, _inst);
 	}
@@ -74,7 +75,7 @@ function instance_get_all(_obj) {
 function instance_number_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
 	var _count = 0;
-	for (var i = 0; i < size(_inst_ids); i++) {
+	for (var i = 0; i < get_size(_inst_ids); i++) {
 		if !(_callback(_inst_ids[@ i])) continue;
 		_count++;
 	}
@@ -89,7 +90,7 @@ function instance_number_if(_obj, _callback) {
 function instance_get_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
 	var _inst_got = [];
-	for (var i = 0; i < size(_inst_ids); i++) {
+	for (var i = 0; i < get_size(_inst_ids); i++) {
 		if (_callback(_inst_ids[@ i])) continue;
 		array_push(_inst_got, _inst_ids[@ i]);
 	}

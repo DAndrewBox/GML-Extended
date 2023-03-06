@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "lib_arrays",
+  "name": "lib_obsolete",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Functions",
-    "path": "folders/Libraries/GML-Extended/Functions.yy",
+    "name": "Obsolete",
+    "path": "folders/Libraries/GML-Extended/Functions/Obsolete.yy",
   },
 }
