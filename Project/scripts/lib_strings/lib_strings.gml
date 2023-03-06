@@ -42,3 +42,33 @@ function string_title(_str) {
 	
     return _out;
 }
+
+/// @func	string_pad_left(string, char, size)
+/// @param	{str}	string
+/// @param	{str}	char
+/// @param	{real}	size
+function string_pad_left(_str, _char, _size) {
+	var _pad = "";
+	var _pad_size = _size - string_length(_str);
+	
+	for (var i = 0; i < _pad_size; i++) {
+		_pad += _char;
+	}
+	
+	return _pad + _str;
+}
+
+/// @func	string_pad_right(string, char, size)
+/// @param	{str}	string
+/// @param	{str}	char
+/// @param	{real}	size
+function string_pad_right(_str, _char, _size) {
+	var _pad = "";
+	var _pad_size = _size - string_length(_str);
+	
+	for (var i = 0; i < _pad_size; i++) {
+		_pad += _char;
+	}
+	
+	return _str + _pad;
+}

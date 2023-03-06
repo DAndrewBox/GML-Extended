@@ -1,0 +1,22 @@
+{
+  "FolderOrderSettings": [],
+  "ResourceOrderSettings": [
+    {"name":"lib_http","order":12,"path":"scripts/lib_http/lib_http.yy",},
+    {"name":"lib_logger","order":2,"path":"scripts/lib_logger/lib_logger.yy",},
+    {"name":"lib_images","order":16,"path":"scripts/lib_images/lib_images.yy",},
+    {"name":"lib_time","order":10,"path":"scripts/lib_time/lib_time.yy",},
+    {"name":"lib_shaders","order":8,"path":"scripts/lib_shaders/lib_shaders.yy",},
+    {"name":"lib_structs","order":7,"path":"scripts/lib_structs/lib_structs.yy",},
+    {"name":"lib_sprites","order":1,"path":"scripts/lib_sprites/lib_sprites.yy",},
+    {"name":"lib_draw","order":13,"path":"scripts/lib_draw/lib_draw.yy",},
+    {"name":"lib_math","order":9,"path":"scripts/lib_math/lib_math.yy",},
+    {"name":"lib_instances_and_events","order":14,"path":"scripts/lib_instances_and_events/lib_instances_and_events.yy",},
+    {"name":"lib_arrays","order":2,"path":"scripts/lib_arrays/lib_arrays.yy",},
+    {"name":"lib_layers","order":15,"path":"scripts/lib_layers/lib_layers.yy",},
+    {"name":"lib_server_tcp","order":11,"path":"scripts/lib_server_tcp/lib_server_tcp.yy",},
+    {"name":"lib_strings","order":3,"path":"scripts/lib_strings/lib_strings.yy",},
+    {"name":"shd_gml_ext_blur_gauss","order":1,"path":"shaders/shd_gml_ext_blur_gauss/shd_gml_ext_blur_gauss.yy",},
+    {"name":"lib_game","order":17,"path":"scripts/lib_game/lib_game.yy",},
+    {"name":"lib_files","order":6,"path":"scripts/lib_files/lib_files.yy",},
+  ],
+}

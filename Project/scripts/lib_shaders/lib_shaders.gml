@@ -1,4 +1,5 @@
-///	@func	shader_set_ext(params)
+///	@func	shader_set_ext(shader, params)
+/// @param	{ref}	shader
 /// @param	{any}	params
 /// @desc	Setup a shader with uniform params
 function shader_set_ext(_shader, _params) {	

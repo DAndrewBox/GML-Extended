@@ -106,3 +106,10 @@ function event_user_exec(_inst, _ev_number) {
 		event_user(_ev_number);
 	}
 }
+
+/// @func	instance_in_room_view(inst)
+/// @param	{real}	inst
+function instance_in_room_view(_inst) {
+	return	(_inst.x >= 0 && _inst.x <= room_width) &&
+			(_inst.y >= 0 && _inst.y <= room_height);
+}

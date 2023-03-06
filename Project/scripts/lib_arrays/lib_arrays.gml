@@ -117,3 +117,14 @@ function array_shuffle(_array) {
 	
 	return _array;
 }
+
+/// @func	array_contains(array, value)
+/// @param	{array}	array
+/// @param	{any}	value
+function array_contains(_array, _value) {
+	for (var i = 0; i < array_length(_array); i++) {
+		if (_array[@ i] == _value) return true;
+	}
+	
+	return false;
+}
