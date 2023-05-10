@@ -90,3 +90,5 @@ function wrap(_val, _min, _max) {
 	
 	return _val;
 }
+
+#macro	PI	3.14159265

@@ -55,6 +55,8 @@
     {"id":{"name":"s_test","path":"sprites/s_test/s_test.yy",},},
     {"id":{"name":"lib_instances_and_events","path":"scripts/lib_instances_and_events/lib_instances_and_events.yy",},},
     {"id":{"name":"lib_arrays","path":"scripts/lib_arrays/lib_arrays.yy",},},
+    {"id":{"name":"o_test_draw_anim","path":"objects/o_test_draw_anim/o_test_draw_anim.yy",},},
+    {"id":{"name":"lib_animate","path":"scripts/lib_animate/lib_animate.yy",},},
     {"id":{"name":"lib_layers","path":"scripts/lib_layers/lib_layers.yy",},},
     {"id":{"name":"lib_server_tcp","path":"scripts/lib_server_tcp/lib_server_tcp.yy",},},
     {"id":{"name":"lib_shortcuts","path":"scripts/lib_shortcuts/lib_shortcuts.yy",},},
