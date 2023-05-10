@@ -1,5 +1,4 @@
 /// @description Setup
-t = 0;
 callbacks = [
 	"easeInSine",
 	"easeOutSine",
