@@ -82,9 +82,9 @@ function wrap(_val, _min, _max) {
 	
 	while (_val < _min || _val > _max) {
 		if (_val > _max) {
-			_val = _val mod _max;
+			_val -= (_max - _min);
 		} else if (_val < _min) {
-			_val = _max - abs(_val);
+			_val += (_max - _min);
 		}
 	}
 	

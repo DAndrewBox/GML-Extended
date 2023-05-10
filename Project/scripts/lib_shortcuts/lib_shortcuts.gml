@@ -137,3 +137,4 @@ function gui_height() {
 }
 
 #macro	str		string
+#macro	int		real
