@@ -73,7 +73,7 @@ function anim_easeOutCubic(_val, _min = 0, _max = 1) {
 function anim_easeInOutCubic(_val, _min = 0, _max = 1) {
 	return (_max - _min) * (
 		_val < 0.5
-		? 4 * anim_easeInCubic(_val, _min = 0, _max = 1)
+		? (_max - _min) * (4 * power(_val, 3)) + _min
 		: 1 - power(-2 * _val + 2, 3) / 2
 	) + _min;
 }
@@ -161,7 +161,7 @@ function anim_easeInOutExpo(_val, _min = 0, _max = 1) {
 /// @param	{real}	_min
 /// @param	{real}	_max
 function anim_easeInCirc(_val, _min = 0, _max = 1) {
-	return 1 - sqrt( 1 - power(_val, 2)) * (_max - _min) + _min;
+	return 1 - sqrt(1 - power(_val, 2)) * (_max - _min) + _min;
 }
 
 /// @func	anim_easeOutCirc(value, _min = 0, _max = 1)
@@ -169,7 +169,7 @@ function anim_easeInCirc(_val, _min = 0, _max = 1) {
 /// @param	{real}	_min
 /// @param	{real}	_max
 function anim_easeOutCirc(_val, _min = 0, _max = 1) {
-	return (_max - _min) * sqrt(1 - (_val * _val)) + _min;
+	return (_max - _min) * sqrt(1 - power(_val - 1, 2)) + _min;
 }
 
 /// @func	anim_easeInOutCirc(value, _min = 0, _max = 1)
@@ -226,10 +226,7 @@ function anim_easeInElastic(_val, _min = 0, _max = 1) {
 
 	return (_val == 0
 		? _min
-		: (_val == 1
-			? _max
-			: -power(2, 10 * _val - 10) * sin((_val * 10 - 10.75) * _c4) * (_max - _min) + _max
-			)
+		: -power(2, 10 * _val - 9) * sin((_val * 10 - 10) * _c4) * (_max - _min) + _max
 		);
 }
 
@@ -244,7 +241,7 @@ function anim_easeOutElastic(_val, _min = 0, _max = 1) {
 		? _min
 		: ( _val == 1
 			? _max
-			: power(2, -10 * _val) * sin((_val * 10 - 0.75) * _c4) * (_max - _min) + _max
+			: power(2, -10 * _val) * sin((_val * 10 - 10) * _c4) * (_max - _min) + _max
 			)
 		);
 }
@@ -287,11 +284,11 @@ function anim_easeOutBounce(_val, _min = 0, _max = 1) {
 	if (_val < 1 / _d1) {
 	    return _n1 * _val * _val * (_max - _min) + _min;
 	} else if (_val < 2 / _d1) {
-	    return _n1 * (_val - 1.5 / _d1) * (_val - 1.5 / _d1) * (_max - _min) + (_max + _min) / 2;
+	    return _n1 * (_val - 1.5 / _d1) * (_val - 1.5 / _d1) * (_max - _min) + (_max + _min);
 	} else if (_val < 2.5 / _d1) {
-	    return _n1 * (_val - 2.25 / _d1) * (_val - 2.25 / _d1) * (_max - _min) + (_max + _min) / 2;
+	    return _n1 * (_val - 2.25 / _d1) * (_val - 2.25 / _d1) * (_max - _min) + (_max + _min);
 	} else {
-	    return _n1 * (_val - 2.625 / _d1) * (_val - 2.625 / _d1) * (_max - _min) + (_max + _min) / 2;
+	    return _n1 * (_val - 2.625 / _d1) * (_val - 2.625 / _d1) * (_max - _min) + (_max + _min);
 	}
 }
 

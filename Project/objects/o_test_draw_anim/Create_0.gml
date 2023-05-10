@@ -1,4 +1,6 @@
 /// @description Setup
+t = 0;
+inactive_t = 0;
 callbacks = [
 	"easeInSine",
 	"easeOutSine",
