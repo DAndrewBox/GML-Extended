@@ -31,3 +31,20 @@ function struct_merge(_st_1, _st_2, _override = true) {
 function struct_key_exists(_struct, _key) {
 	return array_contains(struct_keys(), _key);
 }
+
+/// @func	struct_equal(struct1, struct2)
+/// @param	{any}	struct1
+/// @param	{any}	struct2
+function struct_equal(_struct_1, _struct_2) {
+	// Check if all keys are in struct1 & struct2
+	var _struct_keys = struct_keys(_struct_1);
+	
+	if (get_size(_struct_1) != get_size(_struct_2)) return false;
+	for (var i = 0; i < get_size(_struct_keys); i++) {
+		var _key = _struct_keys[i];
+		if (is_undefined(_struct_2[$ _key])) return false;
+		if (_struct_1[$ _key] != _struct_2[$ _key]) return false;
+	}
+	
+	return true;
+}

@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Constructors",
-    "path": "folders/Libraries/GML-Extended/Constructors.yy",
+    "path": "folders/Libraries/GML-Extended/Functions/Experimental/Constructors.yy",
   },
 }

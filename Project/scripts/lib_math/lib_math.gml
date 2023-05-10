@@ -1,3 +1,4 @@
+
 /// @func	round_dec(x, decimals)
 /// @param	{real}	x
 /// @param	{real}	decimals
@@ -29,7 +30,7 @@ function between(_val, _min, _max) {
 /// @param	{real}	chance
 /// @desc	Returns a bool if random value is less than chance.
 function rng(_chance) {
-	return random(1) < _chance;
+	return random_linear(1) < _chance;
 }
 
 /// @func	choice_weighted(values, weights)
@@ -38,7 +39,7 @@ function rng(_chance) {
 function choice_weighted(_values, _weights) {
 	if (!is_array(_values) || !is_array(_weights)) return noone;
 	
-	var _chance = random(1);
+	var _chance = random_linear(1);
 	var _acc = 0;
 	for (var i = 0; i < array_length(_values); i++) {
 		if (_chance <= (_weights[i] + _acc)) return _values[i];
@@ -82,11 +83,33 @@ function wrap(_val, _min, _max) {
 	
 	while (_val < _min || _val > _max) {
 		if (_val > _max) {
-			_val = _val mod _max;
+			_val -= (_max - _min);
 		} else if (_val < _min) {
-			_val = _max - abs(_val);
+			_val += (_max - _min);
 		}
 	}
 	
 	return _val;
+}
+
+/// @func	random_linear(n)
+/// @param	{real}	n
+function random_linear(_n = 1) {
+	return sqrt(random(_n))
+}
+
+/// @func	uuid_v4()
+function uuid_v4() {
+	var _config_data = os_get_info();
+	var _uuid = md5_string_unicode(
+		string(
+			get_timer() * current_second * current_minute * current_hour * current_day * current_month
+		) + _config_data[? "udid"]
+		+ string(
+			_config_data[? "video_adapter_subsysid"]
+		)
+	);
+	ds_map_destroy(_config_data);
+	
+	return _uuid;
 }

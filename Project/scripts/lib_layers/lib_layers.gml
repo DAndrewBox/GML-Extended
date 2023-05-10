@@ -4,7 +4,7 @@
 /// @desc	A way to get the elements of a dynamically created layer.
 function layer_get_element_ids_fixed(_layer, _element_type = layerelementtype_tilemap) {
 	var els = layer_get_all_elements(_layer);
-	var n = array_length(els);
+	var n = get_size(els);
 
 	for (var i = 0; i < n; i++) {
 	    var el = els[i];

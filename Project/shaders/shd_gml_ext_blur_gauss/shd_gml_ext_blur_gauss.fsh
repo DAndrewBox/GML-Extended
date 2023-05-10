@@ -4,12 +4,12 @@ uniform vec3 size; // => vec3(width, height, radius)
 
 #define	QUALITY		20
 #define	DIRECTIONS	36
-#define	PI			6.28318530718
+#define	TAU			6.28318530718
 
 void main() {
     vec2 radius = (size.z / size.xy);
     vec4 Color = texture2D( gm_BaseTexture, v_vTexcoord);
-    for(float d = .0; d < PI; d += (PI / float(DIRECTIONS))) {
+    for(float d = .0; d < TAU; d += (TAU / float(DIRECTIONS))) {
         for(float i = (1.0 / float(QUALITY)); i <= 1.0; i += (1.0 / float(QUALITY))) {
 			Color += texture2D(gm_BaseTexture, v_vTexcoord + vec2(cos(d), sin(d)) * radius * i);
         }
