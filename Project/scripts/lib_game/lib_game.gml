@@ -1,10 +1,9 @@
 /// @func	game_params()
 /// @desc	Gets launch parameters.
 function game_params() {
-	var _count = parameter_count();
-	
+	static _param_count = parameter_count();
 	var _param_list = [];
-	for (var i = 0; i < _count; i++) {
+	for (var i = 0; i < _param_count; i++) {
 		array_push(_param_list, parameter_string(i));
 	}
 	

@@ -36,16 +36,8 @@ function file_to_json(_file) {
 /// @desc	Returns a string filled with 0's on any side.
 /// @deprecated	since v1.3
 function string_fill_zero(_org_str, _size, _on_left = true) {
-	__obsolete_trace("string_fill_zero", "string_pad_left");
-	// Calculate how many 0's need to be padded on to the string
-	var _str = string(_org_str);
-	var _pad = "";
-
-	for (var i = 0; i < _size - string_length(_str); i++) {
-		_pad += "0";
-	}
-	
-	return ( _on_left ? _pad + _str : _str + _pad );
+	__obsolete_trace("string_fill_zero", "string_pad_left or string_pad_right");
+	return _on_left ? string_pad_left(_org_str, "0", _size) : string_pad_right(_org_str, "0", _size);
 }
 
 

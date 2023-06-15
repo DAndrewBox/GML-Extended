@@ -1,3 +1,5 @@
+#macro	str		string
+
 /// @func	del(object_index|id, exec_event);
 /// @param	{ref}	object_index|id
 /// @param	{bool}	exec_event
@@ -23,8 +25,6 @@ function get_size(_e) {
 		default:		return -1;
 	}
 }
-
-
 
 /// @func	trace(*args)
 /// @param	{any}	*args
@@ -90,5 +90,8 @@ function gui_height() {
 	return display_get_gui_height();
 }
 
-#macro	str		string
-#macro	int		real
+/// @func	int(value)
+/// @param	{real}	value
+function int(_val) {
+	return round(_val);
+}

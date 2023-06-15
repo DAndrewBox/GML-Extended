@@ -86,7 +86,7 @@ function json2file(_filename = "", _json = {}, _iteration = 0) {
 /// @param	{str}	json
 function json2yy(_json) {
 	var _str;
-	var _keys_number_to_bool = [
+	static _keys_number_to_bool = [
 		"inheritCode",
 		"inheritCreationOrder",
 		"inheritLayers",
