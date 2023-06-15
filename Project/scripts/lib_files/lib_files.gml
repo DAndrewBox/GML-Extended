@@ -81,11 +81,9 @@ function json2file(_filename = "", _json = {}, _iteration = 0) {
 	return _str;
 }
 
-
 /// @func	json2yy(json)
 /// @param	{str}	json
 function json2yy(_json) {
-	var _str;
 	static _keys_number_to_bool = [
 		"inheritCode",
 		"inheritCreationOrder",
@@ -116,7 +114,7 @@ function json2yy(_json) {
 		"inheritViewSettings",
 		"effectEnabled",
 	];
-
+	var _str;
 
     _json = json2yy_replace_keys_number_to_bool(_json, _keys_number_to_bool);
     _str  = json_stringify(_json, true);

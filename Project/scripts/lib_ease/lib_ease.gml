@@ -3,7 +3,7 @@
 /// @param	{real}	min
 /// @param	{real}	max
 function anim_easeInSine(_val, _min = 0, _max = 1) {
-	return (_max - _min) * (1 - cos((_val * PI) / 2)) + _min;
+	return (_max - _min) * (1 - cos((_val * pi) / 2)) + _min;
 }
 
 /// @func	anim_easeOutSine(value, min, max)
@@ -11,7 +11,7 @@ function anim_easeInSine(_val, _min = 0, _max = 1) {
 /// @param	{real}	min
 /// @param	{real}	max
 function anim_easeOutSine(_val, _min = 0, _max = 1) {
-	return (_max - _min) * sin((_val * PI) / 2) + _min;
+	return (_max - _min) * sin((_val * pi) / 2) + _min;
 }
 
 /// @func	anim_easeInOutSine(value, min, max)
@@ -19,7 +19,7 @@ function anim_easeOutSine(_val, _min = 0, _max = 1) {
 /// @param	{real}	min
 /// @param	{real}	max
 function anim_easeInOutSine(_val, _min = 0, _max = 1) {
-	return (_max - _min) * (-(cos(PI * _val) - 1) / 2) + _min;
+	return (_max - _min) * (-(cos(pi * _val) - 1) / 2) + _min;
 }
 
 /// @func	anim_easeInQuad(value, min, max)
@@ -222,7 +222,7 @@ function anim_easeInOutBack(_val, _min = 0, _max = 1) {
 /// @param	{real}	_min
 /// @param	{real}	_max
 function anim_easeInElastic(_val, _min = 0, _max = 1) {
-	static _c4 = (2 * PI) / 3;
+	static _c4 = (2 * pi) / 3;
 
 	return (_val == 0
 		? _min
@@ -235,7 +235,7 @@ function anim_easeInElastic(_val, _min = 0, _max = 1) {
 /// @param	{real}	_min
 /// @param	{real}	_max
 function anim_easeOutElastic(_val, _min = 0, _max = 1) {
-	static _c4 = (2 * PI) / 3;
+	static _c4 = (2 * pi) / 3;
 
 	return ( _val == 0
 		? _min
@@ -251,7 +251,7 @@ function anim_easeOutElastic(_val, _min = 0, _max = 1) {
 /// @param	{real}	_min
 /// @param	{real}	_max
 function anim_easeInOutElastic(_val, _min = 0, _max = 1) {
-	static _c5 = (2 * PI) / 4.5;
+	static _c5 = (2 * pi) / 4.5;
 
 	return ( _val == 0
 		? _min

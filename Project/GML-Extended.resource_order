@@ -1,8 +1,8 @@
 {
   "FolderOrderSettings": [
-    {"name":"Shaders","order":1,"path":"folders/Libraries/GML-Extended/Functions/Optional/Shaders.yy",},
     {"name":"Core","order":1,"path":"folders/Libraries/GML-Extended/Functions/Core.yy",},
     {"name":"Optional","order":2,"path":"folders/Libraries/GML-Extended/Functions/Optional.yy",},
+    {"name":"Shaders","order":1,"path":"folders/Libraries/GML-Extended/Functions/Optional/Shaders.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"lib_http","order":2,"path":"scripts/lib_http/lib_http.yy",},

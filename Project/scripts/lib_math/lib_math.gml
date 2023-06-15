@@ -1,4 +1,3 @@
-#macro	PI	3.14159265
 
 /// @func	round_dec(x, decimals)
 /// @param	{real}	x
@@ -91,6 +90,12 @@ function wrap(_val, _min, _max) {
 	}
 	
 	return _val;
+}
+
+/// @func	random_linear(n)
+/// @param	{real}	n
+function random_linear(_n = 1) {
+	return sqrt(random(_n))
 }
 
 /// @func	uuid_v4()
