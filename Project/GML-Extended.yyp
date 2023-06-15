@@ -33,7 +33,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Core","folderPath":"folders/Libraries/GML-Extended/Functions/Core.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Optional","folderPath":"folders/Libraries/GML-Extended/Functions/Optional.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Recommended","folderPath":"folders/Libraries/GML-Extended/Functions/Recommended.yy",},
   ],
   "IncludedFiles": [],
   "isEcma": false,

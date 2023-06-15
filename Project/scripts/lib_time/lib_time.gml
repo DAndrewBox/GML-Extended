@@ -1,52 +1,3 @@
-#region Definitions
-global.__MONTH_NAMES = [
-	"January",
-	"February",
-	"March",
-	"April",
-	"May",
-	"June",
-	"July",
-	"August",
-	"September",
-	"October",
-	"November",
-	"December"
-];
-global.__MONTH_ABBR = [
-	"Jan",
-	"Feb",
-	"Mar",
-	"Apr",
-	"May",
-	"Jun",
-	"Jul",
-	"Aug",
-	"Sep",
-	"Oct",
-	"Nov",
-	"Dec"
-];
-global.__DAY_NAMES = [
-	"Monday",
-	"Tuesday",
-	"Wednesday",
-	"Thrusday",
-	"Friday",
-	"Saturday",
-	"Sunday",
-];
-global.__DAY_ABBR = [
-	"Mon",
-	"Tue",
-	"Wed",
-	"Thr",
-	"Fri",
-	"Sat",
-	"Sun",
-];
-#endregion
-
 /// @func	now()
 /// @desc	Returns the unix timestamp from now datetime.
 function now() {
@@ -58,7 +9,7 @@ function now() {
 /// @desc   Returns a Unix timestamp for the current or given GameMaker datetime.
 /// @author Xot
 function unix_timestamp(_datetime) {
-    var _epoch = floor(date_create_datetime(1970, 1, 1, 0, 0, 0));
+    static _epoch = floor(date_create_datetime(1970, 1, 1, 0, 0, 0));
     return floor(date_second_span(_epoch, _datetime));
 }
 
@@ -72,11 +23,52 @@ function unix_to_datetime(_timestamp) {
 /// @param	{real}	timestamp
 function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") {
 	var _dt = unix_to_datetime(_timestamp);
-	var _month_names = global.__MONTH_NAMES;
-	var _month_abbr = global.__MONTH_ABBR;
-	var _day_names = global.__DAY_NAMES;
-	var _day_abbr = global.__DAY_ABBR;
-	
+	static _month_names = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December"
+	];
+	static _month_abbr = [
+		"Jan",
+		"Feb",
+		"Mar",
+		"Apr",
+		"May",
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Oct",
+		"Nov",
+		"Dec"
+	];
+	static _day_names = [
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thrusday",
+		"Friday",
+		"Saturday",
+		"Sunday",
+	];
+	static _day_abbr = [
+		"Mon",
+		"Tue",
+		"Wed",
+		"Thr",
+		"Fri",
+		"Sat",
+		"Sun",
+	];
 	var _dt_values = {
 		year:		date_get_year(_dt),
 		month:		date_get_month(_dt),
