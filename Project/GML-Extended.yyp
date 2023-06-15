@@ -44,6 +44,7 @@
     {"id":{"name":"lib_images","path":"scripts/lib_images/lib_images.yy",},},
     {"id":{"name":"lib_time","path":"scripts/lib_time/lib_time.yy",},},
     {"id":{"name":"lib_shaders","path":"scripts/lib_shaders/lib_shaders.yy",},},
+    {"id":{"name":"lib_colors","path":"scripts/lib_colors/lib_colors.yy",},},
     {"id":{"name":"lib_obsolete","path":"scripts/lib_obsolete/lib_obsolete.yy",},},
     {"id":{"name":"lib_structs","path":"scripts/lib_structs/lib_structs.yy",},},
     {"id":{"name":"o_tests_draw","path":"objects/o_tests_draw/o_tests_draw.yy",},},

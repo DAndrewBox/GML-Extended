@@ -6,6 +6,7 @@
     {"name":"lib_images","order":14,"path":"scripts/lib_images/lib_images.yy",},
     {"name":"lib_time","order":8,"path":"scripts/lib_time/lib_time.yy",},
     {"name":"lib_shaders","order":6,"path":"scripts/lib_shaders/lib_shaders.yy",},
+    {"name":"lib_colors","order":17,"path":"scripts/lib_colors/lib_colors.yy",},
     {"name":"lib_structs","order":5,"path":"scripts/lib_structs/lib_structs.yy",},
     {"name":"lib_sprites","order":1,"path":"scripts/lib_sprites/lib_sprites.yy",},
     {"name":"lib_draw","order":11,"path":"scripts/lib_draw/lib_draw.yy",},

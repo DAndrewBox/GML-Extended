@@ -47,3 +47,12 @@ function string_fill_zero(_org_str, _size, _on_left = true) {
 	
 	return ( _on_left ? _pad + _str : _str + _pad );
 }
+
+
+/// @func	struct_copy(struct)
+/// @param	{any}	struct
+/// @desc	Returns an exact copy of the struct
+function struct_copy(_struct) {
+	__obsolete_trace("struct_copy", "variable_clone");
+	return variable_clone(_struct);
+}
