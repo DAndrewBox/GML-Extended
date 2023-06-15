@@ -30,7 +30,7 @@ function between(_val, _min, _max) {
 /// @param	{real}	chance
 /// @desc	Returns a bool if random value is less than chance.
 function rng(_chance) {
-	return random(1) < _chance;
+	return random_linear(1) < _chance;
 }
 
 /// @func	choice_weighted(values, weights)
@@ -39,7 +39,7 @@ function rng(_chance) {
 function choice_weighted(_values, _weights) {
 	if (!is_array(_values) || !is_array(_weights)) return noone;
 	
-	var _chance = random(1);
+	var _chance = random_linear(1);
 	var _acc = 0;
 	for (var i = 0; i < array_length(_values); i++) {
 		if (_chance <= (_weights[i] + _acc)) return _values[i];
