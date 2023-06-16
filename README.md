@@ -46,7 +46,7 @@ Collaborators:
 
 3. (B) You can also import it into your project using the top toolbar on Tools > Import Local Package > Select the `gml-extended-[version].yymps` file.
 
-4. A window should appear asking you to select the resources you want to import. Here, you can select what resources you want to import from the project (Importing all is recommended but you can select just the ones you need.
+4. A window should appear asking you to select the resources you want to import. Here, you can select what resources you want to import from the project (Importing all is recommended but you can select just the ones you need. You can always import more later, or download a version with less resources.)
 
 5. Select the `GML-Extended` folder, press `Add All`, and then click `Import`.
 
@@ -68,24 +68,42 @@ Collaborators:
 
 The documentation is also available in the `Docs` folder of this repository or pressing the links below.
 
+#### Core Functions
+
+This are needed for the extension to work and must be always imported. Without these, the extension will not work.
+
 - [**Arrays**](Docs/Arrays.md)
+- [**Colors**](Docs/Colors.md)
 - [**Files**](Docs/Files.md)
+- [**Math**](Docs/Math.md)
+- [**Shortcuts**](Docs/Shortcuts.md)
+- [**Strings**](Docs/Strings.md)
+- [**Structs**](Docs/Structs.md)
+
+#### Optional Functions
+
+This are optional functions that you can import if you need them. You can import them all or just the ones you need.
+
+- [**Draw**](Docs/Draw.md)
+- [**Ease**](Docs/Ease.md)
+- [**Game**](Docs/Game.md)
+- [**Images**](Docs/Images.md)
+- [**Instances & Events**](Docs/Instances_and_Events.md)
+- [**Layers**](Docs/Layers.md)
+- [**Time**](Docs/Time.md)
+
+#### Experimental Functions
+
+This are experimental functions that are still in development and are not recommended to use in production, these functions are subject to change and may be removed or implemented on another library in the future.
+
 - [**HTTP**](Docs/HTTP.md)
 - [**Logger**](Docs/Logger.md)
-- [**Math**](Docs/Math.md)
 - [**Server (TCP)**](Docs/ServerTCP.md)
 - [**Shaders**](Docs/Shaders.md)
 - [**Sprites**](Docs/Sprites.md)
-- [**Strings**](Docs/Strings.md)
-- [**Structs**](Docs/Structs.md)
 - [**Surfaces**](Docs/Surfaces.md)
-- [**Time**](Docs/Time.md)
-- [**Draw**](Docs/Draw.md)
-- [**Game**](Docs/Game.md)
-- [**Instances & Events**](Docs/Instances_and_Events.md)
-- [**Layers**](Docs/Layers.md)
-- [**Images**](Docs/Images.md)
-- [**Shortcuts**](Docs/Shortcuts.md)
+
+**There's also an "Obsolete" folder with functions that are no longer needed or have been replaced by other functions**, these are kept for compatibility reasons you can still use them but they are not recommended to use in new projects. If you are using any of these functions, you should consider replacing them with the new ones. **Importing this folder is not recommended** if you are not using any of these functions and could break your project if you are using them.
 
 ---
 
@@ -112,15 +130,16 @@ Any of the releases of this extension are compatible with GameMaker Studio from 
 
 ❌: Not compatible.
 
-| GameMaker Version | GML-Ext v1.0.0 | GML-Ext v1.1.x | GML-Ext v1.2.x | GML-Ext v1.3.x |
-| ----------------: | :------------: | :------------: | :------------: | :------------: |
-|      Studio 1.4.x |       ❌       |       ❌       |       ❌       |       ❌       |
-|    Studio 2 - 2.2 |       ❌       |       ❌       |       ❌       |       ❌       |
-|      Studio 2.3.x |       ✅       |      ✅\*      |       ❌       |       ❌       |
-|        2022.x LTS |       ✅       |      ✅\*      |       ❌       |       ❌       |
-|   2022.1 - 2022.9 |       ✅       |      ✅\*      |       ⚠️       |       ❌       |
-|           2022.11 |       ❌       |       ⚠️       |      ✅\*      |       ⚠️       |
-|            2023.x |       ❌       |       ⚠️       |       ✅       |      ✅\*      |
+| GameMaker Version | GML-Ext v1.0.0 | GML-Ext v1.1.x | GML-Ext v1.2.x | GML-Ext v1.3.x | GML-Ext v1.4.x |
+| ----------------: | :------------: | :------------: | :------------: | :------------: | :------------: |
+|      Studio 1.4.x |       ❌       |       ❌       |       ❌       |       ❌       |       ❌       |
+|    Studio 2 - 2.2 |       ❌       |       ❌       |       ❌       |       ❌       |       ❌       |
+|      Studio 2.3.x |       ✅       |      ✅\*      |       ❌       |       ❌       |       ❌       |
+|        2022.x LTS |       ✅       |      ✅\*      |       ❌       |       ❌       |       ❌       |
+|   2022.1 - 2022.9 |       ✅       |      ✅\*      |       ⚠️       |       ❌       |       ❌       |
+|           2022.11 |       ❌       |       ⚠️       |      ✅\*      |       ⚠️       |       ❌       |
+|   2023.1 - 2023.3 |       ❌       |       ⚠️       |       ✅       |      ✅\*      |       ⚠️       |
+|           2023.4+ |       ❌       |       ❌       |       ❌       |       ✅       |      ✅\*      |
 
 There's also branches for each GameMaker version. You can find them in the [branches page](https://github.com/DAndrewBox/GML-Extended/branches), or by clicking the links below.
 

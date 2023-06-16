@@ -37,3 +37,5 @@ callbacks = [
 for (var i = 0; i < size(callbacks); i++) {
 	callbacks[i] = asset_get_index("anim_" + callbacks[i]);
 }
+
+unix_timestamp_format(now());

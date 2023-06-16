@@ -1,10 +1,14 @@
+/*
+*** DEPRECATED FUNCTIONS CAN BE REMOVED IF YOU ARE NOT USING THEM. ***
+*/
+
 /// @func	__obsolete_trace(func_old, func_new)
 /// @param	{ref}	func_old
 /// @param	{ref}	func_new
 function __obsolete_trace(_old, _new) {
 	trace(
 		string(
-			"WARNING! Function '{0}' is obsolete and will be deprecated. Try using '{1}'.",
+			"(GML-Extended) - WARNING! Function '{0}' is obsolete and will be deprecated. Try using '{1}'.",
 			_old,
 			_new
 		)
@@ -44,6 +48,7 @@ function string_fill_zero(_org_str, _size, _on_left = true) {
 /// @func	struct_copy(struct)
 /// @param	{any}	struct
 /// @desc	Returns an exact copy of the struct
+/// @deprecated	since v1.4
 function struct_copy(_struct) {
 	__obsolete_trace("struct_copy", "variable_clone");
 	return variable_clone(_struct);

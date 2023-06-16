@@ -26,7 +26,7 @@
   "origin": 0,
   "parent": {
     "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "path": "folders/Libraries/GML-Extended/Demo/Sprites.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

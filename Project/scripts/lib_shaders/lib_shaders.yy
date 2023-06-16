@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Shaders",
-    "path": "folders/Libraries/GML-Extended/Functions/Optional/Shaders.yy",
+    "path": "folders/Libraries/GML-Extended/Functions/Experimental/Shaders.yy",
   },
 }

@@ -48,11 +48,3 @@ function struct_equal(_struct_1, _struct_2) {
 	
 	return true;
 }
-
-/// @func	struct_copy(struct)
-/// @param	{any}	struct
-/// @desc	Returns an exact copy of the struct
-function struct_copy(_struct) {
-	trace("@deprecated: struct_copy() use variable_clone().");
-	return variable_clone(_struct);
-}

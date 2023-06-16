@@ -97,9 +97,10 @@ function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") 
 	
 	// Sort keys array so longer keys will be checked first
 	var _keys = struct_keys(_dt_formats);
+	var _keys_len = get_size(_keys);
 	array_sort(_keys, sort_elem_size_asc);
 	
-	for (var i = 0; i < get_size(_keys); i++) {
+	for (var i = 0; i < _keys_len; i++) {
 		var _key = _keys[i];
 		_format = string_replace_all(_format, "%" + _key, _dt_formats[$ _key]);
 	}

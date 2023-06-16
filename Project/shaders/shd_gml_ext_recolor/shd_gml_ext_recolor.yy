@@ -4,7 +4,7 @@
   "name": "shd_gml_ext_recolor",
   "parent": {
     "name": "Shaders",
-    "path": "folders/Libraries/GML-Extended/Functions/Optional/Shaders.yy",
+    "path": "folders/Libraries/GML-Extended/Functions/Experimental/Shaders.yy",
   },
   "type": 1,
 }

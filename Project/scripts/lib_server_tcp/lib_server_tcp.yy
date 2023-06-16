@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Optional",
-    "path": "folders/Libraries/GML-Extended/Functions/Optional.yy",
+    "name": "Experimental",
+    "path": "folders/Libraries/GML-Extended/Functions/Experimental.yy",
   },
 }
