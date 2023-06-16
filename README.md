@@ -6,10 +6,11 @@
 
 ## A GameMaker extension to complement GameMaker Studio 2.3+ built-in functions.
 
-### Last updated: 2023-06-16
-
 [![license](https://img.shields.io/github/license/DAndrewBox/GML-Extended?style=for-the-badge)](LICENSE)
+[![release](https://img.shields.io/github/v/release/DAndrewBox/GML-Extended?style=for-the-badge)](https://github.com/DAndrewBox/GML-Extended)
+[![downloads](https://img.shields.io/github/downloads/DAndrewBox/GML-Extended/total?style=for-the-badge)](https://github.com/DAndrewBox/GML-Extended/releases)
 
+### Last updated: 2023-06-16
 ### Author & Collaborators
 
 Originally created by [**@DAndrewBox**](https://twitter.com/DAndrewBox_).
@@ -53,13 +54,13 @@ Collaborators:
 5. Select the `GML-Extended` folder, press `Add All`, and then click `Import`.
 
 <p style="text-align: center;">
-  <img src="https://i.imgur.com/ErUhn3b.png" width="75%"/>
+  <img src="https://i.imgur.com/5E4e5ba.png" width="75%"/>
 <p>
 
 5. Resources should now be imported into your project in a main folder named `GML-Extended` or as a sub folder of `Libraries`, be sure to check both if exists.
 
 <p style="text-align: center;">
-  <img src="https://i.imgur.com/BfU9Tnw.png" width="75%"/>
+  <img src="https://i.imgur.com/0U80dm7.png" width="50%"/>
 <p>
 
 6. You can now use the extension in your project.
