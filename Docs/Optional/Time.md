@@ -215,36 +215,21 @@ time_performance(function, args, [iterations=1]);
 ### Returns
 
 ```js
-None
+None;
 ```
 
 ### Example
 
 ```js
-time_performance(function() {
-  var _datetime = date_time_create(2022, 1, 1, 0, 0, 0);
-  var _timestamp = unix_timestamp(_datetime);
-  show_debug_message(_timestamp);
-}, [], 1000);
+time_performance(
+  function () {
+    var _datetime = date_time_create(2022, 1, 1, 0, 0, 0);
+    var _timestamp = unix_timestamp(_datetime);
+    show_debug_message(_timestamp);
+  },
+  [],
+  1000
+);
 ```
 
 The above code will test the performance of the `unix_timestamp` function 1000 times on your machine.
-
----
-
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <div style="text-align: left; width: 50%">
-    <h3>
-      Prev: 
-      <a href="Surfaces.md">Surfaces</a>
-    </h3>
-  </div>
-
-  <div style="text-align: right; width: 50%">
-    <h3>
-      Next: 
-      <a href="Draw.md">Draw</a>
-    </h3>
-  </div>
-
-</div>

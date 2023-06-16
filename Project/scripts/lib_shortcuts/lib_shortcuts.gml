@@ -93,5 +93,5 @@ function gui_height() {
 /// @func	int(value)
 /// @param	{real}	value
 function int(_val) {
-	return round(_val);
+	return floor(real(_val));
 }

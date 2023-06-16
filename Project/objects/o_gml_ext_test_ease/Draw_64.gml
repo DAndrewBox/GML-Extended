@@ -40,16 +40,6 @@ for (var _xx = 0; _xx < 5; _xx++) {
 		_color = merge_colour(c_aqua, c_purple, _count / 30);
 		draw_set_color(_color);
 		
-		/*
-		draw_set_alpha(.16);
-		draw_circle(_x, _y, 20, false);
-		
-		draw_set_alpha(1);
-		draw_circle(_x, _y, 19.5, true);
-		draw_circle(_x, _y, 20, true);
-		draw_circle(_x, _y, 20.5, true);
-		*/
-		
 		draw_set_alpha(1);
 		draw_figure(_x, _y, 4, 20, _val * 360 + 45, 3);
 		

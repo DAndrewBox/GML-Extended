@@ -6,6 +6,7 @@
 - [string_pad_right](#string_pad_right)
 - [string_contains](#string_contains)
 - [string_title](#string_title)
+- [string_remove](#string_remove)
 
 ---
 
@@ -36,7 +37,7 @@ String;
 ```js
 var _str = "123";
 var _size = 9;
-var _score_str = string_pad_left(_str, '0', _size);
+var _score_str = string_pad_left(_str, "0", _size);
 
 show_debug_message(_str_filled);
 ```
@@ -72,7 +73,7 @@ String;
 ```js
 var _str = "123";
 var _size = 9;
-var _score_str = string_pad_right(_str, '0', _size);
+var _score_str = string_pad_right(_str, "0", _size);
 
 show_debug_message(_str_filled);
 ```
@@ -183,18 +184,36 @@ The above code will show on console the message `Hello World!`.
 
 ---
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <div style="text-align: left; width: 50%">
-    <h3>
-      Prev: 
-      <a href="Sprites.md">Sprites</a>
-    </h3>
-  </div>
+# string_remove
 
-  <div style="text-align: right; width: 50%">
-    <h3>
-      Next: 
-      <a href="Structs.md">Structs</a>
-    </h3>
-  </div>
-</div>
+Returns a string with the specified substring removed.
+
+### Syntax
+
+```js
+string_remove(string, substring);
+```
+
+| Argument  |      Type       | Description                              |
+| :-------- | :-------------: | :--------------------------------------- |
+| string    |     String      | The string to check                      |
+| substring | String or Array | The array of strings or substring to use |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+var _str = "Hello, World!";
+var _sub = ["Hello", "World"];
+
+show_debug_message(string_remove(_str, _sub));
+```
+
+The above code will show on console the message `, !` since the substring was removed.
+
+---

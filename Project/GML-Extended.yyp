@@ -34,6 +34,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Demo","folderPath":"folders/Libraries/GML-Extended/Demo.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Optional","folderPath":"folders/Libraries/GML-Extended/Functions/Optional.yy",},
   ],
   "IncludedFiles": [],
   "isEcma": false,

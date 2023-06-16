@@ -5,31 +5,33 @@ This is a new Sprites struct type that allows to work with sprites in a more con
 To create a new sprite object, you should use `sprite_var = new Sprite(sprite_id)`.
 
 ### Internal Parameters
-| Parameter | Type | Description |
-| :--- | :---: | :--- |
-| index | Real | The sprite index |
-| speed | Real | The sprite internal speed |
-| width | Real | The sprite width |
-| height | Real | The sprite height |
-| origin | Array | The sprite origin as [x, y] |
-| image_type | Real | The sprite image type (0: BMP, 1: SWF or 2: Spine) |
-| bbox | Array | The sprite bounding box as [x1, y1, x2, y2] |
-| bbox_mode | Real | The sprite bounding box mode (0: Full, 1: Manual or 2: Automatic) |
-| name | String | The sprite name |
-| frames | Real | The sprite frames |
-| frames_info | Array | Array of frames for this sprite, where each frame is a struct containing information on its timing. |
-| use_mask | Boolean | Whether the sprite uses a mask |
-| num_masks | Real | The number of masks |
-| messages | Array | Array of messages for this sprite, where each broadcast message is a struct containing information on the message |
-| nineslice | Struct | The sprite nineslice struct |
-| smooth | Boolean | Whether the sprite is smoothed |
-| transparent | Boolean | Whether the sprite is transparent |
-| texture | Real | The sprite texture |
-| uvs | Array | The sprite UVs |
+
+| Parameter   |  Type   | Description                                                                                                       |
+| :---------- | :-----: | :---------------------------------------------------------------------------------------------------------------- |
+| index       |  Real   | The sprite index                                                                                                  |
+| speed       |  Real   | The sprite internal speed                                                                                         |
+| width       |  Real   | The sprite width                                                                                                  |
+| height      |  Real   | The sprite height                                                                                                 |
+| origin      |  Array  | The sprite origin as [x, y]                                                                                       |
+| image_type  |  Real   | The sprite image type (0: BMP, 1: SWF or 2: Spine)                                                                |
+| bbox        |  Array  | The sprite bounding box as [x1, y1, x2, y2]                                                                       |
+| bbox_mode   |  Real   | The sprite bounding box mode (0: Full, 1: Manual or 2: Automatic)                                                 |
+| name        | String  | The sprite name                                                                                                   |
+| frames      |  Real   | The sprite frames                                                                                                 |
+| frames_info |  Array  | Array of frames for this sprite, where each frame is a struct containing information on its timing.               |
+| use_mask    | Boolean | Whether the sprite uses a mask                                                                                    |
+| num_masks   |  Real   | The number of masks                                                                                               |
+| messages    |  Array  | Array of messages for this sprite, where each broadcast message is a struct containing information on the message |
+| nineslice   | Struct  | The sprite nineslice struct                                                                                       |
+| smooth      | Boolean | Whether the sprite is smoothed                                                                                    |
+| transparent | Boolean | Whether the sprite is transparent                                                                                 |
+| texture     |  Real   | The sprite texture                                                                                                |
+| uvs         |  Array  | The sprite UVs                                                                                                    |
 
 The following methods are available:
 
 ### Table of Contents
+
 - [getSize](#getSize)
 - [getOrigin](#getOrigin)
 - [getSpriteType](#getSpriteType)
@@ -43,20 +45,25 @@ The following methods are available:
 - [isNineslice](#isNineslice)
 
 ---
+
 # getSize
+
 Returns the sprite size as [width, height].
 
 ### Syntax
-  ```js
-  Sprite.getSize();
-  ```
+
+```js
+Sprite.getSize();
+```
 
 ### Returns
-  ```js
-  Array
-  ```
+
+```js
+Array;
+```
 
 ### Example
+
 ```js
 var sprite = new Sprite(s_mySprite);
 var size = sprite.getSize();
@@ -72,26 +79,31 @@ Sprite size: 32x32
 
 ---
 
-
 # getOrigin
+
 Returns an array with the orgin coords of the sprite as [x, y].
 
 ### Syntax
-  ```js
-  Sprite.getOrigin();
-  ```
+
+```js
+Sprite.getOrigin();
+```
 
 ### Returns
-  ```js
-  Array
-  ```
+
+```js
+Array;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _origin = sprite.getOrigin();
 
-show_debug_message("Sprite origin: " + string(_origin[0]) + ", " + string(_origin[1]));
+show_debug_message(
+  "Sprite origin: " + string(_origin[0]) + ", " + string(_origin[1])
+);
 ```
 
 The above code will output the following message:
@@ -103,19 +115,23 @@ Sprite origin: 16, 16
 ---
 
 # getSpriteType
+
 Returns the sprite type as a real.
 
 ### Syntax
-  ```js
-  Sprite.getSpriteType();
-  ```
+
+```js
+Sprite.getSpriteType();
+```
 
 ### Returns
-  ```js
-  Real
-  ```
+
+```js
+Real;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _type = sprite.getSpriteType();
@@ -132,24 +148,37 @@ Sprite type: 0
 ---
 
 # getBbox
+
 Returns the sprite bounding box as [x1, y1, x2, y2].
 
 ### Syntax
-  ```js
-  Sprite.getBbox();
-  ```
+
+```js
+Sprite.getBbox();
+```
 
 ### Returns
-  ```js
-  Array
-  ```
+
+```js
+Array;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _bbox = sprite.getBbox();
 
-show_debug_message("Sprite bbox: " + string(_bbox[0]) + ", " + string(_bbox[1]) + ", " + string(_bbox[2]) + ", " + string(_bbox[3]));
+show_debug_message(
+  "Sprite bbox: " +
+    string(_bbox[0]) +
+    ", " +
+    string(_bbox[1]) +
+    ", " +
+    string(_bbox[2]) +
+    ", " +
+    string(_bbox[3])
+);
 ```
 
 The above code will output the following message:
@@ -161,19 +190,23 @@ Sprite bbox: 0, 0, 32, 32
 ---
 
 # getBboxMode
+
 Returns the sprite bounding box mode as a real.
 
 ### Syntax
-  ```js
-  Sprite.getBboxMode();
-  ```
+
+```js
+Sprite.getBboxMode();
+```
 
 ### Returns
-  ```js
-  Real
-  ```
+
+```js
+Real;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _mode = sprite.getBboxMode();
@@ -190,19 +223,23 @@ Sprite bbox mode: 0
 ---
 
 # getFrames
+
 Returns the sprite frames as a real. Same behavior as `image_number`.
 
 ### Syntax
-  ```js
-  Sprite.getFrames();
-  ```
+
+```js
+Sprite.getFrames();
+```
 
 ### Returns
-  ```js
-  Real
-  ```
+
+```js
+Real;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _frames = sprite.getFrames();
@@ -219,19 +256,23 @@ Sprite frames: 10
 ---
 
 # getFramesInfo
+
 Returns an array with the frames information of the sprite.
 
 ### Syntax
-  ```js
-  Sprite.getFramesInfo();
-  ```
+
+```js
+Sprite.getFramesInfo();
+```
 
 ### Returns
-  ```js
-  Array
-  ```
+
+```js
+Array;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _frames_info = sprite.getFramesInfo();
@@ -254,19 +295,23 @@ Sprite frames info: [
 ---
 
 # getTexture
+
 Returns the sprite texture id as a real.
 
 ### Syntax
-  ```js
-  Sprite.getTexture();
-  ```
+
+```js
+Sprite.getTexture();
+```
 
 ### Returns
-  ```js
-  Real
-  ```
+
+```js
+Real;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _tex = sprite.getTexture();
@@ -283,19 +328,23 @@ Sprite texture: 0
 ---
 
 # getUVS
+
 Returns the sprite UVs as an array.
 
 ### Syntax
-  ```js
-  Sprite.getUVS();
-  ```
+
+```js
+Sprite.getUVS();
+```
 
 ### Returns
-  ```js
-  Array
-  ```
+
+```js
+Array;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _uvs = sprite.getUVS();
@@ -312,19 +361,23 @@ Sprite UVs: [0, 0, 1, 1]
 ---
 
 # getMessages
+
 Returns the sprite messages as an array.
 
 ### Syntax
-  ```js
-  Sprite.getMessages();
-  ```
+
+```js
+Sprite.getMessages();
+```
 
 ### Returns
-  ```js
-  Array
-  ```
+
+```js
+Array;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _msgs_ = sprite.getMessages();
@@ -344,19 +397,23 @@ Sprite messages: [
 ---
 
 # isNineslice
+
 Returns true if the sprite is a nineslice sprite.
 
 ### Syntax
-  ```js
-  Sprite.isNineslice();
-  ```
+
+```js
+Sprite.isNineslice();
+```
 
 ### Returns
-  ```js
-  Array
-  ```
+
+```js
+Array;
+```
 
 ### Example
+
 ```js
 var _sprite = new Sprite(s_mySprite);
 var _is_nineslice = sprite.isNineslice();
@@ -369,21 +426,3 @@ The above code will output the following message:
 ```
 Sprite is nineslice: false
 ```
-
----
-
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <div style="text-align: left; width: 50%">
-    <h3>
-      Prev: 
-      <a href="Shaders.md">Shaders</a>
-    </h3>
-  </div>
-
-  <div style="text-align: right; width: 50%">
-    <h3>
-      Next: 
-      <a href="Strings.md">Strings</a>
-    </h3>
-  </div>
-</div>

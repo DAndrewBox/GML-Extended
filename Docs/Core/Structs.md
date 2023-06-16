@@ -5,6 +5,7 @@
 - [struct_keys](#struct_keys)
 - [struct_merge](#struct_merge)
 - [struct_key_exists](#struct_key_exists)
+- [struct_equal](#struct_equal)
 
 ---
 
@@ -114,7 +115,7 @@ struct_key_exists(struct, key);
 ### Returns
 
 ```js
-Boolean
+Boolean;
 ```
 
 ### Example
@@ -125,25 +126,52 @@ var _struct = {
   key2: "value2",
 };
 
-show_debug_message("Key 'key1' exists: " + string(struct_key_exists(_struct, "key1")));
+show_debug_message(
+  "Key 'key1' exists: " + string(struct_key_exists(_struct, "key1"))
+);
 ```
 
 The above code will show on console `true` if the key `key1` exists in the struct `_struct`.
 
 ---
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <div style="text-align: left; width: 50%">
-    <h3>
-      Prev: 
-      <a href="Strings.md">Strings</a>
-    </h3>
-  </div>
+# struct_equal
 
-  <div style="text-align: right; width: 50%">
-    <h3>
-      Next: 
-      <a href="Surfaces.md">Surfaces</a>
-    </h3>
-  </div>
-</div>
+Returns `true` if the structs are equal, `false` otherwise.
+
+### Syntax
+
+```js
+struct_equal(struct1, struct2);
+```
+
+| Argument |  Type  | Description                |
+| :------- | :----: | :------------------------- |
+| struct1  | Struct | The first struct to check  |
+| struct2  | Struct | The second struct to check |
+
+### Returns
+
+```js
+Boolean;
+```
+
+### Example
+
+```js
+var _struct1 = {
+  key1: "value1",
+  key2: "value2",
+};
+
+var _struct2 = {
+  key1: "value1",
+  key2: "value2",
+};
+
+show_debug_message(
+  "Structs are equal: " + string(struct_equal(_struct1, _struct2))
+);
+```
+
+The above code will show on console `true` if the structs `_struct1` and `_struct2` are equal.

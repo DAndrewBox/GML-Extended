@@ -6,6 +6,7 @@
 - [file_json_read](#file_json_read)
 - [file_text_get_lines_array](#file_text_get_lines_array)
 - [json2file](#json2file)
+- [json2yy](#json2yy)
 
 ---
 
@@ -139,7 +140,7 @@ String;
 var _struct = {
   name: "John Doe",
   age: 30,
-  city: "New York"
+  city: "New York",
 };
 var _str = file2json("./my_file.json", _struct);
 show_debug_message("File content: " + _str);
@@ -149,18 +150,22 @@ The above code will create a file called `my_file.json` with the contents of the
 
 ---
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <div style="text-align: left; width: 50%">
-    <h3>
-      Prev: 
-      <a href="Arrays.md">Arrays</a>
-    </h3>
-  </div>
+# json2yy
 
-  <div style="text-align: right; width: 50%">
-    <h3>
-      Next: 
-      <a href="HTTP.md">HTTP</a>
-    </h3>
-  </div>
-</div>
+Transforms a JSON input into a YY string used by GameMaker. Thise function is not recommended to be used directly if not modifying GameMaker's .YY files.
+
+### Syntax
+
+```js
+json2yy(json);
+```
+
+| Argument |  Type  | Description |
+| :------- | :----: | :---------- |
+| json     | String | The JSON    |
+
+### Returns
+
+```js
+String;
+```
