@@ -78,20 +78,22 @@ function anim_easeInOutCubic(_val, _min = 0, _max = 1) {
 	) + _min;
 }
 
-/// @func anim_easeInQuart(value, _min=0, _max=1)
+/// @func anim_easeInQuart(value, min, max)
 /// @param {real} value
 function anim_easeInQuart(_val, _min=0, _max=1) {
 	return _min + (_max - _min) * (_val * _val * _val * _val);
 }
 
-/// @func anim_easeOutQuart(value, _min=0, _max=1)
+/// @func anim_easeOutQuart(value, min, max)
 /// @param {real} value
 function anim_easeOutQuart(_val, _min=0, _max=1) {
 	return _min + (_max - _min) * (1 - power(1 - _val, 4));
 }
 
-/// @func anim_easeInOutQuart(value, _min=0, _max=1)
-/// @param {real} value
+/// @func anim_easeInOutQuart(value, min, max)
+/// @param	{real}	value
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInOutQuart(_val, _min=0, _max=1) {
 	return _min + (_max - _min) * (
 		_val < 0.5
@@ -100,20 +102,26 @@ function anim_easeInOutQuart(_val, _min=0, _max=1) {
 	);
 }
 
-/// @func anim_easeInQuint(value, _min=0, _max=1)
-/// @param {real} value
+/// @func anim_easeInQuint(value, min, max)
+/// @param	{real}	value
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInQuint(_val, _min=0, _max=1) {
 	return _min + (_max - _min) * (_val * _val * _val * _val * _val);
 }
 
-/// @func anim_easeOutQuint(value, _min=0, _max=1)
-/// @param {real} value
+/// @func anim_easeOutQuint(value, min, max)
+/// @param	{real}	value
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeOutQuint(_val, _min=0, _max=1) {
 	return _min + (_max - _min) * (1 - power(1 - _val, 5));
 }
 
-/// @func anim_easeInOutQuint(value, _min=0, _max=1)
-/// @param {real} value
+/// @func anim_easeInOutQuint(value, min, max)
+/// @param	{real}	value
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInOutQuint(_val, _min=0, _max=1) {
 	return _min + (_max - _min) * (
 		_val < 0.5
@@ -122,8 +130,10 @@ function anim_easeInOutQuint(_val, _min=0, _max=1) {
 	);
 }
 
-/// @func anim_easeInExpo(value, _min=0, _max=1)
-/// @param {real} value
+/// @func anim_easeInExpo(value, min, max)
+/// @param	{real}	value
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInExpo(_val, _min=0, _max=1) {
 	return _min + (_max - _min) * (
 		_val == 0
@@ -132,8 +142,10 @@ function anim_easeInExpo(_val, _min=0, _max=1) {
 	);
 }
 
-/// @func anim_easeOutExpo(value, _min=0, _max=1)
-/// @param {real} value
+/// @func anim_easeOutExpo(value, min, max)
+/// @param	{real}	value
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeOutExpo(_val, _min=0, _max=1) {
 	return _min + (_max - _min) * (
 		_val == 1
@@ -142,10 +154,10 @@ function anim_easeOutExpo(_val, _min=0, _max=1) {
 	);
 }
 
-/// @func	anim_easeInOutExpo(value, _min = 0, _max = 1)
+/// @func	anim_easeInOutExpo(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInOutExpo(_val, _min = 0, _max = 1) {
 	return (_val == 0
 		  ? _min
@@ -156,36 +168,36 @@ function anim_easeInOutExpo(_val, _min = 0, _max = 1) {
 		);
 }
 
-/// @func	anim_easeInCirc(value, _min = 0, _max = 1)
+/// @func	anim_easeInCirc(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInCirc(_val, _min = 0, _max = 1) {
 	return 1 - sqrt(1 - power(_val, 2)) * (_max - _min) + _min;
 }
 
-/// @func	anim_easeOutCirc(value, _min = 0, _max = 1)
+/// @func	anim_easeOutCirc(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeOutCirc(_val, _min = 0, _max = 1) {
 	return (_max - _min) * sqrt(1 - power(_val - 1, 2)) + _min;
 }
 
-/// @func	anim_easeInOutCirc(value, _min = 0, _max = 1)
+/// @func	anim_easeInOutCirc(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInOutCirc(_val, _min = 0, _max = 1) {
 	return _val < 0.5
 		? (1 - sqrt(1 - power(2 * _val, 2))) / 2 * (_max - _min) + _min
 		: (sqrt(max(0, 1 - power(-2 * _val + 2, 2))) + 1) / 2 * (_max - _min) + _min;
 }
 
-/// @func	anim_easeInBack(value, _min = 0, _max = 1)
+/// @func	anim_easeInBack(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInBack(_val, _min = 0, _max = 1) {
 	static _c1 = 1.70158;
 	static _c3 = _c1 + 1;
@@ -193,10 +205,10 @@ function anim_easeInBack(_val, _min = 0, _max = 1) {
 	return _c3 * _val* _val * _val - _c1 * _val * _val * (_max - _min) + _min;
 }
 
-/// @func	anim_easeOutBack(value, _min = 0, _max = 1)
+/// @func	anim_easeOutBack(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeOutBack(_val, _min = 0, _max = 1) {
 	static _c1 = 1.70158;
 	static _c3 = _c1 + 1;
@@ -204,10 +216,10 @@ function anim_easeOutBack(_val, _min = 0, _max = 1) {
 	return 1 + _c3 * power(_val - 1, 3) + _c1 * power(_val - 1, 2) * (_max - _min) + _min;
 }
 
-/// @func	anim_easeInOutBack(value, _min = 0, _max = 1)
+/// @func	anim_easeInOutBack(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInOutBack(_val, _min = 0, _max = 1) {
 	static _c1 = 1.70158;
 	static _c2 = _c1 * 1.525;
@@ -217,10 +229,10 @@ function anim_easeInOutBack(_val, _min = 0, _max = 1) {
 		: (power(2 * _val - 2, 2) * ((_c2 + 1) * (2 * _val - 2) + _c2) + 2) / 2 * (_max - _min) + _min;
 }
 
-/// @func	anim_easeInElastic(value, _min = 0, _max = 1)
+/// @func	anim_easeInElastic(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInElastic(_val, _min = 0, _max = 1) {
 	static _c4 = (2 * pi) / 3;
 
@@ -230,7 +242,7 @@ function anim_easeInElastic(_val, _min = 0, _max = 1) {
 		);
 }
 
-/// @func	anim_easeOutElastic(value, _min = 0, _max = 1)
+/// @func	anim_easeOutElastic(value, min, max)
 /// @param	{real}	value
 /// @param	{real}	_min
 /// @param	{real}	_max
@@ -246,7 +258,7 @@ function anim_easeOutElastic(_val, _min = 0, _max = 1) {
 		);
 }
 
-/// @func	anim_easeInOutElastic(value, _min = 0, _max = 1)
+/// @func	anim_easeInOutElastic(value, min, max)
 /// @param	{real}	value
 /// @param	{real}	_min
 /// @param	{real}	_max
@@ -265,18 +277,18 @@ function anim_easeInOutElastic(_val, _min = 0, _max = 1) {
 		);
 }
 
-/// @func	anim_easeInBounce(value, _min = 0, _max = 1)
+/// @func	anim_easeInBounce(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInBounce(_val, _min = 0, _max = 1) {
 	return 1 - anim_easeOutBounce(1 - _val, _min, _max);
 }
 
-/// @func	anim_easeOutBounce(value, _min = 0, _max = 1)
+/// @func	anim_easeOutBounce(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeOutBounce(_val, _min = 0, _max = 1) {
 	static _n1 = 7.5625;
 	static _d1 = 2.75;
@@ -292,10 +304,10 @@ function anim_easeOutBounce(_val, _min = 0, _max = 1) {
 	}
 }
 
-/// @func	anim_easeInOutBounce(value, _min = 0, _max = 1)
+/// @func	anim_easeInOutBounce(value, min, max)
 /// @param	{real}	value
-/// @param	{real}	_min
-/// @param	{real}	_max
+/// @param	{real}	min
+/// @param	{real}	max
 function anim_easeInOutBounce(_val, _min = 0, _max = 1) {
 	return (_val < 0.5
 		? (1 - anim_easeOutBounce(1 - 2 * _val, _min, _max)) / 2
