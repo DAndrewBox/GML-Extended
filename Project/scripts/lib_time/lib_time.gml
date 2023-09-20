@@ -140,3 +140,8 @@ function time_performance(_func, _args = [], _iter = 1) {
 		)
 	);
 }
+
+/// @func	current_week()
+function current_week() {
+	return date_get_week(date_current_datetime());
+}
