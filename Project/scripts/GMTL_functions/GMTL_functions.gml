@@ -4,7 +4,7 @@
 function describe(_name, _fn) {
 	gmtl_suite_continue = true;
 	gmtl_indent = 0;
-	__gmtl_internal_function_log(_name);
+	__gmtl_internal_function_log($"------- {_name} -------");
 
 	try {
 		_fn();
@@ -54,6 +54,8 @@ function it(_name, _fn) {
 			string_copy(e.longMessage, string_pos("(line", e.longMessage), string_length(e.longMessage) - string_pos("(line", e.longMessage))
 		);
 		gmtl_suite_continue = false;
+		
+		show_debug_message(e.longMessage)
 	} finally {
 		gmtl_indent = 1;
 	}

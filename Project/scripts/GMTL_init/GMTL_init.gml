@@ -21,7 +21,7 @@ function __gmtl_internal_function_init() {
 	global.__gmtl_internal_test_status		= __gmtl_test_status.RUN;
 	global.__gmtl_internal_suite_continue	= true;
 	
-	__gmtl_internal_function_test();
+	__test();
 }
 
 /// @func	__gmtl_internal_function_log(message)

@@ -10,7 +10,8 @@
 /// @param	{any}	value
 /// @desc	Fills an array with a value.
 function array_fill(_array, _val) {
-	for (var i = 0; i < array_length(_array); i++) {
+	var _arr_len = array_length(_array);
+	for (var i = 0; i < _arr_len; i++) {
 		_array[@ i] = _val;
 	}
 }
@@ -74,7 +75,8 @@ function ds_list_to_array(_list) {
 /// @desc	Returns the array as a struct with all its values inside numeric keys.
 function array_to_struct(_array) {
 	var _new_struct = {};
-	for (var i = 0; i < array_length(_array); i++) {
+	var _arr_len = array_length(_array);
+	for (var i = 0; i < _arr_len; i++) {
 		variable_struct_set(_new_struct, i, _array[i]);
 	}
 	

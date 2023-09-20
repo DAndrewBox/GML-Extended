@@ -19,6 +19,7 @@
     {"name":"Tile Sets","order":11,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":12,"path":"folders/Timelines.yy",},
     {"name":"GMTL","order":1,"path":"folders/Libraries/GMTL.yy",},
+    {"name":"Tests","order":2,"path":"folders/Libraries/GML-Extended/Tests.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"lib_http","order":2,"path":"scripts/lib_http/lib_http.yy",},
