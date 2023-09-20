@@ -42,12 +42,14 @@ function file_text_get_lines_array(_file) {
 function file_json_create(_filename, _json) {
 	if (_filename != "") {
 		var _file = file_text_open_write(_filename);
-		file_text_write_string(_file, json_stringify(_json, true));
+		var _str = json_stringify(_json, true);
+		file_text_write_string(_file, _str);
 		file_text_close(_file);
-		return;
+		return _str;
 	}
 	
 	trace("(GML-Extended) - WARNING! 'filename' cannot be empty string (\"\") on 'file_json_create'.");
+	return "";
 }
 
 /// @func	json2yy(json)
