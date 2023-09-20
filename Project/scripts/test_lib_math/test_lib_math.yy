@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "GMTL_functions",
+  "name": "test_lib_math",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "GMTL",
-    "path": "folders/Libraries/GMTL.yy",
+    "name": "Tests",
+    "path": "folders/Libraries/GML-Extended/Tests.yy",
   },
 }

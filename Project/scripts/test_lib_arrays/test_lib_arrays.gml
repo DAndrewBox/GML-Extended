@@ -1,4 +1,4 @@
-function __test() {
+suite(function() {
 	describe("array_fill", function() {
 		it("Should fill the array with reals", function() {
 			var _arr = [0, 0, 0, 0];
@@ -56,9 +56,9 @@ function __test() {
 			var _arr = ["mango", "pear", "apple"];
 			var _list = array_to_ds_list(_arr);
 			
-			expect(_list[| 0]).toBe(_arr[0]);
-			expect(_list[| 1]).toBe(_arr[1]);
-			expect(_list[| 2]).toBe(_arr[2]);
+			expect(_list[| 0]).toBe(_arr[@ 0]);
+			expect(_list[| 1]).toBe(_arr[@ 1]);
+			expect(_list[| 2]).toBe(_arr[@ 2]);
 			
 			ds_list_destroy(_list);
 		})
@@ -70,11 +70,38 @@ function __test() {
 			ds_list_add(_list, "mango", "pear", "apple");
 			var _arr = ds_list_to_array(_list);
 			
-			expect(_arr[0]).toBe(_list[| 0]);
-			expect(_arr[1]).toBe(_list[| 1]);
-			expect(_arr[2]).toBe(_list[| 2]);
+			expect(_arr).toHaveLength(3);
+			expect(_arr[@ 0]).toBe(_list[| 0]);
+			expect(_arr[@ 1]).toBe(_list[| 1]);
+			expect(_arr[@ 2]).toBe(_list[| 2]);
 			
 			ds_list_destroy(_list);
 		})
 	});
-}
+	
+	describe("array_to_struct", function() {
+		it("Should convert the array to an struct", function() {
+			var _arr = ["mango", "pear", "apple"];
+			var _struct = array_to_struct(_arr);
+			
+			expect(_struct).toHaveProperty("0", "mango");
+			expect(_struct).toHaveProperty("1", "pear");
+			expect(_struct).toHaveProperty("2", "apple");
+			
+			delete _struct;
+		})
+	});
+	
+	describe("array_write", function() {
+		it("Should convert the array to an string", function() {
+			var _arr = ["mango", "pear", "apple"];
+			var _str = array_write(_arr);
+			
+			expect(string_pos(_arr[@ 0], _str)).toBeTruthy();
+			expect(string_pos(_arr[@ 1], _str)).toBeTruthy();
+			expect(string_pos(_arr[@ 2], _str)).toBeTruthy();
+			expect(_str).toBeEqual("[\"mango\",\"pear\",\"apple\"]");
+
+		})
+	});
+});

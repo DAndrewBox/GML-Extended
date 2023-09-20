@@ -54,8 +54,6 @@ function it(_name, _fn) {
 			string_copy(e.longMessage, string_pos("(line", e.longMessage), string_length(e.longMessage) - string_pos("(line", e.longMessage))
 		);
 		gmtl_suite_continue = false;
-		
-		show_debug_message(e.longMessage)
 	} finally {
 		gmtl_indent = 1;
 	}
@@ -74,4 +72,8 @@ function expect(_val) {
 	if (gmtl_suite_continue) {
 		return new TestCase(_val);
 	}
+}
+
+function suite(_suite) {
+	__gmtl_internal_function_suite_add_to_queue(_suite);
 }

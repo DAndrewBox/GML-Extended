@@ -102,20 +102,3 @@ function array_write(_array) {
 	
 	return _new_str;
 }
- 
-/// @func	array_shuffle(array)
-/// @desc	Returns a shuffled array.
-function array_shuffle(_array) {
-	var i, _n1, _n2, _ntmp;
-	var _array_len = array_length(_array);
-	
-	for (i = 0; i < _array_len / 2; i++) {
-		_n1			= irandom(_array_len);
-		_n2			= irandom(_array_len);
-		_ntmp		= _array[_n1];
-		_array[_n1]	= _array[_n2];
-		_array[_n2]	= _ntmp;
-	}
-	
-	return _array;
-}

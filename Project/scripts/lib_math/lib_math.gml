@@ -2,7 +2,7 @@
 /// @func	round_dec(x, decimals)
 /// @param	{real}	x
 /// @param	{real}	decimals
-/// @desc	Returns a rounded number with N decimal places.
+/// @desc	Returns a trimmed number with N decimal places.
 function round_dec(_x, _dec = 0) {
 	var _n = power(10, _dec);
 	return round(_x * _n) / _n;
