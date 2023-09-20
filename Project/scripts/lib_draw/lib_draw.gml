@@ -3,6 +3,8 @@
 ///@param	{real}	index
 ///@param	{real}	x
 ///@param	{real}	y
+///@param	{real}	xscale
+///@param	{real}	yscale
 ///@param	{real}	rot
 ///@param	{real}	col
 ///@param	{real}	alpha
@@ -10,21 +12,27 @@ function draw_self_ext(_spr=sprite_index, _index=image_index, _x=x, _y=y, _xscal
 	draw_sprite_ext(_spr, _index, _x, _y, _xscale, _yscale, _rot, _col, _alpha);
 }
 
-/// @func	draw_figure(x, y, sides, size, rotation, width)
+/// @func	draw_figure(x, y, sides, size, rotation, line_width)
 /// @param	{real}	x
 /// @param	{real}	y
 /// @param	{real}	sides
 /// @param	{real}	size
 /// @param	{real}	rotation
-/// @param	{real}	width
+/// @param	{real}	line_width
 function draw_figure(_x, _y, _sides, _size, _rot = 0, _width = 1) {
-	for(var i = _rot; i<=360 + _rot; i += 360/_sides) {
-		var _xFrom = _x + lengthdir_x(_size, i);
-		var _yFrom = _y + lengthdir_y(_size, i);
-		var _xTo = _x + lengthdir_x(_size, i + 360/_sides);
-		var _yTo = _y + lengthdir_y(_size, i + 360/_sides);
-		draw_line_width(_xFrom, _yFrom, _xTo, _yTo, _width);
+	draw_primitive_begin(_width > 0 ? pr_trianglestrip : pr_trianglefan);
+	_sides = round(_sides);
+	
+	for(var i = _rot; i <= 360 + _rot; i += 360/_sides) {
+		var _xOut = _x + lengthdir_x(_size, i);
+		var _yOut = _y + lengthdir_y(_size, i);
+		var _xIn  = _x + lengthdir_x(_size + _width, i);
+		var _yIn  = _y + lengthdir_y(_size + _width, i);
+		
+		draw_vertex(_xOut, _yOut);
+		draw_vertex(_xIn, _yIn);
 	}
+	draw_primitive_end();
 }
 
 /// @func	draw_quad(cord_1, cord_2, cord_3, cord_4, color_init, color_final, alpha)
@@ -56,11 +64,23 @@ function draw_quad(_xy1, _xy2, _xy3, _xy4, _col_i, _col_f, _alpha) {
 /// @param	{real}	x2
 /// @param	{real}	y2
 /// @param	{real}	width
-function draw_rectangle_width(_x1, _y1, _x2, _y2, _w = 1) {	
-	draw_line_width(_x1, _y1, _x2, _y1, _w);	// TOP
-	draw_line_width(_x2, _y1, _x2, _y2, _w);	// RIGHT
-	draw_line_width(_x1, _y2, _x2, _y2, _w);	// BOTTOM
-	draw_line_width(_x1, _y1, _x1, _y2, _w);	// LEFT
+function draw_rectangle_width(_x1, _y1, _x2, _y2, _w = 1) {
+	draw_primitive_begin(pr_trianglestrip);
+	draw_vertex(_x1, _y1);
+	draw_vertex(_x1 + _w, _y1 + _w);
+	
+	draw_vertex(_x2, _y1);
+	draw_vertex(_x2 - _w, _y1 + _w);
+	
+	draw_vertex(_x2, _y2);
+	draw_vertex(_x2 - _w, _y2 - _w);
+	
+	draw_vertex(_x1, _y2);
+	draw_vertex(_x1 + _w, _y2 - _w);
+	
+	draw_vertex(_x1, _y1);
+	draw_vertex(_x1 + _w, _y1 + _w);
+	draw_primitive_end();
 }
 
 /// @func	draw_rectangle_rotated(x, y, width, height, rot, outline)
@@ -169,7 +189,8 @@ function draw_text_size(_x, _y, _string, _font_size) {
 /// @param	{real}	y
 /// @desc	Draws game fps.
 function draw_fps(_x, _y) {
-	draw_text(_x, _y, string("{0}/{1} FPS", fps, game_get_speed(gamespeed_fps)));
+	static _game_speed = game_get_speed(gamespeed_fps);
+	draw_text(_x, _y, $"{fps}/{_game_speed} FPS");
 }
 
 /// @func draw_fps_real(x, y)
@@ -177,7 +198,7 @@ function draw_fps(_x, _y) {
 /// @param	{real}	y
 /// @desc	Draws game real fps.
 function draw_fps_real(_x, _y) {
-	draw_text(_x, _y, string("{0} RFPS", fps_real));
+	draw_text(_x, _y, $"{fps_real} RFPS");
 }
 
 /// @func	draw_set_align(halign, valign)
@@ -188,8 +209,66 @@ function draw_set_align(_h, _v) {
 	draw_set_valign(_v);
 }
 
-/// @function	gpu_set_alpha_overwrite(flag)
+/// @func	draw_surface_from_center(surface, x, y, xscale, yscale, rot, color, alpha)
+/// @param	{ref}	surface
+/// @param	{real}	x
+/// @param	{real}	y
+/// @param	{real}	xscale
+/// @param	{real}	yscale
+/// @param	{real}	rot
+/// @param	{real}	color
+/// @param	{real}	alpha
+function draw_surface_from_center(_surf, _x, _y, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = draw_get_alpha()) {
+	var _surf_w = surface_get_width(_surf) * _xscale;
+	var _surf_h = surface_get_height(_surf) * _yscale;
+	
+	var _new_x = _x + lengthdir_x(-_surf_w / 2, _rot) - lengthdir_y(-_surf_h / 2, _rot);
+	var _new_y = _y + lengthdir_y(-_surf_w / 2, _rot) + lengthdir_x(-_surf_h / 2, _rot);
+	draw_surface_ext(_surf, _new_x, _new_y, _xscale, _yscale, _rot, _col, _alpha);
+}
+
+/// @func	draw_set_gui_scale(scale)
+/// @param	{real}	scale
+function draw_set_gui_scale(_scale) {
+	display_set_gui_maximize(_scale, _scale);
+}
+
+/// @func	draw_set_blendmode(mode_src, mode_dest)
+/// @param	{real}	mode
+function draw_set_blendmode(_bm, _bm_ext = undefined) {
+	if (is_undefined(_bm_ext)) {
+		gpu_set_blendmode(_bm);
+		return;
+	}
+	
+	gpu_set_blendmode_ext(_bm, _bm_ext);
+}
+
+/// @func	draw_reset_blendmode()
+function draw_reset_blendmode() {
+	gpu_set_blendmode(bm_normal);
+}
+
+/// @func	gpu_set_alpha_overwrite(flag)
 /// @param	{bool}	flag
 function gpu_set_alpha_overwrite(_flag) {
 	gpu_set_colorwriteenable(true, true, true, _flag);
+}
+
+/// @func	surface_clear(color, alpha)
+/// @param	{color}	color
+/// @param	{real}	alpha
+function surface_clear(_col = c_black, _alpha = .0) {
+	draw_clear_alpha(_col, _alpha);
+}
+
+/// @func	draw_set_depth(depth)
+/// @param	{real}	depth
+function draw_set_depth(_depth) {
+	gpu_set_depth(_depth);
+}
+
+/// @func	draw_reset_depth()
+function draw_reset_depth() {
+	gpu_set_depth(depth);
 }
