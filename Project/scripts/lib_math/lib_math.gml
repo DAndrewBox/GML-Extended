@@ -2,7 +2,7 @@
 /// @func	round_dec(x, decimals)
 /// @param	{real}	x
 /// @param	{real}	decimals
-/// @desc	Returns a trimmed number with N decimal places.
+/// @desc	Returns a rounded number with N decimal places to the nearest tenth.
 function round_dec(_x, _dec = 0) {
 	var _n = power(10, _dec);
 	return round(_x * _n) / _n;
@@ -41,7 +41,8 @@ function choice_weighted(_values, _weights) {
 	
 	var _chance = random_linear(1);
 	var _acc = 0;
-	for (var i = 0; i < array_length(_values); i++) {
+	var _len = array_length(_values)
+	for (var i = 0; i < _len; i++) {
 		if (_chance <= (_weights[i] + _acc)) return _values[i];
 		_acc += _weights[i];
 	}
@@ -58,7 +59,7 @@ function range(_to, _from = 0, _step = 1) {
 	var _arr = [];
 	
 	if (_from > _to) {
-		for (var i = _to; i > _from; i -= _step) {
+		for (var i = _from; i >= _to; i -= _step) {
 			array_push(_arr, i);
 		}
 	} else {

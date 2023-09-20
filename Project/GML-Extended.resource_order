@@ -24,6 +24,7 @@
   "ResourceOrderSettings": [
     {"name":"lib_http","order":2,"path":"scripts/lib_http/lib_http.yy",},
     {"name":"lib_logger","order":2,"path":"scripts/lib_logger/lib_logger.yy",},
+    {"name":"lib_gui","order":7,"path":"scripts/lib_gui/lib_gui.yy",},
     {"name":"lib_images","order":4,"path":"scripts/lib_images/lib_images.yy",},
     {"name":"GMTL_core","order":1,"path":"scripts/GMTL_core/GMTL_core.yy",},
     {"name":"lib_colors","order":1,"path":"scripts/lib_colors/lib_colors.yy",},
@@ -44,6 +45,7 @@
     {"name":"shd_gml_ext_blur_gauss","order":2,"path":"shaders/shd_gml_ext_blur_gauss/shd_gml_ext_blur_gauss.yy",},
     {"name":"lib_game","order":5,"path":"scripts/lib_game/lib_game.yy",},
     {"name":"shd_gml_ext_recolor","order":1,"path":"shaders/shd_gml_ext_recolor/shd_gml_ext_recolor.yy",},
+    {"name":"lib_types","order":7,"path":"scripts/lib_types/lib_types.yy",},
     {"name":"lib_files","order":2,"path":"scripts/lib_files/lib_files.yy",},
   ],
 }

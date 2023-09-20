@@ -47,6 +47,7 @@
   "resources": [
     {"id":{"name":"lib_http","path":"scripts/lib_http/lib_http.yy",},},
     {"id":{"name":"lib_logger","path":"scripts/lib_logger/lib_logger.yy",},},
+    {"id":{"name":"lib_gui","path":"scripts/lib_gui/lib_gui.yy",},},
     {"id":{"name":"lib_images","path":"scripts/lib_images/lib_images.yy",},},
     {"id":{"name":"lib_time","path":"scripts/lib_time/lib_time.yy",},},
     {"id":{"name":"lib_shaders","path":"scripts/lib_shaders/lib_shaders.yy",},},
@@ -77,6 +78,7 @@
     {"id":{"name":"shd_gml_ext_blur_gauss","path":"shaders/shd_gml_ext_blur_gauss/shd_gml_ext_blur_gauss.yy",},},
     {"id":{"name":"lib_game","path":"scripts/lib_game/lib_game.yy",},},
     {"id":{"name":"shd_gml_ext_recolor","path":"shaders/shd_gml_ext_recolor/shd_gml_ext_recolor.yy",},},
+    {"id":{"name":"lib_types","path":"scripts/lib_types/lib_types.yy",},},
     {"id":{"name":"lib_files","path":"scripts/lib_files/lib_files.yy",},},
   ],
   "RoomOrderNodes": [

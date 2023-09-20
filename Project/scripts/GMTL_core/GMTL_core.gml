@@ -41,21 +41,26 @@ function it(_name, _fn) {
 			for (var i = 0; i < _tests_stacktrace_len; i++) {
 				__gmtl_internal_function_log(gmtl_test_log[i]);
 			}
-
-			gmtl_test_log = [];
 		}
 	} catch(e) {
 		_time = get_timer() - _time;
 		__gmtl_internal_function_log_test_failed(_name, _time);
 		
 		gmtl_indent = 2;
+		var _tests_stacktrace_len = array_length(gmtl_test_log);
+		for (var i = 0; i < _tests_stacktrace_len; i++) {
+			__gmtl_internal_function_log(gmtl_test_log[i]);
+		}
+		
 		__gmtl_internal_function_log(e.message);
 		__gmtl_internal_function_log(
 			string_copy(e.longMessage, string_pos("(line", e.longMessage), string_length(e.longMessage) - string_pos("(line", e.longMessage))
 		);
+		
 		gmtl_suite_continue = false;
 	} finally {
 		gmtl_indent = 1;
+		gmtl_test_log = [];
 	}
 }
 

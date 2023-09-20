@@ -3,6 +3,8 @@
 ///@param	{real}	index
 ///@param	{real}	x
 ///@param	{real}	y
+///@param	{real}	xscale
+///@param	{real}	yscale
 ///@param	{real}	rot
 ///@param	{real}	col
 ///@param	{real}	alpha
@@ -186,6 +188,43 @@ function draw_fps_real(_x, _y) {
 function draw_set_align(_h, _v) {
 	draw_set_halign(_h);
 	draw_set_valign(_v);
+}
+
+/// @func	draw_surface_from_center(surface, x, y, xscale, yscale, rot, color, alpha)
+/// @param	{ref}	surface
+/// @param	{real}	x
+/// @param	{real}	y
+/// @param	{real}	xscale
+/// @param	{real}	yscale
+/// @param	{real}	rot
+/// @param	{real}	color
+/// @param	{real}	alpha
+function draw_surface_from_center(_surf, _x, _y, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = draw_get_alpha()) {
+	var _surf_w = surface_get_width(_surf) * _xscale;
+	var _surf_h = surface_get_height(_surf) * _yscale;
+	draw_surface_ext(_surf, _x - (_surf_w / 2), _y - (_surf_h / 2), _xscale, _yscale, _rot, _col, _alpha);
+}
+
+/// @func	draw_set_gui_scale(scale)
+/// @param	{real}	scale
+function draw_set_gui_scale(_scale) {
+	display_set_gui_maximize(_scale, _scale);
+}
+
+/// @func	draw_set_blendmode(mode_src, mode_dest)
+/// @param	{real}	mode
+function draw_set_blendmode(_bm, _bm_ext = undefined) {
+	if (is_undefined(_bm_ext)) {
+		gpu_set_blendmode(_bm);
+		return;
+	}
+	
+	gpu_set_blendmode_ext(_bm, _bm_ext);
+}
+
+/// @func	draw_reset_blendmode()
+function draw_reset_blendmode() {
+	gpu_set_blendmode(bm_normal);
 }
 
 /// @function	gpu_set_alpha_overwrite(flag)
