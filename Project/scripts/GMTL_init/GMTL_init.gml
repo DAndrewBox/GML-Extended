@@ -29,7 +29,7 @@ function __gmtl_internal_function_init() {
 function __gmtl_internal_function_log(_msg) {
 	var _pad_left = "";
 	for (var i = 0; i < gmtl_indent * 2; i++) {
-		_pad_left += "  ";
+		_pad_left += "\t";
 	}
 	_msg = _pad_left + _msg;
 	

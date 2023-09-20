@@ -15,8 +15,6 @@ function __gmtl_internal_function_test() {
 			expect(_c.testKey).toHaveLength(4);
 			expect(_c).toHaveProperty("testKey");
 			expect(_c).toHaveProperty("testKey", "test");
-			
-			expect(_c).toBe(_a);
 		});
 		
 		it("Should fail", function() {

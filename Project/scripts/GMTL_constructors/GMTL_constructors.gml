@@ -41,7 +41,7 @@ function TestCase(_val) constructor {
 	}
 	
 	/// @func toHaveLength(number)
-	/// @param	{any}	number
+	/// @param	{real}	number
 	function toHaveLength(_n) {
 		var _typeOf	 = typeof(__internal_value);
 		var _isValid = false;
@@ -107,7 +107,195 @@ function TestCase(_val) constructor {
 		} else {
 			gmtl_test_status = __gmtl_test_status.SUCCESS;
 		}
+	}
+	
+	/// @func toBeGreaterThan(number)
+	/// @param	{real}	number
+	function toBeGreaterThan(_n) {
+		var _typeOf	 = typeof(__internal_value);
+		var _isValid = false;
+		var _typeInvalid = false;
 		
+		switch (_typeOf) {
+			case "number":
+				_isValid = __internal_value > _n;
+				break;
+			default:
+				_typeInvalid = true;
+		}		
 		
+		if (!_isValid) {
+			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeGreaterThan({_n}):");
+			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} > {_n}");
+			if (_typeInvalid) {
+				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
+			} else {
+				array_push(gmtl_test_log, $"- Recieved Result: {__internal_value} <= {_n}");
+			}
+			gmtl_test_status = __gmtl_test_status.FAILED;
+			gmtl_suite_continue = false;
+		} else {
+			gmtl_test_status = __gmtl_test_status.SUCCESS;
+		}
+	}
+	
+	/// @func toBeGreaterThanOrEqual(number)
+	/// @param	{real}	number
+	function toBeGreaterThanOrEqual(_n) {
+		var _typeOf	 = typeof(__internal_value);
+		var _isValid = false;
+		var _typeInvalid = false;
+		
+		switch (_typeOf) {
+			case "number":
+				_isValid = __internal_value >= _n;
+				break;
+			default:
+				_typeInvalid = true;
+		}		
+		
+		if (!_isValid) {
+			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeGreaterThanOrEqual({_n}):");
+			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} >= {_n}");
+			if (_typeInvalid) {
+				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
+			} else {
+				array_push(gmtl_test_log, $"- Recieved Result: {__internal_value} < {_n}");
+			}
+			gmtl_test_status = __gmtl_test_status.FAILED;
+			gmtl_suite_continue = false;
+		} else {
+			gmtl_test_status = __gmtl_test_status.SUCCESS;
+		}
+	}
+	
+	/// @func toBeLessThan(number)
+	/// @param	{real}	number
+	function toBeLessThan(_n) {
+		var _typeOf	 = typeof(__internal_value);
+		var _isValid = false;
+		var _typeInvalid = false;
+		
+		switch (_typeOf) {
+			case "number":
+				_isValid = __internal_value < _n;
+				break;
+			default:
+				_typeInvalid = true;
+		}		
+		
+		if (!_isValid) {
+			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeLessThan({_n}):");
+			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} < {_n}");
+			if (_typeInvalid) {
+				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
+			} else {
+				array_push(gmtl_test_log, $"- Recieved Result: {__internal_value} >= {_n}");
+			}
+			gmtl_test_status = __gmtl_test_status.FAILED;
+			gmtl_suite_continue = false;
+		} else {
+			gmtl_test_status = __gmtl_test_status.SUCCESS;
+		}
+	}
+	
+	/// @func toBeLessThanOrEqual(number)
+	/// @param	{real}	number
+	function toBeLessThanOrEqual(_n) {
+		var _typeOf	 = typeof(__internal_value);
+		var _isValid = false;
+		var _typeInvalid = false;
+		
+		switch (_typeOf) {
+			case "number":
+				_isValid = __internal_value <= _n;
+				break;
+			default:
+				_typeInvalid = true;
+		}		
+		
+		if (!_isValid) {
+			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeLessThanOrEqual({_n}):");
+			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} <= {_n}");
+			if (_typeInvalid) {
+				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
+			} else {
+				array_push(gmtl_test_log, $"- Recieved Result: {__internal_value} > {_n}");
+			}
+			gmtl_test_status = __gmtl_test_status.FAILED;
+			gmtl_suite_continue = false;
+		} else {
+			gmtl_test_status = __gmtl_test_status.SUCCESS;
+		}
+	}
+	
+	/// @func toBeFalsy()
+	function toBeFalsy() {
+		var _isValid = !(__internal_value);
+		
+		if (!_isValid) {
+			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeFalsy():");
+			array_push(gmtl_test_log, $"- Expected Result: {false}");
+			array_push(gmtl_test_log, $"- Recieved Result: {true}");
+			gmtl_test_status = __gmtl_test_status.FAILED;
+			gmtl_suite_continue = false;
+		} else {
+			gmtl_test_status = __gmtl_test_status.SUCCESS;
+		}
+	}
+	
+	/// @func toBeTruthy()
+	function toBeTruthy() {
+		var _isValid = !!(__internal_value);
+		
+		if (!_isValid) {
+			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeTruthy():");
+			array_push(gmtl_test_log, $"- Expected Result: {true}");
+			array_push(gmtl_test_log, $"- Recieved Result: {false}");
+			gmtl_test_status = __gmtl_test_status.FAILED;
+			gmtl_suite_continue = false;
+		} else {
+			gmtl_test_status = __gmtl_test_status.SUCCESS;
+		}
+	}
+	
+	/// @func toContain(value)
+	/// @param	{any}	value
+	function toContain(_value) {
+		var _typeOf	 = typeof(__internal_value);
+		var _isValid = false;
+		var _typeInvalid = false;
+		var _onPos	 = -1
+		
+		switch (_typeOf) {
+			case "array":
+				var _arr_len = array_length(__internal_value);
+				_onPos = -1;
+				
+				for (var i = 0; i < _arr_len; i++) {
+					if (__internal_value[i] == _value) {
+						_isValid = true;
+						_onPos = i;
+						break;
+					}
+				}
+				break;
+			default:
+				_typeInvalid = true;
+		}
+		
+		if (!_isValid) {
+			array_push(gmtl_test_log, $"> expect({__internal_value}).toContain({_value}):");
+			array_push(gmtl_test_log, $"- Expected Result: Found on Position > -1");
+			if (_typeInvalid) {
+				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
+			} else {
+				array_push(gmtl_test_log, $"- Recieved Result: Not Found.");
+			}
+			gmtl_test_status = __gmtl_test_status.FAILED;
+			gmtl_suite_continue = false;
+		} else {
+			gmtl_test_status = __gmtl_test_status.SUCCESS;
+		}
 	}
 }
