@@ -30,9 +30,20 @@ function it(_name, _fn) {
 	var _time = get_timer();
 	try {
 		_fn();
-		_time = get_timer() - _time;
-		__gmtl_internal_function_log_test_success(_name, _time);
-		gmtl_suite_continue = true;
+		_time = get_timer() - _time;		
+
+		if (gmtl_test_status == __gmtl_test_status.SUCCESS) {
+			__gmtl_internal_function_log_test_success(_name, _time);
+		} else if (gmtl_test_status == __gmtl_test_status.FAILED) {
+			__gmtl_internal_function_log_test_failed(_name, _time);
+			gmtl_indent = 2;
+			var _tests_stacktrace_len = array_length(gmtl_test_log);
+			for (var i = 0; i < _tests_stacktrace_len; i++) {
+				__gmtl_internal_function_log(gmtl_test_log[i]);
+			}
+
+			gmtl_test_log = [];
+		}
 	} catch(e) {
 		_time = get_timer() - _time;
 		__gmtl_internal_function_log_test_failed(_name, _time);
@@ -53,4 +64,12 @@ function it(_name, _fn) {
 /// @param	{callable}	fn
 function test(_name, _fn) {
 	it(_name, _fn);
+}
+
+/// @func	expect(value)
+/// @param	{any}	value
+function expect(_val) {
+	if (gmtl_suite_continue) {
+		return new TestCase(_val);
+	}
 }

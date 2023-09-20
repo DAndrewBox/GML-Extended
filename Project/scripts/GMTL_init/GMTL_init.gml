@@ -9,6 +9,7 @@ enum __gmtl_test_status {
 
 #macro	gmtl_indent			global.__gmtl_internal_indent
 #macro	gmtl_log			global.__gmtl_internal_log
+#macro	gmtl_test_log		global.__gmtl_internal_test_log
 #macro	gmtl_test_status	global.__gmtl_internal_test_status
 #macro	gmtl_suite_continue	global.__gmtl_internal_suite_continue
 
@@ -16,15 +17,11 @@ enum __gmtl_test_status {
 function __gmtl_internal_function_init() {
 	global.__gmtl_internal_indent			= 0;
 	global.__gmtl_internal_log				= "";
+	global.__gmtl_internal_test_log			= [];
 	global.__gmtl_internal_test_status		= __gmtl_test_status.RUN;
 	global.__gmtl_internal_suite_continue	= true;
 	
-	describe("Test GMTL stuff", function() {
-	it("Should show an alert", function() {
-			show_message("Hello world!");
-			a++;
-		});
-	});
+	__gmtl_internal_function_test();
 }
 
 /// @func	__gmtl_internal_function_log(message)
@@ -57,5 +54,5 @@ function __gmtl_internal_function_log_test_failed(_msg, _time) {
 /// @func	__gmtl_internal_function_log_test_skipped(message)
 /// @param	{str}	message
 function __gmtl_internal_function_log_test_skipped(_msg) {
-	__gmtl_internal_function_log($"⚠ {_msg} (skipped)");
+	__gmtl_internal_function_log($"⚠ (Skipped) {_msg}");
 }
