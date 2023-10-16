@@ -67,3 +67,5 @@ function is_type(_elem, _type) {
 #macro	gm_type_struct		"struct"
 #macro	gm_type_reference	"ref"
 #macro	gm_type_unknown		"unknown"
+
+#macro	null				pointer_null

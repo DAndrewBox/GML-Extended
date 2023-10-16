@@ -24,10 +24,10 @@ function get_size(_e) {
 	}
 }
 
-/// @func	in(find_this, search_here)
+/// @func	contains(find_this, search_here)
 /// @param	{any}	find_this
 /// @param	{any}	search_here
-function in(_elem, _container) {
+function contains(_elem, _container) {
 	static _forbidden_elem_types = [
 		gm_type_array,
 		gm_type_pointer,
@@ -48,12 +48,12 @@ function in(_elem, _container) {
 	var _container_type = typeof(_container);
 	
 	if (is_type(_elem, _forbidden_elem_types)) {
-		trace($"(GML-Extended) - WARNING! On function \"in\" {_elem} is type {_elem_type} and cannot be search in {_container}.");
+		trace($"(GML-Extended) - WARNING! On function \"contains()\" {_elem} is type {_elem_type} and cannot be search in {_container}.");
 		return false;
 	}
 	
 	if (is_type(_container, _forbidden_container_types)) {
-		trace($"(GML-Extended) - WARNING! On function \"in\" {_container} is type {_container_type} and cannot be used to be searched.");
+		trace($"(GML-Extended) - WARNING! On function \"contains()\" {_container} is type {_container_type} and cannot be used to be searched.");
 		return false;
 	}
 	
@@ -64,7 +64,7 @@ function in(_elem, _container) {
 		case gm_type_number:
 		case gm_type_int32:
 		case gm_type_int64:
-			return in(string(_elem), string(_container_type));
+			return contains(string(_elem), string(_container_type));
 			
 		case gm_type_array:
 			return (array_find_index_by_value(_container, _elem) > -1);
@@ -73,7 +73,7 @@ function in(_elem, _container) {
 			return struct_key_exists(_container, string(_elem));
 	}
 	
-	trace($"(GML-Extended) - ERROR! On function \"in\". This is unexpected and shouldn't happen.");
+	trace($"(GML-Extended) - ERROR! On function \"contains()\". This is unexpected and shouldn't happen.");
 	return false;
 }
 
