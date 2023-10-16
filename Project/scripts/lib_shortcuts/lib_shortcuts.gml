@@ -13,15 +13,68 @@ function get_size(_e) {
 	var _type = typeof(_e);
 	
 	switch(_type) {
-		case "array":	return array_length(_e);
-		case "struct":	return get_size(struct_keys(_e));
-		case "string":	return string_length(_e);
-		case "number":
-		case "int32":
-		case "int64":	return get_size(string(_e));
-		case "bool":	return 1;
-		default:		return -1;
+		case gm_type_array:		return array_length(_e);
+		case gm_type_struct:	return get_size(struct_keys(_e));
+		case gm_type_string:	return string_length(_e);
+		case gm_type_number:
+		case gm_type_int32:
+		case gm_type_int64:		return get_size(string(_e));
+		case gm_type_bool:		return 1;
+		default:				return -1;
 	}
+}
+
+/// @func	in(find_this, search_here)
+/// @param	{any}	find_this
+/// @param	{any}	search_here
+function in(_elem, _container) {
+	static _forbidden_elem_types = [
+		gm_type_array,
+		gm_type_pointer,
+		gm_type_struct,
+		gm_type_unknown,
+		gm_type_null,
+	];
+	static _forbidden_container_types = [
+		gm_type_pointer,
+		gm_type_unknown,
+		gm_type_null,
+		gm_type_bool,
+		gm_type_method,
+		gm_type_undefined,
+	];
+	
+	var _elem_type = typeof(_elem);
+	var _container_type = typeof(_container);
+	
+	if (is_type(_elem, _forbidden_elem_types)) {
+		trace($"(GML-Extended) - WARNING! On function \"in\" {_elem} is type {_elem_type} and cannot be search in {_container}.");
+		return false;
+	}
+	
+	if (is_type(_container, _forbidden_container_types)) {
+		trace($"(GML-Extended) - WARNING! On function \"in\" {_container} is type {_container_type} and cannot be used to be searched.");
+		return false;
+	}
+	
+	switch (_container_type) {
+		case gm_type_string:
+			return string_contains(_container, _elem);
+		
+		case gm_type_number:
+		case gm_type_int32:
+		case gm_type_int64:
+			return in(string(_elem), string(_container_type));
+			
+		case gm_type_array:
+			return (array_find_index_by_value(_container, _elem) > -1);
+			
+		case gm_type_struct:
+			return struct_key_exists(_container, string(_elem));
+	}
+	
+	trace($"(GML-Extended) - ERROR! On function \"in\". This is unexpected and shouldn't happen.");
+	return false;
 }
 
 /// @func	trace(*args)
