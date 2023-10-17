@@ -13,7 +13,7 @@ function string_title(_str) {
 	var _str_len	= string_length(_str);
 	
 	for (var i = 1; i <= _str_len; i++) {
-		var _char = string_copy(_str, i, 1);
+		var _char = string_char_at(_str, i);
 		if (_prev_char == " ") {
 			_out += string_upper(_char);
 			_prev_char = "";
@@ -32,7 +32,8 @@ function string_title(_str) {
 /// @param	{str|array}	substring
 function string_remove(_str, _substr) {
 	if (is_array(_substr)) {
-		for (var i = 0; i < array_length(_substr); i++) {
+		var _arr_len = array_length(_substr);
+		for (var i = 0; i < _arr_len; i++) {
 			_str = string_remove(_str, _substr[i]);
 		}
 		

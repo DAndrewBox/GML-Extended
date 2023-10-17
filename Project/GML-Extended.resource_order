@@ -40,6 +40,7 @@
     {"name":"o_gml_ext_test_ease","order":1,"path":"objects/o_gml_ext_test_ease/o_gml_ext_test_ease.yy",},
     {"name":"lib_ease","order":6,"path":"scripts/lib_ease/lib_ease.yy",},
     {"name":"lib_layers","order":3,"path":"scripts/lib_layers/lib_layers.yy",},
+    {"name":"test_lib_strings","order":3,"path":"scripts/test_lib_strings/test_lib_strings.yy",},
     {"name":"lib_server_tcp","order":3,"path":"scripts/lib_server_tcp/lib_server_tcp.yy",},
     {"name":"lib_shortcuts","order":4,"path":"scripts/lib_shortcuts/lib_shortcuts.yy",},
     {"name":"lib_strings","order":5,"path":"scripts/lib_strings/lib_strings.yy",},
