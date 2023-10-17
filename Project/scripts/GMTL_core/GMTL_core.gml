@@ -21,9 +21,11 @@ function describe(_name, _fn) {
 function it(_name, _fn) {	
 	gmtl_test_status = __gmtl_test_status.RUN;
 	gmtl_indent = 1;
+	gmtl_coverage_tests.total++;
 	
 	if (!gmtl_suite_continue) {
 		__gmtl_internal_function_log_test_skipped(_name);
+		gmtl_coverage_tests.failed++;
 		return;
 	}
 	
@@ -34,8 +36,11 @@ function it(_name, _fn) {
 
 		if (gmtl_test_status == __gmtl_test_status.SUCCESS) {
 			__gmtl_internal_function_log_test_success(_name, _time);
+			gmtl_coverage_tests.success++;
 		} else if (gmtl_test_status == __gmtl_test_status.FAILED) {
 			__gmtl_internal_function_log_test_failed(_name, _time);
+			gmtl_coverage_tests.failed++;
+			gmtl_suite_last_failed = true;
 			gmtl_indent = 2;
 			var _tests_stacktrace_len = array_length(gmtl_test_log);
 			for (var i = 0; i < _tests_stacktrace_len; i++) {
@@ -45,6 +50,7 @@ function it(_name, _fn) {
 	} catch(e) {
 		_time = get_timer() - _time;
 		__gmtl_internal_function_log_test_failed(_name, _time);
+		gmtl_coverage_tests.failed++;
 		
 		gmtl_indent = 2;
 		var _tests_stacktrace_len = array_length(gmtl_test_log);
@@ -57,6 +63,7 @@ function it(_name, _fn) {
 			string_copy(e.longMessage, string_pos("(line", e.longMessage), string_length(e.longMessage) - string_pos("(line", e.longMessage))
 		);
 		
+		gmtl_suite_last_failed = true;
 		gmtl_suite_continue = false;
 	} finally {
 		gmtl_indent = 1;

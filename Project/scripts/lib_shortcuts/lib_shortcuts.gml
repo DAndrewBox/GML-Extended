@@ -63,7 +63,7 @@ function contains(_elem, _container) {
 		case gm_type_number:
 		case gm_type_int32:
 		case gm_type_int64:
-			return contains(string(_elem), string(_container_type));
+			return contains(string(_elem), string(_container));
 			
 		case gm_type_array:
 			return (array_find_index_by_value(_container, _elem) > -1);
