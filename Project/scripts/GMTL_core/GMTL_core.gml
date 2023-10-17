@@ -25,7 +25,7 @@ function it(_name, _fn) {
 	
 	if (!gmtl_suite_continue) {
 		__gmtl_internal_function_log_test_skipped(_name);
-		gmtl_coverage_tests.failed++;
+		gmtl_coverage_tests.skipped++;
 		return;
 	}
 	

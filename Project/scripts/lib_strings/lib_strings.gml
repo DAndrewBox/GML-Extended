@@ -48,6 +48,7 @@ function string_remove(_str, _substr) {
 /// @param	{str}	char
 /// @param	{real}	size
 function string_pad_left(_str, _char, _size) {
+	if (_char == "") return _str;
 	var _pad = "";
 	var _pad_size = _size - string_length(_str);
 	
@@ -63,6 +64,7 @@ function string_pad_left(_str, _char, _size) {
 /// @param	{str}	char
 /// @param	{real}	size
 function string_pad_right(_str, _char, _size) {
+	if (_char == "") return _str;
 	var _pad = "";
 	var _pad_size = _size - string_length(_str);
 	

@@ -75,6 +75,7 @@
     {"id":{"name":"test_lib_strings","path":"scripts/test_lib_strings/test_lib_strings.yy",},},
     {"id":{"name":"lib_server_tcp","path":"scripts/lib_server_tcp/lib_server_tcp.yy",},},
     {"id":{"name":"test_lib_arrays","path":"scripts/test_lib_arrays/test_lib_arrays.yy",},},
+    {"id":{"name":"r_gml_ext_test_draw","path":"rooms/r_gml_ext_test_draw/r_gml_ext_test_draw.yy",},},
     {"id":{"name":"lib_shortcuts","path":"scripts/lib_shortcuts/lib_shortcuts.yy",},},
     {"id":{"name":"lib_strings","path":"scripts/lib_strings/lib_strings.yy",},},
     {"id":{"name":"shd_gml_ext_blur_gauss","path":"shaders/shd_gml_ext_blur_gauss/shd_gml_ext_blur_gauss.yy",},},
@@ -84,6 +85,7 @@
     {"id":{"name":"lib_files","path":"scripts/lib_files/lib_files.yy",},},
   ],
   "RoomOrderNodes": [
+    {"roomId":{"name":"r_gml_ext_test_draw","path":"rooms/r_gml_ext_test_draw/r_gml_ext_test_draw.yy",},},
     {"roomId":{"name":"r_gml_ext_test_ease","path":"rooms/r_gml_ext_test_ease/r_gml_ext_test_ease.yy",},},
   ],
   "TextureGroups": [

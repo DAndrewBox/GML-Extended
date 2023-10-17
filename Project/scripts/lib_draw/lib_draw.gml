@@ -20,13 +20,17 @@ function draw_self_ext(_spr=sprite_index, _index=image_index, _x=x, _y=y, _xscal
 /// @param	{real}	rotation
 /// @param	{real}	width
 function draw_figure(_x, _y, _sides, _size, _rot = 0, _width = 1) {
-	for(var i = _rot; i<=360 + _rot; i += 360/_sides) {
-		var _xFrom = _x + lengthdir_x(_size, i);
-		var _yFrom = _y + lengthdir_y(_size, i);
-		var _xTo = _x + lengthdir_x(_size, i + 360/_sides);
-		var _yTo = _y + lengthdir_y(_size, i + 360/_sides);
-		draw_line_width(_xFrom, _yFrom, _xTo, _yTo, _width);
+	draw_primitive_begin(pr_trianglestrip);
+	for(var i = _rot; i <= 360 + _rot; i += 360/_sides) {
+		var _xOut = _x + lengthdir_x(_size, i);
+		var _yOut = _y + lengthdir_y(_size, i);
+		var _xIn  = _x + lengthdir_x(_size + _width, i);
+		var _yIn  = _y + lengthdir_y(_size + _width, i);
+		
+		draw_vertex(_xOut, _yOut);
+		draw_vertex(_xIn, _yIn);
 	}
+	draw_primitive_end();
 }
 
 /// @func	draw_quad(cord_1, cord_2, cord_3, cord_4, color_init, color_final, alpha)
@@ -58,11 +62,23 @@ function draw_quad(_xy1, _xy2, _xy3, _xy4, _col_i, _col_f, _alpha) {
 /// @param	{real}	x2
 /// @param	{real}	y2
 /// @param	{real}	width
-function draw_rectangle_width(_x1, _y1, _x2, _y2, _w = 1) {	
-	draw_line_width(_x1, _y1, _x2, _y1, _w);	// TOP
-	draw_line_width(_x2, _y1, _x2, _y2, _w);	// RIGHT
-	draw_line_width(_x1, _y2, _x2, _y2, _w);	// BOTTOM
-	draw_line_width(_x1, _y1, _x1, _y2, _w);	// LEFT
+function draw_rectangle_width(_x1, _y1, _x2, _y2, _w = 1) {
+	draw_primitive_begin(pr_trianglestrip);
+	draw_vertex(_x1, _y1);
+	draw_vertex(_x1 + _w, _y1 + _w);
+	
+	draw_vertex(_x2, _y1);
+	draw_vertex(_x2 - _w, _y1 + _w);
+	
+	draw_vertex(_x2, _y2);
+	draw_vertex(_x2 - _w, _y2 - _w);
+	
+	draw_vertex(_x1, _y2);
+	draw_vertex(_x1 + _w, _y2 - _w);
+	
+	draw_vertex(_x1, _y1);
+	draw_vertex(_x1 + _w, _y1 + _w);
+	draw_primitive_end();
 }
 
 /// @func	draw_rectangle_rotated(x, y, width, height, rot, outline)
@@ -202,7 +218,10 @@ function draw_set_align(_h, _v) {
 function draw_surface_from_center(_surf, _x, _y, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = draw_get_alpha()) {
 	var _surf_w = surface_get_width(_surf) * _xscale;
 	var _surf_h = surface_get_height(_surf) * _yscale;
-	draw_surface_ext(_surf, _x - (_surf_w / 2), _y - (_surf_h / 2), _xscale, _yscale, _rot, _col, _alpha);
+	
+	var _new_x = _x + lengthdir_x(-_surf_w / 2, _rot) - lengthdir_y(-_surf_h / 2, _rot);
+	var _new_y = _y + lengthdir_y(-_surf_w / 2, _rot) + lengthdir_x(-_surf_h / 2, _rot);
+	draw_surface_ext(_surf, _new_x, _new_y, _xscale, _yscale, _rot, _col, _alpha);
 }
 
 /// @func	draw_set_gui_scale(scale)

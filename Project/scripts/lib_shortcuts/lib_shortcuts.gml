@@ -66,7 +66,7 @@ function contains(_elem, _container) {
 			return contains(string(_elem), string(_container));
 			
 		case gm_type_array:
-			return (array_find_index_by_value(_container, _elem) > -1);
+			return array_contains(_container, _elem);
 			
 		case gm_type_struct:
 			return struct_key_exists(_container, string(_elem));

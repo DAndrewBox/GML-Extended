@@ -29,6 +29,7 @@
     {"name":"GMTL_core","order":1,"path":"scripts/GMTL_core/GMTL_core.yy",},
     {"name":"lib_colors","order":1,"path":"scripts/lib_colors/lib_colors.yy",},
     {"name":"lib_structs","order":6,"path":"scripts/lib_structs/lib_structs.yy",},
+    {"name":"r_gml_ext_test_ease","order":1,"path":"rooms/r_gml_ext_test_ease/r_gml_ext_test_ease.yy",},
     {"name":"GMTL_constructors","order":2,"path":"scripts/GMTL_constructors/GMTL_constructors.yy",},
     {"name":"lib_sprites","order":1,"path":"scripts/lib_sprites/lib_sprites.yy",},
     {"name":"GMTL_internal_test","order":3,"path":"scripts/GMTL_internal_test/GMTL_internal_test.yy",},
