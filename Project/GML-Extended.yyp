@@ -63,6 +63,7 @@
     {"id":{"name":"lib_surfaces","path":"scripts/lib_surfaces/lib_surfaces.yy",},},
     {"id":{"name":"lib_draw","path":"scripts/lib_draw/lib_draw.yy",},},
     {"id":{"name":"lib_math","path":"scripts/lib_math/lib_math.yy",},},
+    {"id":{"name":"test_lib_shortcuts","path":"scripts/test_lib_shortcuts/test_lib_shortcuts.yy",},},
     {"id":{"name":"s_test","path":"sprites/s_test/s_test.yy",},},
     {"id":{"name":"test_lib_math","path":"scripts/test_lib_math/test_lib_math.yy",},},
     {"id":{"name":"lib_instances_and_events","path":"scripts/lib_instances_and_events/lib_instances_and_events.yy",},},

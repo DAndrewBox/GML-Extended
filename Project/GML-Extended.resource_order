@@ -34,6 +34,7 @@
     {"name":"GMTL_internal_test","order":3,"path":"scripts/GMTL_internal_test/GMTL_internal_test.yy",},
     {"name":"lib_draw","order":1,"path":"scripts/lib_draw/lib_draw.yy",},
     {"name":"lib_math","order":3,"path":"scripts/lib_math/lib_math.yy",},
+    {"name":"test_lib_shortcuts","order":2,"path":"scripts/test_lib_shortcuts/test_lib_shortcuts.yy",},
     {"name":"test_lib_math","order":1,"path":"scripts/test_lib_math/test_lib_math.yy",},
     {"name":"lib_instances_and_events","order":2,"path":"scripts/lib_instances_and_events/lib_instances_and_events.yy",},
     {"name":"o_gml_ext_test_ease","order":1,"path":"objects/o_gml_ext_test_ease/o_gml_ext_test_ease.yy",},
