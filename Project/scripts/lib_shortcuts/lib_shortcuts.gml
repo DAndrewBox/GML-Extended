@@ -43,7 +43,6 @@ function contains(_elem, _container) {
 		gm_type_method,
 		gm_type_undefined,
 	];
-	
 	var _elem_type = typeof(_elem);
 	var _container_type = typeof(_container);
 	

@@ -39,4 +39,40 @@ suite(function () {
 			expect(get_size(_test_bool)).toBeEqual(1);
 		});
 	});
+	
+	describe("contains", function() {
+		it("Should find different element types in an array", function() {
+			var _elem = ["test", 123];
+			var _container = [500, "test", 123, "Hello world"];
+			
+			expect(contains(_elem[0], _container)).toBeTruthy();
+			expect(contains(_elem[1], _container)).toBeTruthy();
+			expect(contains("Not Found", _container)).toBeFalsy();
+		});
+		
+		it("Should find different element types in an struct", function() {
+			var _elem = ["testkey", "test2"];
+			var _container = {testkey: 1, test2: 0, keykey: "12345"};
+			
+			expect(contains(_elem[0], _container)).toBeTruthy();
+			expect(contains(_elem[1], _container)).toBeTruthy();
+			expect(contains("TEST444", _container)).toBeFalsy();
+		});
+		
+		it("Should find element in string", function() {
+			var _elem = "world";
+			var _container = "Hello world!";
+			
+			expect(contains(_elem, _container)).toBeTruthy();
+			expect(contains("hi", _container)).toBeFalsy();
+		});
+		
+		it("Should find element in number", function() {
+			var _elem = 1000;
+			var _container = 1000000;
+			
+			expect(contains(_elem, _container)).toBeTruthy();
+			expect(contains(25, _container)).toBeFalsy();
+		});
+	});
 });
