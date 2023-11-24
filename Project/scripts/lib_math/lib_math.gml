@@ -1,4 +1,3 @@
-
 /// @func	round_dec(x, decimals)
 /// @param	{real}	x
 /// @param	{real}	decimals
@@ -76,21 +75,8 @@ function range(_to, _from = 0, _step = 1) {
 /// @param	{real}	min
 /// @param	{real}	max
 function wrap(_val, _min, _max) {
-	if (_min > _max) {
-		var _tmp = _max;
-		_max = _min;
-		_min = _tmp;
-	}
-	
-	while (_val < _min || _val > _max) {
-		if (_val > _max) {
-			_val -= (_max - _min);
-		} else if (_val < _min) {
-			_val += (_max - _min);
-		}
-	}
-	
-	return _val;
+	var _mod = ( _val - _min ) mod ( _max - _min );
+	if ( _mod < 0 ) return _mod + _max else return _mod + _min;
 }
 
 /// @func	random_linear(n)

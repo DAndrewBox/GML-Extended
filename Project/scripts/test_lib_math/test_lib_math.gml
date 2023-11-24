@@ -66,9 +66,9 @@ suite(function() {
 	
 	describe("wrap", function() {
 		it("Should return a wrapped number", function() {
-			expect(wrap(10, 0, 5)).toBe(5);
-			expect(wrap(200, 100, 150)).toBe(150);
-			expect(wrap(-100, -200, -150)).toBe(-150);
+			expect(wrap(10, 0, 5)).toBe(0);
+			expect(wrap(200, 100, 150)).toBe(100);
+			expect(wrap(-100, -200, -150)).toBe(-200);
 			expect(wrap(300, 0, 255)).toBe(45);
 			expect(wrap(361, 0, 360)).toBe(1);
 		});
