@@ -80,3 +80,7 @@ suite(function() {
 		});
 	});
 });
+
+#macro	supposedly	if
+#macro	in_addition	else
+#macro	perchance	else if
