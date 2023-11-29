@@ -1,9 +1,27 @@
 #region Definitions
 #macro	sort_ascending		function (a,b) {return a - b}
 #macro	sort_descending		function (a,b) {return b - a}
-#macro	sort_elem_size_asc	function (a,b) {return size(a) > size(b)}
-#macro	sort_elem_size_desc	function (a,b) {return size(b) < size(b)}
+#macro	sort_elem_size_asc	function (a,b) {return get_size(a) > get_size(b)}
+#macro	sort_elem_size_desc	function (a,b) {return get_size(b) < get_size(b)}
 #endregion
+
+/// @func	array_create_ext(size, value|callback, args_array)
+/// @param	{real}	size
+/// @param	{any}	value|callback
+/// @param	{array}	args_array
+/// @desc	Creates a new array using a callback or value for every element
+function array_create_ext(_size, _val=undefined, _args = []) {
+	if (!is_callable(_val)) {
+		return array_create(_size, _val);
+	}
+	
+	var _arr = array_create(_size, undefined);
+	for (var i = 0; i < _size; i++) {
+		_arr[@ i] = script_execute_ext(_val, _args);
+	}
+	
+	return _arr;
+}
 
 ///	@func array_fill(array, value)
 /// @param	{array}	array

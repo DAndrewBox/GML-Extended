@@ -54,6 +54,7 @@ function is_type(_elem, _type) {
 	return typeof(_elem) == _type;
 }
 
+#region Definitions / Macros
 #macro	gm_type_number		"number"
 #macro	gm_type_string		"string"
 #macro	gm_type_array		"array"
@@ -62,10 +63,16 @@ function is_type(_elem, _type) {
 #macro	gm_type_int64		"int64"
 #macro	gm_type_pointer		"ptr"
 #macro	gm_type_undefined	"undefined"
-#macro	gm_type_null		"null"
 #macro	gm_type_method		"method"
 #macro	gm_type_struct		"struct"
 #macro	gm_type_reference	"ref"
 #macro	gm_type_unknown		"unknown"
 
 #macro	null				pointer_null
+
+#macro	gm_unit_seconds		time_source_units_seconds
+#macro	gm_unit_frames		time_source_units_frames
+
+
+#endregion
+

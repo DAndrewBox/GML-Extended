@@ -33,12 +33,10 @@ function contains(_elem, _container) {
 		gm_type_pointer,
 		gm_type_struct,
 		gm_type_unknown,
-		gm_type_null,
 	];
 	static _forbidden_container_types = [
 		gm_type_pointer,
 		gm_type_unknown,
-		gm_type_null,
 		gm_type_bool,
 		gm_type_method,
 		gm_type_undefined,

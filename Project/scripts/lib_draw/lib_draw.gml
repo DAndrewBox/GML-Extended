@@ -12,13 +12,13 @@ function draw_self_ext(_spr=sprite_index, _index=image_index, _x=x, _y=y, _xscal
 	draw_sprite_ext(_spr, _index, _x, _y, _xscale, _yscale, _rot, _col, _alpha);
 }
 
-/// @func	draw_figure(x, y, sides, size, rotation, width)
+/// @func	draw_figure(x, y, sides, size, rotation, line_width)
 /// @param	{real}	x
 /// @param	{real}	y
 /// @param	{real}	sides
 /// @param	{real}	size
 /// @param	{real}	rotation
-/// @param	{real}	width
+/// @param	{real}	line_width
 function draw_figure(_x, _y, _sides, _size, _rot = 0, _width = 1) {
 	draw_primitive_begin(pr_trianglestrip);
 	for(var i = _rot; i <= 360 + _rot; i += 360/_sides) {
