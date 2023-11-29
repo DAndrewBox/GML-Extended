@@ -13,13 +13,19 @@ function struct_keys(_struct) {
 function struct_merge(_st_1, _st_2, _override = true) {
 	var _new_struct = _st_1;
 	var _new_keys = variable_struct_get_names(_st_2);
-	var _keys_len = array_length(_new_keys);
+	var _len_keys = array_length(_new_keys);
+	var _key, _key_exists;
 	
-	for (var i = 0; i < _keys_len; i++) {
-		var _key_not_exists = is_undefined(variable_struct_get(_new_struct, _new_keys[i]));
-		if (_key_not_exists && !_override) continue;
+	for (var i = 0; i < _len_keys; i++) {
+		_key = _new_keys[i];
+		_key_exists = is_undefined(variable_struct_get(_new_struct, _key));
+		if (_key_exists && !_override) continue;
 
-		_new_struct[$ _new_keys[i]] = _st_2[$ _new_keys[i]];
+		if (!is_struct(_new_struct[$ _key])) {
+			_new_struct[$ _key] = _st_2[$ _key];
+		} else {
+			_new_struct[$ _key] = struct_merge(_new_struct[$ _key], _st_2[$ _key], _override);
+		}
 	}
 	
 	return _new_struct;
