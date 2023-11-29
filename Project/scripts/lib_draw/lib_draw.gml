@@ -246,8 +246,15 @@ function draw_reset_blendmode() {
 	gpu_set_blendmode(bm_normal);
 }
 
-/// @function	gpu_set_alpha_overwrite(flag)
+/// @func	gpu_set_alpha_overwrite(flag)
 /// @param	{bool}	flag
 function gpu_set_alpha_overwrite(_flag) {
 	gpu_set_colorwriteenable(true, true, true, _flag);
+}
+
+/// @func	surface_clear(color, alpha)
+/// @param	{color}	color
+/// @param	{real}	alpha
+function surface_clear(_col = c_black, _alpha = .0) {
+	draw_clear_alpha(_col, _alpha);
 }
