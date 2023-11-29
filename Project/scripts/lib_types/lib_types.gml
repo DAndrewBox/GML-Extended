@@ -13,25 +13,25 @@ function int(_val) {
 /// @func	int8(value)
 /// @param	{real}	value
 function int8(_val) {
-	return wrap(int(_val), 0, 255);
+	return wrap(int(_val), 0, 256);
 }
 
 /// @func	int16(value)
 /// @param	{real}	value
 function int16(_val) {
-	return wrap(int(_val), 0, 65535);
+	return wrap(int(_val), 0, 65536);
 }
 
 /// @func	int8s(value)
 /// @param	{real}	value
 function int8s(_val) {
-	return wrap(int(_val), -128, 127);
+	return wrap(int(_val), -128, 128);
 }
 
 /// @func	int16s(value)
 /// @param	{real}	value
 function int16s(_val) {
-	return wrap(int(_val), -32768, 32767);
+	return wrap(int(_val), -32768, 32768);
 }
 
 /// @func	is_type(element, type)

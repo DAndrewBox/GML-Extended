@@ -18,7 +18,7 @@ function struct_merge(_st_1, _st_2, _override = true) {
 	
 	for (var i = 0; i < _len_keys; i++) {
 		_key = _new_keys[i];
-		_key_exists = is_undefined(variable_struct_get(_new_struct, _key));
+		_key_exists = !is_undefined(variable_struct_get(_new_struct, _key));
 		if (_key_exists && !_override) continue;
 
 		if (!is_struct(_new_struct[$ _key])) {

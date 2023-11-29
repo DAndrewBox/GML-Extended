@@ -6,7 +6,12 @@ function TestCase(_val) constructor {
 	/// @func toBe(expected_result)
 	/// @param	{any}	expected_result
 	function toBe(_expectedResult) {
-		var _isValid = __internal_value == _expectedResult;
+		var _isValid;
+		if (is_array(__internal_value) && is_array(_expectedResult)) {
+			_isValid = array_equals(__internal_value, _expectedResult);
+		} else {
+			_isValid = __internal_value == _expectedResult;
+		}
 		
 		if (!_isValid) {
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBe({_expectedResult}):");
