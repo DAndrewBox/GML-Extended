@@ -89,9 +89,9 @@ function trace() {
 /// @param	{any}	*args
 /// @desc	A short way to use show_message
 function alert() {
-	var _args = [];
+	var _args = array_create(argument_count, undefined);
 	for (var i = 0; i < argument_count; i++) {
-		array_push(_args, argument[i]);
+		_args[i] = argument[i];
 	}
 	script_execute_ext(show_message, _args);
 }
@@ -100,9 +100,9 @@ function alert() {
 /// @param	{any}	*args
 /// @desc	A short way to use show_message_async
 function alert_async() {
-	var _args = [];
+	var _args = array_create(argument_count, undefined);
 	for (var i = 0; i < argument_count; i++) {
-		array_push(_args, argument[i]);
+		_args[i] = argument[i];
 	}
 	script_execute_ext(show_message_async, _args);
 }

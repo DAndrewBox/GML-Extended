@@ -187,7 +187,8 @@ function draw_text_size(_x, _y, _string, _font_size) {
 /// @param	{real}	y
 /// @desc	Draws game fps.
 function draw_fps(_x, _y) {
-	draw_text(_x, _y, string("{0}/{1} FPS", fps, game_get_speed(gamespeed_fps)));
+	static _game_speed = game_get_speed(gamespeed_fps);
+	draw_text(_x, _y, $"{fps}/{_game_speed} FPS");
 }
 
 /// @func draw_fps_real(x, y)
@@ -195,7 +196,7 @@ function draw_fps(_x, _y) {
 /// @param	{real}	y
 /// @desc	Draws game real fps.
 function draw_fps_real(_x, _y) {
-	draw_text(_x, _y, string("{0} RFPS", fps_real));
+	draw_text(_x, _y, $"{fps_real} RFPS");
 }
 
 /// @func	draw_set_align(halign, valign)
@@ -257,4 +258,15 @@ function gpu_set_alpha_overwrite(_flag) {
 /// @param	{real}	alpha
 function surface_clear(_col = c_black, _alpha = .0) {
 	draw_clear_alpha(_col, _alpha);
+}
+
+/// @func	draw_set_depth(depth)
+/// @param	{real}	depth
+function draw_set_depth(_depth) {
+	gpu_set_depth(_depth);
+}
+
+/// @func	draw_reset_depth()
+function draw_reset_depth() {
+	gpu_set_depth(depth);
 }
