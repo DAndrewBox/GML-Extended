@@ -7,11 +7,7 @@
 /// @param	{ref}	func_new
 function __obsolete_trace(_old, _new) {
 	trace(
-		string(
-			"(GML-Extended) - WARNING! Function '{0}' is obsolete and will be deprecated. Try using '{1}'.",
-			_old,
-			_new
-		)
+		$"(GML-Extended) - WARNING! Function '{_old}' is obsolete and will be deprecated. Try using '{_new}'.",
 	);
 }
 
@@ -63,4 +59,13 @@ function struct_copy(_struct) {
 function json2file(_filename = "", _json = {}, _iteration = 0) {
 	__obsolete_trace("json2file", "file_json_create");
 	return file_json_create(_filename, _json);
+}
+
+///	@func array_write(array)
+/// @param	{array}	array
+/// @desc	Returns an string of the array.
+/// @deprecated since v1.5
+function array_write(_array) {
+	__obsolete_trace("array_write", "string(array)");
+	return string(_array);
 }

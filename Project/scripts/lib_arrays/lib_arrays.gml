@@ -67,7 +67,8 @@ function array_find_index_by_value(_array, _val) {
 /// @desc	Returns the array as a ds list with all its values.
 function array_to_ds_list(_array) {
 	var _new_ds_list = ds_list_create();
-	for (var i = 0; i < array_length(_array); i++) {
+	var _arr_len = array_length(_array);
+	for (var i = 0; i < _arr_len; i++) {
 		_new_ds_list[| i] = _array[i];
 	}
 	
@@ -99,24 +100,4 @@ function array_to_struct(_array) {
 	}
 	
 	return _new_struct;
-}
-
-///	@func array_write(array)
-/// @param	{array}	array
-/// @desc	Returns an string of the array.
-function array_write(_array) {
-	var _array_len = array_length(_array); 
-	var _new_str = "[";
-	
-	for (var i = 0; i < _array_len; i++) {
-		var _val_is_str = (is_string(_array[i]));
-		_new_str += ( _val_is_str ? "\"" : "" ) +
-					string(_array[i]) +
-					( _val_is_str ? "\"" : "" ) +
-					( i < _array_len - 1 ? "," : "" );
-	}
-	
-	_new_str += "]";
-	
-	return _new_str;
 }

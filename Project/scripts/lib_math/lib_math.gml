@@ -91,7 +91,8 @@ function uuid_v4() {
 	var _uuid = md5_string_unicode(
 		string(
 			get_timer() * current_second * current_minute * current_hour * current_day * current_month
-		) + _config_data[? "udid"]
+		)
+		+ (_config_data[? "udid"] ?? now())
 		+ string(
 			_config_data[? "video_adapter_subsysid"]
 		)

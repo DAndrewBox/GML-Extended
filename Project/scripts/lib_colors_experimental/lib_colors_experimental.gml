@@ -24,9 +24,9 @@ function rgba_dec2hex(_rgb_dec, _alpha = 1.) {
     return "$" + hex_rgba2abgr($"{_hex}{_hex_alpha}");
 }
 
-/// @func	color_get_alpha(rgba_dec)
+/// @func	color_rgba_get_alpha(rgba_dec)
 /// @param	{real}	rgba_dec
-function color_get_alpha(_rgba_dec) {
+function color_rgba_get_alpha(_rgba_dec) {
 	return ((_rgba_dec >> 24) & 0xFF) / 255;
 }
 

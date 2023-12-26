@@ -1,16 +1,30 @@
-/// @func	http_request_send(url, method, data)
+#macro	http_method_get		"GET"
+#macro	http_method_post	"POST"
+#macro	http_method_put		"PUT"
+#macro	http_method_delete	"DELETE"
+
+/// @func	http_request_send(url, method, body, headers)
 /// @param {str}	url
 /// @param {str}	method
-/// @param {any}	data
-function http_request_send(_url="", _method="GET", _data={}) {
+/// @param {any}	body
+/// @param {any}	headers
+function http_request_send(_url="", _method=http_method_get, _body={}, _headers={}) {
 	var _map = ds_map_create();
+	
+	/* Default headers */
 	_map[? "Connection"]		= "keep-alive";
 	_map[? "Cache-Control"]		= "max-age=0";
 	_map[? "Content-Type"]		= "application/json";
 	_map[? "x-access-tokens"]	= "";
 	
-	_data = json_stringify(_data);
-	return http_request(_url, _method, _map, _data);
+	/* Add headers */
+	var _headers_keys = struct_keys(_headers);
+	var _headers_size = get_size(_headers_keys);
+	for (var i = 0; i < _headers_size; i++) {
+		_map[? _headers_keys[i]] = _headers[$ _headers_keys[i]];
+	}
+	
+	return http_request(_url, _method, _map, json_stringify(_body));
 }
 
 /// @func	http_async_get_message(show_on_console)
@@ -24,7 +38,7 @@ function http_async_get_message(_show_on_console = false) {
 		ds_map_values_to_array(async_load[? "response_headers"], _values);
 
 		if (_show_on_console) {
-			show_debug_message({
+			trace({
 				id: async_load[? "id"],
 				url: async_load[? "url"],
 				header: _headers,

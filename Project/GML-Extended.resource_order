@@ -36,6 +36,7 @@
     {"name":"GMTL_constructors","order":2,"path":"scripts/GMTL_constructors/GMTL_constructors.yy",},
     {"name":"lib_sprites","order":1,"path":"scripts/lib_sprites/lib_sprites.yy",},
     {"name":"GMTL_internal_test","order":3,"path":"scripts/GMTL_internal_test/GMTL_internal_test.yy",},
+    {"name":"lib_files_experimental","order":5,"path":"scripts/lib_files_experimental/lib_files_experimental.yy",},
     {"name":"lib_draw","order":1,"path":"scripts/lib_draw/lib_draw.yy",},
     {"name":"lib_math","order":3,"path":"scripts/lib_math/lib_math.yy",},
     {"name":"test_lib_shortcuts","order":3,"path":"scripts/test_lib_shortcuts/test_lib_shortcuts.yy",},

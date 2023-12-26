@@ -64,6 +64,7 @@
     {"id":{"name":"lib_sprites","path":"scripts/lib_sprites/lib_sprites.yy",},},
     {"id":{"name":"GMTL_internal_test","path":"scripts/GMTL_internal_test/GMTL_internal_test.yy",},},
     {"id":{"name":"lib_surfaces","path":"scripts/lib_surfaces/lib_surfaces.yy",},},
+    {"id":{"name":"lib_files_experimental","path":"scripts/lib_files_experimental/lib_files_experimental.yy",},},
     {"id":{"name":"lib_draw","path":"scripts/lib_draw/lib_draw.yy",},},
     {"id":{"name":"lib_math","path":"scripts/lib_math/lib_math.yy",},},
     {"id":{"name":"test_lib_shortcuts","path":"scripts/test_lib_shortcuts/test_lib_shortcuts.yy",},},
