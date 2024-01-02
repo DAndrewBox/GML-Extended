@@ -1,4 +1,4 @@
-/*
+/* Uncomment this to test
 suite(function() {
 	describe("Test GMTL stuff", function() {
 		it("Should pass", function() {
@@ -18,12 +18,12 @@ suite(function() {
 			expect(_c).toHaveProperty("testKey", "test");
 		});
 		
-		each("Multiple pass", function(_arg1, _arg2, _arg3) {
+		each("Multiple cases here should pass", function(_arg1, _arg2, _arg3) {
 			expect(_arg1 + _arg2).toBe(_arg3);
 		}, [
 			[1, 1, 2],
 			[5, 5, 10],
-			[3, 5, 9],
+			[3, 6, 9],
 			[-5, 5, 0]
 		]);
 		
