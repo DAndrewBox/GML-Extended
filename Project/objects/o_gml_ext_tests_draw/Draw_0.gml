@@ -6,6 +6,10 @@ draw_set_align(fa_left, fa_top);
 draw_text(8, 8, script_get_name(page[page_index].callback));
 script_execute_ext(page[page_index].callback, page[page_index].args);
 
+draw_text(8, 24, $"Mouse LB is hold: {mouse_check_button(mb_left)}");
+draw_text(8, 40, $"Mouse RB is hold: {mouse_check_button(mb_right)}");
+draw_text(8, 56, $"Mouse middle is hold: {mouse_check_button(mb_middle)}");
+
 /*
 draw_set_colour(c_lime);
 draw_figure(x - 100, 128, 3, 32, 25, 2);

@@ -1,10 +1,9 @@
+#region Internal definitions
 #macro	gui_width	display_get_gui_width()
 #macro	gui_height	display_get_gui_height()
 #macro	mouse_gui_x	device_mouse_x_to_gui(0)
 #macro	mouse_gui_y	device_mouse_y_to_gui(0)
-
-global.__gmlext_internal_mouse_last_press = current_time;
-global.__gmlext_internal_mouse_last_release = current_time;
+#endregion
 
 /// @func	mouse_in_gui_area(x1, y1, x2, y2)
 /// @param	{real}	x1
@@ -31,7 +30,7 @@ function mouse_in_instance(_inst_id) {
 	return !!collision_point(mouse_x, mouse_y, _inst_id, true, false);
 }
 
-///@func	mouse_is_moving()
+/// @func	mouse_is_moving()
 function mouse_is_moving() {
 	return bool(abs(window_mouse_get_delta_x()) + abs(window_mouse_get_delta_y()));
 }

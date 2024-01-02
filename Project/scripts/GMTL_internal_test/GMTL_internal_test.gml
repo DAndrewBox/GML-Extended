@@ -1,4 +1,5 @@
-function __gmtl_internal_function_test() {
+/*
+suite(function() {
 	describe("Test GMTL stuff", function() {
 		it("Should pass", function() {
 			var _a = 0;
@@ -17,6 +18,15 @@ function __gmtl_internal_function_test() {
 			expect(_c).toHaveProperty("testKey", "test");
 		});
 		
+		each("Multiple pass", function(_arg1, _arg2, _arg3) {
+			expect(_arg1 + _arg2).toBe(_arg3);
+		}, [
+			[1, 1, 2],
+			[5, 5, 10],
+			[3, 5, 9],
+			[-5, 5, 0]
+		]);
+		
 		it("Should fail", function() {
 			instance_create_depth(0, 0, 0, obj_unexistent);
 		});
@@ -25,4 +35,4 @@ function __gmtl_internal_function_test() {
 			show_message("This should never be seen :)");
 		});
 	});
-}
+});

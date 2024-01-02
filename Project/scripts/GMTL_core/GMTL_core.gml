@@ -15,10 +15,11 @@ function describe(_name, _fn) {
 	}
 }
 
-/// @func	it(name, fn)
+/// @func	it(name, fn, args)
 /// @param	{str}		name
 /// @param	{callable}	fn
-function it(_name, _fn) {	
+/// @param	{array}		args
+function it(_name, _fn, _args = []) {	
 	gmtl_test_status = __gmtl_test_status.RUN;
 	gmtl_indent = 1;
 	gmtl_coverage_tests.total++;
@@ -31,7 +32,7 @@ function it(_name, _fn) {
 	
 	var _time = get_timer();
 	try {
-		_fn();
+		script_execute_ext(_fn, _args);
 		_time = get_timer() - _time;		
 
 		if (gmtl_test_status == __gmtl_test_status.SUCCESS) {
@@ -76,6 +77,17 @@ function it(_name, _fn) {
 /// @param	{callable}	fn
 function test(_name, _fn) {
 	it(_name, _fn);
+}
+
+/// @func	each(name, fn, cases)
+/// @param	{str}		name
+/// @param	{callable}	fn
+/// @param	{array}		cases
+function each(_name, _fn, _cases) {
+	var _cases_len = get_size(_cases);
+	for (var i = 0; i < _cases_len; i++) {
+		it($"{_name} [Case {i}]", _fn, _cases[i]);
+	}
 }
 
 /// @func	expect(value)

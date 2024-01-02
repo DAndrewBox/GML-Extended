@@ -14,6 +14,16 @@ function TestCase(_val) constructor {
 		}
 		
 		if (!_isValid) {
+			var _stacktrace = debug_get_callstack(8);
+			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
+			if (_traced_error_index) {
+				var _trace = _stacktrace[_traced_error_index]
+				var _filename = array_last(string_split(_trace, "@"));
+				var _line = string_split(_filename, ":")[1];
+				_filename = string_split(_filename, ":")[0];
+				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
+			}
+			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBe({_expectedResult}):");
 			array_push(gmtl_test_log, $"- Expected Result: {_expectedResult}");
 			array_push(gmtl_test_log, $"- Recieved Result: {__internal_value}");

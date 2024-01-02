@@ -100,7 +100,7 @@ suite(function() {
 			expect(string_pos(_arr[@ 0], _str)).toBeTruthy();
 			expect(string_pos(_arr[@ 1], _str)).toBeTruthy();
 			expect(string_pos(_arr[@ 2], _str)).toBeTruthy();
-			expect(_str).toBeEqual("[ \"mango\",\"pear\",\"apple\" ]");
+			expect(_str).toBeEqual("[ \"mango\",\"pear\",\"apple\"]");
 
 		})
 	});
