@@ -31,3 +31,21 @@ function image_set(_index = image_index, _spd = image_speed, _xscale = image_xsc
 	image_blend		= _blend;
 	image_alpha		= _alpha;
 }
+
+/// @func	image_set_scale(xscale, yscale)
+/// @param	{real}	xscale
+/// @param	{real}	yscale
+/// @desc	Sets image_xscale and image_yscale parameters
+function image_set_scale(_xscale, _yscale) {
+	image_xscale = _xscale;
+	image_yscale = _yscale;
+}
+
+
+/// @func	image_smooth_rotate(direction, speed_factor)
+/// @param	{real}	direction
+/// @param	{real}	speed_factor
+function image_smooth_rotate(_dir, _factor = .1) {
+	var _diff = angle_difference(_dir, image_angle);
+	image_angle = lerp(image_angle, image_angle + _diff, _factor);
+}

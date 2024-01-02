@@ -101,3 +101,15 @@ function uuid_v4() {
 	
 	return _uuid;
 }
+
+/// @func	percentage(current_value, 100%_value)
+/// @param	{real}	current_value
+/// @param	{real}	100%_value
+function percentage(_val, _max) {
+	if (!is_real(_val) || !is_real(_max)) {
+		trace($"(GML-Extended) - ERROR! On function \"percentage()\". \"current_value\" and/or \"100%_value\" are not numbers.");
+		return 0;
+	}
+	
+	return round_dec(100 * (_val / _max), 2);
+}

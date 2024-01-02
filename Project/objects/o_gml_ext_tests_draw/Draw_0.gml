@@ -1,4 +1,11 @@
 /// @description Draw tests
+draw_set_alpha(1);
+draw_set_colour(c_white);
+draw_set_align(fa_left, fa_top);
+
+draw_text(8, 8, script_get_name(page[page_index].callback));
+script_execute_ext(page[page_index].callback, page[page_index].args);
+
 /*
 draw_set_colour(c_lime);
 draw_figure(x - 100, 128, 3, 32, 25, 2);
@@ -19,7 +26,6 @@ draw_text_size(x, y, "Hello World!", 32);
 draw_text_size(x, y + 32, "Hello World!", 24);
 draw_text_size(x, y + 64, "Hello World!", 20);
 draw_text_size(x, y + 96, "Hello World!", 18);
-*/
 
 if (surface_exists(surf)) {
 	surface_set_target(surf);
@@ -30,7 +36,6 @@ if (keyboard_check(vk_right)) ROT++;
 if (keyboard_check(vk_left)) ROT--;
 draw_surface_from_center(surf, 200, 200, 1, 1, ROT);
 
-/*
 draw_sprite_recolor(sprite_index, image_index, x, y, #FF00FF, max(0, dsin(current_time/10)));
 draw_sprite_blur(sprite_index, image_index, x + 300, y + 300, .2 * abs(dsin(current_time/10)));
 */

@@ -90,8 +90,8 @@
     {"id":{"name":"lib_files","path":"scripts/lib_files/lib_files.yy",},},
   ],
   "RoomOrderNodes": [
-    {"roomId":{"name":"r_gml_ext_test_ease","path":"rooms/r_gml_ext_test_ease/r_gml_ext_test_ease.yy",},},
     {"roomId":{"name":"r_gml_ext_test_draw","path":"rooms/r_gml_ext_test_draw/r_gml_ext_test_draw.yy",},},
+    {"roomId":{"name":"r_gml_ext_test_ease","path":"rooms/r_gml_ext_test_ease/r_gml_ext_test_ease.yy",},},
   ],
   "templateType": null,
   "TextureGroups": [

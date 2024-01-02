@@ -74,3 +74,10 @@ function string_pad_right(_str, _char, _size) {
 	
 	return _str + _pad;
 }
+
+/// @func	string_percentage(current_value, 100%_value)
+/// @param	{real}	current_value
+/// @param	{real}	100%_value
+function string_percentage(_val, _max) {	
+	return $"{percentage(_val, _max)}%";
+}
