@@ -1,4 +1,6 @@
 /// @description
-show_debug_overlay(true);
+surf_foreground = -1;
+
+
 surf = surface_create(200, 200);
 ROT = 0;

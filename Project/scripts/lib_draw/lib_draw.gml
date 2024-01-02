@@ -20,7 +20,9 @@ function draw_self_ext(_spr=sprite_index, _index=image_index, _x=x, _y=y, _xscal
 /// @param	{real}	rotation
 /// @param	{real}	line_width
 function draw_figure(_x, _y, _sides, _size, _rot = 0, _width = 1) {
-	draw_primitive_begin(pr_trianglestrip);
+	draw_primitive_begin(_width > 0 ? pr_trianglestrip : pr_trianglefan);
+	_sides = round(_sides);
+	
 	for(var i = _rot; i <= 360 + _rot; i += 360/_sides) {
 		var _xOut = _x + lengthdir_x(_size, i);
 		var _yOut = _y + lengthdir_y(_size, i);
