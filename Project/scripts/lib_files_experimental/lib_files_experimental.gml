@@ -43,7 +43,7 @@ function json2yy(_json) {
 }
 
 /// @func	 __gml_ext_internal_json2yy_replace_keys_number_to_bool(struct, keys_to_replace)
-/// @param	{struct}	struct
+/// @param	{struct|array}	struct
 /// @param	{array}		keys_to_replace
 function __gml_ext_internal_json2yy_replace_keys_number_to_bool(_struct, _keys_number_to_bool) {
     var _keys = is_array(_struct) ? range(get_size(_struct) - 1) : struct_keys(_struct);

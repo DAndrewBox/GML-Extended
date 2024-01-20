@@ -32,10 +32,8 @@ function http_request_send(_url="", _method=http_method_get, _body={}, _headers=
 /// @desc	Get the message from an async request.
 function http_async_get_message(_show_on_console = false) {	
 	try {
-		var _headers = [];
-		var _values = [];
-		ds_map_keys_to_array(async_load[? "response_headers"], _headers);
-		ds_map_values_to_array(async_load[? "response_headers"], _values);
+		var _headers = ds_map_keys_to_array(async_load[? "response_headers"]);
+		var _values = ds_map_values_to_array(async_load[? "response_headers"]);		
 
 		if (_show_on_console) {
 			trace({

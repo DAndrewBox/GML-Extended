@@ -51,7 +51,6 @@ function TestCase(_val) constructor {
 			default:
 				toBe(_expectedResult);
 				return;
-				break;
 		}
 		
 		if (!_isValid) {
