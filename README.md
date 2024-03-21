@@ -6,9 +6,9 @@
 
 ## A GameMaker extension to complement GameMaker Studio 2.3+ built-in functions.
 
-[![license](https://img.shields.io/github/license/DAndrewBox/GML-Extended?style=for-the-badge)](LICENSE)
-[![release](https://img.shields.io/github/v/release/DAndrewBox/GML-Extended?style=for-the-badge)](https://github.com/DAndrewBox/GML-Extended)
-[![downloads](https://img.shields.io/github/downloads/DAndrewBox/GML-Extended/total?style=for-the-badge)](https://github.com/DAndrewBox/GML-Extended/releases)
+[![license](https://img.shields.io/github/license/DAndrewBox/GML-Extended)](LICENSE)
+[![release](https://img.shields.io/github/v/release/DAndrewBox/GML-Extended)](https://github.com/DAndrewBox/GML-Extended)
+[![downloads](https://img.shields.io/github/downloads/DAndrewBox/GML-Extended/total?)](https://github.com/DAndrewBox/GML-Extended/releases)
 
 ### Last updated: 2023-06-16
 ### Author & Collaborators
