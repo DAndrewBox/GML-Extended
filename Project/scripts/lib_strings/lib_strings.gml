@@ -1,12 +1,12 @@
 /// @func	string_contains(string, substring)
-/// @param	{str}	string
-/// @param	{str}	substring
+/// @param	{string}	string
+/// @param	{string}	substring
 function string_contains(_str, _substr) {
 	return string_pos(_substr, _str) > 0;
 }
 
 /// @func string_title(string)
-/// @param	{str}	string
+/// @param	{string}	string
 function string_title(_str) {
 	var _out		= "";
 	var _prev_char	= " ";
@@ -28,8 +28,8 @@ function string_title(_str) {
 }
 
 /// @func	string_remove(string, substring)
-/// @param	{str}		string
-/// @param	{str|array}	substring
+/// @param	{string}		string
+/// @param	{string|array}	substring
 function string_remove(_str, _substr) {
 	if (is_array(_substr)) {
 		var _arr_len = array_length(_substr);
@@ -44,8 +44,8 @@ function string_remove(_str, _substr) {
 }
 
 /// @func	string_pad_left(string, char, size)
-/// @param	{str}	string
-/// @param	{str}	char
+/// @param	{string}	string
+/// @param	{string}	char
 /// @param	{real}	size
 function string_pad_left(_str, _char, _size) {
 	if (_char == "") return _str;
@@ -60,8 +60,8 @@ function string_pad_left(_str, _char, _size) {
 }
 
 /// @func	string_pad_right(string, char, size)
-/// @param	{str}	string
-/// @param	{str}	char
+/// @param	{string}	string
+/// @param	{string}	char
 /// @param	{real}	size
 function string_pad_right(_str, _char, _size) {
 	if (_char == "") return _str;

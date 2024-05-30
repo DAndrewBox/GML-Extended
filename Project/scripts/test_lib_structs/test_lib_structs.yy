@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "test_lib_structs",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Tests",
-    "path": "folders/Libraries/GML-Extended/Tests.yy",
+  "$GMScript":"",
+  "%Name":"test_lib_structs",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"test_lib_structs",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Libraries/GML-Extended/Tests.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

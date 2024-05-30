@@ -50,7 +50,7 @@ function draw_figure(_x, _y, _sides, _size, _rot = 0, _width = 1) {
 /// @param  {array}	cord_4
 /// @param  {real}	color_init
 /// @param  {real}	color_final
-/// @param  {float}	alpha
+/// @param  {real}	alpha
 /// @desc	Draws 2 triangles to simulate a quad
 function draw_quad(_xy1, _xy2, _xy3, _xy4, _col_i, _col_f, _alpha) {
 	draw_primitive_begin(pr_trianglelist);
@@ -134,15 +134,15 @@ function draw_rectangle_rotated(_x, _y, _w, _h, _rot, _outline = true) {
 }
 
 /// @func	draw_text_outline(x, y, string, outline_width, colour, outline_colour, xscale, yscale, angle)
-/// @param	{real}	x
-/// @param	{real}	y
-/// @param	{str}	string
-/// @param	{real}	outline_width
-/// @param	{str}	colour
-/// @param	{str}	outline_colour
-/// @param	{real}	xscale
-/// @param	{real}	yscale
-/// @param	{real}	angle
+/// @param	{real}		x
+/// @param	{real}		y
+/// @param	{string}	string
+/// @param	{real}		outline_width
+/// @param	{real}		colour
+/// @param	{real}		outline_colour
+/// @param	{real}		xscale
+/// @param	{real}		yscale
+/// @param	{real}		angle
 function draw_text_outline(_x, _y, _string, _width, _colour=c_white, _outline_colour=c_black, _xscale=1, _yscale=1, _angle=0) {
 	draw_set_colour(_outline_colour);
 	var i = -_width, j = -_width;
@@ -163,7 +163,7 @@ function draw_text_outline(_x, _y, _string, _width, _colour=c_white, _outline_co
 /// @func	draw_text_shadow(x, y, string, shadow_xoff, shadow_yoff, text_colour, shadow_colour)
 /// @param	{real}	x
 /// @param	{real}	y
-/// @param	{str}	string
+/// @param	{string}	string
 /// @param	{real}	shadow_xoff
 /// @param	{real}	shadow_yoff
 /// @param	{real}	shadow_height
@@ -183,7 +183,7 @@ function draw_text_shadow(_x, _y, _string, _shadow_xoff = 1, _shadow_yoff = 1, _
 /// @func	draw_text_size(x, y, string, size)
 /// @param	{real}	x
 /// @param	{real}	y
-/// @param	{str}	string
+/// @param	{string}	string
 /// @param	{real}	size
 /// @desc	Draws a text scaled by font size. Read documentation to make this work properly.
 function draw_text_size(_x, _y, _string, _font_size) {
@@ -218,14 +218,14 @@ function draw_set_align(_h, _v) {
 }
 
 /// @func	draw_surface_from_center(surface, x, y, xscale, yscale, rot, color, alpha)
-/// @param	{ref}	surface
-/// @param	{real}	x
-/// @param	{real}	y
-/// @param	{real}	xscale
-/// @param	{real}	yscale
-/// @param	{real}	rot
-/// @param	{real}	color
-/// @param	{real}	alpha
+/// @param	{Id.Surface}	surface
+/// @param	{real}		x
+/// @param	{real}		y
+/// @param	{real}		xscale
+/// @param	{real}		yscale
+/// @param	{real}		rot
+/// @param	{real}		color
+/// @param	{real}		alpha
 function draw_surface_from_center(_surf, _x, _y, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = draw_get_alpha()) {
 	var _surf_w = surface_get_width(_surf) * _xscale;
 	var _surf_h = surface_get_height(_surf) * _yscale;
@@ -264,7 +264,7 @@ function gpu_set_alpha_overwrite(_flag) {
 }
 
 /// @func	surface_clear(color, alpha)
-/// @param	{color}	color
+/// @param	{real}	color
 /// @param	{real}	alpha
 function surface_clear(_col = c_black, _alpha = .0) {
 	draw_clear_alpha(_col, _alpha);
@@ -281,17 +281,27 @@ function draw_reset_depth() {
 	gpu_set_depth(depth);
 }
 
+/// @func	draw_reset_alpha()
+function draw_reset_alpha() {
+	draw_set_alpha(1);
+}
+
+/// @func	draw_reset_color()
+function draw_reset_color() {
+	draw_set_color(c_white);
+}
+
 /// @func	draw_reset()
 function draw_reset() {
 	draw_reset_blendmode();
 	draw_reset_depth();
-	draw_set_alpha(1);
-	draw_set_color(c_white);
+	draw_reset_alpha();
+	draw_reset_color();
 	draw_set_align(fa_left, fa_top);
 }
 
 /// @func	draw_create_profile(profile_name, alpha, color, font, halign, valign, depth, blendmode)
-/// @param	{str}	profile_name
+/// @param	{string}	profile_name
 /// @param	{real}	alpha
 /// @param	{real}	color
 /// @param	{real}	font
@@ -321,7 +331,7 @@ function draw_create_profile(_name, _alpha = undefined, _color = undefined, _fon
 }
 
 /// @func	draw_set_profile(profile_name)
-/// @param	{str}	profile_name
+/// @param	{string}	profile_name
 function draw_set_profile(_name) {
 	if (!variable_global_exists("__gml_ext_draw_profiles")) {
 		trace("(GML-Extended) ERROR! - On function draw_set_profile(). No profiles created, please use draw_create_profile() first.");

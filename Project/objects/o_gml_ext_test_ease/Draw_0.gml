@@ -6,7 +6,7 @@ if (inactive_t < 0) {
 	t++;
 
 	if (t > 0 && t mod 90 == 0) {
-		inactive_t = room_speed * .01;
+		inactive_t = game_get_speed(gamespeed_fps) * .01;
 	}
 	
 	if (t > 0 && t mod 180 == 0) {

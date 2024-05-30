@@ -13,8 +13,8 @@
 /* @DEPRECATED END */
 
 ///	@func	layer_get_element_ids_fixed(layer_id, layer_element_type)
-/// @param	{real}	layer_id
-/// @param	{real}	layer_element_type
+/// @param	{real}						layer_id
+/// @param	{Constant.LayerElementType}	layer_element_type
 /// @desc	A way to get the elements of a dynamically created layer.
 function layer_get_element_ids_fixed(_layer, _element_type = layer_element_type_tilemap) {
 	var els = layer_get_all_elements(_layer);

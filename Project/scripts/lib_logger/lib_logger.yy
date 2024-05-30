@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "lib_logger",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Constructors",
-    "path": "folders/Libraries/GML-Extended/Functions/Experimental/Constructors.yy",
+  "$GMScript":"",
+  "%Name":"lib_logger",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"lib_logger",
+  "parent":{
+    "name":"Constructors",
+    "path":"folders/Libraries/GML-Extended/Functions/Experimental/Constructors.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

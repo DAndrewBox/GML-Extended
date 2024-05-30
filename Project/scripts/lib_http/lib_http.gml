@@ -4,10 +4,10 @@
 #macro	http_method_delete	"DELETE"
 
 /// @func	http_request_send(url, method, body, headers)
-/// @param {str}	url
-/// @param {str}	method
-/// @param {any}	body
-/// @param {any}	headers
+/// @param	{string}	url
+/// @param	{string}	method
+/// @param	{struct}	body
+/// @param	{struct}	headers
 function http_request_send(_url="", _method=http_method_get, _body={}, _headers={}) {
 	var _map = ds_map_create();
 	

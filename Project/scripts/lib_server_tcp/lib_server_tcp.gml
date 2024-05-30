@@ -25,7 +25,7 @@ enum SERVER_MESSAGE_TYPE {
 #endregion
 
 /// @func	server_tcp_init(url, port, buffer_size)
-/// @param	{str}	url
+/// @param	{string}	url
 /// @param	{real}	port
 /// @param	{real}	buffer_size
 function server_tcp_init(_url, _port, _size) {

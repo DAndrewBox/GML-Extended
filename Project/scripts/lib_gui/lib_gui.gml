@@ -24,7 +24,7 @@ function mouse_in_area(_x1, _y1, _x2, _y2) {
 }
 
 /// @func	mouse_in_instance(inst_id)
-/// @param	{ref}	inst_id
+/// @param	{Id.Instance|Asset.Object}	inst_id
 function mouse_in_instance(_inst_id) {
 	if (!instance_exists(_inst_id)) return false;
 	return !!collision_point(mouse_x, mouse_y, _inst_id, true, false);

@@ -37,7 +37,7 @@ function file_text_get_lines_array(_file) {
 }
 
 /// @func	file_json_create(filename, struct)
-/// @param	{str}	filename
+/// @param	{string}	filename
 /// @param	{any}	struct
 function file_json_create(_filename, _json) {
 	if (_filename != "") {

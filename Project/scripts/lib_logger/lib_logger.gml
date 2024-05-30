@@ -1,6 +1,6 @@
 /// @func Logger(filename, path)
-/// @param	{str}	filename
-/// @param	{str}	path
+/// @param	{string}	filename
+/// @param	{string}	path
 /// @desc	Create a logger struct.
 function Logger(_fname, _path = working_directory) constructor {
 	function __init__(_fname, _path) {
@@ -13,9 +13,9 @@ function Logger(_fname, _path = working_directory) constructor {
 		
 		self.linked = {
 			id: -1,
-			onLog:	-1,
-			onWarn: -1,
-			onError: -1,
+			onLog:	show_debug_message,
+			onWarn: show_debug_message,
+			onError: show_debug_message,
 		}
 	}
 	
@@ -38,7 +38,7 @@ function Logger(_fname, _path = working_directory) constructor {
 	}
 	
 	/// @func log([*args])
-	/// @param	{str}	[*args]
+	/// @param	{string}	[*args]
 	/// @desc	Writes your text into the logger file.
 	function log() {
 		if (self.file == -1) return;
@@ -60,11 +60,13 @@ function Logger(_fname, _path = working_directory) constructor {
 	
 		file_text_write_string(self.file, _msg + "\n");
 		
-		if (self.linked.id != -1) self.linked.onLog();
+		if (is_callable(self.linked.id) && self.linked.onLog) {
+			script_execute(self.linked.onLog);
+		}
 	}
 	
 	/// @func warn([*args])
-	/// @param	{str}	[*args]
+	/// @param	{string}	[*args]
 	/// @desc	Writes a warning into into the logger file.
 	function warn() {
 		var _text = [];
@@ -73,11 +75,13 @@ function Logger(_fname, _path = working_directory) constructor {
 		}
 	
 		self.log(self.file, "[⚠] ", _text);
-		if (self.linked.id != -1) self.linked.onWarn();
+		if (is_callable(self.linked.id) && self.linked.onWarn) {
+			script_execute(self.linked.onWarn);
+		}
 	}
 	
 	/// @func error([*args])
-	/// @param	{str}	[*args]
+	/// @param	{string}	[*args]
 	/// @desc	Writes a error into into the logger file.
 	function error() {
 		var _text = [];
@@ -86,7 +90,9 @@ function Logger(_fname, _path = working_directory) constructor {
 		}
 	
 		self.log(self.file, "[❌] ", _text);
-		if (self.linked.id != -1) self.linked.onError();
+		if (is_callable(self.linked.id) && self.linked.onError) {
+			script_execute(self.linked.onError);
+		}
 	}
 	
 	/// @func link_instance(inst, callbacks)

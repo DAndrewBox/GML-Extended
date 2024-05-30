@@ -1,17 +1,19 @@
 /// @func	instance_create(x, y, object_index, depth|layer_name, _params)
-/// @param	{real}	x
-/// @param	{real}	y
-/// @param	{real}	object_index
-/// @param	{real|str}	depth|layer_name
-/// @param	{any}	params
+/// @param	{real}			x
+/// @param	{real}			y
+/// @param	{real}			object_index
+/// @param	{real|string}	depth|layer_name
+/// @param	{struct}		params
 function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
-	var _callback = (
-		typeof(_depth_or_layer) == gm_type_string
-		? instance_create_layer
-		: instance_create_depth
-	);
-		
-	var _inst = _callback(_x, _y, _depth_or_layer, _obj, _params);
+	var _is_layer = typeof(_depth_or_layer) == gm_type_string;
+	var _inst = undefined;
+	
+	if (_is_layer) {
+		_inst = instance_create_layer(_x, _y, _depth_or_layer, _obj, _params);
+	} else {
+		_inst = instance_create_depth(_x, _y, _depth_or_layer, _obj, _params);
+	}
+	
 	delete _params;
 	return _inst;
 }
@@ -33,7 +35,7 @@ function instance_create_unique(_x, _y, _obj, _depth_or_layer = depth, _params =
 }
 
 /// @func	instance_any_exists(*args)
-/// @param	{ref}	*args
+/// @param	{Id.Instance|Asset.Object}	*args
 /// @desc	Check if any of the instances on the arguments exists.
 function instance_any_exists() {
 	var _count = 0;
@@ -47,7 +49,7 @@ function instance_any_exists() {
 }
 
 /// @func	instance_in_room(object_index|id)
-/// @param	{ref}	object_index|id
+/// @param	{Id.Instance|Asset.Object}	object_index|id
 /// @desc	Get a bool telling if the instance is inside the room
 function instance_in_room(_inst) {
 	return	(_inst.bbox_right >= 0 && _inst.bbox_left <= room_width) &&
@@ -55,7 +57,7 @@ function instance_in_room(_inst) {
 }
 
 /// @func	instance_get_all(object_index)
-/// @param	{ref}	object_index
+/// @param	{Asset.GMObject}	object_index
 function instance_get_all(_obj) {
 	var _inst_count = instance_number(_obj);
 	var _inst_ids = [];
@@ -70,8 +72,8 @@ function instance_get_all(_obj) {
 }
 
 /// @func	instance_number_if(object_index, callback)
-/// @param	{ref}	object_index
-/// @param	{ref}	callback
+/// @param	{Asset.GMObject}	object_index
+/// @param	{function}			callback
 /// @desc	Return the number of instances that make the callback return true
 function instance_number_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
@@ -85,8 +87,8 @@ function instance_number_if(_obj, _callback) {
 }
 
 /// @func	instance_get_if(object_index, callback)
-/// @param	{ref}	object_index
-/// @param	{ref}	callback
+/// @param	{Asset.GMObject}	object_index
+/// @param	{function}			callback
 /// @desc	Return the instance ids that make the callback returns true
 function instance_get_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
@@ -100,8 +102,8 @@ function instance_get_if(_obj, _callback) {
 }
 
 /// @func	event_user_exec(inst, ev_number)
-/// @param	{real}	inst
-/// @param	{real}	ev_number
+/// @param	{Id.Instance|Asset.Object}	inst
+/// @param	{real}						ev_number
 /// @desc	Fastest way to perform a event user from an specified object.
 function event_user_exec(_inst, _ev_number) {
 	with (_inst) {

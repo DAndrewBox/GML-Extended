@@ -1,5 +1,5 @@
 /// @func hex_rgba2abgr(hex_input)
-/// @param {str} hex_input
+/// @param	{string}	hex_input
 function hex_rgba2abgr(_input) {
     var _output = "";
     var _length = string_length(_input);
@@ -14,7 +14,7 @@ function hex_rgba2abgr(_input) {
 }
 
 /// @func	rgba_dec2hex(rgb_dec, alpha)
-/// @param {int}	rgb_dec
+/// @param {real}	rgb_dec
 /// @param {real}	alpha
 /// @return The hexadecimal color string.
 function rgba_dec2hex(_rgb_dec, _alpha = 1.) {

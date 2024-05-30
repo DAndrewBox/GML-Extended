@@ -1,7 +1,7 @@
 /// @func	TestCase(value)
-/// @param	{any}	value
+/// @param	{struct|array}	value
 function TestCase(_val) constructor {
-	__internal_value = _val;	
+	__internal_value = _val;
 	
 	/// @func toBe(expected_result)
 	/// @param	{any}	expected_result
@@ -142,9 +142,10 @@ function TestCase(_val) constructor {
 				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
 			}
 			
+			var _type_of_msg = $"<Invalid Type: {_typeOf}>";
 			array_push(gmtl_test_log, $">expect({__internal_value}).toHaveLength({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {_n}");
-			array_push(gmtl_test_log, $"- Recieved Result: {_typeInvalid ? $"<Invalid Type: {_typeOf}>" : _len}");
+			array_push(gmtl_test_log, $"- Recieved Result: {_typeInvalid ? _type_of_msg  : string(_len)}");
 			gmtl_test_status = __gmtl_test_status.FAILED;
 			gmtl_suite_continue = false;
 		} else {
@@ -153,7 +154,7 @@ function TestCase(_val) constructor {
 	}
 	
 	/// @func toHaveProperty(key, value)
-	/// @param	{str}	key
+	/// @param	{string}	key
 	/// @param	{any}	value
 	function toHaveProperty(_key, _value = undefined) {
 		var _typeOf	 = typeof(__internal_value);
@@ -184,8 +185,12 @@ function TestCase(_val) constructor {
 				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
 			}
 			
+			var _expected_not_undefined_msg = $"{_key} = {_value}";
+			var _expected_undefined_msg = $"_key != undefined";
+			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toHaveProperty({_key}, {_value}):");
-			array_push(gmtl_test_log, $"- Expected Result: {!is_undefined(_value) ? $"{_key} = {_value}" : $"_key != undefined"}");
+			array_push(gmtl_test_log, $"- Expected Result: {!is_undefined(_value) ? _expected_not_undefined_msg : _expected_undefined_msg }");
+			
 			if (_typeInvalid) {
 				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
 			} else {

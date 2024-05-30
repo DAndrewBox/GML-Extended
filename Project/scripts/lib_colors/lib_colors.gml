@@ -4,11 +4,11 @@
 /// @param	{real}	blue
 /// @desc	Returns a decimal value given wrapped RGB values.
 function rgb(_r, _g, _b) {
-	return make_colour_rgb(
-		wrap(_r, 0, 256),
-		wrap(_g, 0, 256),
-		wrap(_b, 0, 256)
-	);
+	_r = int8(_r);
+	_g = int8(_g);
+	_b = int8(_b);
+	
+	return make_colour_rgb(_r, _g, _b);
 }
 
 /// @func	hsv(hue, saturation, value)
@@ -17,11 +17,11 @@ function rgb(_r, _g, _b) {
 /// @param	{real}	value
 /// @desc	Returns a decimal value given wrapped RGB values.
 function hsv(_h, _s, _v) {
-	return make_colour_hsv(
-		wrap(_h, 0, 256),
-		wrap(_s, 0, 256),
-		wrap(_v, 0, 256)
-	);
+	_h = int8(_h);
+	_s = int8(_s);
+	_v = int8(_v)
+	
+	return make_colour_hsv(_h, _s, _v);
 }
 
 /// @func	color_get_rgb(color)

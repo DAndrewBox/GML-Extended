@@ -36,7 +36,7 @@ function int16s(_val) {
 
 /// @func	is_type(element, type)
 /// @param	{any}		element
-/// @param	{array|str}	type
+/// @param	{array|string}	type
 function is_type(_elem, _type) {
 	if (is_array(_type)) {
 		var _is_type = false;
@@ -72,7 +72,5 @@ function is_type(_elem, _type) {
 
 #macro	gm_unit_seconds		time_source_units_seconds
 #macro	gm_unit_frames		time_source_units_frames
-
-
 #endregion
 

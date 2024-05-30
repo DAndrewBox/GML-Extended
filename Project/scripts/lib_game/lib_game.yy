@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "lib_game",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Optional",
-    "path": "folders/Libraries/GML-Extended/Functions/Optional.yy",
+  "$GMScript":"",
+  "%Name":"lib_game",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"lib_game",
+  "parent":{
+    "name":"Optional",
+    "path":"folders/Libraries/GML-Extended/Functions/Optional.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

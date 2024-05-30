@@ -88,7 +88,7 @@ function __gmtl_internal_function_init() {
 }
 
 /// @func	__gmtl_internal_function_log(message)
-/// @param	{str}	message
+/// @param	{string}	message
 function __gmtl_internal_function_log(_msg) {
 	gml_pragma("forceinline");
 	var _pad_left = "";
@@ -102,7 +102,7 @@ function __gmtl_internal_function_log(_msg) {
 }
 
 /// @func	__gmtl_internal_function_log_test_success(message, time)
-/// @param	{str}	message
+/// @param	{string}	message
 /// @param	{real}	time
 function __gmtl_internal_function_log_test_success(_msg, _time) {
 	gml_pragma("forceinline");
@@ -110,7 +110,7 @@ function __gmtl_internal_function_log_test_success(_msg, _time) {
 }
 
 /// @func	__gmtl_internal_function_log_test_failed(message, time)
-/// @param	{str}	message
+/// @param	{string}	message
 /// @param	{real}	time
 function __gmtl_internal_function_log_test_failed(_msg, _time) {
 	gml_pragma("forceinline");
@@ -118,7 +118,7 @@ function __gmtl_internal_function_log_test_failed(_msg, _time) {
 }
 
 /// @func	__gmtl_internal_function_log_test_skipped(message)
-/// @param	{str}	message
+/// @param	{string}	message
 function __gmtl_internal_function_log_test_skipped(_msg) {
 	gml_pragma("forceinline");
 	__gmtl_internal_function_log($"⚠ (Skipped) {_msg}");

@@ -5,12 +5,12 @@ surface_depth_disable(true);	// For performance reasons keep this disabled on 2D
 /// @func Surface(width, height, name)
 /// @param	{real}	width
 /// @param	{real}	height
-/// @param	{str}	name
+/// @param	{string}	name
 function Surface(_width, _height, _name="") constructor {
 	/// @func	__init__(width, height, name)
 	/// @param	{real}	width
 	/// @param	{real}	height
-	/// @param	{str}	name
+	/// @param	{string}	name
 	function __init__(_width, _height, _name) {
 		self.width	= abs(_width);
 		self.height = abs(_height);
@@ -101,7 +101,7 @@ function Surface(_width, _height, _name="") constructor {
 	}
 	
 	/// @func	save(filename, x, y, width, height)
-	/// @param	{str}	filename
+	/// @param	{string}	filename
 	/// @param	{real}	x
 	/// @param	{real}	y
 	/// @param	{real}	width

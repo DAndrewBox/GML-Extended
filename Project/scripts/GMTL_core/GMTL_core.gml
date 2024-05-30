@@ -1,6 +1,6 @@
 /// @func	describe(name, fn)
-/// @param	{str}		name
-/// @param	{callable}	fn
+/// @param	{string}		name
+/// @param	{function}	fn
 function describe(_name, _fn) {
 	gmtl_suite_continue = true;
 	gmtl_indent = 0;
@@ -16,8 +16,8 @@ function describe(_name, _fn) {
 }
 
 /// @func	it(name, fn, args)
-/// @param	{str}		name
-/// @param	{callable}	fn
+/// @param	{string}		name
+/// @param	{function}	fn
 /// @param	{array}		args
 function it(_name, _fn, _args = []) {	
 	gmtl_test_status = __gmtl_test_status.RUN;
@@ -73,15 +73,15 @@ function it(_name, _fn, _args = []) {
 }
 
 /// @func	test(name, fn)
-/// @param	{str}		name
-/// @param	{callable}	fn
+/// @param	{string}		name
+/// @param	{function}	fn
 function test(_name, _fn) {
 	it(_name, _fn);
 }
 
 /// @func	each(name, fn, cases)
-/// @param	{str}		name
-/// @param	{callable}	fn
+/// @param	{string}		name
+/// @param	{function}	fn
 /// @param	{array}		cases
 function each(_name, _fn, _cases) {
 	var _cases_len = get_size(_cases);

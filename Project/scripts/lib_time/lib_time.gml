@@ -5,7 +5,7 @@ function now() {
 }
 
 /// @func   unix_timestamp(datetime)
-/// @param  {datetime}  datetime    date-time value (default current time)
+/// @param  {real}  datetime    date-time value (default current time)
 /// @desc   Returns a Unix timestamp for the current or given GameMaker datetime.
 /// @author Xot
 function unix_timestamp(_datetime) {
@@ -116,8 +116,8 @@ function datetime_get_timestamp() {
 	return unix_timestamp_format(now(), "<%HH:%NN:%SS>");
 }
 
-/// @func	time_performance(function, arguments, iterations)
-/// @param	{ref}	function
+/// @func	time_performance(callback, arguments, iterations)
+/// @param	{function}	function
 /// @param	{array}	argument
 /// @param	{real}	iterations
 function time_performance(_func, _args = [], _iter = 1) {

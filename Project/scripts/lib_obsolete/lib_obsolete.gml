@@ -3,8 +3,8 @@
 */
 
 /// @func	__obsolete_trace(func_old, func_new)
-/// @param	{ref}	func_old
-/// @param	{ref}	func_new
+/// @param	{string}	func_old
+/// @param	{string}	func_new
 function __obsolete_trace(_old, _new) {
 	trace(
 		$"(GML-Extended) - WARNING! Function '{_old}' is obsolete and will be deprecated. Try using '{_new}'.",
@@ -51,7 +51,7 @@ function struct_copy(_struct) {
 }
 
 /// @func	json2file(filename, struct, iteration)
-/// @param	{str}	filename
+/// @param	{string}	filename
 /// @param	{any}	struct
 /// @param	{real}	iteration
 /// @desc	Creates a file from a json struct.

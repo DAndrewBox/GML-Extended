@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "lib_shaders",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Shaders",
-    "path": "folders/Libraries/GML-Extended/Functions/Experimental/Shaders.yy",
+  "$GMScript":"",
+  "%Name":"lib_shaders",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"lib_shaders",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Libraries/GML-Extended/Functions/Experimental/Shaders.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

@@ -777,6 +777,42 @@ None;
 
 ---
 
+# draw_reset_alpha
+
+Resets the alpha of the drawing. Sets the alpha of the drawing to 1.
+
+### Syntax
+
+```js
+draw_reset_alpha();
+```
+
+## Returns
+
+```js
+None;
+```
+
+---
+
+# draw_reset_color
+
+Resets the color of the drawing. Sets the color of the drawing to `c_white`.
+
+### Syntax
+
+```js
+draw_reset_color();
+```
+
+## Returns
+
+```js
+None;
+```
+
+---
+
 # draw_create_profile
 
 > [!NOTE]

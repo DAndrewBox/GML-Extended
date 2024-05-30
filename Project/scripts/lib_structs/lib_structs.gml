@@ -33,7 +33,7 @@ function struct_merge(_st_1, _st_2, _override = true) {
 
 /// @func	struct_key_exists(struct, key)
 /// @param	{any}	struct
-/// @param	{str}	key
+/// @param	{string}	key
 /// @desc	Return an array with all keys from a struct.
 function struct_key_exists(_struct, _key) {
 	return array_contains(struct_keys(_struct), _key);

@@ -1,5 +1,5 @@
 /// @func	json2yy(json)
-/// @param	{str}	json
+/// @param	{struct|array}	json
 function json2yy(_json) {
 	static _keys_number_to_bool = [
 		"inheritCode",

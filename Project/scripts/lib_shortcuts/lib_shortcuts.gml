@@ -1,6 +1,6 @@
 /// @func	del(object_index|id, exec_event);
-/// @param	{ref}	object_index|id
-/// @param	{bool}	exec_event
+/// @param	{Id.Instance|Asset.GMObject}	object_index|id
+/// @param	{bool}							exec_event
 /// @desc	A short way to destroy an element
 function del(_obj = id, _exec_ev = true) {
 	instance_destroy(_obj, _exec_ev);

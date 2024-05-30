@@ -10,7 +10,7 @@ function game_params() {
 }
 
 /// @func	game_get_param_value(param)
-/// @param	{str}	param
+/// @param	{string}	param
 /// @desc	Gets the value of a param.
 function game_get_param_value(_param) {
 	static _params_list = game_params();
@@ -24,7 +24,7 @@ function game_get_param_value(_param) {
 }
 
 /// @func	game_get_param_exists(param)
-/// @param	{str}	param
+/// @param	{string}	param
 /// @desc	Gets a bool telling if the param exists.
 function game_get_param_exists(_param) {
 	static _params_list = game_params();
@@ -32,7 +32,7 @@ function game_get_param_exists(_param) {
 }
 
 /// @func	game_throw_error(message)
-/// @param	{str}	message
+/// @param	{string}	message
 function game_throw_error(_msg) {
 	show_error($"Error: {_msg}", true);
 }
