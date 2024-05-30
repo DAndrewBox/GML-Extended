@@ -1,8 +1,7 @@
-
 /// @func	round_dec(x, decimals)
 /// @param	{real}	x
 /// @param	{real}	decimals
-/// @desc	Returns a rounded number with N decimal places.
+/// @desc	Returns a rounded number with N decimal places to the nearest tenth.
 function round_dec(_x, _dec = 0) {
 	var _n = power(10, _dec);
 	return round(_x * _n) / _n;
@@ -41,7 +40,8 @@ function choice_weighted(_values, _weights) {
 	
 	var _chance = random_linear(1);
 	var _acc = 0;
-	for (var i = 0; i < array_length(_values); i++) {
+	var _len = array_length(_values)
+	for (var i = 0; i < _len; i++) {
 		if (_chance <= (_weights[i] + _acc)) return _values[i];
 		_acc += _weights[i];
 	}
@@ -58,7 +58,7 @@ function range(_to, _from = 0, _step = 1) {
 	var _arr = [];
 	
 	if (_from > _to) {
-		for (var i = _to; i > _from; i -= _step) {
+		for (var i = _from; i >= _to; i -= _step) {
 			array_push(_arr, i);
 		}
 	} else {
@@ -75,21 +75,8 @@ function range(_to, _from = 0, _step = 1) {
 /// @param	{real}	min
 /// @param	{real}	max
 function wrap(_val, _min, _max) {
-	if (_min > _max) {
-		var _tmp = _max;
-		_max = _min;
-		_min = _tmp;
-	}
-	
-	while (_val < _min || _val > _max) {
-		if (_val > _max) {
-			_val -= (_max - _min);
-		} else if (_val < _min) {
-			_val += (_max - _min);
-		}
-	}
-	
-	return _val;
+	var _mod = ( _val - _min ) mod ( _max - _min );
+	if ( _mod < 0 ) return _mod + _max else return _mod + _min;
 }
 
 /// @func	random_linear(n)
@@ -104,7 +91,8 @@ function uuid_v4() {
 	var _uuid = md5_string_unicode(
 		string(
 			get_timer() * current_second * current_minute * current_hour * current_day * current_month
-		) + _config_data[? "udid"]
+		)
+		+ (_config_data[? "udid"] ?? now())
 		+ string(
 			_config_data[? "video_adapter_subsysid"]
 		)
@@ -112,4 +100,16 @@ function uuid_v4() {
 	ds_map_destroy(_config_data);
 	
 	return _uuid;
+}
+
+/// @func	percentage(current_value, 100%_value)
+/// @param	{real}	current_value
+/// @param	{real}	100%_value
+function percentage(_val, _max) {
+	if (!is_real(_val) || !is_real(_max)) {
+		trace($"(GML-Extended) - ERROR! On function \"percentage()\". \"current_value\" and/or \"100%_value\" are not numbers.");
+		return 0;
+	}
+	
+	return round_dec(100 * (_val / _max), 2);
 }

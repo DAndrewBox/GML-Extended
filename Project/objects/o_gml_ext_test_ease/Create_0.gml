@@ -34,8 +34,9 @@ callbacks = [
 	"easeInOutBounce"
 ];
 
-for (var i = 0; i < size(callbacks); i++) {
+var _callbacks_len = get_size(callbacks);
+for (var i = 0; i < _callbacks_len; i++) {
 	callbacks[i] = asset_get_index("anim_" + callbacks[i]);
 }
 
-unix_timestamp_format(now());
+surf_lines = -1;

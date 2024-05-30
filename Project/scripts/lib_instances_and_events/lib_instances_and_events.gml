@@ -6,7 +6,7 @@
 /// @param	{any}	params
 function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 	var _callback =
-		typeof(_depth_or_layer) == "string"
+		typeof(_depth_or_layer) == gm_type_string
 		? instance_create_layer
 		: instance_create_depth;
 		

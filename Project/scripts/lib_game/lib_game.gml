@@ -2,10 +2,9 @@
 /// @desc	Gets launch parameters.
 function game_params() {
 	static _param_count = parameter_count();
-	var _param_list = [];
-	for (var i = 0; i < _param_count; i++) {
-		array_push(_param_list, parameter_string(i));
-	}
+	static _param_list = array_create_ext(_param_count, function (i) {
+		return parameter_string(i);
+	});
 	
 	return _param_list;
 }
@@ -35,5 +34,5 @@ function game_get_param_exists(_param) {
 /// @func	game_throw_error(message)
 /// @param	{str}	message
 function game_throw_error(_msg) {
-	show_error(string("Error: {0}", _msg), true);
+	show_error($"Error: {_msg}", true);
 }
