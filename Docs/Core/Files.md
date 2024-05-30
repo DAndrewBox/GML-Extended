@@ -5,8 +5,7 @@
 - [file_text_read_whole](#file_text_read_whole)
 - [file_json_read](#file_json_read)
 - [file_text_get_lines_array](#file_text_get_lines_array)
-- [json2file](#json2file)
-- [json2yy](#json2yy)
+- [file_json_create](#file_json_create)
 
 ---
 
@@ -112,14 +111,14 @@ The above code will set the var `_lines` as an array of the whole file and the s
 
 ---
 
-# json2file
+# file_json_create
 
 Create a file with the contents of a struct. The filename must have the extension `.json`. If the file already exists, it will be overwritten.
 
 ### Syntax
 
 ```js
-json2file(filename, struct, [iteration]);
+file_json_create(filename, struct, [iteration]);
 ```
 
 | Argument  |  Type   | Description                                                                                          |
@@ -147,25 +146,3 @@ show_debug_message("File content: " + _str);
 ```
 
 The above code will create a file called `my_file.json` with the contents of the struct and the show on console the GM struct.
-
----
-
-# json2yy
-
-Transforms a JSON input into a YY string used by GameMaker. Thise function is not recommended to be used directly if not modifying GameMaker's .YY files.
-
-### Syntax
-
-```js
-json2yy(json);
-```
-
-| Argument |  Type  | Description |
-| :------- | :----: | :---------- |
-| json     | String | The JSON    |
-
-### Returns
-
-```js
-String;
-```

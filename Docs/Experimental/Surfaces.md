@@ -1,5 +1,8 @@
 # Surfaces
 
+> [!WARNING]
+> This is an experimental feature. This functions are subject to change. Use at your own risk.
+
 This is a new way to work with Surfaces as objects. It is still in development and not all features are implemented yet. The goal is to make it easier to work with surfaces.
 
 To create a new surface object, you should use `surf = new Surface(width, height, [name])` (`name` parameter is optional).

@@ -1,3 +1,11 @@
+#region // Definitions
+#macro	current_draw_alpha	draw_get_alpha()
+#macro	current_draw_color	draw_get_color()
+#macro	current_draw_halign	draw_get_halign()
+#macro	current_draw_valign	draw_get_valign()
+#macro	current_draw_font	draw_get_font()
+#endregion
+
 ///@func	draw_self_ext(sprite, index, x, y, xscale, yscale, rot, col, alpha)
 ///@param	{real}	sprite
 ///@param	{real}	index
@@ -271,4 +279,85 @@ function draw_set_depth(_depth) {
 /// @func	draw_reset_depth()
 function draw_reset_depth() {
 	gpu_set_depth(depth);
+}
+
+/// @func	draw_reset()
+function draw_reset() {
+	draw_reset_blendmode();
+	draw_reset_depth();
+	draw_set_alpha(1);
+	draw_set_color(c_white);
+	draw_set_align(fa_left, fa_top);
+}
+
+/// @func	draw_create_profile(profile_name, alpha, color, font, halign, valign, depth, blendmode)
+/// @param	{str}	profile_name
+/// @param	{real}	alpha
+/// @param	{real}	color
+/// @param	{real}	font
+/// @param	{real}	halign
+/// @param	{real}	valign
+/// @param	{real}	depth
+/// @param	{real|array}	blendmode
+function draw_create_profile(_name, _alpha = undefined, _color = undefined, _font = undefined, _halign = undefined, _valign = undefined, _depth = undefined, _blendmode = undefined) {
+	if (!variable_global_exists("__gml_ext_draw_profiles")) {
+		variable_global_set("__gml_ext_draw_profiles", {});
+	}
+	
+	if (!is_string(_name)) {
+		trace($"(GML-Extended) ERROR! - On function draw_add_profile(). Name \"{_name}\" is not a string.");
+		return;
+	}
+	
+	global.__gml_ext_draw_profiles[$ _name] = {
+		alpha:	_alpha,
+		color:	_color,
+		font:	_font,
+		hAlign:	_halign,
+		vAlign:	_valign,
+		depth:	_depth,
+		blendmode:	_blendmode
+	}
+}
+
+/// @func	draw_set_profile(profile_name)
+/// @param	{str}	profile_name
+function draw_set_profile(_name) {
+	if (!variable_global_exists("__gml_ext_draw_profiles")) {
+		trace("(GML-Extended) ERROR! - On function draw_set_profile(). No profiles created, please use draw_create_profile() first.");
+		return;
+	}
+	
+	if (is_undefined(global.__gml_ext_draw_profiles[$ _name])) {
+		trace($"(GML-Extended) ERROR! - On function draw_set_profile(). Profile with name \"{_name}\" does not exists.");
+		return;
+	}
+	
+	static _props = [
+		"alpha",
+		"color",
+		"font",
+		"hAlign",
+		"vAlign",
+		"depth",
+		"blendmode",
+	];
+	static _props_callbacks = [
+		draw_set_alpha,
+		draw_set_color,
+		draw_set_font,
+		draw_set_halign,
+		draw_set_valign,
+		draw_set_depth,
+		draw_set_blendmode,
+	];
+	static _props_size = get_size(_props);
+	var _profile = global.__gml_ext_draw_profiles[$ _name];
+
+	for (var i = 0; i < _props_size; i++) {
+		var _value = _profile[$ _props[i]];
+		if (!is_undefined(_value)) {
+			script_execute_ext(_props_callbacks[i], is_array(_value) ? _value : [_value]);
+		}
+	}
 }

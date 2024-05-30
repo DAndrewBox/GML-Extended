@@ -11,6 +11,7 @@
 - [wrap](#wrap)
 - [random_linear](#random_linear)
 - [uuid_v4](#uuid_v4)
+- [percentage](#percentage)
 
 ---
 
@@ -335,3 +336,35 @@ show_debug_message("UUID: " + _uuid);
 The above code will return a random UUID v4. Then it will show the UUID on console.
 
 ---
+
+# percentage
+
+Returns the percentage of the given values.
+
+### Syntax
+
+```js
+percentage(current_value, total_value);
+```
+
+| Argument      | Type | Description                |
+| :------------ | :--: | :------------------------- |
+| current_value | Real | The current value          |
+| total_value   | Real | The total value to compare |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _current = 50;
+var _total = 100;
+
+show_debug_message("Percentage: " + string(percentage(_current, _total)) + "%");
+```
+
+The above code will return the percentage of the `_current` value compared to the `_total` value. Then it will show the percentage on console. The output will be `Percentage: 50%`.

@@ -7,16 +7,15 @@ Easing animations are hard to explain just with code. So I'll try to explain it 
 ## Syntax
 
 ```js
-anim_{ease_name} (value, min, max);
+anim_{ease_name}(value, factor);
 ```
 
 ### Arguments
 
-| Argument | Description                                      |
-| -------- | ------------------------------------------------ |
-| value    | The value to animate.                            |
-| min      | The minimum value of the animation. (Default: 0) |
-| max      | The maximum value of the animation. (Default: 1) |
+| Argument | Description                               |
+| -------- | ----------------------------------------- |
+| value    | The value to animate.                     |
+| factor   | The factor of the animation. (Default: 1) |
 
 ### Animation Scripts
 

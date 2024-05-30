@@ -8,6 +8,8 @@
 - [unix_to_datetime](#unix_to_datetime)
 - [datetime_get_timestamp](#datetime_get_timestamp)
 - [time_performance](#time_performance)
+- [current_week](#current_week)
+- [current_day_of_year](#current_day_of_year)
 
 ---
 
@@ -233,3 +235,57 @@ time_performance(
 ```
 
 The above code will test the performance of the `unix_timestamp` function 1000 times on your machine.
+
+---
+
+# current_week
+
+Returns the current week of the year.
+
+### Syntax
+
+```js
+current_week();
+```
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _week = current_week();
+show_debug_message($"Game version: v1.2024.{_week}");
+```
+
+The above code will return the current week of the year and show a message with the game version based on the week.
+
+---
+
+# current_day_of_year
+
+Returns the current day of the year.
+
+### Syntax
+
+```js
+current_day_of_year();
+```
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _day = current_day_of_year();
+show_debug_message($"Today is day {_day} of the year.");
+```
+
+The above code will return the current day of the year and show a message with the day.

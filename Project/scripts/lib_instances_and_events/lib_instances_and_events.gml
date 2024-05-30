@@ -2,13 +2,14 @@
 /// @param	{real}	x
 /// @param	{real}	y
 /// @param	{real}	object_index
-/// @param	{any}	depth|layer_name
+/// @param	{real|str}	depth|layer_name
 /// @param	{any}	params
 function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
-	var _callback =
+	var _callback = (
 		typeof(_depth_or_layer) == gm_type_string
 		? instance_create_layer
-		: instance_create_depth;
+		: instance_create_depth
+	);
 		
 	var _inst = _callback(_x, _y, _depth_or_layer, _obj, _params);
 	delete _params;

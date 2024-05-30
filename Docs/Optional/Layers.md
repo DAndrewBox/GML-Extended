@@ -2,7 +2,24 @@
 
 ### Table of Contents
 
+- [macros](#macros)
 - [layer_get_element_ids_fixed](#layer_get_element_ids_fixed)
+- [layer_get_background](#layer_get_background)
+- [layer_get_tileset](#layer_get_tileset)
+
+# macros
+
+| Macro                              | Description                                                                         | Value                           |
+| :--------------------------------- | :---------------------------------------------------------------------------------- | :------------------------------ |
+| layer_element_type_background      | The layer element type for backgrounds                                              | layerelementtype_background     |
+| layer_element_type_instance        | The layer element type for instances                                                | layerelementtype_instance       |
+| layer_element_type_sprite          | The layer element type for sprites                                                  | layerelementtype_sprite         |
+| layer_element_type_tilemap         | The layer element type for tilemaps                                                 | layerelementtype_tilemap        |
+| layer_element_type_particle_system | The layer element type for particle systems                                         | layerelementtype_particlesystem |
+| layer_element_type_sequence        | The layer element type for sequences                                                | layerelementtype_sequence       |
+| layer_element_type_undefined       | The layer element type for undefined                                                | layerelementtype_undefined      |
+| layer_element_type_tile            | The layer element type for tiles. Used only on projects imported from GM:S 1        | layerelementtype_tile           |
+| layer_element_type_tilemap_old     | The layer element type for old tilemaps. Used only on projects imported from GM:S 1 | layerelementtype_oldtilemap     |
 
 ---
 
@@ -39,3 +56,69 @@ var _layer_element_ids = layer_get_element_ids_fixed(
 ```
 
 The above code will show on console the keys and values of the struct.
+
+---
+
+# layer_get_background
+
+A way to get the background of a layer using the ID or the name. This only serves to simplify the process of getting the background of a layer with multiple functions and different variables storing the ids on every step.
+
+### Syntax
+
+```js
+layer_get_background(layer_id | layer_name);
+```
+
+| Argument            |    Type     | Description                                                |
+| :------------------ | :---------: | :--------------------------------------------------------- |
+| layer_id/layer_name | Real/String | The layer id or the layer name to get the background from. |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _layer_id = layer_create();
+layer_background_create(_layer_id, "background_name");
+
+var _layer_background = layer_get_background(_layer_id);
+```
+
+The above code will return the background id of the layer.
+
+---
+
+# layer_get_tileset
+
+A way to get the tileset of a layer using the ID or the name. This only serves to simplify the process of getting the tileset of a layer with multiple functions and different variables storing the ids on every step.
+
+### Syntax
+
+```js
+layer_get_tileset(layer_id | layer_name);
+```
+
+| Argument            |    Type     | Description                                             |
+| :------------------ | :---------: | :------------------------------------------------------ |
+| layer_id/layer_name | Real/String | The layer id or the layer name to get the tileset from. |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _layer_id = layer_create();
+layer_tilemap_create(_layer_id, "tileset_name");
+
+var _layer_tileset = layer_get_tileset(_layer_id);
+```
+
+The above code will return the tileset id of the layer.

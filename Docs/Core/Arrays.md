@@ -9,7 +9,6 @@
 - [array_to_ds_list](#array_to_ds_list)
 - [ds_list_to_array](#ds_list_to_array)
 - [array_to_struct](#array_to_struct)
-- [array_write](#array_write)
 - [array_shuffle](#array_shuffle)
 
 ---
@@ -246,38 +245,6 @@ The above code will show
   2: [0, 2]
 }`
 since those are tha values of the array converted into an struct.
-
----
-
-# array_write
-
-Returns an string of the array. If there are strings on the array, they will have be formatted as `"10"`, but numbers will be formatted as `10`.
-
-### Syntax
-
-```js
-array_write(array);
-```
-
-| Argument | Type  | Description        |
-| :------- | :---: | :----------------- |
-| array    | array | The array to write |
-
-### Returns
-
-```js
-String;
-```
-
-### Example
-
-```js
-var _array = ["a", 1, 3, 4];
-var _string = array_write(_array);
-show_debug_message(_string);
-```
-
-The above code will show `["a", 1, 3, 4]`.
 
 ---
 
