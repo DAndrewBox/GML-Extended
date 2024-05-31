@@ -22,6 +22,8 @@
 - [surface_clear](#surface_clear)
 - [draw_set_depth](#draw_set_depth)
 - [draw_reset_depth](#draw_reset_depth)
+- [draw_reset_alpha](#draw_reset_alpha)
+- [draw_reset_color](#draw_reset_color)
 - [draw_create_profile](#draw_create_profile)
 - [draw_set_profile](#draw_set_profile)
 
@@ -727,6 +729,9 @@ The above code will clear the surface with the specified color and alpha. The su
 
 # draw_set_depth
 
+> [!WARNING]
+> This function will only work on GameMaker versions 2023.8+. Version before this will not work and will show a message in console instead.
+
 Sets the depth of the drawing. The depth is used to determine the order in which the objects are drawn. The objects with a higher depth are drawn on top of the objects with a lower depth.
 
 ### Syntax
@@ -760,6 +765,9 @@ The above code will draw 2 sprites with the specified position and depth. The fi
 ---
 
 # draw_reset_depth
+
+> [!WARNING]
+> This function will only work on GameMaker versions 2023.8+. Version before this will not work and will show a message in console instead.
 
 Resets the depth of the drawing. The depth is used to determine the order in which the objects are drawn. The objects with a higher depth are drawn on top of the objects with a lower depth.
 

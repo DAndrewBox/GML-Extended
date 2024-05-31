@@ -93,7 +93,7 @@ function alert() {
 	for (var i = 0; i < argument_count; i++) {
 		_args[i] = argument[i];
 	}
-	script_execute_ext(show_message, _args);
+	script_execute_ext(show_message, [_args]);
 }
 
 /// @func	alert_async(*args)

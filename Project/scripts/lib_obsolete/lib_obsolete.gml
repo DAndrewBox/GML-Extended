@@ -69,3 +69,5 @@ function array_write(_array) {
 	__obsolete_trace("array_write", "string(array)");
 	return string(_array);
 }
+
+alert("time_source_units_frames: ", time_source_units_frames, "time_source_units_seconds: ", time_source_units_seconds)
