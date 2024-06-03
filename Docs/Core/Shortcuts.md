@@ -3,7 +3,8 @@
 ### Table of Contents
 
 - [del](#del)
-- [size](#get_size)
+- [get_size](#get_size)
+- [contains](#contains)
 - [trace](#trace)
 - [alert](#alert)
 - [alert_async](#alert_async)
@@ -42,17 +43,21 @@ The above code will delete the player and execute the destroy event of the objec
 
 # get_size
 
+> [!NOTE]
+> Since GML-Extended version 1.5.0 can receive a second argument to specify the type of the element. This was added so you can get size of data structs (ds_list, ds_map, ds_grid, etc).
+
 Returns the size or length of the element. If the element is an array, it will return the length of the array. If the element is a string, it will return the length of the string. If the element is a struct, it will return the number of variables in the struct. If the element is a real, it will return the length of a string of the value.
 
 ### Syntax
 
 ```js
-get_size(element);
+get_size(element, [type]);
 ```
 
 | Argument |                Type                 | Description                    |
 | :------- | :---------------------------------: | :----------------------------- |
 | element  | Real, String, Bool, Array or Struct | The element to get the size of |
+| type     |             `gm_type_*`             | The type of the element        |
 
 ### Returns
 
@@ -84,6 +89,46 @@ String size: 12
 Struct size: 3
 Real size: 3
 ```
+
+---
+
+# contains
+
+Checks if an element is inside a container. Serves as a shortcut for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
+
+### Syntax
+
+```js
+contains(element, container, [container_type]);
+```
+
+| Argument       |                Type                 | Description                                 |
+| :------------- | :---------------------------------: | :------------------------------------------ |
+| element        | Real, String, Bool, Array or Struct | The element to check if it's inside         |
+| container      | Real, String, Bool, Array or Struct | The container to check if the element is in |
+| container_type |             `gm_type_*`             | The type of the container                   |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _array = [0, 1, 2, 3];
+var _string = "Hello World!";
+var _struct = { a: 0, b: 1, c: 2 };
+var _real = 123;
+
+show_debug_message("Array contains 2: " + string(contains(2, _array)));
+show_debug_message("String contains 'World': " + string(contains("World", _string)));
+show_debug_message("Struct contains 'b': " + string(contains("b", _struct)));
+show_debug_message("Real contains 3: " + string(contains(3, _real)));
+```
+
+The above code will check if the element is inside the container. If it is, it will return the index of the element in the container. If it's not, it will return -1.
 
 ---
 

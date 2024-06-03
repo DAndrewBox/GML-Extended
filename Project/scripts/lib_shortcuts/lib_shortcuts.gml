@@ -45,12 +45,12 @@ function contains(_elem, _container) {
 	var _container_type = typeof(_container);
 	
 	if (is_type(_elem, _forbidden_elem_types)) {
-		trace($"(GML-Extended) - WARNING! On function \"contains()\" {_elem} is type {_elem_type} and cannot be search in {_container}.");
+		trace("(GML-Extended) - WARNING! On function \"contains()\" ", _elem, " is type ", _elem_type, " and cannot be search in ", _container, ".");
 		return false;
 	}
 	
 	if (is_type(_container, _forbidden_container_types)) {
-		trace($"(GML-Extended) - WARNING! On function \"contains()\" {_container} is type {_container_type} and cannot be used to be searched.");
+		trace("(GML-Extended) - WARNING! On function \"contains()\" ", _container, " is type ", _container_type, " and cannot be used to be searched.");
 		return false;
 	}
 	
@@ -64,13 +64,13 @@ function contains(_elem, _container) {
 			return contains(string(_elem), string(_container));
 			
 		case gm_type_array:
-			return array_contains(_container, _elem);
+			return __gml_ext_comp_array_contains(_container, _elem);
 			
 		case gm_type_struct:
 			return struct_key_exists(_container, string(_elem));
 	}
 	
-	trace($"(GML-Extended) - ERROR! On function \"contains()\". This is unexpected and shouldn't happen.");
+	trace("(GML-Extended) - ERROR! On function \"contains()\". This is unexpected and shouldn't happen.");
 	return false;
 }
 
@@ -93,7 +93,7 @@ function alert() {
 	for (var i = 0; i < argument_count; i++) {
 		_args[i] = argument[i];
 	}
-	script_execute_ext(show_message, [_args]);
+	script_execute_ext(show_message, _args);
 }
 
 /// @func	alert_async(*args)

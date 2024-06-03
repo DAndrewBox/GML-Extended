@@ -187,7 +187,9 @@ function draw_text_shadow(_x, _y, _string, _shadow_xoff = 1, _shadow_yoff = 1, _
 /// @param	{real}	size
 /// @desc	Draws a text scaled by font size. Read documentation to make this work properly.
 function draw_text_size(_x, _y, _string, _font_size) {
-	var _scale = _font_size / font_get_size(draw_get_font());
+	var _font = draw_get_font();
+	var _font_max_size = _font ? font_get_size(_font) : 16;
+	var _scale = _font_size / _font_max_size;
 	
 	draw_text_transformed(_x, _y, _string, _scale, _scale, 0);
 }
@@ -198,7 +200,7 @@ function draw_text_size(_x, _y, _string, _font_size) {
 /// @desc	Draws game fps.
 function draw_fps(_x, _y) {
 	static _game_speed = game_get_speed(gamespeed_fps);
-	draw_text(_x, _y, $"{fps}/{_game_speed} FPS");
+	draw_text(_x, _y, __gml_ext_comp_string_ext("{0}/{1} FPS", [fps, _game_speed]));
 }
 
 /// @func draw_fps_real(x, y)
@@ -206,7 +208,7 @@ function draw_fps(_x, _y) {
 /// @param	{real}	y
 /// @desc	Draws game real fps.
 function draw_fps_real(_x, _y) {
-	draw_text(_x, _y, $"{fps_real} RFPS");
+	draw_text(_x, _y, __gml_ext_comp_string_ext("{0} RFPS", [fps_real]));
 }
 
 /// @func	draw_set_align(halign, valign)
@@ -273,12 +275,30 @@ function surface_clear(_col = c_black, _alpha = .0) {
 /// @func	draw_set_depth(depth)
 /// @param	{real}	depth
 function draw_set_depth(_depth) {
-	gpu_set_depth(_depth);
+	static _warn_msg = false;
+	if (GM_VERSION_IS_2022 || GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor < 8) {
+		if (!_warn_msg) {
+			trace("(GML-Extended) WARN - On function \"draw_set_depth\". Not available before GM_VERSION 2023.8");
+			_warn_msg = true;
+		}
+		return;
+	}
+	
+	script_execute(gpu_set_depth, _depth);
 }
 
 /// @func	draw_reset_depth()
 function draw_reset_depth() {
-	gpu_set_depth(depth);
+	static _warn_msg = false;
+	if (GM_VERSION_IS_2022 || GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor < 8) {
+		if (!_warn_msg) {
+			trace("(GML-Extended) WARN - On function \"draw_reset_depth\". Not available before GM_VERSION 2023.8");
+			_warn_msg = true;
+		}
+		return;
+	}
+	
+	script_execute(gpu_set_depth, depth);
 }
 
 /// @func	draw_reset_alpha()
@@ -315,7 +335,11 @@ function draw_create_profile(_name, _alpha = undefined, _color = undefined, _fon
 	}
 	
 	if (!is_string(_name)) {
-		trace($"(GML-Extended) ERROR! - On function draw_add_profile(). Name \"{_name}\" is not a string.");
+		static _error_msg = false;
+		if (!_error_msg) {
+			trace("(GML-Extended) ERROR! - On function draw_add_profile(). Name \"", _name, "\" is not a string.");
+			_error_msg = true;
+		}
 		return;
 	}
 	
@@ -334,12 +358,20 @@ function draw_create_profile(_name, _alpha = undefined, _color = undefined, _fon
 /// @param	{string}	profile_name
 function draw_set_profile(_name) {
 	if (!variable_global_exists("__gml_ext_draw_profiles")) {
-		trace("(GML-Extended) ERROR! - On function draw_set_profile(). No profiles created, please use draw_create_profile() first.");
+		static _error_msg_1 = false;
+		if (!_error_msg_1) {
+			trace("(GML-Extended) ERROR! - On function draw_set_profile(). No profiles created, please use draw_create_profile() first.");
+			_error_msg_1 = true;
+		}
 		return;
 	}
 	
 	if (is_undefined(global.__gml_ext_draw_profiles[$ _name])) {
-		trace($"(GML-Extended) ERROR! - On function draw_set_profile(). Profile with name \"{_name}\" does not exists.");
+		static _error_msg_2 = false;
+		if (!_error_msg_2) {
+			trace("(GML-Extended) ERROR! - On function draw_set_profile(). Profile with name \"", _name, "\" does not exists.");
+			_error_msg_2 = true;
+		}
 		return;
 	}
 	
