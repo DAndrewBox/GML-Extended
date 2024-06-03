@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"test_lib_arrays",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"test_lib_arrays",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Libraries/GML-Extended/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

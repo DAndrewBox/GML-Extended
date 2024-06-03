@@ -1,5 +1,8 @@
 # Shaders
 
+> [!WARNING]
+> This is an experimental feature. This functions are subject to change. Use at your own risk.
+
 ### Table of Contents
 
 - [shader_set_ext](#shader_set_ext)

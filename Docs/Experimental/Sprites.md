@@ -1,5 +1,8 @@
 # Sprites
 
+> [!WARNING]
+> This is an experimental feature. This functions are subject to change. Use at your own risk.
+
 This is a new Sprites struct type that allows to work with sprites in a more convenient way.
 
 To create a new sprite object, you should use `sprite_var = new Sprite(sprite_id)`.

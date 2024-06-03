@@ -2,25 +2,14 @@
 
 ### Table of Contents
 
-- [macros](#macros)
 - [del](#del)
-- [size](#get_size)
+- [get_size](#get_size)
+- [contains](#contains)
 - [trace](#trace)
 - [alert](#alert)
 - [alert_async](#alert_async)
 - [view_get_x](#view_get_x)
 - [view_get_y](#view_get_y)
-- [gui_mouse_x](#gui_mouse_x)
-- [gui_mouse_y](#gui_mouse_y)
-- [gui_width](#gui_width)
-- [gui_height](#gui_height)
-- [int](#int)
-
-# Macros
-
-| Name | Description                       |
-| :--- | :-------------------------------- |
-| str  | Serves as a shortcut for `string` |
 
 # del
 
@@ -54,17 +43,21 @@ The above code will delete the player and execute the destroy event of the objec
 
 # get_size
 
+> [!NOTE]
+> Since GML-Extended version 1.5.0 can receive a second argument to specify the type of the element. This was added so you can get size of data structs (ds_list, ds_map, ds_grid, etc).
+
 Returns the size or length of the element. If the element is an array, it will return the length of the array. If the element is a string, it will return the length of the string. If the element is a struct, it will return the number of variables in the struct. If the element is a real, it will return the length of a string of the value.
 
 ### Syntax
 
 ```js
-get_size(element);
+get_size(element, [type]);
 ```
 
 | Argument |                Type                 | Description                    |
 | :------- | :---------------------------------: | :----------------------------- |
 | element  | Real, String, Bool, Array or Struct | The element to get the size of |
+| type     |             `gm_type_*`             | The type of the element        |
 
 ### Returns
 
@@ -96,6 +89,46 @@ String size: 12
 Struct size: 3
 Real size: 3
 ```
+
+---
+
+# contains
+
+Checks if an element is inside a container. Serves as a shortcut for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
+
+### Syntax
+
+```js
+contains(element, container, [container_type]);
+```
+
+| Argument       |                Type                 | Description                                 |
+| :------------- | :---------------------------------: | :------------------------------------------ |
+| element        | Real, String, Bool, Array or Struct | The element to check if it's inside         |
+| container      | Real, String, Bool, Array or Struct | The container to check if the element is in |
+| container_type |             `gm_type_*`             | The type of the container                   |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _array = [0, 1, 2, 3];
+var _string = "Hello World!";
+var _struct = { a: 0, b: 1, c: 2 };
+var _real = 123;
+
+show_debug_message("Array contains 2: " + string(contains(2, _array)));
+show_debug_message("String contains 'World': " + string(contains("World", _string)));
+show_debug_message("Struct contains 'b': " + string(contains("b", _struct)));
+show_debug_message("Real contains 3: " + string(contains(3, _real)));
+```
+
+The above code will check if the element is inside the container. If it is, it will return the index of the element in the container. If it's not, it will return -1.
 
 ---
 
@@ -256,157 +289,3 @@ show_debug_message("View Y: " + string(_vw_y));
 ```
 
 The above code will get the X and Y position of the current view and print them to the console.
-
----
-
-# gui_mouse_x
-
-Gets the X position of the mouse relative to the GUI. Serves as a shortcut for `device_mouse_x_to_gui(0)`.
-
-### Syntax
-
-```js
-gui_mouse_x();
-```
-
-### Returns
-
-```js
-Real;
-```
-
-### Example
-
-```js
-var _mouse_x = gui_mouse_x();
-var _mouse_y = gui_mouse_y();
-
-show_debug_message("Mouse X: " + string(_mouse_x));
-show_debug_message("Mouse Y: " + string(_mouse_y));
-```
-
-The above code will get the X and Y position of the mouse relative to the GUI and print them to the console.
-
----
-
-# gui_mouse_y
-
-Gets the Y position of the mouse relative to the GUI. Serves as a shortcut for `device_mouse_y_to_gui(0)`.
-
-### Syntax
-
-```js
-gui_mouse_y();
-```
-
-### Returns
-
-```js
-Real;
-```
-
-### Example
-
-```js
-var _mouse_x = gui_mouse_x();
-var _mouse_y = gui_mouse_y();
-
-show_debug_message("Mouse X: " + string(_mouse_x));
-show_debug_message("Mouse Y: " + string(_mouse_y));
-```
-
-The above code will get the X and Y position of the mouse relative to the GUI and print them to the console.
-
----
-
-# gui_width
-
-Gets the width of the GUI. Serves as a shortcut for `display_get_gui_width()`.
-
-### Syntax
-
-```js
-gui_width();
-```
-
-### Returns
-
-```js
-Real;
-```
-
-### Example
-
-```js
-var _display_gui_width = gui_width();
-var _display_gui_height = gui_height();
-
-show_debug_message("GUI Width: " + string(_display_gui_width));
-show_debug_message("GUI Height: " + string(_display_gui_height));
-```
-
-The above code will get the width and height of the GUI and print them to the console.
-
----
-
-# gui_height
-
-Gets the width of the GUI. Serves as a shortcut for `display_get_gui_height()`.
-
-### Syntax
-
-```js
-gui_height();
-```
-
-### Returns
-
-```js
-Real;
-```
-
-### Example
-
-```js
-var _display_gui_width = gui_width();
-var _display_gui_height = gui_height();
-
-show_debug_message("GUI Width: " + string(_display_gui_width));
-show_debug_message("GUI Height: " + string(_display_gui_height));
-```
-
-The above code will get the width and height of the GUI and print them to the console.
-
----
-
-# int
-
-Converts the argument passed as argument to an integer. Serves as a shortcut for `floor(real(value))`.
-
-### Syntax
-
-```js
-int(argument);
-```
-
-| Argument | Type | Description        |
-| :------- | :--: | :----------------- |
-| value    | Real | The value to round |
-
-### Returns
-
-```js
-Real;
-```
-
-### Example
-
-```js
-var _real = 1.5;
-var _int = int(_real);
-
-show_debug_message("Real: " + string(_real));
-show_debug_message("Int: " + string(_int));
-```
-
-The above code will round the real number 1.5 to 1 and print both the real and the integer to the console.

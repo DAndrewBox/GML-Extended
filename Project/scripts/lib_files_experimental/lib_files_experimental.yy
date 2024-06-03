@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"lib_files_experimental",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"lib_files_experimental",
+  "parent":{
+    "name":"Experimental",
+    "path":"folders/Libraries/GML-Extended/Functions/Experimental.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -2,6 +2,7 @@
 
 ### Table of Contents
 
+- [macros](#macros)
 - [draw_self_ext](#draw_self_ext)
 - [draw_figure](#draw_figure)
 - [draw_quad](#draw_quad)
@@ -14,8 +15,29 @@
 - [draw_fps_real](#draw_fps_real)
 - [draw_set_align](#draw_set_align)
 - [gpu_set_alpha_overwrite](#gpu_set_alpha_overwrite)
+- [draw_surface_from_center](#draw_surface_from_center)
+- [draw_set_gui_scale](#draw_set_gui_scale)
+- [draw_set_blendmode](#draw_set_blendmode)
+- [draw_reset_blendmode](#draw_reset_blendmode)
+- [surface_clear](#surface_clear)
+- [draw_set_depth](#draw_set_depth)
+- [draw_reset_depth](#draw_reset_depth)
+- [draw_reset_alpha](#draw_reset_alpha)
+- [draw_reset_color](#draw_reset_color)
+- [draw_create_profile](#draw_create_profile)
+- [draw_set_profile](#draw_set_profile)
 
 ---
+
+# macros
+
+| Macro               |       Value       | Description                      |
+| :------------------ | :---------------: | :------------------------------- |
+| current_draw_alpha  | draw_get_alpha()  | The current alpha of the drawing |
+| current_draw_color  | draw_get_color()  | The current color of the drawing |
+| current_draw_font   |  draw_get_font()  | The current font of the drawing  |
+| current_draw_halign | draw_get_halign() | The current horizontal alignment |
+| current_draw_valign | draw_get_valign() | The current vertical alignment   |
 
 # draw_self_ext
 
@@ -522,3 +544,395 @@ draw_text(x, y, "Hello World!");
 ```
 
 The above code will draw a rectangle and a text with the specified position and color, then it will draw a rectangle and a text with the specified position and color, but the alpha channel of the color will be ignored and the alpha channel of the texture will be used instead.
+
+---
+
+# draw_surface_from_center
+
+Draws a surface on the specified position from the center of the surface. The surface is drawn with the specified scale, rotation, color and alpha.
+
+### Syntax
+
+```js
+draw_surface_from_center(
+  surface,
+  x,
+  y,
+  [xscale],
+  [yscale],
+  [rot],
+  [color],
+  [alpha]
+);
+```
+
+| Argument |  Type   | Description                                 |
+| :------- | :-----: | :------------------------------------------ |
+| surface  | Surface | The surface to be drawn                     |
+| x        |  Real   | The x position of the surface               |
+| y        |  Real   | The y position of the surface               |
+| xscale   |  Real   | The x scale of the surface (Default: 1)     |
+| yscale   |  Real   | The y scale of the surface (Default: 1)     |
+| rot      |  Real   | The rotation of the surface (Default: 0)    |
+| color    |  Real   | The color of the surface (Default: c_white) |
+| alpha    |  Real   | The alpha of the surface (Default: 1)       |
+
+## Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+draw_surface_from_center(surf, x, y, 2, 2, 45, c_white, 0.5);
+```
+
+The above code will draw a surface with the specified position, scale, rotation, color and alpha. The surface will be drawn from the center of the surface.
+
+---
+
+# draw_set_gui_scale
+
+Sets the GUI scale of the game. The GUI scale is used to scale the GUI elements of the game. The GUI scale is a multiplier that is applied to the GUI elements of the game. After setting the GUI scale, all the GUI elements of the game will be scaled by the specified scale. You should reset the GUI scale after drawing the GUI elements to avoid scaling other elements of the game.
+
+### Syntax
+
+```js
+draw_set_gui_scale(scale);
+```
+
+| Argument | Type | Description          |
+| :------- | :--: | :------------------- |
+| scale    | Real | The scale of the GUI |
+
+## Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+draw_set_gui_scale(2);
+
+draw_text(0, 0, "Hello World!");
+
+draw_set_gui_scale(1);
+```
+
+The above code will draw a text with the specified position and scale. The text will be drawn with a scale of 2.
+
+---
+
+# draw_set_blendmode
+
+Sets the blend mode of the game. Is a replacement for the `gpu_set_blendmode` and `gpu_set_blendmode_ext` functions.
+
+### Syntax
+
+```js
+draw_set_blendmode(mode_src, [mode_dest]);
+```
+
+| Argument  | Type | Description                |
+| :-------- | :--: | :------------------------- |
+| mode_src  | Real | The source blend mode      |
+| mode_dest | Real | The destination blend mode |
+
+## Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+draw_set_blendmode(bm_add);
+
+draw_text(0, 0, "Hello World!");
+
+draw_reset_blendmode();
+```
+
+The above code will draw a text with the specified position and blend mode. The text will be drawn with the add blend mode.
+
+---
+
+# draw_reset_blendmode
+
+Resets the blend mode of the game. Is a replacement for the `gpu_set_blendmode(bm_normal)` function.
+
+### Syntax
+
+```js
+draw_reset_blendmode();
+```
+
+## Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+draw_set_blendmode(bm_add);
+
+draw_text(0, 0, "Hello World!");
+
+draw_reset_blendmode();
+```
+
+The above code will draw a text with the specified position and blend mode. The text will be drawn with the add blend mode, then the blend mode will be reset to the normal blend mode.
+
+---
+
+# surface_clear
+
+Clears the surface with the specified color and alpha. It's a replacement for the `draw_clear` and `draw_clear_alpha` function.
+
+### Syntax
+
+```js
+surface_clear(color, [alpha]);
+```
+
+| Argument | Type | Description              |
+| :------- | :--: | :----------------------- |
+| color    | Real | The color of the surface |
+| alpha    | Real | The alpha of the surface |
+
+## Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+surface_set_target(surf);
+surface_clear(c_black, 0.5);
+
+draw_text(0, 0, "Hello World!");
+surface_reset_target();
+```
+
+The above code will clear the surface with the specified color and alpha. The surface will be cleared with a black color and an alpha of 0.5.
+
+---
+
+# draw_set_depth
+
+> [!WARNING]
+> This function will only work on GameMaker versions 2023.8+. Version before this will not work and will show a message in console instead.
+
+Sets the depth of the drawing. The depth is used to determine the order in which the objects are drawn. The objects with a higher depth are drawn on top of the objects with a lower depth.
+
+### Syntax
+
+```js
+draw_set_depth(depth);
+```
+
+| Argument | Type | Description              |
+| :------- | :--: | :----------------------- |
+| depth    | Real | The depth of the drawing |
+
+## Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+draw_set_depth(100);
+draw_sprite(sprite_index, image_index, x, y);
+
+draw_set_depth(200);
+draw_sprite_ext(sprite_index, image_index, x + 2, y + 2, 1, 1, 0, c_black, 1);
+```
+
+The above code will draw 2 sprites with the specified position and depth. The first sprite will be drawn with a depth of 100 and the second sprite will be drawn with a depth of 200. The second sprite will be drawn below of the first sprite.
+
+---
+
+# draw_reset_depth
+
+> [!WARNING]
+> This function will only work on GameMaker versions 2023.8+. Version before this will not work and will show a message in console instead.
+
+Resets the depth of the drawing. The depth is used to determine the order in which the objects are drawn. The objects with a higher depth are drawn on top of the objects with a lower depth.
+
+### Syntax
+
+```js
+draw_reset_depth();
+```
+
+## Returns
+
+```js
+None;
+```
+
+---
+
+# draw_reset_alpha
+
+Resets the alpha of the drawing. Sets the alpha of the drawing to 1.
+
+### Syntax
+
+```js
+draw_reset_alpha();
+```
+
+## Returns
+
+```js
+None;
+```
+
+---
+
+# draw_reset_color
+
+Resets the color of the drawing. Sets the color of the drawing to `c_white`.
+
+### Syntax
+
+```js
+draw_reset_color();
+```
+
+## Returns
+
+```js
+None;
+```
+
+---
+
+# draw_create_profile
+
+> [!NOTE]
+> Profiles were added in v1.5.0, and are a new way to setup all your drawing settings in one go and then switch between them as needed. This can be useful if you have a lot of different drawing settings that you need to change often, as it can save you a lot of time and make your code more readable.
+
+Creates a new profile for the drawing functions. The profile is used to store the drawing settings and can be used to switch between different drawing settings.
+
+### Syntax
+
+```js
+draw_create_profile(name, alpha, color, font, halign, valign, depth, blendmode);
+```
+
+| Argument  |  Type  | Description                          |
+| :-------- | :----: | :----------------------------------- |
+| name      | String | The name of the profile              |
+| alpha     |  Real  | The alpha of the profile             |
+| color     |  Real  | The color of the profile             |
+| font      |  Font  | The font of the profile              |
+| halign    |  Real  | The horizontal alignment of the text |
+| valign    |  Real  | The vertical alignment of the text   |
+| depth     |  Real  | The depth of the profile             |
+| blendmode |  Real  | The blend mode of the profile        |
+
+## Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+draw_create_profile(
+  "profile1",
+  1,
+  c_white,
+  fnt_default,
+  fa_left,
+  fa_top,
+  0,
+  bm_normal
+);
+draw_create_profile(
+  "profile2",
+  0.5,
+  c_red,
+  fnt_default,
+  fa_center,
+  fa_middle,
+  100,
+  bm_add
+);
+
+draw_set_profile("profile1");
+draw_text(0, 0, "Hello World!");
+
+draw_set_profile("profile2");
+draw_text(0, 64, "Hello World!");
+```
+
+The above code will create 2 profiles with the specified settings. The first profile will have an alpha of 1, a color of white, a font of default, a horizontal alignment of left, a vertical alignment of top, a depth of 0 and a blend mode of normal. The second profile will have an alpha of 0.5, a color of red, a font of default, a horizontal alignment of center, a vertical alignment of middle, a depth of 100 and a blend mode of add. The first profile will be used to draw the first text and the second profile will be used to draw the second text.
+
+---
+
+# draw_set_profile
+
+Sets the profile for the drawing functions. The profile is used to store the drawing settings and can be used to switch between different drawing settings.
+
+### Syntax
+
+```js
+draw_set_profile(name);
+```
+
+| Argument |  Type  | Description             |
+| :------- | :----: | :---------------------- |
+| name     | String | The name of the profile |
+
+## Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+draw_create_profile(
+  "profile1",
+  1,
+  c_white,
+  fnt_default,
+  fa_left,
+  fa_top,
+  0,
+  bm_normal
+);
+draw_create_profile(
+  "profile2",
+  0.5,
+  c_red,
+  fnt_default,
+  fa_center,
+  fa_middle,
+  100,
+  bm_add
+);
+
+draw_set_profile("profile1");
+draw_text(0, 0, "Hello World!");
+
+draw_set_profile("profile2");
+draw_text(0, 64, "Hello World!");
+```

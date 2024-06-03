@@ -1,5 +1,8 @@
 # Logger
 
+> [!WARNING]
+> This is an experimental feature. This functions are subject to change. Use at your own risk.
+
 This is a new Logger struct type that allows to work with the game's logger in a more convenient way instead of just using the GameMaker's built-in output console function.
 
 A new logger object can be created using `gloabal.logger = new Logger(filename, [path=working_directory])`. Using a global variable or assigned to a macro is optional but recommended.

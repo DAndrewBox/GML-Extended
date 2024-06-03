@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "lib_obsolete",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Obsolete",
-    "path": "folders/Libraries/GML-Extended/Functions/Obsolete.yy",
+  "$GMScript":"",
+  "%Name":"lib_obsolete",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"lib_obsolete",
+  "parent":{
+    "name":"Obsolete",
+    "path":"folders/Libraries/GML-Extended/Functions/Obsolete.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

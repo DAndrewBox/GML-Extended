@@ -7,6 +7,7 @@
 - [string_contains](#string_contains)
 - [string_title](#string_title)
 - [string_remove](#string_remove)
+- [string_percentage](#string_percentage)
 
 ---
 
@@ -217,3 +218,35 @@ show_debug_message(string_remove(_str, _sub));
 The above code will show on console the message `, !` since the substring was removed.
 
 ---
+
+# string_percentage
+
+Returns a string with the percentage of the given values.
+
+### Syntax
+
+```js
+string_percentage(current_value, total_value);
+```
+
+| Argument      | Type | Description                |
+| :------------ | :--: | :------------------------- |
+| current_value | Real | The current value          |
+| total_value   | Real | The total value to compare |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+var _current = 10;
+var _total = 100;
+
+show_debug_message(string_percentage(_current, _total));
+```
+
+The above code will show on console the message `10%` since the current value is 10% of the total value.

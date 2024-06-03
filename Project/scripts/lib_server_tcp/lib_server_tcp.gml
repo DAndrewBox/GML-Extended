@@ -25,10 +25,10 @@ enum SERVER_MESSAGE_TYPE {
 #endregion
 
 /// @func	server_tcp_init(url, port, buffer_size)
-/// @param	{str}	url
+/// @param	{string}	url
 /// @param	{real}	port
 /// @param	{real}	buffer_size
-function server_tcp_init(_url, _port, _size) {
+function server_tcp_init(_url = SERVER_URL, _port = SERVER_PORT, _size = BUFFER_SIZE) {
 	SERVER_SOCKET = network_create_socket(network_socket_tcp);
 	network_set_config(network_config_connect_timeout, SERVER_TIMEOUT);
 	network_connect_raw_async(SERVER_SOCKET, _url, _port);
@@ -39,7 +39,7 @@ function server_tcp_init(_url, _port, _size) {
 /// @param	{any}	data
 function server_tcp_send_data(_data) {
 	// Convert data from JSON to String
-	_data = json_stringify(_data);
+	_data = __gml_ext_comp_json_stringify(_data);
 	
 	// Send data
 	buffer_seek(SERVER_BUFFER, buffer_seek_start, 0);
@@ -47,10 +47,10 @@ function server_tcp_send_data(_data) {
 	// Write a delimiter that has to be read server-side to separete requests
 	// when sent a lot of them per second.
 	buffer_write(SERVER_BUFFER, buffer_text, _data + SERVER_DATA_DELIMITER);
-	network_send_raw(SERVER_SOCKET, SERVER_BUFFER, buffer_tell(SERVER_BUFFER));
+	network_send_raw(SERVER_SOCKET, SERVER_BUFFER, buffer_tell(SERVER_BUFFER), undefined);
 }
 
-/// @func	server_send_ping()
+/// @func	server_tcp_send_ping()
 function server_tcp_send_ping() {
 	var _data = {
 		type: SERVER_MESSAGE_TYPE.PING,
@@ -69,7 +69,7 @@ function server_tcp_get_data() {
 			var _res = buffer_read(_buffer, buffer_string);
 			// Split requests using delimiter so it doens't try to
 			// read multiple requests simultaniously
-			_res = string_split(_res, SERVER_DATA_DELIMITER);
+			_res = __gml_ext_comp_string_split(_res, SERVER_DATA_DELIMITER);
 			for (var i = 0; i < array_length(_res); i++) {
 				var _json = json_parse(_res[i]);
 				server_tcp_handle_request(_json);
