@@ -37,9 +37,9 @@ function __gml_ext_comp_get_gamemaker_version() {
 	static _major = real(string_digits(string_copy(GM_runtime_version, 1, 4)));
 	static _minor = real(string_digits(string_copy(GM_runtime_version, 6, 2)));
 	static _version = {
-		major:	_force_compatibility || _major == 23 ? 2.3 : _major,
-		minor:	_force_compatibility || _major == 23 ? 7.606 : _minor,
-		as_string:	_force_compatibility || _major == 23 ? "2.3.7" : string(_major) + "." + string(_minor),
+		major:	(_force_compatibility || _major == 23) ? 2.3 : _major,
+		minor:	(_force_compatibility || _major == 23) ? 7.606 : _minor,
+		as_string:	(_force_compatibility || _major == 23) ? "2.3.7" : string(_major) + "." + string(_minor),
 	};
 	
 	return _version;
@@ -98,7 +98,7 @@ function __gml_ext_comp_instance_create_layer(_x, _y, _obj, _layer, _params = {}
 		return _inst;
 	}
 	
-	return script_execute(instance_create_layer, _x, _y, _obj, _layer, _params);
+	return script_execute(instance_create_layer, _x, _y, _layer, _obj, _params);
 }
 
 /// @func	__gml_ext_comp_instance_create_depth(x, y, object_index, depth, _params)
@@ -122,7 +122,7 @@ function __gml_ext_comp_instance_create_depth(_x, _y, _obj, _depth, _params = {}
 		return _inst;
 	}
 	
-	return script_execute(instance_create_layer, _x, _y, _obj, _depth, _params);
+	return script_execute(instance_create_depth, _x, _y, _depth, _obj, _params);
 }
 
 /// @func	__gml_ext_comp_string_ext(str, args)
