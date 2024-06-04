@@ -1,10 +1,8 @@
 <p align="center">
-  <img src="./logo.png" />
+  <img src="./logo_v2.png" height="300px" alt="GameMaker Language Extended"/>
 </p>
 
-# GameMaker Language Extended
-
-## A GameMaker extension to complement GameMaker Studio 2.3+ built-in functions and make your life easier.
+## A GameMaker extension to complement GameMaker built-in functions and make your life easier.
 
 [![license](https://img.shields.io/github/license/DAndrewBox/GML-Extended)](LICENSE)
 [![release](https://img.shields.io/github/v/release/DAndrewBox/GML-Extended)](https://github.com/DAndrewBox/GML-Extended)
@@ -42,8 +40,8 @@ Collaborators:
 ---
 
 ### 📋 Table of Contents
-- [🔧 Versioning & Compatibility](/wiki/Getting-Started)
-- [📖 Documentation](/wiki/Documentation)
+- [🔧 Versioning & Compatibility](https://github.com/DAndrewBox/GML-Extended/wiki)
+- [📚 Documentation](https://github.com/DAndrewBox/GML-Extended/wiki/Documentation)
 - [📜 License](#-license)
 - [🤝 Contributing](#-contributing)
 

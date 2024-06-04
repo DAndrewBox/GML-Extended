@@ -1,4 +1,4 @@
-# Documentation
+# 📚 Documentation
 
 > [!IMPORTANT]
 >**There's also an "Obsolete" folder with functions that are no longer needed or have been replaced by other functions**, these are kept for compatibility reasons you can still use them but they are not recommended to use in new projects. If you are using any of these functions, you should consider replacing them with the new ones. **Importing this folder is not recommended** if you are not using any of these functions and could break your project if you are using them.
