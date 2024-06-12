@@ -99,6 +99,25 @@ function expect(_val) {
 	}
 }
 
+/// @func	suite(fn)
+/// @param	{function}	fn
 function suite(_suite) {
 	__gmtl_internal_function_suite_add_to_queue(_suite);
+}
+
+/// @func	create(x, y, object_index, params)
+/// @param	{real}		x
+/// @param	{real}		y
+/// @param	{ref}		object_index
+/// @param	{struct}	params
+function create(_x, _y, _obj, _params = {}) {
+	if (gmtl_suite_continue) {
+		var _inst = instance_create_layer(_x, _y, "__GMTL_LAYER_TESTING", _obj, _params);
+		_inst.waitFor = function (_time, _unit) {
+			with (self) {
+				__gmtl_internal_function_wait_for(id, _time, _unit);
+			}
+		};
+		return _inst;
+	}
 }

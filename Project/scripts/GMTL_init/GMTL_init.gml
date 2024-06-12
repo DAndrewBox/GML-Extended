@@ -124,10 +124,34 @@ function __gmtl_internal_function_log_test_skipped(_msg) {
 	__gmtl_internal_function_log($"⚠ (Skipped) {_msg}");
 }
 
+/// @func	__gmtl_internal_function_suite_add_to_queue(suite)
+/// @param	{function}	suite
 function __gmtl_internal_function_suite_add_to_queue(_suite) {
 	var _ts = time_source_create(time_source_game, 2, time_source_units_frames, function(_suite) {
 		array_push(gmtl_suite_list, _suite);
 		gmtl_coverage_suites.total++;
 	}, [_suite]);
 	time_source_start(_ts);
+}
+
+/// @func	__gmtl_internal_function_wait_for(instance, time, unit)
+/// @param	{ref}	instance
+/// @param	{real}	time
+/// @param	{real}	unit
+function __gmtl_internal_function_wait_for(_inst, _t, _unit) {
+	_t = (_unit == time_source_units_seconds ? _t * game_get_speed(gamespeed_fps) : _t);
+	var _count = 0;
+	
+	while (_count < _t) {
+		event_perform_object(_inst, ev_step, ev_step_begin);
+		event_perform_object(_inst, ev_step, ev_step_normal);
+		event_perform_object(_inst, ev_step, ev_step_end);
+
+		for (var i = 0; i < 12; i++) {
+			if (_inst.alarm[i] < 0) continue;
+			_inst.alarm[i] -= 1;
+		}
+
+		_count++;
+	}
 }

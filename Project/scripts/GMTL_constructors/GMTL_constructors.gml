@@ -160,15 +160,28 @@ function TestCase(_val) constructor {
 		var _typeOf	 = typeof(__internal_value);
 		var _isValid = false;
 		var _typeInvalid = false;
+		var _valueIsUndefined = is_undefined(_value);
 		
 		switch (_typeOf) {
 			case "struct":
-				if (!is_undefined(_value)) {
+				if (!_valueIsUndefined) {
 					_isValid = __internal_value[$ _key] == _value;
 				} else {
 					_isValid = !is_undefined(__internal_value[$ _key]);
 				}
 				break;
+				
+			case "ref":
+				// If is not an instance
+				if !(instance_exists(__internal_value)) {
+					_isValid = false;
+					break;
+				}
+				
+				var _propValue = variable_instance_get(__internal_value, _key);
+				_isValid = !_valueIsUndefined ? _propValue == _value : _propValue;
+				break;
+				
 			default:
 				_typeInvalid = true;
 		}		
@@ -189,12 +202,17 @@ function TestCase(_val) constructor {
 			var _expected_undefined_msg = $"_key != undefined";
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toHaveProperty({_key}, {_value}):");
-			array_push(gmtl_test_log, $"- Expected Result: {!is_undefined(_value) ? _expected_not_undefined_msg : _expected_undefined_msg }");
+			array_push(gmtl_test_log, $"- Expected Result: {!_valueIsUndefined ? _expected_not_undefined_msg : _expected_undefined_msg }");
 			
 			if (_typeInvalid) {
 				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
 			} else {
-				array_push(gmtl_test_log, $"- Recieved Result: {_key} = {__internal_value[$ _key]}");
+				var _isStruct = is_struct(__internal_value);
+				if (_isStruct) {
+					array_push(gmtl_test_log, $"- Recieved Result: {_key} = {__internal_value[$ _key]}");
+				} else {
+					array_push(gmtl_test_log, $"- Recieved Result: {_key} = {variable_instance_get(__internal_value, _key)}");
+				}
 			}
 			gmtl_test_status = __gmtl_test_status.FAILED;
 			gmtl_suite_continue = false;
@@ -211,6 +229,8 @@ function TestCase(_val) constructor {
 		var _typeInvalid = false;
 		
 		switch (_typeOf) {
+			case "int32":
+			case "int64":
 			case "number":
 				_isValid = __internal_value > _n;
 				break;

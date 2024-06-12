@@ -28,6 +28,13 @@ suite(function() {
 			[-5, 5, 0]
 		]);
 		
+		it("Should create an instance, wait, and check timer.", function() {
+			var _inst = create(10, 10, o_gmtl_demo_timer);
+			_inst.waitFor(5, time_source_units_frames);
+			
+			expect(_inst).toHaveProperty("timer", 5);
+		});
+		
 		it("Should fail", function() {
 			instance_create_depth(0, 0, 0, obj_unexistent);
 		});
