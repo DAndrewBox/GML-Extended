@@ -73,20 +73,21 @@ function it(_name, _fn, _args = []) {
 }
 
 /// @func	test(name, fn)
-/// @param	{string}		name
+/// @param	{string}	name
 /// @param	{function}	fn
 function test(_name, _fn) {
 	it(_name, _fn);
 }
 
 /// @func	each(name, fn, cases)
-/// @param	{string}		name
+/// @param	{string}	name
 /// @param	{function}	fn
 /// @param	{array}		cases
 function each(_name, _fn, _cases) {
 	var _cases_len = get_size(_cases);
 	for (var i = 0; i < _cases_len; i++) {
-		it($"{_name} [Case {i}]", _fn, _cases[i]);
+		var _name_with_params = string_ext(_name, _cases[i]);
+		it($"{_name_with_params} [Case {i}]", _fn, _cases[i]);
 	}
 }
 

@@ -1,6 +1,6 @@
-/* Uncomment this to test
+// Uncomment this to test
 suite(function() {
-	describe("Test GMTL stuff", function() {
+	describe("GameMaker's Testing Library - Demo Tests", function() {
 		it("Should pass", function() {
 			var _a = 0;
 			_a++;
@@ -18,9 +18,10 @@ suite(function() {
 			expect(_c).toHaveProperty("testKey", "test");
 		});
 		
-		each("Multiple cases here should pass", function(_arg1, _arg2, _arg3) {
+		each("Should {0} + {1} be {2}. (Multiple cases test)", function(_arg1, _arg2, _arg3) {
 			expect(_arg1 + _arg2).toBe(_arg3);
-		}, [
+		},
+		[
 			[1, 1, 2],
 			[5, 5, 10],
 			[3, 6, 9],
