@@ -468,7 +468,7 @@ function TestCase(_val) constructor {
 			var _stacktrace = debug_get_callstack(8);
 			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
 			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
+				var _trace = _stacktrace[_traced_error_index];
 				var _filename = array_last(string_split(_trace, "@"));
 				var _line = string_split(_filename, ":")[1];
 				_filename = string_split(_filename, ":")[0];
