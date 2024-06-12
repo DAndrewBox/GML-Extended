@@ -44,7 +44,8 @@ suite(function() {
 		});
 		
 		it("Should fail", function() {
-			instance_create_depth(0, 0, 0, obj_unexistent);
+			var _inst = create(0, 0, obj_unexistent);
+			instance_destroy(_inst);
 		});
 		
 		it("Should be skipped", function() {

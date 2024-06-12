@@ -82,7 +82,7 @@ function __gmtl_internal_function_init() {
 		
 		_time = (get_timer() - _t_start) / 1000;
 		_time = _time > 1000 ? $"{_time / 1000}s" : $"{_time}ms"
-		__gmtl_internal_function_log($"Time: {_time}");
+		__gmtl_internal_function_log($"All tests finished in {_time}.\n");
 
 	});
 }
