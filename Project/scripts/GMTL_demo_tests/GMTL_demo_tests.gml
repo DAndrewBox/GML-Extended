@@ -1,6 +1,6 @@
 // Uncomment this to test
 suite(function() {
-	describe("GameMaker's Testing Library - Demo Tests", function() {
+	describe("GameMaker's Testing Library - Demo Tests", function() {		
 		it("Should pass", function() {
 			var _a = 0;
 			_a++;
@@ -33,6 +33,14 @@ suite(function() {
 			_inst.waitFor(5, time_source_units_frames);
 			
 			expect(_inst).toHaveProperty("timer", 5);
+			
+			_inst.waitFor(2, time_source_units_seconds);
+			
+			// Assuming gamespeed to be 60 fps / sec, so 5 + (60 frames * 2 seconds)
+			expect(_inst.timer).toBeEqual(125);
+			
+			// You should destroy the instance after test, if not, could cause memory leaks.
+			instance_destroy(_inst);
 		});
 		
 		it("Should fail", function() {
@@ -40,7 +48,7 @@ suite(function() {
 		});
 		
 		it("Should be skipped", function() {
-			show_message("This should never be seen :)");
+			show_message_async("This should never be seen :)");
 		});
 	});
 });

@@ -87,7 +87,7 @@ function each(_name, _fn, _cases) {
 	var _cases_len = get_size(_cases);
 	for (var i = 0; i < _cases_len; i++) {
 		var _name_with_params = string_ext(_name, _cases[i]);
-		it($"{_name_with_params} [Case {i}]", _fn, _cases[i]);
+		it($"{_name_with_params} [Case {i + 1}]", _fn, _cases[i]);
 	}
 }
 
@@ -112,12 +112,13 @@ function suite(_suite) {
 /// @param	{struct}	params
 function create(_x, _y, _obj, _params = {}) {
 	if (gmtl_suite_continue) {
-		var _inst = instance_create_layer(_x, _y, "__GMTL_LAYER_TESTING", _obj, _params);
-		_inst.waitFor = function (_time, _unit) {
-			with (self) {
-				__gmtl_internal_function_wait_for(id, _time, _unit);
-			}
-		};
+		static _layer_name = "__GMTL_LAYER_TESTING";
+		var _layer = layer_exists(_layer_name) ? layer_get_id(_layer_name) : layer_create(0, _layer_name);
+		var _inst = instance_create_layer(_x, _y, _layer, _obj, _params);
+		_inst.waitFor = method(_inst.id, function (_time, _unit) {
+			__gmtl_internal_function_wait_for(id, _time, _unit);
+		});
+		
 		return _inst;
 	}
 }

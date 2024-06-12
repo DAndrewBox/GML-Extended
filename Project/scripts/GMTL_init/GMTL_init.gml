@@ -143,15 +143,18 @@ function __gmtl_internal_function_wait_for(_inst, _t, _unit) {
 	var _count = 0;
 	
 	while (_count < _t) {
-		event_perform_object(_inst, ev_step, ev_step_begin);
-		event_perform_object(_inst, ev_step, ev_step_normal);
-		event_perform_object(_inst, ev_step, ev_step_end);
+		with (_inst) {
+			event_perform(ev_step, ev_step_begin);
+			event_perform(ev_step, ev_step_normal);
+			event_perform(ev_step, ev_step_end);
 
-		for (var i = 0; i < 12; i++) {
-			if (_inst.alarm[i] < 0) continue;
-			_inst.alarm[i] -= 1;
+			for (var i = 0; i < 12; i++) {
+				if (alarm[i] < 0) continue;
+				alarm[i] -= 1;
+			}
 		}
-
 		_count++;
 	}
+	
+	return _inst;
 }
