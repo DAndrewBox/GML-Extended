@@ -1,6 +1,44 @@
 // Uncomment this to test
-suite(function() {
+suite(function() {		
 	describe("GameMaker's Testing Library - Demo Tests", function() {		
+		#region Before/After - Each/All
+		/*
+			The execution order for this functions per suite is:
+			> Suite starts
+			> Start describe
+				> Run beforeAll()
+				> Start loop of it/test
+					> Run beforeEach()
+					> Run it/test
+					> Run afterEach()
+				> Finish loop of it/test
+				> Run afterAll()
+			> Finish describe
+			> Suite ends
+		*/
+		
+		beforeAll(function() {
+			// This runs before all tests starts
+			show_debug_message("Before all!");
+		});
+	
+		afterAll(function() {
+			// This runs after all tests are completed
+			show_debug_message("After all!");
+		});
+	
+		beforeEach(function() {
+			// This runs before EACH test starts
+			show_debug_message("Before each!");
+		});
+		
+		afterEach(function() {
+			// This runs after EACH test ends
+			show_debug_message("After each!");
+		});
+		#endregion	
+		
+		// A simple test for almost all methods
 		it("Should pass", function() {
 			var _a = 0;
 			_a++;
@@ -18,6 +56,7 @@ suite(function() {
 			expect(_c).toHaveProperty("testKey", "test");
 		});
 		
+		// This one test multiple cases provided as a 2D array
 		each("Should {0} + {1} be {2}. (Multiple cases test)", function(_arg1, _arg2, _arg3) {
 			expect(_arg1 + _arg2).toBe(_arg3);
 		},
@@ -28,6 +67,7 @@ suite(function() {
 			[-5, 5, 0]
 		]);
 		
+		// This should create and test an instance
 		it("Should create an instance, wait, and check timer.", function() {
 			var _inst = create(10, 10, o_gmtl_demo_timer);
 			_inst.waitFor(5, time_source_units_frames);
@@ -43,11 +83,14 @@ suite(function() {
 			instance_destroy(_inst);
 		});
 		
+		// This test should fail because object doesn't exists
 		it("Should fail", function() {
 			var _inst = create(0, 0, obj_unexistent);
 			instance_destroy(_inst);
 		});
 		
+		// This test should be skipped since last test in the describe event failed.
+		// You can make this test pass if you move it before the failed test.
 		it("Should be skipped", function() {
 			show_message_async("This should never be seen :)");
 		});

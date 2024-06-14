@@ -7,11 +7,23 @@ function describe(_name, _fn) {
 	__gmtl_internal_function_log($"------- {_name} -------");
 
 	try {
+		if (is_callable(gmtl_test_before_all)) {
+			script_execute(gmtl_test_before_all);
+		}
+		
 		_fn();
+		
+		if (is_callable(gmtl_test_after_all)) {
+			script_execute(gmtl_test_after_all);
+		}
 	} catch(e) {
 		__gmtl_internal_function_log(e);
 	} finally {
 		gmtl_indent = 0;
+		gmtl_test_before_all = noone;
+		gmtl_test_after_all = noone;
+		gmtl_test_before_each = noone;
+		gmtl_test_after_each = noone;
 	}
 }
 
@@ -32,8 +44,11 @@ function it(_name, _fn, _args = []) {
 	
 	var _time = get_timer();
 	try {
-		script_execute_ext(_fn, _args);
-		_time = get_timer() - _time;		
+		if (is_callable(gmtl_test_before_each)) {
+			script_execute(gmtl_test_before_each);
+		}
+		script_execute_ext(_fn, _args);		
+		_time = get_timer() - _time;
 
 		if (gmtl_test_status == __gmtl_test_status.SUCCESS) {
 			__gmtl_internal_function_log_test_success(_name, _time);
@@ -69,6 +84,9 @@ function it(_name, _fn, _args = []) {
 	} finally {
 		gmtl_indent = 1;
 		gmtl_test_log = [];
+		if (is_callable(gmtl_test_after_each)) {
+			script_execute(gmtl_test_after_each);
+		}
 	}
 }
 
@@ -121,4 +139,28 @@ function create(_x, _y, _obj, _params = {}) {
 		
 		return _inst;
 	}
+}
+
+/// @func	beforeAll(fn)
+/// @param	{function}	fn
+function beforeAll(_fn) {
+	gmtl_test_before_all = _fn;
+}
+
+/// @func	afterAll(fn)
+/// @param	{function}	fn
+function afterAll(_fn) {
+	gmtl_test_after_all = _fn;
+}
+
+/// @func	beforeEach(fn)
+/// @param	{function}	fn
+function beforeEach(_fn) {
+	gmtl_test_before_each = _fn;
+}
+
+/// @func	afterEach(fn)
+/// @param	{function}	fn
+function afterEach(_fn) {
+	gmtl_test_after_each = _fn;
 }

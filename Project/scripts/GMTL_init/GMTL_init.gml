@@ -19,6 +19,11 @@ enum __gmtl_test_status {
 #macro	gmtl_coverage_suites	gmtl_internal.coverage.suites
 #macro	gmtl_coverage_tests		gmtl_internal.coverage.tests
 
+#macro	gmtl_test_before_all	gmtl_internal.tests.before_all
+#macro	gmtl_test_after_all		gmtl_internal.tests.after_all
+#macro	gmtl_test_before_each	gmtl_internal.tests.before_each
+#macro	gmtl_test_after_each	gmtl_internal.tests.after_each
+
 /// @func __gmtl_internal_function_init()
 function __gmtl_internal_function_init() {
 	gml_pragma("forceinline");
@@ -28,6 +33,8 @@ function __gmtl_internal_function_init() {
 		tests: {
 			log:	[],
 			status: __gmtl_test_status.RUN,
+			before_all: noone,
+			after_all: noone,
 		},
 		suites: {
 			list:				[],
