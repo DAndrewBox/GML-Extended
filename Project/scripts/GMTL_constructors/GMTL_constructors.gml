@@ -445,7 +445,7 @@ function TestCase(_val) constructor {
 		var _typeOf	 = typeof(__internal_value);
 		var _isValid = false;
 		var _typeInvalid = false;
-		var _onPos	 = -1
+		var _onPos	 = -1;
 		
 		switch (_typeOf) {
 			case "array":
@@ -456,6 +456,19 @@ function TestCase(_val) constructor {
 					if (__internal_value[i] == _value) {
 						_isValid = true;
 						_onPos = i;
+						break;
+					}
+				}
+				break;
+			case "struct":
+				var _keys = struct_get_names(__internal_value);
+				var _arr_len = array_length(_keys);
+				_onPos = "";
+				
+				for (var i = 0; i < _arr_len; i++) {
+					if (_keys[i] == _value || __internal_value[$ _keys[i]] == _value) {
+						_isValid = true;
+						_onPos = _keys[i];
 						break;
 					}
 				}
@@ -477,7 +490,7 @@ function TestCase(_val) constructor {
 			}
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toContain({_value}):");
-			array_push(gmtl_test_log, $"- Expected Result: Found on Position > -1");
+			array_push(gmtl_test_log, $"- Expected Result: Found {is_string(_onPos) ? "as or in key {_onPos}" : "on position index {_onPos}" }");
 			if (_typeInvalid) {
 				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
 			} else {

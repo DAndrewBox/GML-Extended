@@ -48,6 +48,7 @@ suite(function() {
 			expect(_b[1]).toBe("mango");
 			expect(_a == _b[1]).toBe(false);
 			expect(_b).toHaveLength(3);
+			expect(_b).toContain("apple");
 			
 			var _c = {testKey: "test"};
 			expect(_c).toHaveLength(1);
