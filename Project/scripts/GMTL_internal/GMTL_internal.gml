@@ -1,9 +1,10 @@
-gml_pragma("global", "__gmtl_internal_fn_init()");
 gml_pragma("global", "GMTL_definitions()");
 gml_pragma("global", "GMTL_internal()");
 gml_pragma("global", "GMTL_core_test_setup()");
 gml_pragma("global", "GMTL_core_test_events()");
 gml_pragma("global", "GMTL_core_TestCase()");
+
+gml_pragma("global", "__gmtl_internal_fn_init()");
 
 /// @func __gmtl_internal_fn_init()
 function __gmtl_internal_fn_init() {	
@@ -46,13 +47,13 @@ function __gmtl_internal_fn_init() {
 			middle:	new GTML_MouseState(),
 			side1:	new GTML_MouseState(),
 			side2:	new GTML_MouseState(),
-			x:		mouse_x,
-			y:		mouse_y,
+			x:		0,
+			y:		0,
 		},
 		finished: false,
 	};
 
-	call_later(1, time_source_units_seconds, function() {
+	call_later(20, time_source_units_frames, function() {
 		var _t_start = get_timer();
 		var _suites_len = array_length(gmtl_suite_list);
 		for (var i = 0; i < _suites_len; i++) {
@@ -168,7 +169,7 @@ function __gmtl_internal_fn_stacktrace() {
 		var _fname_arr = string_split(_filename, ":");
 		var _line = _fname_arr[1];
 		_filename = _fname_arr[0];
-		_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
+		// _filename = string_copy(_filename, 1, floor(string_length(_filename)) / 2);
 		array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
 	}
 }
@@ -204,7 +205,7 @@ function __gmtl_internal_fn_mouse_button_to_map(_btn) {
 	}
 }
 
-/// @func	__gmtl_internal_fn_mouse_anykey_none_get(expected, state)
+/// @func	__gmtl_internal_fn_mouse_check_anykey(expected, state)
 /// @param	{bool}		expected
 /// @param	{string}	state
 function __gmtl_internal_fn_mouse_check_anykey(_expected, _state) {
@@ -229,11 +230,11 @@ function __gmtl_internal_fn_mouse_check_button(_btn) {
 	}
 	
 	if (_btn == mb_any) {
-		return __gmtl_internal_fn_mouse_anykey_none_get(true, "hold") || __gmtl_internal_fn_mouse_anykey_none_get(true, "press");
+		return __gmtl_internal_fn_mouse_check_anykey(true, "hold") || __gmtl_internal_fn_mouse_check_anykey(true, "press");
 	}
 	
 	if (_btn == mb_none) {
-		return __gmtl_internal_fn_mouse_anykey_none_get(false, "hold") || __gmtl_internal_fn_mouse_anykey_none_get(false, "press")
+		return __gmtl_internal_fn_mouse_check_anykey(false, "hold") || __gmtl_internal_fn_mouse_check_anykey(false, "press")
 	}
 	
 	var _key = __gmtl_internal_fn_mouse_button_to_map(_btn);
@@ -248,11 +249,11 @@ function __gmtl_internal_fn_mouse_check_button_pressed(_btn) {
 	}
 	
 	if (_btn == mb_any) {
-		return __gmtl_internal_fn_mouse_anykey_none_get(true, "press");
+		return __gmtl_internal_fn_mouse_check_anykey(true, "press");
 	}
 	
 	if (_btn == mb_none) {
-		return __gmtl_internal_fn_mouse_anykey_none_get(false, "press");
+		return __gmtl_internal_fn_mouse_check_anykey(false, "press");
 	}
 	
 	var _key = __gmtl_internal_fn_mouse_button_to_map(_btn);
@@ -267,11 +268,11 @@ function __gmtl_internal_fn_mouse_check_button_released(_btn) {
 	}
 	
 	if (_btn == mb_any) {
-		return __gmtl_internal_fn_mouse_anykey_none_get(true, "release");
+		return __gmtl_internal_fn_mouse_check_anykey(true, "release");
 	}
 	
 	if (_btn == mb_none) {
-		return __gmtl_internal_fn_mouse_anykey_none_get(false, "release");
+		return __gmtl_internal_fn_mouse_check_anykey(false, "release");
 	}
 	
 	var _key = __gmtl_internal_fn_mouse_button_to_map(_btn);
@@ -285,6 +286,7 @@ function __gmtl_internal_fn_mouse_reset() {
 				
 	for (var i = 0; i < _keys_len; i++) {
 		var _key = _keys[i];
+		if (_key == "x" || _key == "y") continue;
 		gmtl_internal.mouse[$ _key].reset();
 	}
 }
@@ -298,8 +300,8 @@ function __gmtl_internal_fn_mouse_get_x() {
 	return gmtl_internal.mouse.x;
 }
 
-/// @func	__gmtl_internal_fn_mouse_get_x()
-function __gmtl_internal_fn_mouse_get_x() {
+/// @func	__gmtl_internal_fn_mouse_get_y()
+function __gmtl_internal_fn_mouse_get_y() {
 	if (gmtl_internal.finished) {
 		return original_mouse_y;
 	}

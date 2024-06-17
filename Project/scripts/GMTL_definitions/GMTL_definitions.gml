@@ -40,5 +40,5 @@ enum __gmtl_test_status {
 
 #macro	original_mouse_x		mouse_x
 #macro	original_mouse_y		mouse_y
-#macro	mouse_x					gmtl_internal.mouse.x
-#macro	mouse_y					gmtl_internal.mouse.y
+#macro	mouse_x					__gmtl_internal_fn_mouse_get_x()
+#macro	mouse_y					__gmtl_internal_fn_mouse_get_y()

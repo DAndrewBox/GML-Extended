@@ -159,11 +159,28 @@ suite(function() {
 			expect(_inst.times_clicked_inside).toBe(0);
 			expect(_inst.times_clicked_outside).toBe(0);
 
-
-			// Do a few clicks and test
-			simulateMouseClickPress(mb_left, _inst.x + 10, _inst.y + 10);
+			// Do a few clicks inside
+			repeat (3) {
+				simulateMouseClickPress(mb_left, _inst.x + irandom_range(0, 16), _inst.y + irandom_range(0, 16));
+				simulateFrameWait(1);
+			}
+			simulateMouseClickRelease(mb_left);
+			expect(_inst.times_clicked_inside).toBeEqual(3);
+			
+			simulateMouseClickPress(mb_right, _inst.x + 8, _inst.y + 8);
 			simulateFrameWait(1);
-			expect(_inst.times_clicked_inside).toBeEqual(1);
+			simulateMouseClickRelease(mb_right);
+			expect(_inst.times_clicked_inside).toBeLessThan(3);
+			
+			// Do clicks outside
+			repeat (10) {
+				simulateMouseClickPress(mb_left, 0, 0);
+				simulateFrameWait(1);
+				simulateMouseClickRelease(mb_left);
+			}
+			expect(_inst.times_clicked_outside).toBeEqual(10);
+			
+			instance_destroy(_inst);
 		});
 	
 		// This test should be skipped because of using "skip()" function
