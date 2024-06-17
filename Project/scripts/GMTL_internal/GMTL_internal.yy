@@ -1,12 +1,12 @@
 {
   "$GMScript":"",
-  "%Name":"GMTL_init",
+  "%Name":"GMTL_internal",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GMTL_init",
+  "name":"GMTL_internal",
   "parent":{
-    "name":"GMTL",
-    "path":"folders/Libraries/GMTL.yy",
+    "name":"init",
+    "path":"folders/Libraries/GMTL/init.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

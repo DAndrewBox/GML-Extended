@@ -16,7 +16,7 @@ function TestCase(_val, _args) constructor {
 		}
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBe({_expectedResult}):");
 			array_push(gmtl_test_log, $"- Expected Result: {_expectedResult}");
@@ -47,7 +47,7 @@ function TestCase(_val, _args) constructor {
 		}
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeEqual({_expectedResult}):");
 			array_push(gmtl_test_log, $"- Expected Result: {_expectedResult}");
@@ -78,7 +78,7 @@ function TestCase(_val, _args) constructor {
 		}
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toHaveReturned():");
 			array_push(gmtl_test_log, $"- Expected Result: {true}");
 			array_push(gmtl_test_log, $"- Recieved Result: {__internal_value}");
@@ -95,7 +95,7 @@ function TestCase(_val, _args) constructor {
 		var _isValid = !is_undefined(__internal_value) && is_callable(__internal_value);
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			var _received = undefined;
 			if (is_callable(__internal_value)) {
@@ -141,7 +141,7 @@ function TestCase(_val, _args) constructor {
 		
 		_isValid = _n == _len;
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			var _type_of_msg = $"<Invalid Type: {_typeOf}>";
 			array_push(gmtl_test_log, $">expect({__internal_value}).toHaveLength({_n}):");
@@ -188,7 +188,7 @@ function TestCase(_val, _args) constructor {
 		}		
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			var _expected_not_undefined_msg = $"{_key} = {_value}";
 			var _expected_undefined_msg = $"_key != undefined";
@@ -231,7 +231,7 @@ function TestCase(_val, _args) constructor {
 		}		
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeGreaterThan({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} > {_n}");
@@ -263,7 +263,7 @@ function TestCase(_val, _args) constructor {
 		}		
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeGreaterThanOrEqual({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} >= {_n}");
@@ -295,7 +295,7 @@ function TestCase(_val, _args) constructor {
 		}		
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeLessThan({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} < {_n}");
@@ -327,7 +327,7 @@ function TestCase(_val, _args) constructor {
 		}		
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeLessThanOrEqual({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} <= {_n}");
@@ -348,7 +348,7 @@ function TestCase(_val, _args) constructor {
 		var _isValid = !(__internal_value);
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeFalsy():");
 			array_push(gmtl_test_log, $"- Expected Result: {false}");
@@ -365,7 +365,7 @@ function TestCase(_val, _args) constructor {
 		var _isValid = !!(__internal_value);
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeTruthy():");
 			array_push(gmtl_test_log, $"- Expected Result: {true}");
@@ -416,7 +416,7 @@ function TestCase(_val, _args) constructor {
 		}
 		
 		if (!_isValid) {
-			__gmtl_internal_function_stacktrace();
+			__gmtl_internal_fn_stacktrace();
 			
 			var _msg_if_string = $"as or in key {_onPos}";
 			var _msg_if_array = $"on position index {_onPos}";

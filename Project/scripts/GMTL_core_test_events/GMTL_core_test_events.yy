@@ -1,12 +1,12 @@
 {
   "$GMScript":"",
-  "%Name":"GMTL_constructors",
+  "%Name":"GMTL_core_test_events",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GMTL_constructors",
+  "name":"GMTL_core_test_events",
   "parent":{
-    "name":"GMTL",
-    "path":"folders/Libraries/GMTL.yy",
+    "name":"core",
+    "path":"folders/Libraries/GMTL/core.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
