@@ -192,8 +192,9 @@ function TestCase(_val) constructor {
 			if (_traced_error_index) {
 				var _trace = _stacktrace[_traced_error_index]
 				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
+				var _fname_arr = string_split(_filename, ":");
+				var _line = _fname_arr[1];
+				_filename = _fname_arr[0];
 				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
 				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
 			}

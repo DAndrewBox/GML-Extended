@@ -53,6 +53,7 @@
     {"id":{"name":"o_gmtl_demo_timer","path":"objects/o_gmtl_demo_timer/o_gmtl_demo_timer.yy",},},
     {"id":{"name":"r_gml_ext_test_draw","path":"rooms/r_gml_ext_test_draw/r_gml_ext_test_draw.yy",},},
     {"id":{"name":"r_gml_ext_test_ease","path":"rooms/r_gml_ext_test_ease/r_gml_ext_test_ease.yy",},},
+    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"GMTL_constructors","path":"scripts/GMTL_constructors/GMTL_constructors.yy",},},
     {"id":{"name":"GMTL_core","path":"scripts/GMTL_core/GMTL_core.yy",},},
     {"id":{"name":"GMTL_demo_tests","path":"scripts/GMTL_demo_tests/GMTL_demo_tests.yy",},},
@@ -98,6 +99,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"r_gml_ext_test_draw","path":"rooms/r_gml_ext_test_draw/r_gml_ext_test_draw.yy",},},
     {"roomId":{"name":"r_gml_ext_test_ease","path":"rooms/r_gml_ext_test_ease/r_gml_ext_test_ease.yy",},},
   ],

@@ -205,6 +205,7 @@ function simulateFrameWait(_frames = 1) {
 /// @param	{ref}	inst_id
 function simulateEvent(_type, _number, _inst_id = all) {
 	with (_inst_id) {
+		show_debug_message(_inst_id);
 		event_perform(_type, _number);
 	}
 }

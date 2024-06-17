@@ -1,8 +1,10 @@
 /// @description 
 timer++;
 
-if (keyboard_check_pressed(vk_space) || keyboard_check(vk_space)) {
+if (keyboard_check_pressed(ord("A")) || keyboard_check(ord("A"))) {
 	timer_key_hold += 1;
-} else if (keyboard_check_released(vk_space)) {
+}
+
+if (keyboard_check_released(ord("A"))) {
 	timer_key_hold = 0;
 }

@@ -91,12 +91,14 @@ suite(function() {
 			expect(_inst).toHaveProperty("timer_key_hold", 0);
 			
 			// Simulate a press and frame wait
-			simulateKeyPress(vk_space);
-			simulateEvent(ev_step, ev_step_normal, _inst);
+			simulateKeyPress(ord("A"));
+			simulateEvent(ev_step, ev_step_normal);
 			expect(_inst).toHaveProperty("timer_key_hold", 1);
 			
-			simulateKeyRelease(vk_space);
-			simulateEvent(ev_step, ev_step_normal, _inst);
+			simulateFrameWait(1);
+			
+			simulateKeyRelease(ord("A"));
+			simulateEvent(ev_step, ev_step_normal);
 			expect(_inst).toHaveProperty("timer_key_hold", 0);
 			
 			instance_destroy(_inst);
