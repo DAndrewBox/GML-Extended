@@ -86,10 +86,18 @@ suite(function() {
 		
 		// This should create an instance and check key press and hold time
 		it("Should create an instance and check press & hold time", function () {
-			var _inst = create(10, 10, o_gmtl_demo_timer);
-			expect(_inst.timer_key_hold).toBeEqual(0);
-			simulateKeyPress(vk_space);	// Simulate key press for 1 frame
-			expect(_inst.timer_key_hold).toBeEqual(1);
+			var _inst = create(0, 0, o_gmtl_demo_timer);
+			
+			expect(_inst).toHaveProperty("timer_key_hold", 0);
+			
+			// Simulate a press and frame wait
+			simulateKeyPress(vk_space);
+			simulateEvent(ev_step, ev_step_normal, _inst);
+			expect(_inst).toHaveProperty("timer_key_hold", 1);
+			
+			simulateKeyRelease(vk_space);
+			simulateEvent(ev_step, ev_step_normal, _inst);
+			expect(_inst).toHaveProperty("timer_key_hold", 0);
 			
 			instance_destroy(_inst);
 		});

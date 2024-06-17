@@ -165,11 +165,23 @@ function afterEach(_fn) {
 	gmtl_test_after_each = _fn;
 }
 
-/// @func	simulateKeyPress(button, time_to_release, time_unit)
+/// @func	simulateKeyPress(button)
+/// @param	{real}	button
+function simulateKeyPress(_btn) {
+	keyboard_key_press(_btn);
+}
+
+/// @func	simulateKeyRelease(button)
+/// @param	{real}	button
+function simulateKeyRelease(_btn) {
+	keyboard_key_release(_btn);
+}
+
+/// @func	simulateKeyHold(button, time_to_release, time_unit)
 /// @param	{real}	button
 /// @param	{real}	time_to_release
 /// @param	{real}	time_unit
-function simulateKeyPress(_btn, _t_release = 1, _t_unit = time_source_units_frames) {
+function simulateKeyHold(_btn, _t_release = 1, _t_unit = time_source_units_frames) {
 	var _t = (_t_unit == time_source_units_frames ? _t_release : _t_release * game_get_speed(gamespeed_fps));
 	static _fn = function (_button, _self) {
 		keyboard_key_release(_button);
@@ -181,3 +193,18 @@ function simulateKeyPress(_btn, _t_release = 1, _t_unit = time_source_units_fram
 	time_source_start(_ts);
 }
 
+/// @func	simulateFrameWait(frames)
+/// @param	{real}	frames
+function simulateFrameWait(_frames = 1) {
+	__gmtl_internal_function_wait_for(all, _frames, time_source_units_frames);
+}
+
+///	@func	simulateEvent(event_type, event_number, inst_id)
+/// @param	{real}	event_type
+/// @param	{real}	event_number
+/// @param	{ref}	inst_id
+function simulateEvent(_type, _number, _inst_id = all) {
+	with (_inst_id) {
+		event_perform(_type, _number);
+	}
+}
