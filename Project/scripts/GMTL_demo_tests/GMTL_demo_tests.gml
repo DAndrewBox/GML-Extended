@@ -84,6 +84,16 @@ suite(function() {
 			instance_destroy(_inst);
 		});
 		
+		// This should create an instance and check key press and hold time
+		it("Should create an instance and check press & hold time", function () {
+			var _inst = create(10, 10, o_gmtl_demo_timer);
+			expect(_inst.timer_key_hold).toBeEqual(0);
+			simulateKeyPress(vk_space);	// Simulate key press for 1 frame
+			expect(_inst.timer_key_hold).toBeEqual(1);
+			
+			instance_destroy(_inst);
+		});
+		
 		// This test should fail because object doesn't exists
 		it("Should fail", function() {
 			var _inst = create(0, 0, obj_unexistent);

@@ -164,3 +164,20 @@ function beforeEach(_fn) {
 function afterEach(_fn) {
 	gmtl_test_after_each = _fn;
 }
+
+/// @func	simulateKeyPress(button, time_to_release, time_unit)
+/// @param	{real}	button
+/// @param	{real}	time_to_release
+/// @param	{real}	time_unit
+function simulateKeyPress(_btn, _t_release = 1, _t_unit = time_source_units_frames) {
+	var _t = (_t_unit == time_source_units_frames ? _t_release : _t_release * game_get_speed(gamespeed_fps));
+	static _fn = function (_button, _self) {
+		keyboard_key_release(_button);
+		time_source_destroy(_self);
+	}
+	keyboard_key_press(_btn);
+	var _ts = time_source_create(time_source_game, _t, _t_unit, _fn, [_btn]);
+	time_source_reconfigure(time_source_game, _t, _t_unit, _fn, [_btn, _ts]);
+	time_source_start(_ts);
+}
+
