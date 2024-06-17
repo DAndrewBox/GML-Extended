@@ -24,6 +24,15 @@ enum __gmtl_test_status {
 #macro	gmtl_test_before_each	gmtl_internal.tests.before_each
 #macro	gmtl_test_after_each	gmtl_internal.tests.after_each
 
+#macro	original_keyboard_check				keyboard_check
+#macro	original_keyboard_check_pressed		keyboard_check_pressed
+#macro	original_keyboard_check_released	keyboard_check_released
+
+#macro	keyboard_check						__gmtl_internal_function_keyboard_check
+#macro	keyboard_check_pressed				__gmtl_internal_function_keyboard_check_pressed
+#macro	keyboard_check_released				__gmtl_internal_function_keyboard_check_released
+
+
 /// @func __gmtl_internal_function_init()
 function __gmtl_internal_function_init() {
 	gml_pragma("forceinline");
@@ -54,6 +63,11 @@ function __gmtl_internal_function_init() {
 				failed:		0,
 				skipped:	0,
 			}
+		},
+		keys: {
+			hold:		vk_nokey,
+			press:		vk_nokey,
+			release:	vk_nokey,
 		}
 	};
 
@@ -164,4 +178,22 @@ function __gmtl_internal_function_wait_for(_inst, _t, _unit) {
 	}
 	
 	return _inst;
+}
+
+/// @func	__gmtl_internal_function_keyboard_check(button)
+/// @param	{real}	button
+function __gmtl_internal_function_keyboard_check(_btn) {
+	return original_keyboard_check(_btn) || gmtl_internal.keys.hold == _btn || gmtl_internal.keys.press == _btn;
+}
+
+/// @func	__gmtl_internal_function_keyboard_check_pressed(button)
+/// @param	{real}	button
+function __gmtl_internal_function_keyboard_check_pressed(_btn) {
+	return original_keyboard_check_pressed(_btn) || gmtl_internal.keys.press == _btn;
+}
+
+/// @func	__gmtl_internal_function_keyboard_check_released(button)
+/// @param	{real}	button
+function __gmtl_internal_function_keyboard_check_released(_btn) {
+	return original_keyboard_check_released(_btn) || gmtl_internal.keys.release == _btn;
 }

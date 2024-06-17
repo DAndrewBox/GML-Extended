@@ -168,13 +168,23 @@ function afterEach(_fn) {
 /// @func	simulateKeyPress(button)
 /// @param	{real}	button
 function simulateKeyPress(_btn) {
-	keyboard_key_press(_btn);
+	static _reset = function () {
+		gmtl_internal.keys.press = vk_nokey;
+	}
+	
+	gmtl_internal.keys.press = _btn;
+	call_later(1, time_source_units_frames, _reset);
 }
 
 /// @func	simulateKeyRelease(button)
 /// @param	{real}	button
 function simulateKeyRelease(_btn) {
-	keyboard_key_release(_btn);
+	static _reset = function () {
+		gmtl_internal.keys.release = vk_nokey;
+	}
+	
+	gmtl_internal.keys.release = _btn;
+	call_later(1, time_source_units_frames, _reset);
 }
 
 /// @func	simulateKeyHold(button, time_to_release, time_unit)
@@ -182,15 +192,11 @@ function simulateKeyRelease(_btn) {
 /// @param	{real}	time_to_release
 /// @param	{real}	time_unit
 function simulateKeyHold(_btn, _t_release = 1, _t_unit = time_source_units_frames) {
-	var _t = (_t_unit == time_source_units_frames ? _t_release : _t_release * game_get_speed(gamespeed_fps));
-	static _fn = function (_button, _self) {
-		keyboard_key_release(_button);
-		time_source_destroy(_self);
-	}
-	keyboard_key_press(_btn);
-	var _ts = time_source_create(time_source_game, _t, _t_unit, _fn, [_btn]);
-	time_source_reconfigure(time_source_game, _t, _t_unit, _fn, [_btn, _ts]);
-	time_source_start(_ts);
+	gmtl_internal.keys.hold = _btn;
+	simulateKeyPress(_btn);
+	call_later(_t_release, _t_unit, function () {
+		gmtl_internal.keys.hold = vk_nokey;
+	})
 }
 
 /// @func	simulateFrameWait(frames)
@@ -205,7 +211,6 @@ function simulateFrameWait(_frames = 1) {
 /// @param	{ref}	inst_id
 function simulateEvent(_type, _number, _inst_id = all) {
 	with (_inst_id) {
-		show_debug_message(_inst_id);
 		event_perform(_type, _number);
 	}
 }

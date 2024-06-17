@@ -84,22 +84,35 @@ suite(function() {
 			instance_destroy(_inst);
 		});
 		
-		// This should create an instance and check key press and hold time
-		it("Should create an instance and check press & hold time", function () {
+		// This should create an instance and check key press time
+		it("Should create an instance and check press time", function () {
 			var _inst = create(0, 0, o_gmtl_demo_timer);
 			
 			expect(_inst).toHaveProperty("timer_key_hold", 0);
 			
-			// Simulate a press and frame wait
+			// Simulate a press
 			simulateKeyPress(ord("A"));
 			simulateEvent(ev_step, ev_step_normal);
 			expect(_inst).toHaveProperty("timer_key_hold", 1);
 			
-			simulateFrameWait(1);
-			
+			// Simulate a release
 			simulateKeyRelease(ord("A"));
 			simulateEvent(ev_step, ev_step_normal);
 			expect(_inst).toHaveProperty("timer_key_hold", 0);
+			
+			instance_destroy(_inst);
+		});
+		
+		// This should create an instance and check key hold time
+		it("Should create an instance and check hold time", function () {
+			var _inst = create(0, 0, o_gmtl_demo_timer);
+			
+			expect(_inst).toHaveProperty("timer_key_hold", 0);
+			
+			// Simulate a hold and release
+			simulateKeyHold(ord("A"), 10, time_source_units_frames);
+			simulateFrameWait(10);
+			expect(_inst.timer_key_hold).toBe(10);
 			
 			instance_destroy(_inst);
 		});
