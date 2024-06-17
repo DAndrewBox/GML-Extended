@@ -45,6 +45,7 @@ function it(_name, _fn, _args = []) {
 	gmtl_internal.keys.hold		= vk_nokey;
 	gmtl_internal.keys.press	= vk_nokey;
 	gmtl_internal.keys.release	= vk_nokey;
+	__gmtl_internal_fn_mouse_reset();
 	
 	if (!gmtl_suite_continue) {
 		__gmtl_internal_fn_log_test_skipped(_name);

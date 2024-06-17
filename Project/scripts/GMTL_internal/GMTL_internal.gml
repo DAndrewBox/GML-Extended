@@ -6,8 +6,8 @@ gml_pragma("global", "GMTL_core_test_events()");
 gml_pragma("global", "GMTL_core_TestCase()");
 
 /// @func __gmtl_internal_fn_init()
-function __gmtl_internal_fn_init() {
-	global.__gmtl_internal	= {
+function __gmtl_internal_fn_init() {	
+	gmtl_internal = {
 		indent:	0,
 		log:	"",
 		tests: {
@@ -39,7 +39,17 @@ function __gmtl_internal_fn_init() {
 			hold:		vk_nokey,
 			press:		vk_nokey,
 			release:	vk_nokey,
-		}
+		},
+		mouse: {
+			left:	new GTML_MouseState(),
+			right:	new GTML_MouseState(),
+			middle:	new GTML_MouseState(),
+			side1:	new GTML_MouseState(),
+			side2:	new GTML_MouseState(),
+			x:		mouse_x,
+			y:		mouse_y,
+		},
+		finished: false,
 	};
 
 	call_later(1, time_source_units_seconds, function() {
@@ -75,6 +85,7 @@ function __gmtl_internal_fn_init() {
 		_time = (get_timer() - _t_start) / 1000;
 		_time = _time > 1000 ? $"{_time / 1000}s" : $"{_time}ms"
 		__gmtl_internal_fn_log($"All tests finished in {_time}.\n");
+		gmtl_internal.finished = true;
 	});
 }
 
@@ -119,6 +130,7 @@ function __gmtl_internal_fn_suite_add_to_queue(_suite) {
 		gmtl_coverage_suites.total++;
 	}, [_suite]);
 	time_source_start(_ts);
+	
 }
 
 /// @func	__gmtl_internal_fn_wait_for(instance, time, unit)
@@ -177,4 +189,120 @@ function __gmtl_internal_fn_keyboard_check_pressed(_btn) {
 /// @param	{real}	button
 function __gmtl_internal_fn_keyboard_check_released(_btn) {
 	return original_keyboard_check_released(_btn) || gmtl_internal.keys.release == _btn;
+}
+
+/// @func	__gmtl_internal_fn_mouse_button_to_map(button)
+/// @param	{real}		button
+function __gmtl_internal_fn_mouse_button_to_map(_btn) {
+	switch (_btn) {
+		default:
+		case mb_left:	return "left";
+		case mb_right:	return "right";
+		case mb_middle:	return "middle";
+		case mb_side1:	return "side1";
+		case mb_side2:	return "side2";
+	}
+}
+
+/// @func	__gmtl_internal_fn_mouse_anykey_none_get(expected, state)
+/// @param	{bool}		expected
+/// @param	{string}	state
+function __gmtl_internal_fn_mouse_check_anykey(_expected, _state) {
+	static _keys = struct_get_names(gmtl_internal.mouse);
+	static _keys_len = array_length(_keys);
+				
+	for (var i = 0; i < _keys_len; i++) {
+		var _key = _keys[i];
+		if (gmtl_internal.mouse[$ _key][$ _state] == _expected) {
+			return true;
+		}
+	}
+				
+	return false;
+}
+
+/// @func	__gmtl_internal_fn_mouse_check_button(button)
+/// @param	{real}	button
+function __gmtl_internal_fn_mouse_check_button(_btn) {
+	if (original_mouse_check_button(_btn)) {
+		return true;
+	}
+	
+	if (_btn == mb_any) {
+		return __gmtl_internal_fn_mouse_anykey_none_get(true, "hold") || __gmtl_internal_fn_mouse_anykey_none_get(true, "press");
+	}
+	
+	if (_btn == mb_none) {
+		return __gmtl_internal_fn_mouse_anykey_none_get(false, "hold") || __gmtl_internal_fn_mouse_anykey_none_get(false, "press")
+	}
+	
+	var _key = __gmtl_internal_fn_mouse_button_to_map(_btn);
+	return  gmtl_internal.mouse[$ _key].hold || gmtl_internal.mouse[$ _key].press;
+}
+
+/// @func	__gmtl_internal_fn_mouse_check_button_pressed(button)
+/// @param	{real}	button
+function __gmtl_internal_fn_mouse_check_button_pressed(_btn) {
+	if (original_mouse_check_button_pressed(_btn)) {
+		return true;
+	}
+	
+	if (_btn == mb_any) {
+		return __gmtl_internal_fn_mouse_anykey_none_get(true, "press");
+	}
+	
+	if (_btn == mb_none) {
+		return __gmtl_internal_fn_mouse_anykey_none_get(false, "press");
+	}
+	
+	var _key = __gmtl_internal_fn_mouse_button_to_map(_btn);
+	return gmtl_internal.mouse[$ _key].press;
+}
+
+/// @func	__gmtl_internal_fn_mouse_check_button_released(button)
+/// @param	{real}	button
+function __gmtl_internal_fn_mouse_check_button_released(_btn) {
+	if (original_mouse_check_button_released(_btn)) {
+		return true;
+	}
+	
+	if (_btn == mb_any) {
+		return __gmtl_internal_fn_mouse_anykey_none_get(true, "release");
+	}
+	
+	if (_btn == mb_none) {
+		return __gmtl_internal_fn_mouse_anykey_none_get(false, "release");
+	}
+	
+	var _key = __gmtl_internal_fn_mouse_button_to_map(_btn);
+	return gmtl_internal.mouse[$ _key].release;
+}
+
+/// @func	__gmtl_internal_fn_mouse_reset()
+function __gmtl_internal_fn_mouse_reset() {
+	static _keys = struct_get_names(gmtl_internal.mouse);
+	static _keys_len = array_length(_keys);
+				
+	for (var i = 0; i < _keys_len; i++) {
+		var _key = _keys[i];
+		gmtl_internal.mouse[$ _key].reset();
+	}
+}
+
+/// @func	__gmtl_internal_fn_mouse_get_x()
+function __gmtl_internal_fn_mouse_get_x() {
+	if (gmtl_internal.finished) {
+		return original_mouse_x;
+	}
+	
+	return gmtl_internal.mouse.x;
+}
+
+/// @func	__gmtl_internal_fn_mouse_get_x()
+function __gmtl_internal_fn_mouse_get_x() {
+	if (gmtl_internal.finished) {
+		return original_mouse_y;
+	}
+	
+	return gmtl_internal.mouse.y;
 }

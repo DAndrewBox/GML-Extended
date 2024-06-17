@@ -435,3 +435,28 @@ function TestCase(_val, _args) constructor {
 		}
 	}
 }
+
+/// @func	GTML_MouseState()
+function GTML_MouseState() constructor {
+	press	= false;
+	hold	= false;
+	release	= false;
+	
+	static reset = function () {
+		self.press = false;
+		self.hold = false;
+		self.release = false;
+	}
+	
+	static resetHold = function () {
+		self.hold = false;
+	}
+	
+	static resetRelease = function () {
+		self.release = false;
+	}
+	
+	static resetPress = function () {
+		self.press = false;
+	}
+}

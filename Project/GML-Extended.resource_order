@@ -61,5 +61,6 @@
     {"name":"test_lib_types","order":6,"path":"scripts/test_lib_types/test_lib_types.yy",},
     {"name":"shd_gml_ext_blur_gauss","order":1,"path":"shaders/shd_gml_ext_blur_gauss/shd_gml_ext_blur_gauss.yy",},
     {"name":"shd_gml_ext_recolor","order":2,"path":"shaders/shd_gml_ext_recolor/shd_gml_ext_recolor.yy",},
+    {"name":"s_gmtl_demo_clickable","order":3,"path":"sprites/s_gmtl_demo_clickable/s_gmtl_demo_clickable.yy",},
   ],
 }

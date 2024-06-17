@@ -29,3 +29,16 @@ enum __gmtl_test_status {
 #macro	keyboard_check						__gmtl_internal_fn_keyboard_check
 #macro	keyboard_check_pressed				__gmtl_internal_fn_keyboard_check_pressed
 #macro	keyboard_check_released				__gmtl_internal_fn_keyboard_check_released
+
+#macro	original_mouse_check_button				mouse_check_button
+#macro	original_mouse_check_button_pressed		mouse_check_button_pressed
+#macro	original_mouse_check_button_released	mouse_check_button_released
+
+#macro	mouse_check_button						__gmtl_internal_fn_mouse_check_button
+#macro	mouse_check_button_pressed				__gmtl_internal_fn_mouse_check_button_pressed
+#macro	mouse_check_button_released				__gmtl_internal_fn_mouse_check_button_released
+
+#macro	original_mouse_x		mouse_x
+#macro	original_mouse_y		mouse_y
+#macro	mouse_x					gmtl_internal.mouse.x
+#macro	mouse_y					gmtl_internal.mouse.y

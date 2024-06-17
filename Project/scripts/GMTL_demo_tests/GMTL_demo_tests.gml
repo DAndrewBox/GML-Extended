@@ -150,6 +150,21 @@ suite(function() {
 			
 			instance_destroy(_inst);
 		});
+		
+		it("Should create an object and test mouse events", function () {
+			var _inst = create(100, 100, o_gmtl_demo_timer);
+			
+			// Check variables are initialized correctly
+			expect(_inst.timer_click_hold).toBe(0);
+			expect(_inst.times_clicked_inside).toBe(0);
+			expect(_inst.times_clicked_outside).toBe(0);
+
+
+			// Do a few clicks and test
+			simulateMouseClickPress(mb_left, _inst.x + 10, _inst.y + 10);
+			simulateFrameWait(1);
+			expect(_inst.times_clicked_inside).toBeEqual(1);
+		});
 	
 		// This test should be skipped because of using "skip()" function
 		skip("Should be skipped no matter what", function () {

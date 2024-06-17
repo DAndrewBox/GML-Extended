@@ -8,3 +8,20 @@ if (keyboard_check_pressed(ord("A")) || keyboard_check(ord("A"))) {
 if (keyboard_check_released(ord("A"))) {
 	timer_key_hold = 0;
 }
+
+var _mouse_inside = point_in_rectangle(mouse_x, mouse_y, bbox_left, bbox_top, bbox_right, bbox_bottom);
+if (_mouse_inside && mouse_check_button_pressed(mb_left)) {
+	times_clicked_inside++;
+}
+
+if (_mouse_inside && mouse_check_button_pressed(mb_right)) {
+	times_clicked_inside--;
+}
+
+if (!_mouse_inside && mouse_check_button_pressed(mb_left)) {
+	times_clicked_outside++;
+}
+
+if (_mouse_inside && mouse_check_button(mb_left)) {
+	timer_click_hold++;
+}

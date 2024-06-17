@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"s_gmtl_demo_clickable",
+    "path":"sprites/s_gmtl_demo_clickable/s_gmtl_demo_clickable.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

@@ -81,6 +81,40 @@ function simulateKeyHold(_btn) {
 	});
 }
 
+/// @func	simulateMouseClickPress(mb_button, x, y)
+/// @param	{real}	mb_button
+/// @param	{real}	x
+/// @param	{real}	y
+function simulateMouseClickPress(_btn, _x = mouse_x, _y = mouse_y) {	
+	var _key = __gmtl_internal_fn_mouse_button_to_map(_btn);
+	window_mouse_set(_x, _y);
+	gmtl_internal.mouse[$ _key].press = _btn;
+	call_later(1, time_source_units_frames, gmtl_internal.mouse[$ _key].resetPress);
+}
+
+/// @func	simulateMouseClickRelease(mb_button, x, y)
+/// @param	{real}	button
+/// @param	{real}	x
+/// @param	{real}	y
+function simulateMouseClickRelease(_btn, _x = mouse_x, _y = mouse_y) {
+	var _key = __gmtl_internal_fn_mouse_button_to_map(_btn);
+	window_mouse_set(_x, _y);
+	gmtl_internal.mouse[$ _key].release = _btn;
+	call_later(1, time_source_units_frames, gmtl_internal.mouse[$ _key].resetRelease);
+}
+
+/// @func	simulateMouseClickHold(mb_button, x, y)
+/// @param	{real}	button
+/// @param	{real}	x
+/// @param	{real}	y
+function simulateMouseClickHold(_btn, _x = mouse_x, _y = mouse_y) {
+	var _key = __gmtl_internal_fn_mouse_button_to_map(_btn);
+	window_mouse_set(_x, _y);
+	gmtl_internal.mouse[$ _key].hold = _btn;
+	simulateMouseClickPress(_btn);
+	call_later(1, time_source_units_frames, gmtl_internal.mouse[$ _key].resetHold);
+}
+
 /// @func	simulateFrameWait(frames)
 /// @param	{real}	frames
 function simulateFrameWait(_frames = 1) {
