@@ -1,8 +1,10 @@
 // Uncomment this to test
-suite(function() {		
+suite(function() {
+	// Every suite() should have at least 1 describe().
 	describe("GameMaker's Testing Library - Demo Tests", function() {		
 		#region Before/After - Each/All
 		/*
+			This events are optional but could help to work with multiple workflows.
 			The execution order for this functions per suite is:
 			> Suite starts
 			> Start describe
@@ -38,15 +40,23 @@ suite(function() {
 		});
 		#endregion	
 		
+		// Every describe() should have at least 1 it()
 		// A simple test for almost all methods
 		it("Should pass", function() {
 			var _a = 0;
 			_a++;
 			expect(_a).toBe(1);
+			++_a;
+			expect(_a).toBe(2);
+			_a *= 2;
+			expect(_a).toBeEqual(4);
+			expect(_a + 1).toBeEqual(5);
+			expect(_a).toBe(4);
 			
 			var _b = ["apple", "mango", "pineapple"];
 			expect(_b[1]).toBe("mango");
-			expect(_a == _b[1]).toBe(false);
+			expect(_a == _b[1]).toBeFalsy();
+			expect(_b[2] == "pineapple").toBeTruthy();
 			expect(_b).toHaveLength(3);
 			expect(_b).toContain("apple");
 			
@@ -55,9 +65,28 @@ suite(function() {
 			expect(_c.testKey).toHaveLength(4);
 			expect(_c).toHaveProperty("testKey");
 			expect(_c).toHaveProperty("testKey", "test");
+			
+			var _d = 5;
+			expect(_d).toBeGreaterThan(_a);
+			expect(_d).toBeGreaterThanOrEqual(5);
+			expect(_a).toBeLessThan(_d);
+			expect(_a).toBeLessThanOrEqual(4);
+			
+			var _addNumbers = function (_a, _b) {
+				if (!_a || !_b || !(is_real(_a) && is_real(_b))) return;
+				
+				return _a + _b;
+			};
+			expect(_addNumbers, [1, 1]).toHaveReturned();
+			expect(_addNumbers, [1, 1]).toHaveReturnedWith(3);
+			expect(_addNumbers).toHaveReturnedWith(undefined);
+			expect(_addNumbers, [1]).toHaveReturnedWith(undefined);
+			expect(_addNumbers, ["1", 2]).toHaveReturnedWith(undefined);
+			expect(_addNumbers, ["1", "2"]).toHaveReturnedWith(undefined);
 		});
 		
 		// This one test multiple cases provided as a 2D array
+		// You can use the arguments in the name as if you were using string_format()
 		each("Should {0} + {1} be {2}. (Multiple cases test)", function(_arg1, _arg2, _arg3) {
 			expect(_arg1 + _arg2).toBe(_arg3);
 		},
@@ -69,7 +98,8 @@ suite(function() {
 		]);
 		
 		// This should create and test an instance
-		it("Should create an instance, wait, and check timer.", function() {
+		// test() is another way to call to call the it() function
+		test("Should create an instance, wait, and check timer.", function() {
 			var _inst = create(10, 10, o_gmtl_demo_timer);
 			_inst.waitFor(5, time_source_units_frames);
 			
@@ -110,11 +140,20 @@ suite(function() {
 			expect(_inst).toHaveProperty("timer_key_hold", 0);
 			
 			// Simulate a hold and release
-			simulateKeyHold(ord("A"), 10, time_source_units_frames);
-			simulateFrameWait(10);
+			simulateKeyHold(ord("A"));
+			simulateFrameWait(10);	// Perform all common frame events to all instances for 10 frames
 			expect(_inst.timer_key_hold).toBe(10);
+
+			simulateKeyRelease(ord("A"));
+			simulateFrameWait();	// Perform all events on all instances for 1 frame after release
+			expect(_inst.timer_key_hold).toBe(0);
 			
 			instance_destroy(_inst);
+		});
+	
+		// This test should be skipped because of using "skip()" function
+		skip("Should be skipped no matter what", function () {
+			create(0, 0, obj_unexistent);	// This should fail if test were not skipped
 		});
 		
 		// This test should fail because object doesn't exists
@@ -125,7 +164,7 @@ suite(function() {
 		
 		// This test should be skipped since last test in the describe event failed.
 		// You can make this test pass if you move it before the failed test.
-		it("Should be skipped", function() {
+		it("Should be skipped after suite failure", function() {
 			show_message_async("This should never be seen :)");
 		});
 	});

@@ -36,6 +36,10 @@ function it(_name, _fn, _args = []) {
 	gmtl_indent = 1;
 	gmtl_coverage_tests.total++;
 	
+	gmtl_internal.keys.hold		= vk_nokey;
+	gmtl_internal.keys.press	= vk_nokey;
+	gmtl_internal.keys.release	= vk_nokey;
+	
 	if (!gmtl_suite_continue) {
 		__gmtl_internal_function_log_test_skipped(_name);
 		gmtl_coverage_tests.skipped++;
@@ -97,6 +101,21 @@ function test(_name, _fn) {
 	it(_name, _fn);
 }
 
+/// @func	skip(name, fn, args)
+/// @param	{string}	name
+/// @param	{function}	fn
+/// @param	{array}		args
+function skip(_name, _fn, _args = []) {
+	gmtl_test_status = __gmtl_test_status.SKIP;
+	gmtl_indent = 1;
+	gmtl_coverage_tests.total++;
+	
+	__gmtl_internal_function_log_test_skipped(_name);
+	gmtl_coverage_tests.skipped++;
+	
+	gmtl_test_log = [];
+}
+
 /// @func	each(name, fn, cases)
 /// @param	{string}	name
 /// @param	{function}	fn
@@ -109,11 +128,12 @@ function each(_name, _fn, _cases) {
 	}
 }
 
-/// @func	expect(value)
+/// @func	expect(value, args)
 /// @param	{any}	value
-function expect(_val) {
+/// @param	{array}	agrs
+function expect(_val, _args = []) {
 	if (gmtl_suite_continue) {
-		return new TestCase(_val);
+		return new TestCase(_val, _args);
 	}
 }
 
@@ -187,16 +207,14 @@ function simulateKeyRelease(_btn) {
 	call_later(1, time_source_units_frames, _reset);
 }
 
-/// @func	simulateKeyHold(button, time_to_release, time_unit)
+/// @func	simulateKeyHold(button)
 /// @param	{real}	button
-/// @param	{real}	time_to_release
-/// @param	{real}	time_unit
-function simulateKeyHold(_btn, _t_release = 1, _t_unit = time_source_units_frames) {
+function simulateKeyHold(_btn) {
 	gmtl_internal.keys.hold = _btn;
 	simulateKeyPress(_btn);
-	call_later(_t_release, _t_unit, function () {
+	call_later(1, time_source_units_frames, function () {
 		gmtl_internal.keys.hold = vk_nokey;
-	})
+	});
 }
 
 /// @func	simulateFrameWait(frames)

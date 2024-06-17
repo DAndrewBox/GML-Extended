@@ -180,6 +180,21 @@ function __gmtl_internal_function_wait_for(_inst, _t, _unit) {
 	return _inst;
 }
 
+/// @func	__gmtl_internal_function_stacktrace()
+function __gmtl_internal_function_stacktrace() {
+	var _stacktrace = debug_get_callstack(8);
+	var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
+	if (_traced_error_index) {
+		var _trace = _stacktrace[_traced_error_index]
+		var _filename = array_last(string_split(_trace, "@"));
+		var _fname_arr = string_split(_filename, ":");
+		var _line = _fname_arr[1];
+		_filename = _fname_arr[0];
+		_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
+		array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
+	}
+}
+
 /// @func	__gmtl_internal_function_keyboard_check(button)
 /// @param	{real}	button
 function __gmtl_internal_function_keyboard_check(_btn) {
