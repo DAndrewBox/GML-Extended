@@ -1,44 +1,46 @@
 // Uncomment this to test
 suite(function() {
 	// Every suite() should have at least 1 describe().
-	describe("GameMaker's Testing Library - Demo Tests", function() {		
-		#region Before/After - Each/All
-		/*
-			This events are optional but could help to work with multiple workflows.
-			The execution order for this functions per suite is:
-			> Suite starts
-			> Start describe
-				> Run beforeAll()
-				> Start loop of it/test
-					> Run beforeEach()
-					> Run it/test
-					> Run afterEach()
-				> Finish loop of it/test
-				> Run afterAll()
-			> Finish describe
-			> Suite ends
-		*/
+	describe("GameMaker's Testing Library - Demo Tests", function() {
+		if (true) { // Set to false to disable messages
+			#region Before/After - Each/All
+			/*
+				This events are optional but could help to work with multiple workflows.
+				The execution order for this functions per suite is:
+				> Suite starts
+				> Start describe
+					> Run beforeAll()
+					> Start loop of it/test
+						> Run beforeEach()
+						> Run it/test
+						> Run afterEach()
+					> Finish loop of it/test
+					> Run afterAll()
+				> Finish describe
+				> Suite ends
+			*/
 		
-		beforeAll(function() {
-			// This runs before all tests starts
-			show_debug_message("Before all!");
-		});
+			beforeAll(function() {
+				// This runs before all tests starts
+				show_debug_message("Before all!");
+			});
 	
-		afterAll(function() {
-			// This runs after all tests are completed
-			show_debug_message("After all!");
-		});
+			afterAll(function() {
+				// This runs after all tests are completed
+				show_debug_message("After all!");
+			});
 	
-		beforeEach(function() {
-			// This runs before EACH test starts
-			show_debug_message("Before each!");
-		});
+			beforeEach(function() {
+				// This runs before EACH test starts
+				show_debug_message("Before each!");
+			});
 		
-		afterEach(function() {
-			// This runs after EACH test ends
-			show_debug_message("After each!");
-		});
-		#endregion	
+			afterEach(function() {
+				// This runs after EACH test ends
+				show_debug_message("After each!");
+			});
+			#endregion	
+		}
 		
 		// Every describe() should have at least 1 it()
 		// A simple test for almost all methods
@@ -151,6 +153,7 @@ suite(function() {
 			instance_destroy(_inst);
 		});
 		
+		// This will test mouse events, press, hold and release buttons should do different actions
 		it("Should create an object and test mouse events", function () {
 			var _inst = create(100, 100, o_gmtl_demo_timer);
 			
@@ -179,6 +182,11 @@ suite(function() {
 				simulateMouseClickRelease(mb_left);
 			}
 			expect(_inst.times_clicked_outside).toBeEqual(10);
+			
+			// Hold click
+			simulateMouseClickHold(mb_middle, _inst.x + 1, _inst.y + 1);
+			simulateFrameWait(15);
+			expect(_inst.timer_click_hold).toBeEqual(15);
 			
 			instance_destroy(_inst);
 		});
