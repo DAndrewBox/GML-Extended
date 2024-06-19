@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"test_lib_math",
   "parent":{
-    "name":"Tests",
-    "path":"folders/Libraries/GML-Extended/Tests.yy",
+    "name":"Core",
+    "path":"folders/Libraries/GML-Extended/Tests/Core.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

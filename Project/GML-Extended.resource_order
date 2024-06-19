@@ -13,6 +13,7 @@
     {"name":"Optional","order":1,"path":"folders/Libraries/GML-Extended/Functions/Optional.yy",},
     {"name":"Tests","order":2,"path":"folders/Libraries/GML-Extended/Tests.yy",},
     {"name":"Core","order":7,"path":"folders/Libraries/GML-Extended/Tests/Core.yy",},
+    {"name":"Optional","order":8,"path":"folders/Libraries/GML-Extended/Tests/Optional.yy",},
     {"name":"GMTL","order":1,"path":"folders/Libraries/GMTL.yy",},
     {"name":"Core","order":1,"path":"folders/Libraries/GMTL/Core.yy",},
     {"name":"Setup","order":3,"path":"folders/Libraries/GMTL/Setup.yy",},

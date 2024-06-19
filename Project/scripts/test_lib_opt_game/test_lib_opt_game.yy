@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"test_lib_opt_game",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"test_lib_opt_game",
+  "parent":{
+    "name":"Optional",
+    "path":"folders/Libraries/GML-Extended/Tests/Optional.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
