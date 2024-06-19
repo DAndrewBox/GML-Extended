@@ -93,6 +93,7 @@
     {"id":{"name":"test_lib_colors","path":"scripts/test_lib_colors/test_lib_colors.yy",},},
     {"id":{"name":"test_lib_math","path":"scripts/test_lib_math/test_lib_math.yy",},},
     {"id":{"name":"test_lib_opt_game","path":"scripts/test_lib_opt_game/test_lib_opt_game.yy",},},
+    {"id":{"name":"test_lib_opt_gui","path":"scripts/test_lib_opt_gui/test_lib_opt_gui.yy",},},
     {"id":{"name":"test_lib_shortcuts","path":"scripts/test_lib_shortcuts/test_lib_shortcuts.yy",},},
     {"id":{"name":"test_lib_strings","path":"scripts/test_lib_strings/test_lib_strings.yy",},},
     {"id":{"name":"test_lib_structs","path":"scripts/test_lib_structs/test_lib_structs.yy",},},

@@ -58,6 +58,7 @@
     {"name":"lib_types","order":7,"path":"scripts/lib_types/lib_types.yy",},
     {"name":"test_lib_colors","order":1,"path":"scripts/test_lib_colors/test_lib_colors.yy",},
     {"name":"test_lib_math","order":2,"path":"scripts/test_lib_math/test_lib_math.yy",},
+    {"name":"test_lib_opt_gui","order":1,"path":"scripts/test_lib_opt_gui/test_lib_opt_gui.yy",},
     {"name":"test_lib_shortcuts","order":3,"path":"scripts/test_lib_shortcuts/test_lib_shortcuts.yy",},
     {"name":"test_lib_strings","order":4,"path":"scripts/test_lib_strings/test_lib_strings.yy",},
     {"name":"test_lib_structs","order":5,"path":"scripts/test_lib_structs/test_lib_structs.yy",},

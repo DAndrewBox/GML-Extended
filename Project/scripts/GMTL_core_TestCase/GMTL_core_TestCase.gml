@@ -352,7 +352,19 @@ function TestCase(_val, _args) constructor {
 	
 	/// @func toBeFalsy()
 	function toBeFalsy() {
-		var _isValid = !(__internal_value);
+		var _isValid = false;
+		var _type_of = typeof(__internal_value);
+		
+		switch (_type_of) {
+			case "bool":
+				_isValid = (__internal_value != true);
+				break;
+			case "string":
+				_isValid = (__internal_value == "");
+				break;
+			default:
+				_isValid = is_undefined(__internal_value) || __internal_value <= 0;
+		}
 		
 		if (!_isValid) {
 			__gmtl_internal_fn_stacktrace();
@@ -369,7 +381,19 @@ function TestCase(_val, _args) constructor {
 	
 	/// @func toBeTruthy()
 	function toBeTruthy() {
-		var _isValid = !!(__internal_value);
+		var _isValid = false;
+		var _type_of = typeof(__internal_value);
+		
+		switch (_type_of) {
+			case "bool":
+				_isValid = (__internal_value == true);
+				break;
+			case "string":
+				_isValid = (__internal_value != "");
+				break;
+			default:
+				_isValid = !is_undefined(__internal_value) || __internal_value > 0;
+		}
 		
 		if (!_isValid) {
 			__gmtl_internal_fn_stacktrace();

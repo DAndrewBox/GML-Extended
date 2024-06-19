@@ -85,6 +85,14 @@ function simulateKeyHold(_btn) {
 	});
 }
 
+/// @func	simulateMousePosition(x, y)
+/// @param	{real}	x
+/// @param	{real}	y
+function simulateMousePosition(_x = mouse_x, _y = mouse_y) {	
+	gmtl_internal.mouse.x = _x;
+	gmtl_internal.mouse.y = _y;
+}
+
 /// @func	simulateMouseClickPress(mb_button, x, y)
 /// @param	{real}	mb_button
 /// @param	{real}	x
