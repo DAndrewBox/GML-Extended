@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GMTL_core_test_events",
   "parent":{
-    "name":"core",
-    "path":"folders/Libraries/GMTL/core.yy",
+    "name":"Core",
+    "path":"folders/Libraries/GMTL/Core.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

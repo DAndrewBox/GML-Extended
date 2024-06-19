@@ -1,4 +1,34 @@
 suite(function() {
+	describe("string_pad_left", function() {
+		it("Should add chars at the start", function() {
+			expect(string_pad_left("Hello World", " ", 20)).toBe("         Hello World");
+			expect(string_pad_left("Hello World", "X", 20)).toBe("XXXXXXXXXHello World");
+			expect(string_pad_left("Hello World", "_", 15)).toBe("____Hello World");
+			expect(string_pad_left("Hello World", "!", 25)).toBe("!!!!!!!!!!!!!!Hello World");
+		});
+		
+		it("Should not add chars at the start", function() {
+			expect(string_pad_left("Hello World", " ", 5)).toBe("Hello World");
+			expect(string_pad_left("Hello World", "X", 10)).toBe("Hello World");
+			expect(string_pad_left("Hello World", "", 20)).toBe("Hello World");
+		});
+	});
+	
+	describe("string_pad_right", function() {
+		it("Should add chars at the start", function() {
+			expect(string_pad_right("Hello World", " ", 20)).toBe("Hello World         ");
+			expect(string_pad_right("Hello World", "X", 20)).toBe("Hello WorldXXXXXXXXX");
+			expect(string_pad_right("Hello World", "_", 15)).toBe("Hello World____");
+			expect(string_pad_right("Hello World", "!", 25)).toBe("Hello World!!!!!!!!!!!!!!");
+		});
+		
+		it("Should not add chars at the start", function() {
+			expect(string_pad_right("Hello World", " ", 5)).toBe("Hello World");
+			expect(string_pad_right("Hello World", "X", 10)).toBe("Hello World");
+			expect(string_pad_right("Hello World", "", 20)).toBe("Hello World");
+		});
+	});
+	
 	describe("string_contains", function() {
 		it("Should find the substrings in the string", function() {
 			var _str = "Hello World, this is a test!";
@@ -43,33 +73,14 @@ suite(function() {
 		});
 	});
 	
-	describe("string_pad_left", function() {
-		it("Should add chars at the start", function() {
-			expect(string_pad_left("Hello World", " ", 20)).toBe("         Hello World");
-			expect(string_pad_left("Hello World", "X", 20)).toBe("XXXXXXXXXHello World");
-			expect(string_pad_left("Hello World", "_", 15)).toBe("____Hello World");
-			expect(string_pad_left("Hello World", "!", 25)).toBe("!!!!!!!!!!!!!!Hello World");
-		});
-		
-		it("Should not add chars at the start", function() {
-			expect(string_pad_left("Hello World", " ", 5)).toBe("Hello World");
-			expect(string_pad_left("Hello World", "X", 10)).toBe("Hello World");
-			expect(string_pad_left("Hello World", "", 20)).toBe("Hello World");
-		});
-	});
-	
-	describe("string_pad_right", function() {
-		it("Should add chars at the start", function() {
-			expect(string_pad_right("Hello World", " ", 20)).toBe("Hello World         ");
-			expect(string_pad_right("Hello World", "X", 20)).toBe("Hello WorldXXXXXXXXX");
-			expect(string_pad_right("Hello World", "_", 15)).toBe("Hello World____");
-			expect(string_pad_right("Hello World", "!", 25)).toBe("Hello World!!!!!!!!!!!!!!");
-		});
-		
-		it("Should not add chars at the start", function() {
-			expect(string_pad_right("Hello World", " ", 5)).toBe("Hello World");
-			expect(string_pad_right("Hello World", "X", 10)).toBe("Hello World");
-			expect(string_pad_right("Hello World", "", 20)).toBe("Hello World");
-		});
+	describe("string_percentage", function() {
+		each("Should get a percetage from values", function(_current, _max, _expected) {
+			expect(string_percentage(_current, _max)).toBe(_expected);
+		}, [
+			[1, 100, "1%"],
+			[5, 10, "50%"],
+			[-10, 20, "-50%"],
+			[2.25, 2.25, "100%"],
+		]);
 	});
 });

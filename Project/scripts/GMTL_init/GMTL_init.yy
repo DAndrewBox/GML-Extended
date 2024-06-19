@@ -1,12 +1,12 @@
 {
   "$GMScript":"",
-  "%Name":"GMTL_demo_tests",
+  "%Name":"GMTL_init",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GMTL_demo_tests",
+  "name":"GMTL_init",
   "parent":{
-    "name":"Demo",
-    "path":"folders/Libraries/GMTL/Demo.yy",
+    "name":"Setup",
+    "path":"folders/Libraries/GMTL/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -38,7 +38,5 @@ enum __gmtl_test_status {
 #macro	mouse_check_button_pressed				__gmtl_internal_fn_mouse_check_button_pressed
 #macro	mouse_check_button_released				__gmtl_internal_fn_mouse_check_button_released
 
-#macro	original_mouse_x		mouse_x
-#macro	original_mouse_y		mouse_y
-#macro	mouse_x					__gmtl_internal_fn_mouse_get_x()
-#macro	mouse_y					__gmtl_internal_fn_mouse_get_y()
+#macro	mouse_x		__gmtl_internal_fn_mouse_get_x()
+#macro	mouse_y		__gmtl_internal_fn_mouse_get_y()

@@ -5,12 +5,12 @@ function suite(_suite) {
 }
 
 /// @func	describe(name, fn)
-/// @param	{string}		name
+/// @param	{string}	name
 /// @param	{function}	fn
 function describe(_name, _fn) {
 	gmtl_suite_continue = true;
 	gmtl_indent = 0;
-	__gmtl_internal_fn_log($"------- {_name} -------");
+	__gmtl_internal_fn_log($"\n------- {_name} -------");
 
 	try {
 		if (is_callable(gmtl_test_before_all)) {
@@ -37,7 +37,7 @@ function describe(_name, _fn) {
 /// @param	{string}		name
 /// @param	{function}	fn
 /// @param	{array}		args
-function it(_name, _fn, _args = []) {	
+function it(_name, _fn, _args = []) {
 	gmtl_test_status = __gmtl_test_status.RUN;
 	gmtl_indent = 1;
 	gmtl_coverage_tests.total++;
@@ -52,13 +52,20 @@ function it(_name, _fn, _args = []) {
 		gmtl_coverage_tests.skipped++;
 		return;
 	}
-	
+
+	var _fn_to_run = __gmtl_internal_fn_get_function_index(_fn);
 	var _time = get_timer();
 	try {
 		if (is_callable(gmtl_test_before_each)) {
 			script_execute(gmtl_test_before_each);
 		}
-		script_execute_ext(_fn, _args);		
+		
+		if (_fn_to_run == -1) {
+			gmtl_indent = 2;
+			__gmtl_internal_fn_log("ERROR: Trying to run a function or method that doesn't exist or is not callable.");
+		}
+		
+		script_execute_ext(_fn_to_run, _args);
 		_time = get_timer() - _time;
 
 		if (gmtl_test_status == __gmtl_test_status.SUCCESS) {
@@ -84,7 +91,6 @@ function it(_name, _fn, _args = []) {
 		for (var i = 0; i < _tests_stacktrace_len; i++) {
 			__gmtl_internal_fn_log(gmtl_test_log[i]);
 		}
-		
 		__gmtl_internal_fn_log(e.message);
 		__gmtl_internal_fn_log(
 			string_copy(e.longMessage, string_pos("(line", e.longMessage), string_length(e.longMessage) - string_pos("(line", e.longMessage))
@@ -101,11 +107,19 @@ function it(_name, _fn, _args = []) {
 	}
 }
 
-/// @func	test(name, fn)
+/// @func	section(name, fn)
 /// @param	{string}	name
 /// @param	{function}	fn
-function test(_name, _fn) {
-	it(_name, _fn);
+function section(_name, _fn) {
+	describe(_name, _fn);
+}
+
+/// @func	test(name, fn, args)
+/// @param	{string}	name
+/// @param	{function}	fn
+/// @param	{array}		args
+function test(_name, _fn, _args = []) {
+	it(_name, _fn, _args);
 }
 
 /// @func	skip(name, fn, args)
@@ -128,9 +142,10 @@ function skip(_name, _fn, _args = []) {
 /// @param	{function}	fn
 /// @param	{array}		cases
 function each(_name, _fn, _cases) {
-	var _cases_len = get_size(_cases);
+	var _cases_len = array_length(_cases);
+	var _name_with_params;
 	for (var i = 0; i < _cases_len; i++) {
-		var _name_with_params = string_ext(_name, _cases[i]);
+		_name_with_params = string_ext(_name, _cases[i]);
 		it($"{_name_with_params} [Case {i + 1}]", _fn, _cases[i]);
 	}
 }

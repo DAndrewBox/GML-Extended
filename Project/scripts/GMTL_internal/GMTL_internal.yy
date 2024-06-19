@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GMTL_internal",
   "parent":{
-    "name":"init",
-    "path":"folders/Libraries/GMTL/init.yy",
+    "name":"Setup",
+    "path":"folders/Libraries/GMTL/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

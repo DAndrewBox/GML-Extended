@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"GMTL_definitions",
+  "%Name":"GMTL_dependencies",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GMTL_definitions",
+  "name":"GMTL_dependencies",
   "parent":{
     "name":"Setup",
     "path":"folders/Libraries/GMTL/Setup.yy",

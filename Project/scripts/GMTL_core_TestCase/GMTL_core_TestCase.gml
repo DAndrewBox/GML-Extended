@@ -65,12 +65,15 @@ function TestCase(_val, _args) constructor {
 		
 		if (_isValid) {
 			var _received = undefined;
-			if (is_callable(__internal_value)) {
+			var _fn_to_run = __gmtl_internal_fn_get_function_index(__internal_value);
+			if (is_callable(_fn_to_run)) {
 				try {
-					_received = script_execute_ext(__internal_value, __internal_args);
+					_received = script_execute_ext(_fn_to_run, __internal_args);
 				} catch(e) {
-					// Do nothing
-					show_debug_message("");
+					var _prev_indent = gmtl_indent;
+					gmtl_indent = 2;
+					__gmtl_internal_fn_log(e.message);
+					gmtl_indent = _prev_indent;
 				}
 			}
 			
@@ -98,12 +101,15 @@ function TestCase(_val, _args) constructor {
 			__gmtl_internal_fn_stacktrace();
 			
 			var _received = undefined;
-			if (is_callable(__internal_value)) {
+			var _fn_to_run = __gmtl_internal_fn_get_function_index(__internal_value);
+			if (is_callable(_fn_to_run)) {
 				try {
-					_received = script_execute_ext(__internal_value, __internal_args);
+					_received = script_execute_ext(_fn_to_run, __internal_args);
 				} catch(e) {
-					// Do nothing
-					show_debug_message("");
+					var _prev_indent = gmtl_indent;
+					gmtl_indent = 2;
+					__gmtl_internal_fn_log(e.message);
+					gmtl_indent = _prev_indent;
 				}
 			}
 			
@@ -142,11 +148,11 @@ function TestCase(_val, _args) constructor {
 		_isValid = _n == _len;
 		if (!_isValid) {
 			__gmtl_internal_fn_stacktrace();
-			
 			var _type_of_msg = $"<Invalid Type: {_typeOf}>";
+			_type_of_msg = (_typeInvalid ? _type_of_msg  : string(_len));
 			array_push(gmtl_test_log, $">expect({__internal_value}).toHaveLength({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {_n}");
-			array_push(gmtl_test_log, $"- Recieved Result: {_typeInvalid ? _type_of_msg  : string(_len)}");
+			array_push(gmtl_test_log, $"- Recieved Result: {_type_of_msg}");
 			gmtl_test_status = __gmtl_test_status.FAILED;
 			gmtl_suite_continue = false;
 		} else {
@@ -192,9 +198,10 @@ function TestCase(_val, _args) constructor {
 			
 			var _expected_not_undefined_msg = $"{_key} = {_value}";
 			var _expected_undefined_msg = $"_key != undefined";
+			var _expected_message = (!_valueIsUndefined ? _expected_not_undefined_msg : _expected_undefined_msg);
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toHaveProperty({_key}, {_value}):");
-			array_push(gmtl_test_log, $"- Expected Result: {!_valueIsUndefined ? _expected_not_undefined_msg : _expected_undefined_msg }");
+			array_push(gmtl_test_log, $"- Expected Result: {_expected_message}");
 			
 			if (_typeInvalid) {
 				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
@@ -420,9 +427,10 @@ function TestCase(_val, _args) constructor {
 			
 			var _msg_if_string = $"as or in key {_onPos}";
 			var _msg_if_array = $"on position index {_onPos}";
+			var _expected_message = (is_string(_onPos) ? _msg_if_string : _msg_if_array);
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toContain({_value}):");
-			array_push(gmtl_test_log, $"- Expected Result: Found {is_string(_onPos) ? _msg_if_string : _msg_if_array}");
+			array_push(gmtl_test_log, $"- Expected Result: Found {_expected_message}");
 			if (_typeInvalid) {
 				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
 			} else {

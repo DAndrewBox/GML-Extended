@@ -79,6 +79,18 @@ suite(function() {
 			expect(wrap(90, 0, 360)).toBe(90);
 		});
 	});
+	
+	describe("percentage", function() {
+		each("Should return percentages", function(_current, _max, _expected) {
+			expect(percentage(_current, _max)).toBe(_expected);
+		},
+		[
+			[5, 10, 50],
+			[13, 100, 13],
+			[10, 10, 100],
+			[-5, 5, -100]
+		]);
+	});
 });
 
 #macro	supposedly	if

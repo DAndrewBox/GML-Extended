@@ -1,95 +1,3 @@
-gml_pragma("global", "GMTL_definitions()");
-gml_pragma("global", "GMTL_internal()");
-gml_pragma("global", "GMTL_core_test_setup()");
-gml_pragma("global", "GMTL_core_test_events()");
-gml_pragma("global", "GMTL_core_TestCase()");
-
-gml_pragma("global", "__gmtl_internal_fn_init()");
-
-/// @func __gmtl_internal_fn_init()
-function __gmtl_internal_fn_init() {	
-	gmtl_internal = {
-		indent:	0,
-		log:	"",
-		tests: {
-			log:	[],
-			status: __gmtl_test_status.RUN,
-			before_all: noone,
-			after_all: noone,
-		},
-		suites: {
-			list:				[],
-			should_continue:	true,
-			last_failed:		false,
-		},
-		coverage: {
-			suites: {
-				total:		0,
-				success:	0,
-				failed:		0,
-				skipped:	0,
-			},
-			tests: {
-				total:		0,
-				success:	0,
-				failed:		0,
-				skipped:	0,
-			}
-		},
-		keys: {
-			hold:		vk_nokey,
-			press:		vk_nokey,
-			release:	vk_nokey,
-		},
-		mouse: {
-			left:	new GTML_MouseState(),
-			right:	new GTML_MouseState(),
-			middle:	new GTML_MouseState(),
-			side1:	new GTML_MouseState(),
-			side2:	new GTML_MouseState(),
-			x:		0,
-			y:		0,
-		},
-		finished: false,
-	};
-
-	call_later(20, time_source_units_frames, function() {
-		var _t_start = get_timer();
-		var _suites_len = array_length(gmtl_suite_list);
-		for (var i = 0; i < _suites_len; i++) {
-			gmtl_suite_last_failed = false;
-			var _suite = gmtl_suite_list[i];
-			try {
-				_suite();
-				if (gmtl_suite_last_failed) {
-					throw "Suite Failed";
-				}
-				gmtl_coverage_suites.success++;
-			} catch(e) {
-				gmtl_coverage_suites.failed++;
-			}
-			__gmtl_internal_fn_log("=================================");
-		}
-		
-		var _failed, _skipped, _time;
-		gmtl_indent = 0;
-		__gmtl_internal_fn_log("========== Tests Finished! ==========");
-		
-		_failed	 = gmtl_coverage_suites.failed > 0 ? $"{gmtl_coverage_suites.failed} failed, " : "";
-		_skipped = gmtl_coverage_suites.skipped > 0 ? $"{gmtl_coverage_suites.skipped} skipped, " : "";
-		__gmtl_internal_fn_log($"Test Suites: {gmtl_coverage_suites.success} passed, {_failed}{_skipped}{gmtl_coverage_suites.total} total. ({string_percentage(gmtl_coverage_suites.success, gmtl_coverage_suites.total)})");
-		
-		_failed	 = gmtl_coverage_tests.failed > 0 ? $"{gmtl_coverage_tests.failed} failed, " : "";
-		_skipped = gmtl_coverage_tests.skipped > 0 ? $"{gmtl_coverage_tests.skipped} skipped, " : "";
-		__gmtl_internal_fn_log($"Tests: {gmtl_coverage_tests.success} passed, {_failed}{_skipped}{gmtl_coverage_tests.total} total. ({string_percentage(gmtl_coverage_tests.success, gmtl_coverage_tests.total)})");
-		
-		_time = (get_timer() - _t_start) / 1000;
-		_time = _time > 1000 ? $"{_time / 1000}s" : $"{_time}ms"
-		__gmtl_internal_fn_log($"All tests finished in {_time}.\n");
-		gmtl_internal.finished = true;
-	});
-}
-
 /// @func	__gmtl_internal_fn_log(message)
 /// @param	{string}	message
 function __gmtl_internal_fn_log(_msg) {
@@ -100,7 +8,6 @@ function __gmtl_internal_fn_log(_msg) {
 	_msg = _pad_left + _msg;
 	
 	gmtl_log += _msg + "\n";
-	show_debug_message(_msg);
 }
 
 /// @func	__gmtl_internal_fn_log_test_success(message, time)
@@ -161,8 +68,12 @@ function __gmtl_internal_fn_wait_for(_inst, _t, _unit) {
 
 /// @func	__gmtl_internal_fn_stacktrace()
 function __gmtl_internal_fn_stacktrace() {
+	static _stacktrace_fn = function (e) {
+		return (string_pos("gml_Script_anon@", e) > 0);
+	}
 	var _stacktrace = debug_get_callstack(8);
-	var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
+	var _traced_error_index = array_find_index(_stacktrace, _stacktrace_fn);
+	
 	if (_traced_error_index) {
 		var _trace = _stacktrace[_traced_error_index]
 		var _filename = array_last(string_split(_trace, "@"));
@@ -294,7 +205,12 @@ function __gmtl_internal_fn_mouse_reset() {
 /// @func	__gmtl_internal_fn_mouse_get_x()
 function __gmtl_internal_fn_mouse_get_x() {
 	if (gmtl_internal.finished) {
-		return original_mouse_x;
+		var _w_camera = camera_get_view_width(view_camera[view_current]);
+		var _w_window = window_get_width(); 
+		var _x = (display_mouse_get_x() - window_get_x()) * (1 / _w_window);
+		_x = clamp(_x, 0, 1);
+		_x = _x * _w_camera;
+		return floor(_x);
 	}
 	
 	return gmtl_internal.mouse.x;
@@ -303,8 +219,71 @@ function __gmtl_internal_fn_mouse_get_x() {
 /// @func	__gmtl_internal_fn_mouse_get_y()
 function __gmtl_internal_fn_mouse_get_y() {
 	if (gmtl_internal.finished) {
-		return original_mouse_y;
+		var _h_camera = camera_get_view_height(view_camera[view_current]);
+		var _h_window = window_get_height(); 
+		var _y = (display_mouse_get_y() - window_get_y()) * (1 / _h_window);
+		_y = clamp(_y, 0, 1);
+		_y = _y * _h_camera;
+		return floor(_y);
 	}
 	
 	return gmtl_internal.mouse.y;
+}
+
+/// @func	__gmtl_internal_fn_get_function_index(fn)
+/// @param	{function}	fn
+function __gmtl_internal_fn_get_function_index(_fn) {
+	var _fn_to_run = -1;
+	if (is_method(_fn)) {
+		_fn_to_run = method_get_index(_fn);
+	} else if (is_callable(_fn)) {
+		_fn_to_run = _fn;	
+	}
+	
+	return _fn_to_run;
+}
+
+/// @func	__gmtl_internal_fn_call_suite(suite)
+/// @param	{function}	suite
+function __gmtl_internal_fn_call_suite(_suite) {
+	gmtl_suite_last_failed = false;
+	try {
+		_suite();
+		if (gmtl_suite_last_failed) {
+			throw "Suite Failed";
+		}
+		gmtl_coverage_suites.success++;
+	} catch(e) {
+		var _prev_indent = gmtl_indent;
+		gmtl_indent = 2;
+		__gmtl_internal_fn_log(e.message);
+		gmtl_indent = _prev_indent;
+		gmtl_coverage_suites.failed++;
+	} finally {
+		__gmtl_internal_fn_log("\n" + string_repeat("=", 64));
+	}
+}
+
+/// @func	__gmtl_internal_fn_finish_suites(time_start)
+/// @param	{real}	time_start
+function __gmtl_internal_fn_finish_suites(_t_start) {
+	var _failed, _skipped, _time, _success_rate;
+	gmtl_indent = 0;
+	__gmtl_internal_fn_log($"{string_repeat("=", 23)} Tests Finished! {string_repeat("=", 24)}");
+		
+	_failed	 = gmtl_coverage_suites.failed > 0 ? $"{gmtl_coverage_suites.failed} failed, " : "";
+	_skipped = gmtl_coverage_suites.skipped > 0 ? $"{gmtl_coverage_suites.skipped} skipped, " : "";
+	_success_rate = __gmtl_dep_fn_string_percentage(gmtl_coverage_suites.success, gmtl_coverage_suites.total);
+	__gmtl_internal_fn_log($"Test Suites: {gmtl_coverage_suites.success} passed, {_failed}{_skipped}{gmtl_coverage_suites.total} total. ({_success_rate} success)");
+		
+	_failed	 = gmtl_coverage_tests.failed > 0 ? $"{gmtl_coverage_tests.failed} failed, " : "";
+	_skipped = gmtl_coverage_tests.skipped > 0 ? $"{gmtl_coverage_tests.skipped} skipped, " : "";
+	_success_rate = __gmtl_dep_fn_string_percentage(gmtl_coverage_tests.success, gmtl_coverage_tests.total);
+	__gmtl_internal_fn_log($"Tests: {gmtl_coverage_tests.success} passed, {_failed}{_skipped}{gmtl_coverage_tests.total} total. ({_success_rate} success)");
+		
+	_time = (get_timer() - _t_start) / 1000;
+	_time = _time > 1000 ? $"{_time / 1000}s" : $"{_time}ms"
+	__gmtl_internal_fn_log($"All tests finished in {_time}.\n");
+	gmtl_internal.finished = true;
+	show_debug_message(gmtl_log);
 }

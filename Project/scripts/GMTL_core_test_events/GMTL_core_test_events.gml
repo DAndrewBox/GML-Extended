@@ -28,24 +28,28 @@ function create(_x, _y, _obj, _params = {}) {
 /// @func	beforeAll(fn)
 /// @param	{function}	fn
 function beforeAll(_fn) {
+	_fn = __gmtl_internal_fn_get_function_index(_fn);
 	gmtl_test_before_all = _fn;
 }
 
 /// @func	afterAll(fn)
 /// @param	{function}	fn
 function afterAll(_fn) {
+	_fn = __gmtl_internal_fn_get_function_index(_fn);
 	gmtl_test_after_all = _fn;
 }
 
 /// @func	beforeEach(fn)
 /// @param	{function}	fn
 function beforeEach(_fn) {
+	_fn = __gmtl_internal_fn_get_function_index(_fn);
 	gmtl_test_before_each = _fn;
 }
 
 /// @func	afterEach(fn)
 /// @param	{function}	fn
 function afterEach(_fn) {
+	_fn = __gmtl_internal_fn_get_function_index(_fn);
 	gmtl_test_after_each = _fn;
 }
 
