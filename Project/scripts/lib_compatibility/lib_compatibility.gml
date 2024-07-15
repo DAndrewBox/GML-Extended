@@ -1,9 +1,9 @@
 /*
 	COMPATIBILITY FUNCTIONS
-	SHOULD BE IMPORTED IF GAMEMAKER VERSIONS IS BEFORE v2024.
+	THIS FUNCTIONS MAKE EVERYHTING WORK IN OLDER GAMEMAKER VERSIONS UNDER THE HOOD.
 */
 
-#macro	GML_EXT_CURRENT_VERSION	"1.5.0"
+#macro	GML_EXT_CURRENT_VERSION	"1.5.1"
 #macro	GM_CURRENT_VERSION	__gml_ext_comp_get_gamemaker_version()
 #macro	GM_VERSION_IS_2_3	string_copy(GM_runtime_version, 1, 3) == "2.3"
 #macro	GM_VERSION_IS_2022	__gml_ext_comp_is_gamemaker_major_version(2022)
@@ -28,12 +28,19 @@ function __gml_ext_comp_init() {
 		gm_unit_seconds = time_source_units_seconds;
 		gm_unit_frames = time_source_units_frames;
 	}
+	
+	show_debug_message(
+		__gml_ext_comp_string_ext(
+			"(GML-Extended) - Running GML-Extended v{0} on GameMaker runtime v{1}.",
+			[GML_EXT_CURRENT_VERSION, GM_CURRENT_VERSION.as_string]
+		)
+	);
 }
 
 
 /// @func	__gml_ext_comp_get_gamemaker_version()
 function __gml_ext_comp_get_gamemaker_version() {
-	static _force_compatibility = true;
+	static _force_compatibility = false;
 	if (GM_VERSION_IS_2_3 || _force_compatibility) {
 		static _v_23 = {
 			major: 2.3,
@@ -50,8 +57,6 @@ function __gml_ext_comp_get_gamemaker_version() {
 		minor:	_minor,
 		as_string:	string(_major) + "." + string(_minor),
 	};
-	
-	trace(_version);
 	
 	return _version;
 }
@@ -88,13 +93,13 @@ function __gml_ext_comp_is_callable(_value) {
 	return script_execute(is_callable, _value);
 }
 
-/// @func	__gml_ext_comp_instance_create_layer(x, y, object_index, layer_name, _params)
+/// @func	__gml_ext_comp_instance_create_layer(x, y, layer_name, object_index, _params)
 /// @param	{real}		x
 /// @param	{real}		y
-/// @param	{real}		object_index
 /// @param	{string}	layer_name
+/// @param	{real}		object_index
 /// @param	{struct}	params
-function __gml_ext_comp_instance_create_layer(_x, _y, _obj, _layer, _params = {}) {
+function __gml_ext_comp_instance_create_layer(_x, _y, _layer, _obj, _params = {}) {
 	static _use_compatibility = GM_VERSION_IS_2022 && GM_CURRENT_VERSION.minor < 8;
 	
 	if (_use_compatibility) {
@@ -109,16 +114,16 @@ function __gml_ext_comp_instance_create_layer(_x, _y, _obj, _layer, _params = {}
 		return _inst;
 	}
 	
-	return script_execute(instance_create_layer, _x, _y, _obj, _layer, _params);
+	return script_execute(instance_create_layer, _x, _y, _layer, _obj, _params);
 }
 
-/// @func	__gml_ext_comp_instance_create_depth(x, y, object_index, depth, _params)
+/// @func	__gml_ext_comp_instance_create_depth(x, y, depth, object_index, _params)
 /// @param	{real}		x
 /// @param	{real}		y
-/// @param	{real}		object_index
 /// @param	{real}		depth
+/// @param	{real}		object_index
 /// @param	{struct}	params
-function __gml_ext_comp_instance_create_depth(_x, _y, _obj, _depth, _params = {}) {
+function __gml_ext_comp_instance_create_depth(_x, _y, _depth,  _obj, _params = {}) {
 	static _use_compatibility = GM_VERSION_IS_2022 && GM_CURRENT_VERSION.minor < 8;
 	
 	if (_use_compatibility) {
@@ -133,7 +138,7 @@ function __gml_ext_comp_instance_create_depth(_x, _y, _obj, _depth, _params = {}
 		return _inst;
 	}
 	
-	return script_execute(instance_create_layer, _x, _y, _obj, _depth, _params);
+	return script_execute(instance_create_layer, _x, _y, _depth, _obj, _params);
 }
 
 /// @func	__gml_ext_comp_string_ext(str, args)

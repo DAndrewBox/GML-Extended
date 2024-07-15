@@ -1,7 +1,9 @@
 /// @func	TestCase(value)
-/// @param	{struct|array}	value
-function TestCase(_val) constructor {
+/// @param	{any}	value
+/// @param	{array}	value
+function TestCase(_val, _args) constructor {
 	__internal_value = _val;
+	__internal_args = _args;
 	
 	/// @func toBe(expected_result)
 	/// @param	{any}	expected_result
@@ -14,16 +16,7 @@ function TestCase(_val) constructor {
 		}
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBe({_expectedResult}):");
 			array_push(gmtl_test_log, $"- Expected Result: {_expectedResult}");
@@ -54,16 +47,7 @@ function TestCase(_val) constructor {
 		}
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeEqual({_expectedResult}):");
 			array_push(gmtl_test_log, $"- Expected Result: {_expectedResult}");
@@ -77,26 +61,33 @@ function TestCase(_val) constructor {
 	
 	/// @func toHaveReturned()
 	function toHaveReturned() {
-		var _isValid = !is_undefined(__internal_value);
+		var _isValid = !is_undefined(__internal_value) && is_callable(__internal_value);
 		
-		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
+		if (_isValid) {
+			var _received = undefined;
+			var _fn_to_run = __gmtl_internal_fn_get_function_index(__internal_value);
+			if (is_callable(_fn_to_run)) {
+				try {
+					_received = script_execute_ext(_fn_to_run, __internal_args);
+				} catch(e) {
+					var _prev_indent = gmtl_indent;
+					gmtl_indent = 2;
+					__gmtl_internal_fn_log(e.message);
+					gmtl_indent = _prev_indent;
+				}
 			}
 			
+			_isValid = _received != undefined;
+		}
+		
+		if (!_isValid) {
+			__gmtl_internal_fn_stacktrace();
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toHaveReturned():");
 			array_push(gmtl_test_log, $"- Expected Result: {true}");
 			array_push(gmtl_test_log, $"- Recieved Result: {__internal_value}");
 			gmtl_test_status = __gmtl_test_status.FAILED;
 			gmtl_suite_continue = false;
-		} else {
+		} else {			
 			gmtl_test_status = __gmtl_test_status.SUCCESS;
 		}
 	}
@@ -104,7 +95,32 @@ function TestCase(_val) constructor {
 	/// @func toHaveReturnedWith(expected_result)
 	/// @param	{any}	expected_result
 	function toHaveReturnedWith(_expectedResult) {
-		self.toBe(_expectedResult);
+		var _isValid = !is_undefined(__internal_value) && is_callable(__internal_value);
+		
+		if (!_isValid) {
+			__gmtl_internal_fn_stacktrace();
+			
+			var _received = undefined;
+			var _fn_to_run = __gmtl_internal_fn_get_function_index(__internal_value);
+			if (is_callable(_fn_to_run)) {
+				try {
+					_received = script_execute_ext(_fn_to_run, __internal_args);
+				} catch(e) {
+					var _prev_indent = gmtl_indent;
+					gmtl_indent = 2;
+					__gmtl_internal_fn_log(e.message);
+					gmtl_indent = _prev_indent;
+				}
+			}
+			
+			array_push(gmtl_test_log, $"> expect({__internal_value}, {__internal_args}).toHaveReturnedWith({_expectedResult}):");
+			array_push(gmtl_test_log, $"- Expected Result: {_expectedResult}");
+			array_push(gmtl_test_log, $"- Recieved Result: {_received}");
+			gmtl_test_status = __gmtl_test_status.FAILED;
+			gmtl_suite_continue = false;
+		} else {
+			gmtl_test_status = __gmtl_test_status.SUCCESS;
+		}
 	}
 	
 	/// @func toHaveLength(number)
@@ -131,21 +147,12 @@ function TestCase(_val) constructor {
 		
 		_isValid = _n == _len;
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
-			
+			__gmtl_internal_fn_stacktrace();
 			var _type_of_msg = $"<Invalid Type: {_typeOf}>";
+			_type_of_msg = (_typeInvalid ? _type_of_msg  : string(_len));
 			array_push(gmtl_test_log, $">expect({__internal_value}).toHaveLength({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {_n}");
-			array_push(gmtl_test_log, $"- Recieved Result: {_typeInvalid ? _type_of_msg  : string(_len)}");
+			array_push(gmtl_test_log, $"- Recieved Result: {_type_of_msg}");
 			gmtl_test_status = __gmtl_test_status.FAILED;
 			gmtl_suite_continue = false;
 		} else {
@@ -160,41 +167,51 @@ function TestCase(_val) constructor {
 		var _typeOf	 = typeof(__internal_value);
 		var _isValid = false;
 		var _typeInvalid = false;
+		var _valueIsUndefined = is_undefined(_value);
 		
 		switch (_typeOf) {
 			case "struct":
-				if (!is_undefined(_value)) {
+				if (!_valueIsUndefined) {
 					_isValid = __internal_value[$ _key] == _value;
 				} else {
 					_isValid = !is_undefined(__internal_value[$ _key]);
 				}
 				break;
+				
+			case "ref":
+				// If is not an instance
+				if !(instance_exists(__internal_value)) {
+					_isValid = false;
+					break;
+				}
+				
+				var _propValue = variable_instance_get(__internal_value, _key);
+				_isValid = !_valueIsUndefined ? _propValue == _value : _propValue;
+				break;
+				
 			default:
 				_typeInvalid = true;
 		}		
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
 			
 			var _expected_not_undefined_msg = $"{_key} = {_value}";
 			var _expected_undefined_msg = $"_key != undefined";
+			var _expected_message = (!_valueIsUndefined ? _expected_not_undefined_msg : _expected_undefined_msg);
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toHaveProperty({_key}, {_value}):");
-			array_push(gmtl_test_log, $"- Expected Result: {!is_undefined(_value) ? _expected_not_undefined_msg : _expected_undefined_msg }");
+			array_push(gmtl_test_log, $"- Expected Result: {_expected_message}");
 			
 			if (_typeInvalid) {
 				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
 			} else {
-				array_push(gmtl_test_log, $"- Recieved Result: {_key} = {__internal_value[$ _key]}");
+				var _isStruct = is_struct(__internal_value);
+				if (_isStruct) {
+					array_push(gmtl_test_log, $"- Recieved Result: {_key} = {__internal_value[$ _key]}");
+				} else {
+					array_push(gmtl_test_log, $"- Recieved Result: {_key} = {variable_instance_get(__internal_value, _key)}");
+				}
 			}
 			gmtl_test_status = __gmtl_test_status.FAILED;
 			gmtl_suite_continue = false;
@@ -211,6 +228,8 @@ function TestCase(_val) constructor {
 		var _typeInvalid = false;
 		
 		switch (_typeOf) {
+			case "int32":
+			case "int64":
 			case "number":
 				_isValid = __internal_value > _n;
 				break;
@@ -219,16 +238,7 @@ function TestCase(_val) constructor {
 		}		
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeGreaterThan({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} > {_n}");
@@ -260,16 +270,7 @@ function TestCase(_val) constructor {
 		}		
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeGreaterThanOrEqual({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} >= {_n}");
@@ -301,16 +302,7 @@ function TestCase(_val) constructor {
 		}		
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeLessThan({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} < {_n}");
@@ -342,16 +334,7 @@ function TestCase(_val) constructor {
 		}		
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeLessThanOrEqual({_n}):");
 			array_push(gmtl_test_log, $"- Expected Result: {__internal_value} <= {_n}");
@@ -369,19 +352,22 @@ function TestCase(_val) constructor {
 	
 	/// @func toBeFalsy()
 	function toBeFalsy() {
-		var _isValid = !(__internal_value);
+		var _isValid = false;
+		var _type_of = typeof(__internal_value);
+		
+		switch (_type_of) {
+			case "bool":
+				_isValid = (__internal_value != true);
+				break;
+			case "string":
+				_isValid = (__internal_value == "");
+				break;
+			default:
+				_isValid = is_undefined(__internal_value) || __internal_value <= 0;
+		}
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeFalsy():");
 			array_push(gmtl_test_log, $"- Expected Result: {false}");
@@ -395,19 +381,22 @@ function TestCase(_val) constructor {
 	
 	/// @func toBeTruthy()
 	function toBeTruthy() {
-		var _isValid = !!(__internal_value);
+		var _isValid = false;
+		var _type_of = typeof(__internal_value);
+		
+		switch (_type_of) {
+			case "bool":
+				_isValid = (__internal_value == true);
+				break;
+			case "string":
+				_isValid = (__internal_value != "");
+				break;
+			default:
+				_isValid = !is_undefined(__internal_value) || __internal_value > 0;
+		}
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toBeTruthy():");
 			array_push(gmtl_test_log, $"- Expected Result: {true}");
@@ -425,7 +414,7 @@ function TestCase(_val) constructor {
 		var _typeOf	 = typeof(__internal_value);
 		var _isValid = false;
 		var _typeInvalid = false;
-		var _onPos	 = -1
+		var _onPos	 = -1;
 		
 		switch (_typeOf) {
 			case "array":
@@ -440,24 +429,32 @@ function TestCase(_val) constructor {
 					}
 				}
 				break;
+			case "struct":
+				var _keys = struct_get_names(__internal_value);
+				var _arr_len = array_length(_keys);
+				_onPos = "";
+				
+				for (var i = 0; i < _arr_len; i++) {
+					if (_keys[i] == _value || __internal_value[$ _keys[i]] == _value) {
+						_isValid = true;
+						_onPos = _keys[i];
+						break;
+					}
+				}
+				break;
 			default:
 				_typeInvalid = true;
 		}
 		
 		if (!_isValid) {
-			var _stacktrace = debug_get_callstack(8);
-			var _traced_error_index = array_find_index(_stacktrace, function (e) {return string_contains(e, "gml_Script_anon@")});
-			if (_traced_error_index) {
-				var _trace = _stacktrace[_traced_error_index]
-				var _filename = array_last(string_split(_trace, "@"));
-				var _line = string_split(_filename, ":")[1];
-				_filename = string_split(_filename, ":")[0];
-				_filename = string_copy(_filename, 1, floor(string_length(_filename) / 2));
-				array_push(gmtl_test_log, $"On file \"{_filename}\" (line {_line}):");
-			}
+			__gmtl_internal_fn_stacktrace();
+			
+			var _msg_if_string = $"as or in key {_onPos}";
+			var _msg_if_array = $"on position index {_onPos}";
+			var _expected_message = (is_string(_onPos) ? _msg_if_string : _msg_if_array);
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}).toContain({_value}):");
-			array_push(gmtl_test_log, $"- Expected Result: Found on Position > -1");
+			array_push(gmtl_test_log, $"- Expected Result: Found {_expected_message}");
 			if (_typeInvalid) {
 				array_push(gmtl_test_log, $"- Recieved Result: <Invalid Type: {_typeOf}>");
 			} else {
@@ -468,5 +465,30 @@ function TestCase(_val) constructor {
 		} else {
 			gmtl_test_status = __gmtl_test_status.SUCCESS;
 		}
+	}
+}
+
+/// @func	GTML_MouseState()
+function GTML_MouseState() constructor {
+	press	= false;
+	hold	= false;
+	release	= false;
+	
+	static reset = function () {
+		self.press = false;
+		self.hold = false;
+		self.release = false;
+	}
+	
+	static resetHold = function () {
+		self.hold = false;
+	}
+	
+	static resetRelease = function () {
+		self.release = false;
+	}
+	
+	static resetPress = function () {
+		self.press = false;
 	}
 }

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"lib_time",
   "isCompatibility":false,
   "isDnD":false,

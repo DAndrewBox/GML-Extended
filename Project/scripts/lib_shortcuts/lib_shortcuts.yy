@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"lib_shortcuts",
   "isCompatibility":false,
   "isDnD":false,

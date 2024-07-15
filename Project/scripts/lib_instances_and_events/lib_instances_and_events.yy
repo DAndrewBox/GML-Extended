@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"lib_instances_and_events",
   "isCompatibility":false,
   "isDnD":false,

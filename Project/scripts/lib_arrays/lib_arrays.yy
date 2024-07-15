@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"lib_arrays",
   "isCompatibility":false,
   "isDnD":false,

@@ -5,11 +5,14 @@
 	Even the experimental and optional ones.
 	
 	You can ignore all contents of this file.
+	
+	It's known that this file can cause issues in HTML5 exports.
+	Please remove it or comment everything below if that's the case.
 */
+
 function __gml_ext_opt_lib_remove_unused_msg() {
   try {
     var _ = [
-      __gml_ext_opt_lib_remove_unused_msg,
       getPixel,
       getPixelExt,
       drawPart,
@@ -242,9 +245,11 @@ function __gml_ext_opt_lib_remove_unused_msg() {
 	builtin.variable_clone = noone;
 	builtin.string_ext = noone;
 	
+	if (frame_info && false) {
+		__gml_ext_opt_lib_remove_unused_msg();
+	}
+	
 	} finally {
-    // This does nothing!
-  }
-
-  return _;
+		// This does nothing!
+	}
 }

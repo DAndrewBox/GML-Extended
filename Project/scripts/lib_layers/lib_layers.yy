@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"lib_layers",
   "isCompatibility":false,
   "isDnD":false,

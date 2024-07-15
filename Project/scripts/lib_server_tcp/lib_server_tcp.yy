@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"lib_server_tcp",
   "isCompatibility":false,
   "isDnD":false,

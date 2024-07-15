@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"lib_remove_unused_msg",
   "isCompatibility":false,
   "isDnD":false,

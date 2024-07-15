@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"lib_surfaces",
   "isCompatibility":false,
   "isDnD":false,

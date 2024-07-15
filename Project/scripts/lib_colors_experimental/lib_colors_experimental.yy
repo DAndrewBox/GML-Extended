@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"lib_colors_experimental",
   "isCompatibility":false,
   "isDnD":false,

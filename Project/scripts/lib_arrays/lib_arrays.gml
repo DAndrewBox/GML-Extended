@@ -75,8 +75,8 @@ function array_to_ds_list(_array) {
 	return _new_ds_list;
 }
 
-///	@func ds_list_to_array(list)
-/// @param	{ds_list}	list
+///	@func ds_list_to_array(ds_list)
+/// @param	{ds_list}	ds_list
 /// @desc	Converts a ds list to an array with all its values and the returns it.
 function ds_list_to_array(_list) {
 	var _ds_list_size = ds_list_size(_list);

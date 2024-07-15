@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GMTL_core_test_setup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GMTL_core_test_setup",
+  "parent":{
+    "name":"Core",
+    "path":"folders/Libraries/GMTL/Core.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
