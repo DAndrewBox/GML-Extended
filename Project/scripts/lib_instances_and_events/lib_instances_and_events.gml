@@ -102,11 +102,25 @@ function instance_get_if(_obj, _callback) {
 }
 
 /// @func	event_user_exec(inst, ev_number)
-/// @param	{Id.Instance|Asset.Object}	inst
-/// @param	{real}						ev_number
-/// @desc	Fastest way to perform a event user from an specified object.
+/// @param	{Id.Instance|Asset.GMObject}	inst
+/// @param	{real}							ev_number
+/// @desc	Fastest way to perform a event user from an specified object or instance.
 function event_user_exec(_inst, _ev_number) {
 	with (_inst) {
 		event_user(_ev_number);
 	}
+}
+
+/// @func	instance_first(inst)
+/// @param	{Id.Instance|Asset.GMObject}	inst
+/// @desc	Returns the first created instance from an object.
+function instance_first(_inst) {
+	return instance_find(_inst, 0);
+}
+
+/// @func	instance_last(inst)
+/// @param	{Id.Instance|Asset.GMObject}	inst
+/// @desc	Returns the last created instance from an object.
+function instance_last(_inst) {
+	return instance_find(_inst, instance_number(_inst) - 1);
 }

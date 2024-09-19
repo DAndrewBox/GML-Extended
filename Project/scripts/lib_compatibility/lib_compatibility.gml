@@ -31,7 +31,7 @@ function __gml_ext_comp_init() {
 	
 	show_debug_message(
 		__gml_ext_comp_string_ext(
-			"(GML-Extended) - Running GML-Extended v{0} on GameMaker runtime v{1}.",
+			"(GML-Extended) - Running GML-Extended v{0} with GameMaker runtime v{1}.",
 			[GML_EXT_CURRENT_VERSION, GM_CURRENT_VERSION.as_string]
 		)
 	);

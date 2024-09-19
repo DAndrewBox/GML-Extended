@@ -12,17 +12,9 @@ function file_text_read_whole(_file) {
 	return _file_str;
 }
 
-/// @func	file_json_read(file)
-/// @param	{real}	file
-/// @desc	Read a file a transforms it into a json struct
-function file_json_read(_file) {
-	var _str = file_text_read_whole(_file);
-	return json_parse(_str);
-}
-
 /// @func	file_text_get_lines_array(file)
 /// @param	{real}	file
-/// @desc	Returns all lines of a file and returns it as an array
+/// @desc	Returns all lines of a file and returns it as an array of lines.
 function file_text_get_lines_array(_file) {
 	if (_file < 0) return [];
 	
@@ -50,4 +42,18 @@ function file_json_create(_filename, _json) {
 	
 	trace("(GML-Extended) - WARNING! 'filename' cannot be empty string (\"\") on 'file_json_create'.");
 	return "";
+}
+
+/// @func	file_json_read(file)
+/// @param	{real}	file
+/// @desc	Read a file a transforms it into a json struct
+function file_json_read(_file) {
+	try {
+		var _str = file_text_read_whole(_file);
+		return json_parse(_str);
+	} catch (e) {
+		trace("(GML-Extended) - ERROR! An error ocurred in function 'file_json_read'. Returning an empty struct.");
+		trace($"(GML-Extended) - {e.message}")
+		return {};
+	}
 }
