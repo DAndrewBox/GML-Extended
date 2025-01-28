@@ -35,6 +35,24 @@ suite(function() {
 		});
 	});
 	
+	describe("color_get_rgb_normalized", function() {
+		it("Should return RGB arrays correctly", function() {
+			expect(color_get_rgb_normalized(c_black)).toBe([0, 0, 0]);
+			expect(color_get_rgb_normalized(c_white)).toBe([1, 1, 1]);
+			expect(color_get_rgb_normalized(#FF0000)).toBe([1, 0, 0]);
+			expect(color_get_rgb_normalized(#FF00FF)).toBe([1, 0, 1]);
+		});
+	});
+	
+	describe("color_get_hsv_normalized", function() {
+		it("Should return HSV arrays correctly", function() {
+			expect(color_get_hsv_normalized(c_black)).toBe([0, 0, 0]);
+			expect(color_get_hsv_normalized(c_white)).toBe([0, 0, 1]);
+			expect(color_get_hsv_normalized(#FF0000)).toBe([0, 1, 1]);
+			expect(color_get_hsv_normalized(#FF00FF)).toBe([0.83333333333, 1, 1]);
+		});
+	});
+	
 	describe("dec2hex", function() {
 		it("Should return HEX string of Decimal", function() {
 			expect(dec2hex(c_black)).toBe("000000");

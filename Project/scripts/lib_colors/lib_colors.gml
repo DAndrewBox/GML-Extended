@@ -44,6 +44,26 @@ function color_get_hsv(_color) {
 	];
 }
 
+/// @func	color_get_rgb_normalized(color)
+/// @param	{real}	color
+function color_get_rgb_normalized(_color) {
+	return [
+		color_get_red(_color) / 255,
+		color_get_green(_color) / 255,
+		color_get_blue(_color) / 255,
+	];
+}
+
+/// @func	color_get_hsv_normalized(color)
+/// @param	{real}	color
+function color_get_hsv_normalized(_color) {
+	return [
+		color_get_hue(_color) / 255,
+		color_get_saturation(_color) / 255,
+		color_get_value(_color) / 255,
+	];
+}
+
 /// @func	dec2hex(decimal, len)
 /// @param	{real}	decimal
 /// @param	{real}	len
