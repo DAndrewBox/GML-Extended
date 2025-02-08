@@ -32,7 +32,8 @@ function mouse_in_instance(_inst_id) {
 
 /// @func	mouse_is_moving()
 function mouse_is_moving() {
-	if (GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor < 8) {
+	static _use_compatibility = GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor < 8;
+	if (_use_compatibility) {
 		global.__gml_ext_mouse_x_last = global.__gml_ext_mouse_x;
 		global.__gml_ext_mouse_y_last = global.__gml_ext_mouse_y;
 

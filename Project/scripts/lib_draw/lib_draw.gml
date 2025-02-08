@@ -145,15 +145,11 @@ function draw_rectangle_rotated(_x, _y, _w, _h, _rot, _outline = true) {
 /// @param	{real}		angle
 function draw_text_outline(_x, _y, _string, _width, _colour=c_white, _outline_colour=c_black, _xscale=1, _yscale=1, _angle=0) {
 	draw_set_colour(_outline_colour);
-	var i = -_width, j = -_width;
-	while (i < _width || j < _width) {
-		if (i == _width) {
-			j++;
-			i = -_width;
+	for (var i = -_width; i <= _width; i++) {
+		for (var j = -_width; j <= _width; j++) {
+			if (i == 0 && j == 0) continue;
+			draw_text_transformed(_x + i, _y + j, _string, _xscale, _yscale, _angle);
 		}
-		
-		draw_text_transformed(_x + i, _y + j, _string, _xscale, _yscale, _angle);
-		i++;
 	}
 	
 	draw_set_colour(_colour);
