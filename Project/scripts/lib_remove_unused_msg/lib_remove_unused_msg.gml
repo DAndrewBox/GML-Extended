@@ -9,7 +9,6 @@
 	It's known that this file can cause issues in HTML5 exports.
 	Please remove it or comment everything below if that's the case.
 */
-
 function __gml_ext_opt_lib_remove_unused_msg() {
   try {
     var _ = [
@@ -240,7 +239,9 @@ function __gml_ext_opt_lib_remove_unused_msg() {
 	builtin.array_contains = noone;
 	builtin.is_callable = noone;
 	builtin.string_split = noone;
+	// Feather ignore once GM1031
 	builtin.time_source_units_frames = noone;
+	// Feather ignore once GM1031
 	builtin.time_source_units_seconds = noone;
 	builtin.variable_clone = noone;
 	builtin.string_ext = noone;

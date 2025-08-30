@@ -1,6 +1,6 @@
 <p align="center">
   <img src="./logo_v2.png" height="300px" alt="GameMaker Language Extended"/>
-</p>
+</p> 
 
 ## A GameMaker extension to complement GameMaker built-in functions and make your life easier.
 
@@ -17,7 +17,9 @@
 
 ---
 
-### 📅 Last updated: 2024-06-03
+### 📅 Last updated: 2025-08-30
+
+---
 
 ### ✨ Author & Collaborators
 

@@ -7,7 +7,7 @@
 - [layer_get_background](#layer_get_background)
 - [layer_get_tileset](#layer_get_tileset)
 
-# macros
+# macros ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 | Macro                              | Description                                                                         | Value                           |
 | :--------------------------------- | :---------------------------------------------------------------------------------- | :------------------------------ |
@@ -23,7 +23,7 @@
 
 ---
 
-# layer_get_element_ids_fixed
+# layer_get_element_ids_fixed ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 A way to get the elements of a dynamically created layer. This is a fix for the original `layer_get_element_ids` function that doesn't work with dynamically created layers. This function is based on the [original](https://itch.io/post/2224479) by [YellowAfterLife](https://yal.cc).
 
@@ -59,7 +59,7 @@ The above code will show on console the keys and values of the struct.
 
 ---
 
-# layer_get_background
+# layer_get_background ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 A way to get the background of a layer using the ID or the name. This only serves to simplify the process of getting the background of a layer with multiple functions and different variables storing the ids on every step.
 
@@ -92,7 +92,7 @@ The above code will return the background id of the layer.
 
 ---
 
-# layer_get_tileset
+# layer_get_tileset ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 A way to get the tileset of a layer using the ID or the name. This only serves to simplify the process of getting the tileset of a layer with multiple functions and different variables storing the ids on every step.
 

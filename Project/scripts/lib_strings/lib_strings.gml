@@ -1,12 +1,14 @@
 /// @func	string_contains(string, substring)
-/// @param	{string}	string
-/// @param	{string}	substring
+/// @param	{String}	string
+/// @param	{String}	substring
+/// @desc	Returns true if the string contains the substring.
 function string_contains(_str, _substr) {
 	return string_pos(_substr, _str) > 0;
 }
 
 /// @func string_title(string)
-/// @param	{string}	string
+/// @param	{String}	string
+/// @desc	Returns a string with the first letter of each word capitalized.
 function string_title(_str) {
 	var _out		= "";
 	var _prev_char	= " ";
@@ -28,8 +30,9 @@ function string_title(_str) {
 }
 
 /// @func	string_remove(string, substring)
-/// @param	{string}		string
-/// @param	{string|array}	substring
+/// @param	{String}					string
+/// @param	{String | Array<String>}	substring
+/// @desc	Returns a string with the specified substring removed.
 function string_remove(_str, _substr) {
 	if (is_array(_substr)) {
 		var _arr_len = array_length(_substr);
@@ -44,9 +47,12 @@ function string_remove(_str, _substr) {
 }
 
 /// @func	string_pad_left(string, char, size)
-/// @param	{string}	string
-/// @param	{string}	char
-/// @param	{real}	size
+/// @param	{String}	string
+/// @param	{String}	char
+/// @param	{Real}		size
+/// @desc	Returns a string with the specified number of characters on the left side.
+///			If the string is already bigger than the specified size, the string will be returned as is.
+///			If the string is smaller than the specified size, the string will be filled with the specified character on the left side.
 function string_pad_left(_str, _char, _size) {
 	if (_char == "") return _str;
 	var _pad = "";
@@ -60,9 +66,12 @@ function string_pad_left(_str, _char, _size) {
 }
 
 /// @func	string_pad_right(string, char, size)
-/// @param	{string}	string
-/// @param	{string}	char
-/// @param	{real}	size
+/// @param	{String}	string
+/// @param	{String}	char
+/// @param	{Real}		size
+/// @desc	Returns a string with the specified number of characters on the right side.
+///			If the string is already bigger than the specified size, the string will be returned as is.
+///			If the string is smaller than the specified size, the string will be filled with the specified character on the right side.
 function string_pad_right(_str, _char, _size) {
 	if (_char == "") return _str;
 	var _pad = "";
@@ -76,8 +85,9 @@ function string_pad_right(_str, _char, _size) {
 }
 
 /// @func	string_percentage(current_value, 100%_value)
-/// @param	{real}	current_value
-/// @param	{real}	100%_value
+/// @param	{Real}	current_value
+/// @param	{Real}	100%_value
+/// @desc	Returns a string with the percentage of the given values.
 function string_percentage(_val, _max) {	
 	return string(percentage(_val, _max)) + "%";
 }

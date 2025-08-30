@@ -9,7 +9,7 @@
 
 ---
 
-# file_text_read_whole
+# file_text_read_whole ![](https://img.shields.io/badge/v1.2.2-3e5f4a?style=flat)
 
 Read all lines of a file and returns it as a string. If there's no file previously opened, it will return an empty string. To open files view the [official manual page](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/File_Handling/Text_Files/file_text_open_read.htm) about it.
 
@@ -43,7 +43,7 @@ The above code will set the var `_str` as an string of the whole file and the sh
 
 ---
 
-# file_json_read
+# file_json_read ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
 Read all lines file and returns it as a struct. If there's no file previously opened, it will return an empty object. To open files view the [official manual page](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/File_Handling/Text_Files/file_text_open_read.htm) about it.
 
@@ -111,7 +111,7 @@ The above code will set the var `_lines` as an array of the whole file and the s
 
 ---
 
-# file_json_create
+# file_json_create ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
 Create a file with the contents of a struct. The filename must have the extension `.json`. If the file already exists, it will be overwritten.
 
@@ -141,7 +141,7 @@ var _struct = {
   age: 30,
   city: "New York",
 };
-var _str = file2json("./my_file.json", _struct);
+var _str = file_json_create("./my_file.json", _struct);
 show_debug_message("File content: " + _str);
 ```
 

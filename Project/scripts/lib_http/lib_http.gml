@@ -4,10 +4,10 @@
 #macro	http_method_delete	"DELETE"
 
 /// @func	http_request_send(url, method, body, headers)
-/// @param	{string}	url
-/// @param	{string}	method
-/// @param	{struct}	body
-/// @param	{struct}	headers
+/// @param	{String}	url
+/// @param	{String}	method
+/// @param	{Struct}	body
+/// @param	{Struct}	headers
 function http_request_send(_url="", _method=http_method_get, _body={}, _headers={}) {
 	var _map = ds_map_create();
 	
@@ -28,7 +28,7 @@ function http_request_send(_url="", _method=http_method_get, _body={}, _headers=
 }
 
 /// @func	http_async_get_message(show_on_console)
-/// @param	{bool}	show_on_console
+/// @param	{Bool}	show_on_console
 /// @desc	Get the message from an async request.
 function http_async_get_message(_show_on_console = false) {	
 	try {
@@ -52,7 +52,7 @@ function http_async_get_message(_show_on_console = false) {
 }
 
 /// @func	http_async_handle_request(message_type)
-/// @param	{real}	message_type
+/// @param	{Real}	message_type
 /// @desc	Handle the result of an async request.
 function http_async_handle_request(_msgType) {
 	switch (_msgType) {

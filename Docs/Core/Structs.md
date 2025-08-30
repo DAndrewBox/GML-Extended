@@ -6,6 +6,7 @@
 - [struct_merge](#struct_merge)
 - [struct_key_exists](#struct_key_exists)
 - [struct_equal](#struct_equal)
+- [struct_entries](#struct_entries)
 
 ---
 
@@ -97,7 +98,7 @@ New Struct: {
 
 ---
 
-# struct_key_exists
+# struct_key_exists ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
 Returns `true` if the key exists in the struct, `false` otherwise.
 
@@ -135,7 +136,7 @@ The above code will show on console `true` if the key `key1` exists in the struc
 
 ---
 
-# struct_equal
+# struct_equal ![](https://img.shields.io/badge/v1.4.0-916800?style=flat)
 
 Returns `true` if the structs are equal, `false` otherwise.
 
@@ -175,3 +176,53 @@ show_debug_message(
 ```
 
 The above code will show on console `true` if the structs `_struct1` and `_struct2` are equal.
+
+---
+
+# struct_entries ![](https://img.shields.io/badge/v1.5.2-5cd3b4?style=flat)
+
+Returns an array with the entries of a struct. Each entry is an array with 2 elements: the key and the value.
+
+### Syntax
+
+```js
+struct_entries(struct);
+```
+
+| Argument |  Type  | Description                   |
+| :------- | :----: | :---------------------------- |
+| struct   | Struct | The struct to get the entries |
+
+### Returns
+
+```js
+Array<[key, value]>
+```
+
+### Example
+
+```js
+var _my_struct = {
+  key1: "value1",
+  key2: "value2",
+  key3: "value3",
+};
+var _str = "";
+var _array = struct_entries(_my_struct);
+show_debug_message("Entries for struct: " + string(_array));
+for (var i = 0; i < array_length(_array); i++;) {
+    _str = _array[i][0] + ":" + string(_array[i][1]);
+    show_debug_message(_str);
+}
+```
+
+The above code will show on console the keys and values of the struct. The output will be:
+
+```js
+Entries for struct: [["key1","value1"],["key2","value2"],["key3","value3"]]
+key1:value1
+key2:value2
+key3:value3
+```
+
+---

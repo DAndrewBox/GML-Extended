@@ -109,7 +109,7 @@ The above code will return `false` since the var `_array` is not empty.
 
 ---
 
-# array_find_index_by_value
+# array_find_index_by_value ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Checks if a value is inside the array, and then returns its index, else, returns -1.
 
@@ -248,7 +248,7 @@ since those are tha values of the array converted into an struct.
 
 ---
 
-# array_shuffle
+# array_shuffle ![](https://img.shields.io/badge/v1.1.0-59708c?style=flat)
 
 Shuffles the array and returns it.
 

@@ -1,13 +1,13 @@
 /// @func	del(object_index|id, exec_event);
 /// @param	{Id.Instance|Asset.GMObject}	object_index|id
-/// @param	{bool}							exec_event
+/// @param	{Bool}							exec_event
 /// @desc	A short way to destroy an element
 function del(_obj = id, _exec_ev = true) {
 	instance_destroy(_obj, _exec_ev);
 }
 
 /// @func	get_size(element)
-/// @param	{any}	element
+/// @param	{Any}	element
 /// @desc	Returns the size or length of the element.
 function get_size(_e) {
 	var _type = typeof(_e);
@@ -25,8 +25,9 @@ function get_size(_e) {
 }
 
 /// @func	contains(find_this, search_here)
-/// @param	{any}	find_this
-/// @param	{any}	search_here
+/// @param	{Any}	find_this
+/// @param	{Any}	search_here
+/// @desc	Checks if an element is inside a container. Serves as a shortcut for ds_list_find_index, ds_map_find_value, ds_grid_value, array_find_value, string_pos, and more.
 function contains(_elem, _container) {
 	static _forbidden_elem_types = [
 		gm_type_array,
@@ -75,7 +76,7 @@ function contains(_elem, _container) {
 }
 
 /// @func	trace(*args)
-/// @param	{any}	*args
+/// @param	{Any}	*args
 /// @desc	A short way to use show_debug_message
 function trace() {
 	var _str = "";
@@ -86,7 +87,7 @@ function trace() {
 }
 
 /// @func	alert(*args)
-/// @param	{any}	*args
+/// @param	{Any}	*args
 /// @desc	A short way to use show_message
 function alert() {
 	var _args = array_create(argument_count, undefined);
@@ -97,7 +98,7 @@ function alert() {
 }
 
 /// @func	alert_async(*args)
-/// @param	{any}	*args
+/// @param	{Any}	*args
 /// @desc	A short way to use show_message_async
 function alert_async() {
 	var _args = array_create(argument_count, undefined);
@@ -108,13 +109,15 @@ function alert_async() {
 }
 
 /// @func	view_get_x(view)
-/// @param	{real}	view
+/// @param	{Real}	view
+/// @desc	Gets the X position of the view passed as argument. Serves as a shortcut for `camera_get_view_x(view_camera[view_current])`.
 function view_get_x(_view = view_current) {
 	return camera_get_view_x(view_camera[_view]);
 }
 
 /// @func	view_get_y(view)
-/// @param	{real}	view
+/// @param	{Real}	view
+/// @desc	Gets the Y position of the view passed as argument. Serves as a shortcut for `camera_get_view_y(view_camera[view_current])`.
 function view_get_y(_view = view_current) {
 	return camera_get_view_y(view_camera[_view]);
 }

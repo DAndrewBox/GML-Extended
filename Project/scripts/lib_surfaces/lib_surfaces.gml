@@ -3,14 +3,14 @@ surface_depth_disable(true);	// For performance reasons keep this disabled on 2D
 #endregion
 
 /// @func Surface(width, height, name)
-/// @param	{real}	width
-/// @param	{real}	height
-/// @param	{string}	name
+/// @param	{Real}	width
+/// @param	{Real}	height
+/// @param	{String}	name
 function Surface(_width, _height, _name="") constructor {
 	/// @func	__init_surface__(width, height, name)
-	/// @param	{real}	width
-	/// @param	{real}	height
-	/// @param	{string}	name
+	/// @param	{Real}	width
+	/// @param	{Real}	height
+	/// @param	{String}	name
 	function __init_surface__(_width, _height, _name) {
 		self.width	= abs(_width);
 		self.height = abs(_height);
@@ -34,7 +34,7 @@ function Surface(_width, _height, _name="") constructor {
 	}
 	
 	/// @func	setTarget(mrt_target)
-	/// @param	{real}	mrt_target
+	/// @param	{Real}	mrt_target
 	/// @desc	Set this surface as target.
 	function setTarget(_target = 0) {
 		surface_set_target_ext(_target, self.surf);
@@ -47,8 +47,8 @@ function Surface(_width, _height, _name="") constructor {
 	}
 	
 	/// @func	clear(color, alpha)
-	/// @param	{real}	color
-	/// @param	{real}	alpha
+	/// @param	{Real}	color
+	/// @param	{Real}	alpha
 	/// @desc	Clear the surface canvas.
 	function clear(_col=c_fuchsia, _alpha=.0) {
 		self.setTarget();
@@ -57,8 +57,8 @@ function Surface(_width, _height, _name="") constructor {
 	}
 	
 	/// @func	resize(width, height)
-	/// @param	{real}	width
-	/// @param	{real}	height
+	/// @param	{Real}	width
+	/// @param	{Real}	height
 	/// @desc	Resize surface canvas.
 	function resize(_width, _height) {
 		self.width	= abs(_width);
@@ -85,40 +85,40 @@ function Surface(_width, _height, _name="") constructor {
 	}
 	
 	/// @func	getPixel(x, y)
-	/// @param	{real}	x
-	/// @param	{real}	y
+	/// @param	{Real}	x
+	/// @param	{Real}	y
 	/// @desc	Returns the pixel color of the surface.
 	function getPixel(_x, _y) {
 		return surface_getpixel(self.surf, _x, _y);
 	}
 	
 	/// @func	getPixelExt(x, y)
-	/// @param	{real}	x
-	/// @param	{real}	y
+	/// @param	{Real}	x
+	/// @param	{Real}	y
 	/// @desc	Returns the pixel color & alpha of the surface.
 	function getPixelExt(_x, _y) {
 		return surface_getpixel_ext(self.surf, _x, _y);
 	}
 	
 	/// @func	save(filename, x, y, width, height)
-	/// @param	{string}	filename
-	/// @param	{real}	x
-	/// @param	{real}	y
-	/// @param	{real}	width
-	/// @param	{real}	height
+	/// @param	{String}	filename
+	/// @param	{Real}	x
+	/// @param	{Real}	y
+	/// @param	{Real}	width
+	/// @param	{Real}	height
 	/// @desc	Save the surface into a *.png file
 	function save(_filename, _x=0, _y=0, _width=self.width, _height=self.height) {
 		surface_save_part(self.surf, _filename, _x, _y, _width, _height);
 	}
 	
 	/// @func	draw(x, y, xscale, yscale, rot, col, alpha)
-	/// @param	{real}	x
-	/// @param	{real}	y
-	/// @param	{real}	xscale
-	/// @param	{real}	yscale
-	/// @param	{real}	rot
-	/// @param	{real}	col
-	/// @param	{real}	alpha
+	/// @param	{Real}	x
+	/// @param	{Real}	y
+	/// @param	{Real}	xscale
+	/// @param	{Real}	yscale
+	/// @param	{Real}	rot
+	/// @param	{Real}	col
+	/// @param	{Real}	alpha
 	/// @desc	Draws the surface on screen.
 	function draw(_x, _y, _xscale=1, _yscale=1, _rot=0, _col=-1, _alpha=draw_get_alpha(), _from_center=false) {
 		if (_from_center) {
@@ -129,40 +129,40 @@ function Surface(_width, _height, _name="") constructor {
 	}
 	
 	/// @func	drawPart(x, y, left, top, width, height, xscale, yscale, col, alpha)
-	/// @param	{real}	x
-	/// @param	{real}	y
-	/// @param	{real}	left
-	/// @param	{real}	top
-	/// @param	{real}	width
-	/// @param	{real}	height
-	/// @param	{real}	xscale
-	/// @param	{real}	yscale
-	/// @param	{real}	col
-	/// @param	{real}	alpha
+	/// @param	{Real}	x
+	/// @param	{Real}	y
+	/// @param	{Real}	left
+	/// @param	{Real}	top
+	/// @param	{Real}	width
+	/// @param	{Real}	height
+	/// @param	{Real}	xscale
+	/// @param	{Real}	yscale
+	/// @param	{Real}	col
+	/// @param	{Real}	alpha
 	/// @desc	Draws a part of the surface on screen.
 	function drawPart(_x, _y, _left=0, _top=0, _width=self.width, _height=self.height, _xscale=1, _yscale=1, _col=-1, _alpha=draw_get_alpha()) {
 		draw_surface_part_ext(self.surf, _left, _top, _width, _height, _x, _y, _xscale, _yscale, _col, _alpha);
 	}
 	
 	/// @func	drawStretched(x, y, width, height, col, alpha)
-	/// @param	{real}	x
-	/// @param	{real}	y
-	/// @param	{real}	width
-	/// @param	{real}	height
-	/// @param	{real}	col
-	/// @param	{real}	alpha
+	/// @param	{Real}	x
+	/// @param	{Real}	y
+	/// @param	{Real}	width
+	/// @param	{Real}	height
+	/// @param	{Real}	col
+	/// @param	{Real}	alpha
 	/// @desc	Draws the surface stretched on screen.
 	function drawStretched(_x, _y, _width=self.width, _height=self.height, _col=-1, _alpha=draw_get_alpha()) {
 		draw_surface_stretched_ext(self.surf, _x, _y, _width, _height, _col, _alpha);
 	}
 	
 	/// @func	drawTiled(x, y, xscale, yscale, col, alpha)
-	/// @param	{real}	x
-	/// @param	{real}	y
-	/// @param	{real}	xscale
-	/// @param	{real}	yscale
-	/// @param	{real}	col
-	/// @param	{real}	alpha
+	/// @param	{Real}	x
+	/// @param	{Real}	y
+	/// @param	{Real}	xscale
+	/// @param	{Real}	yscale
+	/// @param	{Real}	col
+	/// @param	{Real}	alpha
 	/// @desc	Draws the surface tiled on screen.
 	function drawTiled(_x, _y, _xscale=1, _yscale=1, _col=-1, _alpha=draw_get_alpha()) {
 		draw_surface_tiled_ext(self.surf, _x, _y, _xscale, _yscale, _col, _alpha);
