@@ -5,7 +5,7 @@ function now() {
 }
 
 /// @func   unix_timestamp(datetime)
-/// @param  {real}  datetime    date-time value (default current time)
+/// @param  {Real}  datetime    date-time value (default current time)
 /// @desc   Returns a Unix timestamp for the current or given GameMaker datetime.
 /// @author Xot
 function unix_timestamp(_datetime) {
@@ -14,13 +14,13 @@ function unix_timestamp(_datetime) {
 }
 
 /// @func	unix_to_datetime(timestamp)
-/// @param	{real}	timestamp
+/// @param	{Real}	timestamp
 function unix_to_datetime(_timestamp) {
 	return date_create_datetime(1970, 1, 1, 0, 0, _timestamp);
 }
 
 /// @func	unix_timestamp_format(timestamp, format)
-/// @param	{real}	timestamp
+/// @param	{Real}	timestamp
 function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") {
 	var _dt = unix_to_datetime(_timestamp);
 	static _month_names = [
@@ -117,9 +117,9 @@ function datetime_get_timestamp() {
 }
 
 /// @func	time_performance(callback, arguments, iterations)
-/// @param	{function}	function
-/// @param	{array}	argument
-/// @param	{real}	iterations
+/// @param	{Function|Asset.GMScript}	function
+/// @param	{Array}	argument
+/// @param	{Real}	iterations
 function time_performance(_func, _args = [], _iter = 1) {
 	var _time_start = get_timer();
 	

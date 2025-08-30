@@ -12,6 +12,7 @@
 - [random_linear](#random_linear)
 - [uuid_v4](#uuid_v4)
 - [percentage](#percentage)
+- [dec2hex](#dec2hex)
 
 ---
 
@@ -25,10 +26,10 @@ Returns a rounded number with N decimal places.
 round_dec(x, [(decimals = 0)]);
 ```
 
-| Argument | Type | Description                              |
-| :------- | :--: | :--------------------------------------- |
-| x        | Real | The number to round                      |
-| decimals | Real | The number of decimal places to round to |
+| Argument | Type  | Description                              |
+| :------- | :---: | :--------------------------------------- |
+| x        | Real  | The number to round                      |
+| decimals | Real  | The number of decimal places to round to |
 
 ### Returns
 
@@ -61,11 +62,11 @@ Returns a boolean if the first value is near the second value with an offset.
 near(value, value_to, offset);
 ```
 
-| Argument | Type | Description                |
-| :------- | :--: | :------------------------- |
-| value    | Real | The value to check         |
-| value_to | Real | The value to check against |
-| offset   | Real | The offset to check        |
+| Argument | Type  | Description                |
+| :------- | :---: | :------------------------- |
+| value    | Real  | The value to check         |
+| value_to | Real  | The value to check against |
+| offset   | Real  | The offset to check        |
 
 ### Returns
 
@@ -102,11 +103,11 @@ Returns a boolean if the first value is near the second value with an offset.
 between(value, min, max);
 ```
 
-| Argument | Type | Description        |
-| :------- | :--: | :----------------- |
-| value    | Real | The value to check |
-| min      | Real | The minimum value  |
-| max      | Real | The maximum value  |
+| Argument | Type  | Description        |
+| :------- | :---: | :----------------- |
+| value    | Real  | The value to check |
+| min      | Real  | The minimum value  |
+| max      | Real  | The maximum value  |
 
 ### Returns
 
@@ -142,9 +143,9 @@ Returns a boolean if the random value is less than the chance. All values must b
 rng(value);
 ```
 
-| Argument | Type | Description        |
-| :------- | :--: | :----------------- |
-| value    | Real | The value to check |
+| Argument | Type  | Description        |
+| :------- | :---: | :----------------- |
+| value    | Real  | The value to check |
 
 ### Returns
 
@@ -211,11 +212,11 @@ Returns an array of numbers from `from` to `to` with a step of `step`. If `step`
 range(to, [(from = 0)], [(step = 1)]);
 ```
 
-| Argument | Type | Description                           |
-| :------- | :--: | :------------------------------------ |
-| to       | Real | The end of the range                  |
-| from     | Real | The start of the range. (default = 0) |
-| step     | Real | The step of the range. (default = 1)  |
+| Argument | Type  | Description                           |
+| :------- | :---: | :------------------------------------ |
+| to       | Real  | The end of the range                  |
+| from     | Real  | The start of the range. (default = 0) |
+| step     | Real  | The step of the range. (default = 1)  |
 
 ### Returns
 
@@ -249,11 +250,11 @@ Wraps the value to the range of `min` to `max`. If the value is less than `min`,
 wrap(value, min, max);
 ```
 
-| Argument | Type | Description       |
-| :------- | :--: | :---------------- |
-| value    | Real | The value to wrap |
-| min      | Real | The minimum value |
-| max      | Real | The maximum value |
+| Argument | Type  | Description       |
+| :------- | :---: | :---------------- |
+| value    | Real  | The value to wrap |
+| min      | Real  | The minimum value |
+| max      | Real  | The maximum value |
 
 ### Returns
 
@@ -277,7 +278,7 @@ The output will be `Wrapped value: 4`.
 
 ---
 
-# random_linear
+# random_linear ![](https://img.shields.io/badge/v1.4.0-916800?style=flat)
 
 Returns a random value with a linear distribution.
 
@@ -287,9 +288,9 @@ Returns a random value with a linear distribution.
 random_linear(value);
 ```
 
-| Argument | Type | Description                      |
-| :------- | :--: | :------------------------------- |
-| value    | Real | The value to check. (Default: 1) |
+| Argument | Type  | Description                      |
+| :------- | :---: | :------------------------------- |
+| value    | Real  | The value to check. (Default: 1) |
 
 ### Returns
 
@@ -309,7 +310,7 @@ The above code will return a random value with a linear distribution. Then it wi
 
 ---
 
-# uuid_v4
+# uuid_v4 ![](https://img.shields.io/badge/v1.4.0-916800?style=flat)
 
 Returns a random UUID v4.
 
@@ -337,7 +338,7 @@ The above code will return a random UUID v4. Then it will show the UUID on conso
 
 ---
 
-# percentage
+# percentage ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Returns the percentage of the given values.
 
@@ -347,10 +348,10 @@ Returns the percentage of the given values.
 percentage(current_value, total_value);
 ```
 
-| Argument      | Type | Description                |
-| :------------ | :--: | :------------------------- |
-| current_value | Real | The current value          |
-| total_value   | Real | The total value to compare |
+| Argument      | Type  | Description                |
+| :------------ | :---: | :------------------------- |
+| current_value | Real  | The current value          |
+| total_value   | Real  | The total value to compare |
 
 ### Returns
 
@@ -368,3 +369,36 @@ show_debug_message("Percentage: " + string(percentage(_current, _total)) + "%");
 ```
 
 The above code will return the percentage of the `_current` value compared to the `_total` value. Then it will show the percentage on console. The output will be `Percentage: 50%`.
+
+---
+
+# dec2hex ![](https://img.shields.io/badge/v1.5.2-5cd3b4?style=flat)
+
+Converts a decimal number to a hexadecimal string. The resulting string will have a minimum length, padded with leading zeros if necessary.
+
+### Syntax
+
+```js
+dec2hex(value, [min_length = 6]);
+```
+
+| Argument   | Type  | Description                                               |
+| :--------- | :---: | :-------------------------------------------------------- |
+| value      | Real  | The decimal number to convert                             |
+| min_length | Real  | The minimum length of the resulting string. (default = 6) |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+var _dec = 255;
+var _hex = dec2hex(_dec, 4);
+show_debug_message("Hex: " + _hex);
+```
+
+The above code will convert the decimal number `255` to a hexadecimal string with a minimum length of `4`. The resulting string will be `00FF`. Then it will show the hexadecimal string on console.

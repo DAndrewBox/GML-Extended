@@ -31,7 +31,7 @@
 | gm_unit_seconds   | The unit of time in seconds                                            | time_source_units_seconds |
 | gm_unit_frames    | The unit of time in frames                                             | time_source_units_frames  |
 
-# str
+# str ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
 Converts a value to a string.
 
@@ -41,9 +41,9 @@ Converts a value to a string.
 str(value);
 ```
 
-| Argument | Type | Description                      |
-| :------- | :--: | :------------------------------- |
-| value    | Any  | The value to convert to a string |
+| Argument | Type  | Description                      |
+| :------- | :---: | :------------------------------- |
+| value    |  Any  | The value to convert to a string |
 
 ### Returns
 
@@ -61,7 +61,7 @@ The above code will convert the number 10 to a string.
 
 ---
 
-# int
+# int ![](https://img.shields.io/badge/v1.4.0-916800?style=flat)
 
 Converts a value to an integer.
 
@@ -71,9 +71,9 @@ Converts a value to an integer.
 int(value);
 ```
 
-| Argument | Type | Description                        |
-| :------- | :--: | :--------------------------------- |
-| value    | Any  | The value to convert to an integer |
+| Argument | Type  | Description                        |
+| :------- | :---: | :--------------------------------- |
+| value    |  Any  | The value to convert to an integer |
 
 ### Returns
 
@@ -91,7 +91,7 @@ The above code will convert the number 10.5 to an integer. The result will be 10
 
 ---
 
-# int8
+# int8 ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Converts a value to an 8-bit integer.
 
@@ -101,9 +101,9 @@ Converts a value to an 8-bit integer.
 int8(value);
 ```
 
-| Argument | Type | Description                              |
-| :------- | :--: | :--------------------------------------- |
-| value    | Any  | The value to convert to an 8-bit integer |
+| Argument | Type  | Description                              |
+| :------- | :---: | :--------------------------------------- |
+| value    |  Any  | The value to convert to an 8-bit integer |
 
 ### Returns
 
@@ -121,7 +121,7 @@ The above code will convert the number 300 to an 8-bit integer. The result will 
 
 ---
 
-# int16
+# int16 ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Converts a value to a 16-bit integer.
 
@@ -131,9 +131,9 @@ Converts a value to a 16-bit integer.
 int16(value);
 ```
 
-| Argument | Type | Description                              |
-| :------- | :--: | :--------------------------------------- |
-| value    | Any  | The value to convert to a 16-bit integer |
+| Argument | Type  | Description                              |
+| :------- | :---: | :--------------------------------------- |
+| value    |  Any  | The value to convert to a 16-bit integer |
 
 ### Returns
 
@@ -151,7 +151,7 @@ The above code will convert the number 100000 to a 16-bit integer. The result wi
 
 ---
 
-# int8s
+# int8s ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Converts a value to an 8-bit signed integer.
 
@@ -161,9 +161,9 @@ Converts a value to an 8-bit signed integer.
 int8s(value);
 ```
 
-| Argument | Type | Description                                     |
-| :------- | :--: | :---------------------------------------------- |
-| value    | Any  | The value to convert to an 8-bit signed integer |
+| Argument | Type  | Description                                     |
+| :------- | :---: | :---------------------------------------------- |
+| value    |  Any  | The value to convert to an 8-bit signed integer |
 
 ### Returns
 
@@ -181,7 +181,7 @@ The above code will convert the number 200 to an 8-bit signed integer. The resul
 
 ---
 
-# int16s
+# int16s ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Converts a value to a 16-bit signed integer.
 
@@ -191,9 +191,9 @@ Converts a value to a 16-bit signed integer.
 int16s(value);
 ```
 
-| Argument | Type | Description                                     |
-| :------- | :--: | :---------------------------------------------- |
-| value    | Any  | The value to convert to a 16-bit signed integer |
+| Argument | Type  | Description                                     |
+| :------- | :---: | :---------------------------------------------- |
+| value    |  Any  | The value to convert to a 16-bit signed integer |
 
 ### Returns
 
@@ -211,7 +211,7 @@ The above code will convert the number 100000 to a 16-bit signed integer. The re
 
 ---
 
-# is_type
+# is_type ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Checks if a value is of a specific type.
 

@@ -10,7 +10,7 @@ function game_params() {
 }
 
 /// @func	game_get_param_value(param)
-/// @param	{string}	param
+/// @param	{String}	param
 /// @desc	Gets the value of a param.
 function game_get_param_value(_param) {
 	static _params_list = game_params();
@@ -24,7 +24,7 @@ function game_get_param_value(_param) {
 }
 
 /// @func	game_get_param_exists(param)
-/// @param	{string}	param
+/// @param	{String}	param
 /// @desc	Gets a bool telling if the param exists.
 function game_get_param_exists(_param) {
 	static _params_list = game_params();
@@ -32,7 +32,7 @@ function game_get_param_exists(_param) {
 }
 
 /// @func	game_throw_error(message)
-/// @param	{string}	message
+/// @param	{String}	message
 function game_throw_error(_msg) {
 	show_error(__gml_ext_comp_string_ext("Error: {0}", [_msg]), true);
 }

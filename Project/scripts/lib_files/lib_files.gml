@@ -1,5 +1,5 @@
 /// @func	file_text_read_whole(file)
-/// @param	{real}	file
+/// @param	{Real}	file
 /// @desc	Read all lines of a file and returns it as a string
 function file_text_read_whole(_file) {
 	if (_file < 0) return "";
@@ -13,7 +13,7 @@ function file_text_read_whole(_file) {
 }
 
 /// @func	file_text_get_lines_array(file)
-/// @param	{real}	file
+/// @param	{Real}	file
 /// @desc	Returns all lines of a file and returns it as an array of lines.
 function file_text_get_lines_array(_file) {
 	if (_file < 0) return [];
@@ -29,8 +29,9 @@ function file_text_get_lines_array(_file) {
 }
 
 /// @func	file_json_create(filename, struct)
-/// @param	{string}	filename
-/// @param	{any}	struct
+/// @param	{String}	filename
+/// @param	{Any}		struct
+/// @desc	Create a file with the contents of a struct. The filename must have the extension `.json`. If the file already exists, it will be overwritten.
 function file_json_create(_filename, _json) {
 	if (_filename != "") {
 		var _file = file_text_open_write(_filename);
@@ -45,7 +46,7 @@ function file_json_create(_filename, _json) {
 }
 
 /// @func	file_json_read(file)
-/// @param	{real}	file
+/// @param	{Real}	file
 /// @desc	Read a file a transforms it into a json struct
 function file_json_read(_file) {
 	try {

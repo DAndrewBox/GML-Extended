@@ -1,42 +1,49 @@
 /// @func	str(value)
-/// @param	{any}	value
+/// @param	{Any}	value
+/// @desc	Converts a value to a string.
 function str(_val) {
 	return string(_val)
 }
 
 /// @func	int(value)
-/// @param	{real}	value
+/// @param	{Real}	value
+/// @desc	Converts a value to an integer (removes all decimals).
 function int(_val) {
 	return floor(real(_val));
 }
 
 /// @func	int8(value)
-/// @param	{real}	value
+/// @param	{Real}	value
+/// @desc	Converts a value to an 8-bit integer. (0 - 255)
 function int8(_val) {
 	return wrap(int(_val), 0, 256);
 }
 
 /// @func	int16(value)
-/// @param	{real}	value
+/// @param	{Real}	value
+/// @desc	Converts a value to a 16-bit integer. (0 - 65535)
 function int16(_val) {
 	return wrap(int(_val), 0, 65536);
 }
 
 /// @func	int8s(value)
-/// @param	{real}	value
+/// @param	{Real}	value
+/// @desc	Converts a value to an 8-bit signed integer. (-128 - 127)
 function int8s(_val) {
 	return wrap(int(_val), -128, 128);
 }
 
 /// @func	int16s(value)
-/// @param	{real}	value
+/// @param	{Real}	value
+/// @desc	Converts a value to a 16-bit signed integer. (-32768 - 32767)
 function int16s(_val) {
 	return wrap(int(_val), -32768, 32768);
 }
 
 /// @func	is_type(element, type)
-/// @param	{any}		element
-/// @param	{array|string}	type
+/// @param	{Any}				element
+/// @param	{Array | String}	type
+/// @desc	Checks if a value is of a specific type.
 function is_type(_elem, _type) {
 	if (is_array(_type)) {
 		var _is_type = false;

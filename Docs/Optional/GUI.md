@@ -10,12 +10,12 @@
 
 # macros
 
-| Macro       | Description                                  |
-| :---------- | :------------------------------------------- |
-| gui_width   | The width of the GUI layer                   |
-| gui_height  | The height of the GUI layer                  |
-| mouse_gui_x | The x position of the mouse in the GUI layer |
-| mouse_gui_y | The y position of the mouse in the GUI layer |
+| Macro       | Description                                  |                       Introduced in                        |
+| :---------- | :------------------------------------------- | :--------------------------------------------------------: |
+| gui_width   | The width of the GUI layer                   | ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat) |
+| gui_height  | The height of the GUI layer                  | ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat) |
+| mouse_gui_x | The x position of the mouse in the GUI layer | ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat) |
+| mouse_gui_y | The y position of the mouse in the GUI layer | ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat) |
 
 # mouse_in_gui_area
 
@@ -27,12 +27,12 @@ Returns a boolean if the mouse is inside a GUI area.
 mouse_in_gui_area(x1, y1, x2, y2);
 ```
 
-| Argument | Type | Description                 |
-| :------- | :--: | :-------------------------- |
-| x1       | Real | The x1 position of the area |
-| y1       | Real | The y1 position of the area |
-| x2       | Real | The x2 position of the area |
-| y2       | Real | The y2 position of the area |
+| Argument | Type  | Description                 |
+| :------- | :---: | :-------------------------- |
+| x1       | Real  | The x1 position of the area |
+| y1       | Real  | The y1 position of the area |
+| x2       | Real  | The x2 position of the area |
+| y2       | Real  | The y2 position of the area |
 
 ### Returns
 
@@ -62,12 +62,12 @@ Returns a boolean if the mouse is inside a room area (not GUI).
 mouse_in_area(x1, y1, x2, y2);
 ```
 
-| Argument | Type | Description                 |
-| :------- | :--: | :-------------------------- |
-| x1       | Real | The x1 position of the area |
-| y1       | Real | The y1 position of the area |
-| x2       | Real | The x2 position of the area |
-| y2       | Real | The y2 position of the area |
+| Argument | Type  | Description                 |
+| :------- | :---: | :-------------------------- |
+| x1       | Real  | The x1 position of the area |
+| y1       | Real  | The y1 position of the area |
+| x2       | Real  | The x2 position of the area |
+| y2       | Real  | The y2 position of the area |
 
 ### Returns
 
@@ -97,9 +97,9 @@ Returns a boolean if the mouse is inside an instance boundary box.
 mouse_in_instance(inst_id);
 ```
 
-| Argument | Type | Description           |
-| :------- | :--: | :-------------------- |
-| inst_id  | Inst | The instance to check |
+| Argument | Type  | Description           |
+| :------- | :---: | :-------------------- |
+| inst_id  | Inst  | The instance to check |
 
 ### Returns
 

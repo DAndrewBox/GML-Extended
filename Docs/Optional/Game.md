@@ -9,7 +9,7 @@
 
 ---
 
-# game_params
+# game_params ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Returns the game launch parameters.
 
@@ -48,7 +48,7 @@ The above code will set the var `_params` as an array with the game launch param
 
 ---
 
-# game_get_param_value
+# game_get_param_value ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Returns the value of a game launch parameter if it exists, if not returns 0. The value of the parameter is the next string after the parameter name.
 
@@ -91,7 +91,7 @@ The above code will set the var `_params` as an array with the game launch param
 
 ---
 
-# game_get_param_exists
+# game_get_param_exists ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Returns true if the game launch parameter exists, if not returns false.
 
@@ -134,7 +134,7 @@ The above code will set the var `_params` as an array with the game launch param
 
 ---
 
-# game_throw_error
+# game_throw_error ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Throws an error and stops the game. The error message will be shown on the console.
 

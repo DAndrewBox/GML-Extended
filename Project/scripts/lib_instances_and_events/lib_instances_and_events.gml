@@ -1,9 +1,9 @@
 /// @func	instance_create(x, y, object_index, depth|layer_name, _params)
-/// @param	{real}			x
-/// @param	{real}			y
-/// @param	{real}			object_index
+/// @param	{Real}			x
+/// @param	{Real}			y
+/// @param	{Real}			object_index
 /// @param	{real|string}	depth|layer_name
-/// @param	{struct}		params
+/// @param	{Struct}		params
 function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 	var _is_layer = typeof(_depth_or_layer) == gm_type_string;
 	var _inst = undefined;
@@ -19,11 +19,11 @@ function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 }
 
 /// @func	instance_create_unique(x, y, object_index, depth|layer_name, _params)
-/// @param	{real}	x
-/// @param	{real}	y
-/// @param	{real}	object_index
-/// @param	{any}	depth|layer_name
-/// @param	{any}	params
+/// @param	{Real}	x
+/// @param	{Real}	y
+/// @param	{Real}	object_index
+/// @param	{Any}	depth|layer_name
+/// @param	{Any}	params
 /// @desc	Create a new instance only if it doesn't exists
 function instance_create_unique(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 	var _inst = instance_find(_obj, 0);
@@ -72,8 +72,8 @@ function instance_get_all(_obj) {
 }
 
 /// @func	instance_number_if(object_index, callback)
-/// @param	{Asset.GMObject}	object_index
-/// @param	{function}			callback
+/// @param	{Asset.GMObject}			object_index
+/// @param	{Function|Asset.GMScript}	callback
 /// @desc	Return the number of instances that make the callback return true
 function instance_number_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
@@ -87,8 +87,8 @@ function instance_number_if(_obj, _callback) {
 }
 
 /// @func	instance_get_if(object_index, callback)
-/// @param	{Asset.GMObject}	object_index
-/// @param	{function}			callback
+/// @param	{Asset.GMObject}			object_index
+/// @param	{Function|Asset.GMScript}	callback
 /// @desc	Return the instance ids that make the callback returns true
 function instance_get_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
@@ -103,7 +103,7 @@ function instance_get_if(_obj, _callback) {
 
 /// @func	event_user_exec(inst, ev_number)
 /// @param	{Id.Instance|Asset.GMObject}	inst
-/// @param	{real}							ev_number
+/// @param	{Real}							ev_number
 /// @desc	Fastest way to perform a event user from an specified object or instance.
 function event_user_exec(_inst, _ev_number) {
 	with (_inst) {

@@ -13,7 +13,7 @@
 
 ---
 
-# shader_set_ext
+# shader_set_ext ![](https://img.shields.io/badge/v1.1.0-59708c?style=flat)
 
 Setup a shader with uniforms and attributes from a parameters struct.
 
@@ -75,7 +75,7 @@ Then, draw the object with the shader, and reset the shader.
 
 ---
 
-# draw_sprite_recolor
+# draw_sprite_recolor ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
 Draws a sprite and recolors it fully or partially. The recoloring is done by multiplying the color of the sprite with the color specified by the user. If the user specifies a color with `blend` param as 0, the sprite will be drawn with the original color. **This function depends on the `shd_gml_ext_recolor` shader, so it is necessary to import it into the project.**
 
@@ -132,7 +132,7 @@ The above code will draw the sprite with the original color if the player is not
 
 ---
 
-# draw_sprite_blur
+# draw_sprite_blur ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
 Draws a sprite and blurs it fully or partially. The blurring is done by using a gaussian blur shader. **This function depends on the `shd_gml_ext_blur_gauss` shader, so it is necessary to import it into the project.**
 
@@ -184,7 +184,7 @@ The above code will draw the sprite with the blur amount of 0.5.
 
 ---
 
-# draw_surface_recolor
+# draw_surface_recolor ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
 Draws a surface and recolors it fully or partially. The recoloring is done by multiplying the color of the surface with the color specified by the user. If the user specifies a color with `blend` param as 0, the surface will be drawn with the original color. **This function depends on the `shd_gml_ext_recolor` shader, so it is necessary to import it into the project.**
 
@@ -241,7 +241,7 @@ The above code will draw the surface with the purple color with the blend of 0.6
 
 ---
 
-# draw_surface_blur
+# draw_surface_blur ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
 Draws a surface and blurs it fully or partially. The blurring is done by using a gaussian blur shader. **This function depends on the `shd_gml_ext_blur_gauss` shader, so it is necessary to import it into the project.**
 

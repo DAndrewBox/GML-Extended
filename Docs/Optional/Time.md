@@ -238,7 +238,7 @@ The above code will test the performance of the `unix_timestamp` function 1000 t
 
 ---
 
-# current_week
+# current_week ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Returns the current week of the year.
 
@@ -265,7 +265,7 @@ The above code will return the current week of the year and show a message with 
 
 ---
 
-# current_day_of_year
+# current_day_of_year ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Returns the current day of the year.
 

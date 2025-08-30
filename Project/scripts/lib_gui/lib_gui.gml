@@ -6,19 +6,19 @@
 #endregion
 
 /// @func	mouse_in_gui_area(x1, y1, x2, y2)
-/// @param	{real}	x1
-/// @param	{real}	y1
-/// @param	{real}	x2
-/// @param	{real}	y2
+/// @param	{Real}	x1
+/// @param	{Real}	y1
+/// @param	{Real}	x2
+/// @param	{Real}	y2
 function mouse_in_gui_area(_x1, _y1, _x2, _y2) {
 	return point_in_rectangle(mouse_gui_x, mouse_gui_y, _x1, _y1, _x2, _y2);
 }
 
 /// @func	mouse_in_area(x1, y1, x2, y2)
-/// @param	{real}	x1
-/// @param	{real}	y1
-/// @param	{real}	x2
-/// @param	{real}	y2
+/// @param	{Real}	x1
+/// @param	{Real}	y1
+/// @param	{Real}	x2
+/// @param	{Real}	y2
 function mouse_in_area(_x1, _y1, _x2, _y2) {
 	return point_in_rectangle(mouse_x, mouse_y, _x1, _y1, _x2, _y2);
 }

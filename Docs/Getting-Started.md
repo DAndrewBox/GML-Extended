@@ -31,17 +31,17 @@
 
 ## 🛠️ Troubleshooting
 
-### **I can't find the resources in my project.**
+### ❓ **I can't find the resources in my project.**
 
 - Be sure to check the `GML-Extended` folder or the `Libraries` folder in your project. If you still can't find it, try to import the resources again.
 
-### **I can't import the resources into my project.**
+### ❓ **I can't import the resources into my project.**
 
 - Be sure you are importing the correct version of the extension for your GameMaker version. Check the compatibility table in the [Versioning & Compatibility](./Versioning-&-Compatibility) section.
 
 - If you are still having trouble, try to import the resources manually. You can find the resources in the `GML-Extended` folder inside the `.yymps` file.
 
-### **I imported the files but I cannot run the project or the functions are not working.**
+### ❓ **I imported the files but I cannot run the project or the functions are not working.**
 
 - GML-Extended depends on the `Functions > Core` folder to work properly. Be sure to import the `Core` folder along with the other resources. If you still have trouble, try to import the `Core` folder manually.
 
@@ -49,6 +49,6 @@
 
 - Another cause could be with the `Functions > Experimental` folder. If you are using the experimental functions, this folder is not required and have no peer dependencies, but if you are using the experimental functions that could be change, removed or added to the library in the future, be sure to import the `Experimental` folder along with the other resources.
 
-### **I imported the files but I'm getting errors when running the project.**
+### ❓ **I imported the files but I'm getting errors when running the project.**
 
 - Be sure to check the `Output` tab in GameMaker Studio 2 for any errors. If you can't find the error, try to import the resources again. If the error persists, report it in the issues section of the repository.

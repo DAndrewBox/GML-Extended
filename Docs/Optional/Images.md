@@ -9,7 +9,7 @@
 
 ---
 
-# image_loop_index
+# image_loop_index ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Loops the index of an image between a start and end index (end frame included).
 
@@ -19,11 +19,11 @@ Loops the index of an image between a start and end index (end frame included).
 image_loop_index(start_index, end_index, speed);
 ```
 
-| Argument    | Type | Description                  |
-| :---------- | :--: | :--------------------------- |
-| start_index | Real | The first index of the image |
-| end_index   | Real | The last index of the image  |
-| speed       | Real | The speed of the animation   |
+| Argument    | Type  | Description                  |
+| :---------- | :---: | :--------------------------- |
+| start_index | Real  | The first index of the image |
+| end_index   | Real  | The last index of the image  |
+| speed       | Real  | The speed of the animation   |
 
 ### Returns
 
@@ -42,7 +42,7 @@ The above code will loop the image_index between 0 and 3 with a speed of 0.5. So
 
 ---
 
-# image_set
+# image_set ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Sets the image properties. This function is used to set the image properties of the instance. The properties are the index, speed, xscale, yscale, angle, blend, and alpha.
 
@@ -52,15 +52,15 @@ Sets the image properties. This function is used to set the image properties of 
 image_set([index], [speed], [xscale], [yscale], [angle], [blend], [alpha]);
 ```
 
-| Argument | Type | Description                       |
-| :------- | :--: | :-------------------------------- |
-| index    | Real | The index of the image            |
-| speed    | Real | The speed of the animation        |
-| xscale   | Real | The horizontal scale of the image |
-| yscale   | Real | The vertical scale of the image   |
-| angle    | Real | The angle of the image            |
-| blend    | Real | The blend mode of the image       |
-| alpha    | Real | The alpha value of the image      |
+| Argument | Type  | Description                       |
+| :------- | :---: | :-------------------------------- |
+| index    | Real  | The index of the image            |
+| speed    | Real  | The speed of the animation        |
+| xscale   | Real  | The horizontal scale of the image |
+| yscale   | Real  | The vertical scale of the image   |
+| angle    | Real  | The angle of the image            |
+| blend    | Real  | The blend mode of the image       |
+| alpha    | Real  | The alpha value of the image      |
 
 ### Returns
 
@@ -78,7 +78,7 @@ The above code will set the image properties of the instance to the index 0, spe
 
 ---
 
-# image_set_scale
+# image_set_scale ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Sets the image xscale and yscale properties.
 
@@ -88,10 +88,10 @@ Sets the image xscale and yscale properties.
 image_set_scale(xscale, yscale);
 ```
 
-| Argument | Type | Description                       |
-| :------- | :--: | :-------------------------------- |
-| xscale   | Real | The horizontal scale of the image |
-| yscale   | Real | The vertical scale of the image   |
+| Argument | Type  | Description                       |
+| :------- | :---: | :-------------------------------- |
+| xscale   | Real  | The horizontal scale of the image |
+| yscale   | Real  | The vertical scale of the image   |
 
 ### Returns
 
@@ -109,7 +109,7 @@ The above code will set the image xscale and yscale properties of the instance t
 
 ---
 
-# image_smooth_rotate
+# image_smooth_rotate ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Rotates the image smoothly to a given angle. This function should be used on the step event.
 
@@ -119,10 +119,10 @@ Rotates the image smoothly to a given angle. This function should be used on the
 image_smooth_rotate(angle, [speed_factor]);
 ```
 
-| Argument     | Type | Description                               |
-| :----------- | :--: | :---------------------------------------- |
-| angle        | Real | The angle to rotate the image to          |
-| speed_factor | Real | The speed of the rotation. (Default: 0.1) |
+| Argument     | Type  | Description                               |
+| :----------- | :---: | :---------------------------------------- |
+| angle        | Real  | The angle to rotate the image to          |
+| speed_factor | Real  | The speed of the rotation. (Default: 0.1) |
 
 ### Returns
 

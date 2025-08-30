@@ -13,7 +13,7 @@
 
 ---
 
-# instance_create
+# instance_create ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Creates an instance of an object at the specified position. Similar of how `instance_create` worked before GameMaker Studio 2, but with some extra features. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
 
@@ -54,7 +54,7 @@ The above code will create a player and an enemy. The player will be created on 
 
 ---
 
-# instance_create_unique
+# instance_create_unique ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Functions the same as `instance_create`, but **if an instance of the object already exists, it will return -1 and will not create the instance**. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
 
@@ -99,7 +99,7 @@ The above code will create a player and two enemies. The player will be created 
 
 ---
 
-# instance_any_exists
+# instance_any_exists ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Returns true if any instance of the objects passed as arguments exists.
 
@@ -109,9 +109,9 @@ Returns true if any instance of the objects passed as arguments exists.
 instance_any_exists(*args);
 ```
 
-| Argument | Type | Description                           |
-| :------- | :--: | :------------------------------------ |
-| \*args   | Refs | The arguments to pass to the function |
+| Argument | Type  | Description                           |
+| :------- | :---: | :------------------------------------ |
+| \*args   | Refs  | The arguments to pass to the function |
 
 ### Returns
 
@@ -131,7 +131,7 @@ The above code will show a debug message if there is a player or an enemy in the
 
 ---
 
-# instance_in_room
+# instance_in_room ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Returns true if an instance of the object exists inside the boundaries of the room.
 
@@ -163,7 +163,7 @@ The above code will show a debug message if there is a player inside the room.
 
 ---
 
-# instance_get_all
+# instance_get_all ![](https://img.shields.io/badge/v1.2.2-3e5f4a?style=flat)
 
 Returns an array of all instances of the object passed as argument.
 
@@ -196,7 +196,7 @@ The above code will show the x position of all players in the room.
 
 ---
 
-# instance_number_if
+# instance_number_if ![](https://img.shields.io/badge/v1.2.2-3e5f4a?style=flat)
 
 Returns a number of instances of the object passed as argument that match the condition passed as callback argument.
 
@@ -230,7 +230,7 @@ The above code will show the number of players with guns in the room. The callba
 
 ---
 
-# instance_get_if
+# instance_get_if ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
 Returns an array of instances of the object passed as argument that match the condition passed as callback argument.
 
@@ -274,7 +274,7 @@ The above code will show the x and y position of all players with guns in the ro
 
 ---
 
-# event_user_exec
+# event_user_exec ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Executes an event of an object. The event must be a user event. The event_number is the id of the event to execute.
 
@@ -284,10 +284,10 @@ Executes an event of an object. The event must be a user event. The event_number
 event_user_exec(instance_id, event_number);
 ```
 
-| Argument     | Type | Description                                 |
-| :----------- | :--: | :------------------------------------------ |
-| instance_id  | Ref  | The id of the instance to execute the event |
-| event_number | Real | The id of the event to execute              |
+| Argument     | Type  | Description                                 |
+| :----------- | :---: | :------------------------------------------ |
+| instance_id  |  Ref  | The id of the instance to execute the event |
+| event_number | Real  | The id of the event to execute              |
 
 ### Returns
 

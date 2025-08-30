@@ -11,7 +11,7 @@
 - [view_get_x](#view_get_x)
 - [view_get_y](#view_get_y)
 
-# del
+# del ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Deletes an instance and executes the destroy event of the object. Serves as a shortcut for `instance_destroy`.
 
@@ -92,7 +92,7 @@ Real size: 3
 
 ---
 
-# contains
+# contains ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Checks if an element is inside a container. Serves as a shortcut for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
 
@@ -132,7 +132,7 @@ The above code will check if the element is inside the container. If it is, it w
 
 ---
 
-# trace
+# trace ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
 Prints a message to the console. Serves as a shortcut for `show_debug_message`.
 
@@ -142,9 +142,9 @@ Prints a message to the console. Serves as a shortcut for `show_debug_message`.
 trace(*args);
 ```
 
-| Argument | Type | Description           |
-| :------- | :--: | :-------------------- |
-| \*args   | any  | The messages to print |
+| Argument | Type  | Description           |
+| :------- | :---: | :-------------------- |
+| \*args   |  any  | The messages to print |
 
 ### Returns
 
@@ -162,9 +162,7 @@ The above code will print "Hello World!" to the console.
 
 ---
 
-# alert
-
-# alert
+# alert ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
 Shows an alert dialog with the message passed as argument. The dialog will stop anything happening in the game until the user clicks the OK button. Server as a shortcut for `show_message`.
 
@@ -194,7 +192,7 @@ The above code will show an alert dialog with the message "Hello World!".
 
 ---
 
-# alert_async
+# alert_async ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
 Shows an alert dialog with the message passed as argument. The dialog **will not** stop anything happening in the game. Server as a shortcut for `show_message_async`.
 
@@ -224,7 +222,7 @@ The above code will show an alert dialog with the message "Hello World!".
 
 ---
 
-# view_get_x
+# view_get_x ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
 Gets the X position of the view passed as argument. Serves as a shortcut for `camera_get_view_x(view_camera[view_current])`.
 
@@ -234,9 +232,9 @@ Gets the X position of the view passed as argument. Serves as a shortcut for `ca
 view_get_x([(view = view_current)]);
 ```
 
-| Argument | Type | Description                          |
-| :------- | :--: | :----------------------------------- |
-| view     | Real | The view to get the X position from. |
+| Argument | Type  | Description                          |
+| :------- | :---: | :----------------------------------- |
+| view     | Real  | The view to get the X position from. |
 
 ### Returns
 
@@ -258,7 +256,7 @@ The above code will get the X and Y position of the current view and print them 
 
 ---
 
-# view_get_y
+# view_get_y ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
 Gets the Y position of the view passed as argument. Serves as a shortcut for `camera_get_view_y(view_camera[view_current])`.
 
@@ -268,9 +266,9 @@ Gets the Y position of the view passed as argument. Serves as a shortcut for `ca
 view_get_y([(view = view_current)]);
 ```
 
-| Argument | Type | Description                          |
-| :------- | :--: | :----------------------------------- |
-| view     | Real | The view to get the Y position from. |
+| Argument | Type  | Description                          |
+| :------- | :---: | :----------------------------------- |
+| view     | Real  | The view to get the Y position from. |
 
 ### Returns
 

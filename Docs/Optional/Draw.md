@@ -39,7 +39,7 @@
 | current_draw_halign | draw_get_halign() | The current horizontal alignment |
 | current_draw_valign | draw_get_valign() | The current vertical alignment   |
 
-# draw_self_ext
+# draw_self_ext ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draw the sprite of the object with the specified position, scale and rotation. This function is similar to the `draw_self` function, but it allows you to specify the position, scale and rotation of the sprite.
 
@@ -87,7 +87,7 @@ The above code will draw a black version of the sprite of the object with the sp
 
 ---
 
-# draw_figure
+# draw_figure ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draw a figure of specified sides with the specified position, scale and rotation.
 
@@ -97,14 +97,14 @@ Draw a figure of specified sides with the specified position, scale and rotation
 draw_figure(x, y, sides, size, [(rot = 0)], [(width = 1)]);
 ```
 
-| Argument | Type | Description                             |
-| :------- | :--: | :-------------------------------------- |
-| x        | Real | The x position of the figure            |
-| y        | Real | The y position of the figure            |
-| sides    | Real | The number of sides of the figure       |
-| size     | Real | The size of the figure                  |
-| rot      | Real | The rotation of the figure (Default: 0) |
-| width    | Real | The width of the figure (Default: 1)    |
+| Argument | Type  | Description                             |
+| :------- | :---: | :-------------------------------------- |
+| x        | Real  | The x position of the figure            |
+| y        | Real  | The y position of the figure            |
+| sides    | Real  | The number of sides of the figure       |
+| size     | Real  | The size of the figure                  |
+| rot      | Real  | The rotation of the figure (Default: 0) |
+| width    | Real  | The width of the figure (Default: 1)    |
 
 ### Returns
 
@@ -131,7 +131,7 @@ The above code will draw a triangle, hexagon and square with the specified posit
 
 ---
 
-# draw_quad
+# draw_quad ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draw a quad on the screen using 4 points and a gradient color. The color_init and color_final arguments are the colors of the top and bottom points of the quad.
 
@@ -179,7 +179,7 @@ The above code will draw a quad with the specified position, scale and rotation.
 
 ---
 
-# draw_rectangle_width
+# draw_rectangle_width ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draw a rectangle on the specified position with a line width specified by the user.
 
@@ -189,13 +189,13 @@ Draw a rectangle on the specified position with a line width specified by the us
 draw_rectangle_width(x1, y1, x2, y2, [(width = 1)]);
 ```
 
-| Argument | Type | Description                        |
-| :------- | :--: | :--------------------------------- |
-| x1       | Real | The x position of the first point  |
-| y1       | Real | The y position of the first point  |
-| x2       | Real | The x position of the second point |
-| y2       | Real | The y position of the second point |
-| width    | Real | The width of the line (Default: 1) |
+| Argument | Type  | Description                        |
+| :------- | :---: | :--------------------------------- |
+| x1       | Real  | The x position of the first point  |
+| y1       | Real  | The y position of the first point  |
+| x2       | Real  | The x position of the second point |
+| y2       | Real  | The y position of the second point |
+| width    | Real  | The width of the line (Default: 1) |
 
 ### Returns
 
@@ -218,7 +218,7 @@ The above code will draw a rectangle with the specified position, scale and rota
 
 ---
 
-# draw_rectangle_rotated
+# draw_rectangle_rotated ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draw a rectangle on the specified position with a rotation specified by the user. The rotation is in degrees. The rectangle is drawn from the center of the rectangle. The rectangle is drawn with a line width of 1 if the outline argument is true.
 
@@ -259,7 +259,7 @@ The above code will drawn 2 rectangles with the specified position, scale and ro
 
 ---
 
-# draw_text_outline
+# draw_text_outline ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draw a text on the specified position with a outline specified by the user.
 
@@ -311,7 +311,7 @@ The above code will draw a text with the specified position, color and outline.
 
 ---
 
-# draw_text_shadow
+# draw_text_shadow ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draw a text on the specified position with a shadow specified by the user. The shadow offset is defined in pixels by the user.
 
@@ -365,7 +365,7 @@ The above code will draw a text with the specified position, color and shadow.
 
 ---
 
-# draw_text_size
+# draw_text_size ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draws a text using a font size specified by the user. The font size is given in pixels by the last font defined by the user in the draw event. Is recommended to create a font with the "No Scale" option enabled on "Glyph Options" so the font will not be pixelated, also, personally I recommend to set it up to a pixel size of 32 in the editor.
 
@@ -410,7 +410,7 @@ The above code will draw multiple texts with different font sizes.
 
 ---
 
-# draw_fps
+# draw_fps ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draws the current fps on the specified position. The fps is calculated automatically by the engine.
 
@@ -420,10 +420,10 @@ Draws the current fps on the specified position. The fps is calculated automatic
 draw_fps(x, y);
 ```
 
-| Argument | Type | Description                |
-| :------- | :--: | :------------------------- |
-| x        | Real | The x position of the text |
-| y        | Real | The y position of the text |
+| Argument | Type  | Description                |
+| :------- | :---: | :------------------------- |
+| x        | Real  | The x position of the text |
+| y        | Real  | The y position of the text |
 
 ## Returns
 
@@ -442,7 +442,7 @@ The above code will draw the fps on the bottom left corner of the screen.
 
 ---
 
-# draw_fps_real
+# draw_fps_real ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Draws the current fps_real on the specified position. The fps_real is calculated automatically by the engine. The fps_real is the real fps of the game, it is not affected by the fps cap.
 
@@ -452,10 +452,10 @@ Draws the current fps_real on the specified position. The fps_real is calculated
 draw_fps_real(x, y);
 ```
 
-| Argument | Type | Description                |
-| :------- | :--: | :------------------------- |
-| x        | Real | The x position of the text |
-| y        | Real | The y position of the text |
+| Argument | Type  | Description                |
+| :------- | :---: | :------------------------- |
+| x        | Real  | The x position of the text |
+| y        | Real  | The y position of the text |
 
 ## Returns
 
@@ -474,7 +474,7 @@ The above code will draw the fps_real on the bottom right corner of the screen.
 
 ---
 
-# draw_set_align
+# draw_set_align ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 A 1-liner to set the alignment of the text to be drawn. The alignment table is shown below.
 
@@ -492,10 +492,10 @@ A 1-liner to set the alignment of the text to be drawn. The alignment table is s
 draw_set_align(halign, valign);
 ```
 
-| Argument | Type | Description                          |
-| :------- | :--: | :----------------------------------- |
-| halign   | Real | The horizontal alignment of the text |
-| valign   | Real | The vertical alignment of the text   |
+| Argument | Type  | Description                          |
+| :------- | :---: | :----------------------------------- |
+| halign   | Real  | The horizontal alignment of the text |
+| valign   | Real  | The vertical alignment of the text   |
 
 ## Returns
 
@@ -514,7 +514,7 @@ The above code will draw a text with the specified position and centered.
 
 ---
 
-# gpu_set_alpha_overwrite
+# gpu_set_alpha_overwrite ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
 Sets the alpha overwrite flag. If the flag is set to true, the alpha channel of the color will be ignored and the alpha channel of the texture will be used instead. If the flag is set to false, the alpha channel of the color will be used instead.
 
@@ -547,7 +547,7 @@ The above code will draw a rectangle and a text with the specified position and 
 
 ---
 
-# draw_surface_from_center
+# draw_surface_from_center ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Draws a surface on the specified position from the center of the surface. The surface is drawn with the specified scale, rotation, color and alpha.
 
@@ -593,7 +593,7 @@ The above code will draw a surface with the specified position, scale, rotation,
 
 ---
 
-# draw_set_gui_scale
+# draw_set_gui_scale ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Sets the GUI scale of the game. The GUI scale is used to scale the GUI elements of the game. The GUI scale is a multiplier that is applied to the GUI elements of the game. After setting the GUI scale, all the GUI elements of the game will be scaled by the specified scale. You should reset the GUI scale after drawing the GUI elements to avoid scaling other elements of the game.
 
@@ -603,9 +603,9 @@ Sets the GUI scale of the game. The GUI scale is used to scale the GUI elements 
 draw_set_gui_scale(scale);
 ```
 
-| Argument | Type | Description          |
-| :------- | :--: | :------------------- |
-| scale    | Real | The scale of the GUI |
+| Argument | Type  | Description          |
+| :------- | :---: | :------------------- |
+| scale    | Real  | The scale of the GUI |
 
 ## Returns
 
@@ -627,7 +627,7 @@ The above code will draw a text with the specified position and scale. The text 
 
 ---
 
-# draw_set_blendmode
+# draw_set_blendmode ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Sets the blend mode of the game. Is a replacement for the `gpu_set_blendmode` and `gpu_set_blendmode_ext` functions.
 
@@ -637,10 +637,10 @@ Sets the blend mode of the game. Is a replacement for the `gpu_set_blendmode` an
 draw_set_blendmode(mode_src, [mode_dest]);
 ```
 
-| Argument  | Type | Description                |
-| :-------- | :--: | :------------------------- |
-| mode_src  | Real | The source blend mode      |
-| mode_dest | Real | The destination blend mode |
+| Argument  | Type  | Description                |
+| :-------- | :---: | :------------------------- |
+| mode_src  | Real  | The source blend mode      |
+| mode_dest | Real  | The destination blend mode |
 
 ## Returns
 
@@ -662,7 +662,7 @@ The above code will draw a text with the specified position and blend mode. The 
 
 ---
 
-# draw_reset_blendmode
+# draw_reset_blendmode ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Resets the blend mode of the game. Is a replacement for the `gpu_set_blendmode(bm_normal)` function.
 
@@ -692,7 +692,7 @@ The above code will draw a text with the specified position and blend mode. The 
 
 ---
 
-# surface_clear
+# surface_clear ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Clears the surface with the specified color and alpha. It's a replacement for the `draw_clear` and `draw_clear_alpha` function.
 
@@ -702,10 +702,10 @@ Clears the surface with the specified color and alpha. It's a replacement for th
 surface_clear(color, [alpha]);
 ```
 
-| Argument | Type | Description              |
-| :------- | :--: | :----------------------- |
-| color    | Real | The color of the surface |
-| alpha    | Real | The alpha of the surface |
+| Argument | Type  | Description              |
+| :------- | :---: | :----------------------- |
+| color    | Real  | The color of the surface |
+| alpha    | Real  | The alpha of the surface |
 
 ## Returns
 
@@ -727,7 +727,7 @@ The above code will clear the surface with the specified color and alpha. The su
 
 ---
 
-# draw_set_depth
+# draw_set_depth ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 > [!WARNING]
 > This function will only work on GameMaker versions 2023.8+. Version before this will not work and will show a message in console instead.
@@ -740,9 +740,9 @@ Sets the depth of the drawing. The depth is used to determine the order in which
 draw_set_depth(depth);
 ```
 
-| Argument | Type | Description              |
-| :------- | :--: | :----------------------- |
-| depth    | Real | The depth of the drawing |
+| Argument | Type  | Description              |
+| :------- | :---: | :----------------------- |
+| depth    | Real  | The depth of the drawing |
 
 ## Returns
 
@@ -764,7 +764,7 @@ The above code will draw 2 sprites with the specified position and depth. The fi
 
 ---
 
-# draw_reset_depth
+# draw_reset_depth ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 > [!WARNING]
 > This function will only work on GameMaker versions 2023.8+. Version before this will not work and will show a message in console instead.
@@ -785,7 +785,7 @@ None;
 
 ---
 
-# draw_reset_alpha
+# draw_reset_alpha ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Resets the alpha of the drawing. Sets the alpha of the drawing to 1.
 
@@ -803,7 +803,7 @@ None;
 
 ---
 
-# draw_reset_color
+# draw_reset_color ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Resets the color of the drawing. Sets the color of the drawing to `c_white`.
 
@@ -821,7 +821,43 @@ None;
 
 ---
 
-# draw_create_profile
+# draw_reset ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
+
+Resets the drawing settings. Sets the alpha of the drawing to 1, the color of the drawing to `c_white`, the horizontal alignment of the text to `fa_left`, the vertical alignment of the text to `fa_top` and the blend mode of the drawing to `bm_normal`.
+
+### Syntax
+
+```js
+draw_reset();
+```
+
+## Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+draw_set_alpha(0.5);
+draw_set_color(c_red);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_blendmode(bm_add);
+
+draw_text(x, y, "Hello World!");
+
+draw_reset();
+
+draw_text(x, y + 32, "Hello World!");
+```
+
+The above code will draw a text with the specified position, alpha, color, horizontal alignment, vertical alignment and blend mode. Then it will reset the drawing settings and draw another text with the default settings.
+
+---
+
+# draw_create_profile ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 > [!NOTE]
 > Profiles were added in v1.5.0, and are a new way to setup all your drawing settings in one go and then switch between them as needed. This can be useful if you have a lot of different drawing settings that you need to change often, as it can save you a lot of time and make your code more readable.
@@ -886,7 +922,7 @@ The above code will create 2 profiles with the specified settings. The first pro
 
 ---
 
-# draw_set_profile
+# draw_set_profile ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
 Sets the profile for the drawing functions. The profile is used to store the drawing settings and can be used to switch between different drawing settings.
 

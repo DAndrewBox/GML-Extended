@@ -11,7 +11,7 @@
 
 ---
 
-# string_pad_left
+# string_pad_left ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
 Returns a string with the specified number of characters on the left side. If the string is already bigger than the specified size, the string will be returned as is. If the string is smaller than the specified size, the string will be filled with the specified character on the left side.
 
@@ -47,7 +47,7 @@ The above code will set the var `_str_filled` as an string filled with 0's on th
 
 ---
 
-# string_pad_right
+# string_pad_right ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
 Returns a string with the specified number of characters on the right side. If the string is already bigger than the specified size, the string will be returned as is. If the string is smaller than the specified size, the string will be filled with the specified character on the right side.
 
@@ -80,41 +80,6 @@ show_debug_message(_str_filled);
 ```
 
 The above code will set the var `_str_filled` as an string filled with 0's on the right side and the show on console. The result will be `123000000`.
-
----
-
-# string_split
-
-Returns an array from a string divided on substrings by a separator.
-
-### Syntax
-
-```js
-string_split(string, separator);
-```
-
-| Argument  |  Type  | Description                        |
-| :-------- | :----: | :--------------------------------- |
-| string    | String | The string to strip                |
-| separator | String | The separator to divide the string |
-
-### Returns
-
-```js
-Array;
-```
-
-### Example
-
-```js
-var _str = "Hello, World!";
-var _sep = ", ";
-var _str_arr = string_split(_str, _sep);
-
-show_debug_message(_str_arr);
-```
-
-The above code will set the var `_str_arr` as an array with the string divided on substrings and the show on console. The result will be `["Hello", "World!"]`.
 
 ---
 
@@ -154,7 +119,7 @@ The above code will show on console the message `World Found!` since the string 
 
 ---
 
-# string_title
+# string_title ![](https://img.shields.io/badge/v1.2.2-3e5f4a?style=flat)
 
 Returns a string with the first letter of each word capitalized.
 
@@ -229,10 +194,10 @@ Returns a string with the percentage of the given values.
 string_percentage(current_value, total_value);
 ```
 
-| Argument      | Type | Description                |
-| :------------ | :--: | :------------------------- |
-| current_value | Real | The current value          |
-| total_value   | Real | The total value to compare |
+| Argument      | Type  | Description                |
+| :------------ | :---: | :------------------------- |
+| current_value | Real  | The current value          |
+| total_value   | Real  | The total value to compare |
 
 ### Returns
 

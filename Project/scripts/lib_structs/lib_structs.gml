@@ -1,14 +1,14 @@
 /// @func	struct_keys(struct)
-/// @param	{any}	struct
+/// @param	{Any}	struct
 /// @desc	Return an array with all keys from a struct.
 function struct_keys(_struct) {
 	return variable_struct_get_names(_struct);
 }
 
 /// @func	struct_merge(struct1, struct2, override)
-/// @param	{any}	struct1
-/// @param	{any}	struct2
-/// @param	{bool}	override
+/// @param	{Any}	struct1
+/// @param	{Any}	struct2
+/// @param	{Bool}	override
 /// @desc	Return a merged struct from 2 different structs.
 function struct_merge(_st_1, _st_2, _override = true) {
 	var _new_struct = _st_1;
@@ -32,16 +32,17 @@ function struct_merge(_st_1, _st_2, _override = true) {
 }
 
 /// @func	struct_key_exists(struct, key)
-/// @param	{any}	struct
-/// @param	{string}	key
+/// @param	{Any}	struct
+/// @param	{String}	key
 /// @desc	Return an array with all keys from a struct.
 function struct_key_exists(_struct, _key) {
 	return __gml_ext_comp_array_contains(struct_keys(_struct), _key);
 }
 
 /// @func	struct_equal(struct1, struct2)
-/// @param	{any}	struct1
-/// @param	{any}	struct2
+/// @param	{Any}	struct1
+/// @param	{Any}	struct2
+/// @desc	Compare two structs and returns a boolean to check if the structs are equal.
 function struct_equal(_struct_1, _struct_2) {
 	// Check if all keys are in struct1 & struct2
 	var _struct_keys = struct_keys(_struct_1);
@@ -55,4 +56,21 @@ function struct_equal(_struct_1, _struct_2) {
 	}
 	
 	return true;
+}
+
+/// @func	struct_entries(struct)
+/// @param	{Struct}	struct
+/// @desc	Returns an array with the entries of a struct. Each entry is an array with 2 elements: the key and the value.
+function struct_entries(_struct) {
+	var _struct_keys = struct_keys(_struct);
+	var _struct_len = get_size(_struct_keys);
+	var _array = [];
+	
+	for (var i = 0; i < _struct_len; i++) {
+		var _key = _struct_keys[i];
+		var _value = _struct[$ _key];
+		array_push(_array, [_key, _value]);
+	}
+	
+	return _array;
 }

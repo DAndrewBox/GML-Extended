@@ -1,5 +1,5 @@
 /// @func Sprite(sprite_index)
-/// @param {real}	sprite_index 
+/// @param {Real}	sprite_index 
 function Sprite(_spr_index) constructor {
 	function __init_sprite__(_spr_index) {
 		if !(sprite_exists(_spr_index)) return undefined;

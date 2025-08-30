@@ -9,7 +9,7 @@
 
 ---
 
-# json2yy
+# json2yy ![](https://img.shields.io/badge/v1.4.0-916800?style=flat)
 
 Transforms a JSON input into a YY string used by GameMaker. Thise function is not recommended to be used directly if not modifying GameMaker's .YY files.
 

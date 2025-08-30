@@ -49,8 +49,9 @@ suite(function() {
 		it("Should return noone when choices or weights are not valid", function() {
 			var _arr_choices = ["mango", "apple", "pear"];
 			var _arr_weights = [1.0, 0, 0];
-			
+			// Feather ignore once all - This should fail and return noone
 			expect(choice_weighted(_arr_choices, 1.0)).toBe(noone);
+			// Feather ignore once all - This should fail and return noone
 			expect(choice_weighted("mango", _arr_weights)).toBe(noone);
 			expect(choice_weighted(_arr_choices, [.0, .0, .0])).toBe(noone);
 		});
