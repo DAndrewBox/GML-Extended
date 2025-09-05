@@ -36,7 +36,7 @@ Collaborators:
 
 - [**YoYo Games**](https://www.yoyogames.com/) for creating GameMaker.
 - [**Xot**](https://twitter.com/xotmatrix) for a way to get the [unix timestamp](https://www.gmlscripts.com/script/unix_timestamp) used as a base for the `lib_time`.
-- [**Shaun Spalding**](https://twitter.com/shaunspalding) for the original `array_shuffle` script.
+- [**Sara Spalding**](https://twitter.com/sarajspalding) for the original `array_shuffle` script.
 - [**YellowAfterLife**](https://yal.cc) for `layer_get_element_ids_fixed` script base using tilemaps.
 
 ---
