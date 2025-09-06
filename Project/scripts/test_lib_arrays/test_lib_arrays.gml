@@ -95,6 +95,7 @@ suite(function() {
 	describe("array_write", function() {
 		it("Should convert the array to an string", function() {
 			var _arr = ["mango", "pear", "apple"];
+			// Feather ignore once GM1017
 			var _str = array_write(_arr);
 			
 			expect(string_pos(_arr[@ 0], _str)).toBeTruthy();

@@ -31,7 +31,7 @@ function layer_get_element_ids_fixed(_layer, _element_type = layer_element_type_
 }
 
 /// @func	layer_get_background(layer_id|layer_name)
-/// @param	{real|string}	layer_id|layer_name
+/// @param	{Asset.GMObject|Id.Layer|String}	layer_id|layer_name
 function layer_get_background(_layer_id) {
 	if (is_string(_layer_id)) {
 		_layer_id = layer_get_id(_layer_id);
@@ -44,7 +44,7 @@ function layer_get_background(_layer_id) {
 }
 
 /// @func	layer_get_tileset(layer_id|layer_name)
-/// @param	{real|string}	layer_id|layer_name
+/// @param	{Asset.GMObject|Id.Layer|String}	layer_id|layer_name
 function layer_get_tileset(_layer_id) {
 	if (is_string(_layer_id)) {
 		_layer_id = layer_get_id(_layer_id);

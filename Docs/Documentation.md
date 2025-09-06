@@ -14,7 +14,7 @@ The documentation is also available inside the `Docs` folder of this repository 
 - [**Colors**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Core/Colors.md)
 - [**Files**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Core/Files.md)
 - [**Math**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Core/Math.md)
-- [**Shortcuts**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Core/Shortcuts.md)
+- [**Snippets**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Core/Snippets.md)
 - [**Strings**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Core/Strings.md)
 - [**Structs**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Core/Structs.md)
 - [**Types**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Core/Types.md)

@@ -1,4 +1,4 @@
-# Shortcuts
+# Snippets
 
 ### Table of Contents
 
@@ -10,6 +10,11 @@
 - [alert_async](#alert_async)
 - [view_get_x](#view_get_x)
 - [view_get_y](#view_get_y)
+- [sprite_get_index](#sprite_get_index)
+- [object_get_index](#object_get_index)
+- [room_get_index](#room_get_index)
+- [font_get_index](#font_get_index)
+- [sound_get_index](#sound_get_index)
 
 # del ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
@@ -287,3 +292,159 @@ show_debug_message("View Y: " + string(_vw_y));
 ```
 
 The above code will get the X and Y position of the current view and print them to the console.
+
+---
+
+# sprite_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+
+A wrapper for `asset_get_index` that gets the index of a sprite by its name and return the sprite with the correct type to use when Feather is enabled.
+
+### Syntax
+
+```js
+sprite_get_index(sprite_name);
+```
+
+| Argument    |  Type  | Description                                          |
+| :---------- | :----: | :--------------------------------------------------- |
+| sprite_name | String | The name of the sprite you want to get the index of. |
+
+### Returns
+
+```js
+Asset.GMSprite;
+```
+
+### Example
+
+```js
+var _sprite_index = sprite_get_index("spr_Player");
+draw_sprite(_sprite_index, 0, 100, 100);
+```
+
+The above code will get the index of the sprite with the name "spr_Player" and draw it at the position (100, 100). Using `sprite_get_index` ensures that the returned value is of type `Asset.GMSprite`, which is compatible with Feather and will not give an error.
+
+---
+
+# object_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+
+A wrapper for `asset_get_index` that gets the index of an object by its name and return the object with the correct type to use when Feather is enabled.
+
+### Syntax
+
+```js
+object_get_index(object_name);
+```
+
+| Argument    |  Type  | Description                                          |
+| :---------- | :----: | :--------------------------------------------------- |
+| object_name | String | The name of the object you want to get the index of. |
+
+### Returns
+
+```js
+Asset.GMObject;
+```
+
+### Example
+
+```js
+var _object_index = object_get_index("obj_Player");
+instance_create_layer(100, 100, "Instances", _object_index);
+```
+
+The above code will get the index of the object with the name "obj_Player" and create an instance of it at the position (100, 100) on the "Instances" layer. Using `object_get_index` ensures that the returned value is of type `Asset.GMObject`, which is compatible with Feather and will not give an error.
+
+---
+
+# room_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+
+A wrapper for `asset_get_index` that gets the index of a room by its name and return the room with the correct type to use when Feather is enabled.
+
+### Syntax
+
+```js
+room_get_index(room_name);
+```
+
+| Argument  |  Type  | Description                                        |
+| :-------- | :----: | :------------------------------------------------- |
+| room_name | String | The name of the room you want to get the index of. |
+
+### Returns
+
+```js
+Asset.GMRoom;
+```
+
+### Example
+
+```js
+var _room_index = room_get_index("rm_Level1");
+room_goto(_room_index);
+```
+
+The above code will get the index of the room with the name "rm_Level1" and switch to that room. Using `room_get_index` ensures that the returned value is of type `Asset.GMRoom`, which is compatible with Feather and will not give an error.
+
+---
+
+# font_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+
+A wrapper for `asset_get_index` that gets the index of a font by its name and return the font with the correct type to use when Feather is enabled.
+
+### Syntax
+
+```js
+font_get_index(font_name);
+```
+
+| Argument  |  Type  | Description                                        |
+| :-------- | :----: | :------------------------------------------------- |
+| font_name | String | The name of the font you want to get the index of. |
+
+### Returns
+
+```js
+Asset.GMFont;
+```
+
+### Example
+
+```js
+var _font_index = font_get_index("fnt_Main");
+draw_set_font(_font_index);
+draw_text(100, 100, "Hello World!");
+```
+
+The above code will get the index of the font with the name "fnt_Main", set it as the current font, and draw the text "Hello World!" at the position (100, 100). Using `font_get_index` ensures that the returned value is of type `Asset.GMFont`, which is compatible with Feather and will not give an error.
+
+---
+
+# sound_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+
+A wrapper for `asset_get_index` that gets the index of a sound by its name and return the sound with the correct type to use when Feather is enabled.
+
+### Syntax
+
+```js
+sound_get_index(sound_name);
+```
+
+| Argument   |  Type  | Description                                         |
+| :--------- | :----: | :-------------------------------------------------- |
+| sound_name | String | The name of the sound you want to get the index of. |
+
+### Returns
+
+```js
+Asset.GMSound;
+```
+
+### Example
+
+```js
+var _sound_index = sound_get_index("snd_Jump");
+audio_play_sound(_sound_index, 1, false);
+```
+
+The above code will get the index of the sound with the name "snd_Jump" and play it once. Using `sound_get_index` ensures that the returned value is of type `Asset.GMSound`, which is compatible with Feather and will not give an error.

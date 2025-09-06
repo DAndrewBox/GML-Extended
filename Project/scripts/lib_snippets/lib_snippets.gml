@@ -6,11 +6,12 @@ function del(_obj = id, _exec_ev = true) {
 	instance_destroy(_obj, _exec_ev);
 }
 
-/// @func	get_size(element)
-/// @param	{Any}	element
+/// @func	get_size(element, [type])
+/// @param	{Any}		element
+/// @param	{String}	type
 /// @desc	Returns the size or length of the element.
-function get_size(_e) {
-	var _type = typeof(_e);
+function get_size(_e, _type = noone) {
+	_type = _type == noone ? typeof(_e) : _type;
 	
 	switch(_type) {
 		case gm_type_array:		return array_length(_e);
@@ -120,4 +121,49 @@ function view_get_x(_view = view_current) {
 /// @desc	Gets the Y position of the view passed as argument. Serves as a shortcut for `camera_get_view_y(view_camera[view_current])`.
 function view_get_y(_view = view_current) {
 	return camera_get_view_y(view_camera[_view]);
+}
+
+/// @func	sprite_get_index(sprite_name)
+/// @param	{String}	sprite_name
+///	@desc	Wrapper for "asset_get_index" to return the valid type to be used as sprite.
+/// @return	{Asset.GMSprite}
+function sprite_get_index(_name) {
+	// Feather ignore once GM1045 - `asset_get_index` always return type "Asset" and tend to cause errors.
+	return asset_get_index(_name);
+}
+
+/// @func	object_get_index(object_name)
+/// @param	{String}	object_name
+///	@desc	Wrapper for "asset_get_index" to return the valid type to be used as object.
+/// @return	{Asset.GMObject}
+function object_get_index(_name) {
+	// Feather ignore once GM1045 - `asset_get_index` always return type "Asset" and tend to cause errors.
+	return asset_get_index(_name);
+}
+
+/// @func	sound_get_index(sound_name)
+/// @param	{String}	sound_name
+///	@desc	Wrapper for "asset_get_index" to return the valid type to be used as sound.
+/// @return	{Asset.GMSound}
+function sound_get_index(_name) {
+	// Feather ignore once GM1045 - `asset_get_index` always return type "Asset" and tend to cause errors.
+	return asset_get_index(_name);
+}
+
+/// @func	font_get_index(font_name)
+/// @param	{String}	font_name
+///	@desc	Wrapper for "asset_get_index" to return the valid type to be used as font.
+/// @return	{Asset.GMFont}
+function font_get_index(_name) {
+	// Feather ignore once GM1045 - `asset_get_index` always return type "Asset" and tend to cause errors.
+	return asset_get_index(_name);
+}
+
+/// @func	font_get_index(room_name)
+/// @param	{String}	room_name
+///	@desc	Wrapper for "asset_get_index" to return the valid type to be used as room.
+/// @return	{Asset.GMFont}
+function room_get_index(_name) {
+	// Feather ignore once GM1045 - `asset_get_index` always return type "Asset" and tend to cause errors.
+	return asset_get_index(_name);
 }

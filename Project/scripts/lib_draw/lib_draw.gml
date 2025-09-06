@@ -14,7 +14,7 @@
 ///@param	{Real}	xscale
 ///@param	{Real}	yscale
 ///@param	{Real}	rot
-///@param	{Real}	col
+///@param	{Real|Constant.Color}	color
 ///@param	{Real}	alpha
 /// @desc	Draw the sprite of the object with the specified position, scale and rotation. This function is similar to the draw_self function, but it allows you to specify the position, scale and rotation of the sprite.
 function draw_self_ext(_spr=sprite_index, _index=image_index, _x=x, _y=y, _xscale=image_xscale, _yscale=image_yscale, _rot=image_angle, _col=image_blend, _alpha=image_alpha) {
@@ -223,14 +223,14 @@ function draw_set_align(_h, _v) {
 }
 
 /// @func	draw_surface_from_center(surface, x, y, xscale, yscale, rot, color, alpha)
-/// @param	{Id.Surface}	surface
-/// @param	{Real}		x
-/// @param	{Real}		y
-/// @param	{Real}		xscale
-/// @param	{Real}		yscale
-/// @param	{Real}		rot
-/// @param	{Real}		color
-/// @param	{Real}		alpha
+/// @param	{Id.Surface}			surface
+/// @param	{Real}					x
+/// @param	{Real}					y
+/// @param	{Real}					xscale
+/// @param	{Real}					yscale
+/// @param	{Real}					rot
+/// @param	{Real|Constant.Color}	color
+/// @param	{Real}					alpha
 /// @desc	Draws a surface on the specified position from the center of the surface. The surface is drawn with the specified scale, rotation, color and alpha.
 function draw_surface_from_center(_surf, _x, _y, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = draw_get_alpha()) {
 	var _surf_w = surface_get_width(_surf) * _xscale;
@@ -274,8 +274,8 @@ function gpu_set_alpha_overwrite(_flag) {
 }
 
 /// @func	surface_clear(color, alpha)
-/// @param	{Real}	color
-/// @param	{Real}	alpha
+/// @param	{Real|Constant.Color}	color
+/// @param	{Real}					alpha
 /// @desc	Clears the surface with the specified color and alpha. It's a replacement for the draw_clear and draw_clear_alpha function.
 function surface_clear(_col = c_black, _alpha = .0) {
 	draw_clear_alpha(_col, _alpha);
@@ -337,13 +337,13 @@ function draw_reset() {
 }
 
 /// @func	draw_create_profile(profile_name, alpha, color, font, halign, valign, depth, blendmode)
-/// @param	{String}	profile_name
-/// @param	{Real}		alpha
-/// @param	{Real}		color
-/// @param	{Real}		font
-/// @param	{Real}		halign
-/// @param	{Real}		valign
-/// @param	{Real}		depth
+/// @param	{String}				profile_name
+/// @param	{Real}					alpha
+/// @param	{Real|Constant.Color}	color
+/// @param	{Real}					font
+/// @param	{Real}					halign
+/// @param	{Real}					valign
+/// @param	{Real}					depth
 /// @param	{Real | Array<Real>}	blendmode
 /// @desc	Creates a new profile for the drawing functions. The profile is used to store the drawing settings and can be used to switch between different drawing settings.
 function draw_create_profile(_name, _alpha = undefined, _color = undefined, _font = undefined, _halign = undefined, _valign = undefined, _depth = undefined, _blendmode = undefined) {

@@ -19,9 +19,9 @@ Read all lines of a file and returns it as a string. If there's no file previous
 file_text_read_whole(file);
 ```
 
-| Argument |     Type     | Description                 |
-| :------- | :----------: | :-------------------------- |
-| file     | Text File ID | The id of the file to check |
+| Argument |    Type     | Description                 |
+| :------- | :---------: | :-------------------------- |
+| file     | Id.TextFile | The id of the file to check |
 
 ### Returns
 
@@ -53,9 +53,9 @@ Read all lines file and returns it as a struct. If there's no file previously op
 file_json_read(file);
 ```
 
-| Argument |     Type     | Description                 |
-| :------- | :----------: | :-------------------------- |
-| file     | Text File ID | The id of the file to check |
+| Argument |    Type     | Description                 |
+| :------- | :---------: | :-------------------------- |
+| file     | Id.TextFile | The id of the file to check |
 
 ### Returns
 
@@ -87,9 +87,9 @@ Read all lines of a file and returns it as an array. If there's no file previous
 file_text_get_lines_array(file);
 ```
 
-| Argument |     Type     | Description                 |
-| :------- | :----------: | :-------------------------- |
-| file     | Text File ID | The id of the file to check |
+| Argument |    Type     | Description                 |
+| :------- | :---------: | :-------------------------- |
+| file     | Id.TextFile | The id of the file to check |
 
 ### Returns
 

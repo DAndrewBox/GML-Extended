@@ -23,13 +23,13 @@ Creates an instance of an object at the specified position. Similar of how `inst
 instance_create(x, y, object_index, [depth|layer_name = 0], [params = {}]);
 ```
 
-| Argument            |      Type      | Description                                                |
-| :------------------ | :------------: | :--------------------------------------------------------- |
-| x                   |      Real      | The x position of the instance                             |
-| y                   |      Real      | The y position of the instance                             |
-| object_index        |      Real      | The index of the object to create                          |
-| depth or layer_name | Real or String | The depth of the instance or the layer to use(default = 0) |
-| params              |     Struct     | The parameters to pass to the instance at creation         |
+| Argument            |             Type              | Description                                                |
+| :------------------ | :---------------------------: | :--------------------------------------------------------- |
+| x                   |             Real              | The x position of the instance                             |
+| y                   |             Real              | The y position of the instance                             |
+| object_index        | Asset.GMObject or Id.Instance | The index of the object to create                          |
+| depth or layer_name |   Real, String or Id.Layer    | The depth of the instance or the layer to use(default = 0) |
+| params              |            Struct             | The parameters to pass to the instance at creation         |
 
 ### Returns
 
@@ -64,13 +64,13 @@ Functions the same as `instance_create`, but **if an instance of the object alre
 instance_create_unique(x, y, object_index, [depth|layer_name = 0], [params = {}]);
 ```
 
-| Argument            |      Type      | Description                                                |
-| :------------------ | :------------: | :--------------------------------------------------------- |
-| x                   |      Real      | The x position of the instance                             |
-| y                   |      Real      | The y position of the instance                             |
-| object_index        |      Real      | The index of the object to create                          |
-| depth or layer_name | Real or String | The depth of the instance or the layer to use(default = 0) |
-| params              |     Struct     | The parameters to pass to the instance at creation         |
+| Argument            |             Type              | Description                                                |
+| :------------------ | :---------------------------: | :--------------------------------------------------------- |
+| x                   |             Real              | The x position of the instance                             |
+| y                   |             Real              | The y position of the instance                             |
+| object_index        | Asset.GMObject or Id.Instance | The index of the object to create                          |
+| depth or layer_name |   Real, String or Id.Layer    | The depth of the instance or the layer to use(default = 0) |
+| params              |            Struct             | The parameters to pass to the instance at creation         |
 
 ### Returns
 
@@ -141,9 +141,9 @@ Returns true if an instance of the object exists inside the boundaries of the ro
 instance_in_room(object_index | id);
 ```
 
-| Argument           |    Type     | Description                                       |
-| :----------------- | :---------: | :------------------------------------------------ |
-| object_index or id | Real or Ref | The index of the object or the id of the instance |
+| Argument           |             Type              | Description                                       |
+| :----------------- | :---------------------------: | :------------------------------------------------ |
+| object_index or id | Asset.GMObject or Id.Instance | The index of the object or the id of the instance |
 
 ### Returns
 
@@ -173,9 +173,9 @@ Returns an array of all instances of the object passed as argument.
 instance_get_all(object_index);
 ```
 
-| Argument     |   Type   | Description             |
-| :----------- | :------: | :---------------------- |
-| object_index | Real Ref | The index of the object |
+| Argument     |             Type              | Description             |
+| :----------- | :---------------------------: | :---------------------- |
+| object_index | Asset.GMObject or Id.Instance | The index of the object |
 
 ### Returns
 
@@ -206,10 +206,10 @@ Returns a number of instances of the object passed as argument that match the co
 instance_number_if(object_index, callback);
 ```
 
-| Argument     |   Type   | Description             |
-| :----------- | :------: | :---------------------- |
-| object_index | Real Ref | The index of the object |
-| callback     | Function | The callback function   |
+| Argument     |             Type              | Description             |
+| :----------- | :---------------------------: | :---------------------- |
+| object_index | Asset.GMObject or Id.Instance | The index of the object |
+| callback     |           Function            | The callback function   |
 
 ### Returns
 
@@ -240,10 +240,10 @@ Returns an array of instances of the object passed as argument that match the co
 instance_get_if(object_index, callback);
 ```
 
-| Argument     |   Type   | Description             |
-| :----------- | :------: | :---------------------- |
-| object_index | Real Ref | The index of the object |
-| callback     | Function | The callback function   |
+| Argument     |             Type              | Description             |
+| :----------- | :---------------------------: | :---------------------- |
+| object_index | Asset.GMObject or Id.Instance | The index of the object |
+| callback     |           Function            | The callback function   |
 
 ### Returns
 

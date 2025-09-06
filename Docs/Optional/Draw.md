@@ -59,17 +59,17 @@ draw_self_ext(
 );
 ```
 
-| Argument |  Type  | Description                                            |
-| :------- | :----: | :----------------------------------------------------- |
-| sprite   | Sprite | The sprite to draw. (Default: sprite_index)            |
-| index    |  Real  | The index of the sprite to draw (Default: image_index) |
-| x        |  Real  | The x position of the sprite (Default: object.x)       |
-| y        |  Real  | The y position of the sprite (Default: object.y)       |
-| xscale   |  Real  | The x scale of the sprite (Default: image_xscale)      |
-| yscale   |  Real  | The y scale of the sprite (Default: image_yscale)      |
-| rot      |  Real  | The rotation of the sprite (Default: 0)                |
-| color    |  Real  | The color of the sprite (Default: c_white)             |
-| alpha    |  Real  | The alpha of the sprite (Default: 1)                   |
+| Argument |          Type          | Description                                            |
+| :------- | :--------------------: | :----------------------------------------------------- |
+| sprite   |     Asset.GMSprite     | The sprite to draw. (Default: sprite_index)            |
+| index    |          Real          | The index of the sprite to draw (Default: image_index) |
+| x        |          Real          | The x position of the sprite (Default: object.x)       |
+| y        |          Real          | The y position of the sprite (Default: object.y)       |
+| xscale   |          Real          | The x scale of the sprite (Default: image_xscale)      |
+| yscale   |          Real          | The y scale of the sprite (Default: image_yscale)      |
+| rot      |          Real          | The rotation of the sprite (Default: 0)                |
+| color    | Real or Constant.Color | The color of the sprite (Default: c_white)             |
+| alpha    |          Real          | The alpha of the sprite (Default: 1)                   |
 
 ### Returns
 
@@ -141,15 +141,15 @@ Draw a quad on the screen using 4 points and a gradient color. The color_init an
 draw_quad(xy1, xy2, xy3, xy4, color_init, color_final, alpha);
 ```
 
-| Argument    | Type  | Description                                |
-| :---------- | :---: | :----------------------------------------- |
-| xy1         | Array | The x and y position of the first point    |
-| xy2         | Array | The x and y position of the second point   |
-| xy3         | Array | The x and y position of the third point    |
-| xy4         | Array | The x and y position of the fourth point   |
-| color_init  | Real  | The color in the top points of the quad    |
-| color_final | Real  | The color in the bottom points of the quad |
-| alpha       | Real  | The alpha of the quad                      |
+| Argument    |          Type          | Description                                |
+| :---------- | :--------------------: | :----------------------------------------- |
+| xy1         |         Array          | The x and y position of the first point    |
+| xy2         |         Array          | The x and y position of the second point   |
+| xy3         |         Array          | The x and y position of the third point    |
+| xy4         |         Array          | The x and y position of the fourth point   |
+| color_init  | Real or Constant.Color | The color in the top points of the quad    |
+| color_final | Real or Constant.Color | The color in the bottom points of the quad |
+| alpha       |          Real          | The alpha of the quad                      |
 
 ### Returns
 
@@ -279,17 +279,17 @@ draw_text_outline(
 );
 ```
 
-| Argument      |  Type  | Description                                 |
-| :------------ | :----: | :------------------------------------------ |
-| x             |  Real  | The x position of the text                  |
-| y             |  Real  | The y position of the text                  |
-| string        | String | The text to be drawn                        |
-| width         |  Real  | The width of the outline                    |
-| color         |  Real  | The color of the text (Default: c_white)    |
-| color_outline |  Real  | The color of the outline (Default: c_black) |
-| xscale        |  Real  | The x scale of the text (Default: 1)        |
-| yscale        |  Real  | The y scale of the text (Default: 1)        |
-| angle         |  Real  | The angle of the text (Default: 0)          |
+| Argument      |          Type          | Description                                 |
+| :------------ | :--------------------: | :------------------------------------------ |
+| x             |          Real          | The x position of the text                  |
+| y             |          Real          | The y position of the text                  |
+| string        |         String         | The text to be drawn                        |
+| width         |          Real          | The width of the outline                    |
+| color         | Real or Constant.Color | The color of the text (Default: c_white)    |
+| color_outline | Real or Constant.Color | The color of the outline (Default: c_black) |
+| xscale        |          Real          | The x scale of the text (Default: 1)        |
+| yscale        |          Real          | The y scale of the text (Default: 1)        |
+| angle         |          Real          | The angle of the text (Default: 0)          |
 
 ### Returns
 
@@ -332,18 +332,18 @@ draw_text_shadow(
 );
 ```
 
-| Argument     |  Type  | Description                                |
-| :----------- | :----: | :----------------------------------------- |
-| x            |  Real  | The x position of the text                 |
-| y            |  Real  | The y position of the text                 |
-| string       | String | The text to be drawn                       |
-| shadow_xoff  |  Real  | The x offset of the shadow (Default: 1)    |
-| shadow_yoff  |  Real  | The y offset of the shadow (Default: 1)    |
-| color        |  Real  | The color of the text (Default: c_white)   |
-| color_shadow |  Real  | The color of the shadow (Default: c_black) |
-| xscale       |  Real  | The x scale of the text (Default: 1)       |
-| yscale       |  Real  | The y scale of the text (Default: 1)       |
-| angle        |  Real  | The angle of the text (Default: 0)         |
+| Argument     |          Type          | Description                                |
+| :----------- | :--------------------: | :----------------------------------------- |
+| x            |          Real          | The x position of the text                 |
+| y            |          Real          | The y position of the text                 |
+| string       |         String         | The text to be drawn                       |
+| shadow_xoff  |          Real          | The x offset of the shadow (Default: 1)    |
+| shadow_yoff  |          Real          | The y offset of the shadow (Default: 1)    |
+| color        | Real or Constant.Color | The color of the text (Default: c_white)   |
+| color_shadow | Real or Constant.Color | The color of the shadow (Default: c_black) |
+| xscale       |          Real          | The x scale of the text (Default: 1)       |
+| yscale       |          Real          | The y scale of the text (Default: 1)       |
+| angle        |          Real          | The angle of the text (Default: 0)         |
 
 ### Returns
 
@@ -566,16 +566,16 @@ draw_surface_from_center(
 );
 ```
 
-| Argument |  Type   | Description                                 |
-| :------- | :-----: | :------------------------------------------ |
-| surface  | Surface | The surface to be drawn                     |
-| x        |  Real   | The x position of the surface               |
-| y        |  Real   | The y position of the surface               |
-| xscale   |  Real   | The x scale of the surface (Default: 1)     |
-| yscale   |  Real   | The y scale of the surface (Default: 1)     |
-| rot      |  Real   | The rotation of the surface (Default: 0)    |
-| color    |  Real   | The color of the surface (Default: c_white) |
-| alpha    |  Real   | The alpha of the surface (Default: 1)       |
+| Argument |          Type          | Description                                 |
+| :------- | :--------------------: | :------------------------------------------ |
+| surface  |       Id.Surface       | The surface to be drawn                     |
+| x        |          Real          | The x position of the surface               |
+| y        |          Real          | The y position of the surface               |
+| xscale   |          Real          | The x scale of the surface (Default: 1)     |
+| yscale   |          Real          | The y scale of the surface (Default: 1)     |
+| rot      |          Real          | The rotation of the surface (Default: 0)    |
+| color    | Real or Constant.Color | The color of the surface (Default: c_white) |
+| alpha    |          Real          | The alpha of the surface (Default: 1)       |
 
 ## Returns
 
@@ -702,10 +702,10 @@ Clears the surface with the specified color and alpha. It's a replacement for th
 surface_clear(color, [alpha]);
 ```
 
-| Argument | Type  | Description              |
-| :------- | :---: | :----------------------- |
-| color    | Real  | The color of the surface |
-| alpha    | Real  | The alpha of the surface |
+| Argument |          Type          | Description              |
+| :------- | :--------------------: | :----------------------- |
+| color    | Real or Constant.Color | The color of the surface |
+| alpha    |          Real          | The alpha of the surface |
 
 ## Returns
 
@@ -870,16 +870,16 @@ Creates a new profile for the drawing functions. The profile is used to store th
 draw_create_profile(name, alpha, color, font, halign, valign, depth, blendmode);
 ```
 
-| Argument  |  Type  | Description                          |
-| :-------- | :----: | :----------------------------------- |
-| name      | String | The name of the profile              |
-| alpha     |  Real  | The alpha of the profile             |
-| color     |  Real  | The color of the profile             |
-| font      |  Font  | The font of the profile              |
-| halign    |  Real  | The horizontal alignment of the text |
-| valign    |  Real  | The vertical alignment of the text   |
-| depth     |  Real  | The depth of the profile             |
-| blendmode |  Real  | The blend mode of the profile        |
+| Argument  |          Type          | Description                          |
+| :-------- | :--------------------: | :----------------------------------- |
+| name      |         String         | The name of the profile              |
+| alpha     |          Real          | The alpha of the profile             |
+| color     | Real or Constant.Color | The color of the profile             |
+| font      |          Font          | The font of the profile              |
+| halign    |          Real          | The horizontal alignment of the text |
+| valign    |          Real          | The vertical alignment of the text   |
+| depth     |          Real          | The depth of the profile             |
+| blendmode |          Real          | The blend mode of the profile        |
 
 ## Returns
 

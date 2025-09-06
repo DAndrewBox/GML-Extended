@@ -11,10 +11,10 @@ To create a new surface object, you should use `surf = new Surface(width, height
 
 | Parameter |    Type    | Description                              |
 | :-------- | :--------: | :--------------------------------------- |
+| surf      | Id.Surface | The surface object managed by GameMaker. |
 | width     |    Real    | The width of the surface.                |
 | height    |    Real    | The height of the surface.               |
 | name      |   String   | The name of the surface.                 |
-| surf      | Surface ID | The surface object managed by GameMaker. |
 
 The following methods are available:
 
@@ -58,8 +58,6 @@ Real;
 ### Example
 
 ```js
-surf = -1;
-
 if (!surf.exists()) {
   surf = new Surface(128, 128);
 }
@@ -204,10 +202,10 @@ Resizes the surface to the specified width and height. The surface will not be c
 Surface.resize(width, height);
 ```
 
-| Argument | Type | Description                    |
-| :------- | :--: | :----------------------------- |
-| width    | Real | The new width of the surface.  |
-| height   | Real | The new height of the surface. |
+| Argument | Type  | Description                    |
+| :------- | :---: | :----------------------------- |
+| width    | Real  | The new width of the surface.  |
+| height   | Real  | The new height of the surface. |
 
 ### Returns
 
@@ -376,10 +374,10 @@ Returns the color of the pixel at the specified coordinates.
 Surface.getPixel(x, y);
 ```
 
-| Argument | Type | Description                  |
-| :------- | :--: | :--------------------------- |
-| x        | Real | The x position of the pixel. |
-| y        | Real | The y position of the pixel. |
+| Argument | Type  | Description                  |
+| :------- | :---: | :--------------------------- |
+| x        | Real  | The x position of the pixel. |
+| y        | Real  | The y position of the pixel. |
 
 ### Returns
 
@@ -410,10 +408,10 @@ Returns the color and alpha of the pixel at the specified coordinates.
 Surface.getPixelExt(x, y);
 ```
 
-| Argument | Type | Description                  |
-| :------- | :--: | :--------------------------- |
-| x        | Real | The x position of the pixel. |
-| y        | Real | The y position of the pixel. |
+| Argument | Type  | Description                  |
+| :------- | :---: | :--------------------------- |
+| x        | Real  | The x position of the pixel. |
+| y        | Real  | The y position of the pixel. |
 
 ### Returns
 
@@ -520,19 +518,19 @@ Surface.drawPart(
 );
 ```
 
-| Argument | Type | Description                                                |
-| :------- | :--: | :--------------------------------------------------------- |
-| x        | Real | The x position to draw the surface at.                     |
-| y        | Real | The y position to draw the surface at.                     |
-| left     | Real | The x position of the area to draw. (default = 0)          |
-| top      | Real | The y position of the area to draw. (default = 0)          |
-| width    | Real | The width of the area to draw. (default = Surface.width)   |
-| height   | Real | The height of the area to draw. (default = Surface.height) |
-| xscale   | Real | The x scale of the surface. (default = 1)                  |
-| yscale   | Real | The y scale of the surface. (default = 1)                  |
-| angle    | Real | The angle to rotate the surface. (default = 0)             |
-| color    | Real | The color to tint the surface. (default = -1)              |
-| alpha    | Real | The alpha of the surface. (default = 1)                    |
+| Argument | Type  | Description                                                |
+| :------- | :---: | :--------------------------------------------------------- |
+| x        | Real  | The x position to draw the surface at.                     |
+| y        | Real  | The y position to draw the surface at.                     |
+| left     | Real  | The x position of the area to draw. (default = 0)          |
+| top      | Real  | The y position of the area to draw. (default = 0)          |
+| width    | Real  | The width of the area to draw. (default = Surface.width)   |
+| height   | Real  | The height of the area to draw. (default = Surface.height) |
+| xscale   | Real  | The x scale of the surface. (default = 1)                  |
+| yscale   | Real  | The y scale of the surface. (default = 1)                  |
+| angle    | Real  | The angle to rotate the surface. (default = 0)             |
+| color    | Real  | The color to tint the surface. (default = -1)              |
+| alpha    | Real  | The alpha of the surface. (default = 1)                    |
 
 ### Returns
 
@@ -573,14 +571,14 @@ Surface.drawStretched(
 );
 ```
 
-| Argument | Type | Description                                                      |
-| :------- | :--: | :--------------------------------------------------------------- |
-| x        | Real | The x position to draw the surface at.                           |
-| y        | Real | The y position to draw the surface at.                           |
-| width    | Real | The width to stretch the surface to. (default = Surface.width)   |
-| height   | Real | The height to stretch the surface to. (default = Surface.height) |
-| color    | Real | The color to tint the surface. (default = -1)                    |
-| alpha    | Real | The alpha of the surface. (default = 1)                          |
+| Argument | Type  | Description                                                      |
+| :------- | :---: | :--------------------------------------------------------------- |
+| x        | Real  | The x position to draw the surface at.                           |
+| y        | Real  | The y position to draw the surface at.                           |
+| width    | Real  | The width to stretch the surface to. (default = Surface.width)   |
+| height   | Real  | The height to stretch the surface to. (default = Surface.height) |
+| color    | Real  | The color to tint the surface. (default = -1)                    |
+| alpha    | Real  | The alpha of the surface. (default = 1)                          |
 
 ### Returns
 
@@ -621,14 +619,14 @@ Surface.drawTiled(
 );
 ```
 
-| Argument | Type | Description                                   |
-| :------- | :--: | :-------------------------------------------- |
-| x        | Real | The x position to draw the surface at.        |
-| y        | Real | The y position to draw the surface at.        |
-| xscale   | Real | The x scale of the surface. (default = 1)     |
-| yscale   | Real | The y scale of the surface. (default = 1)     |
-| color    | Real | The color to tint the surface. (default = -1) |
-| alpha    | Real | The alpha of the surface. (default = 1)       |
+| Argument | Type  | Description                                   |
+| :------- | :---: | :-------------------------------------------- |
+| x        | Real  | The x position to draw the surface at.        |
+| y        | Real  | The y position to draw the surface at.        |
+| xscale   | Real  | The x scale of the surface. (default = 1)     |
+| yscale   | Real  | The y scale of the surface. (default = 1)     |
+| color    | Real  | The color to tint the surface. (default = -1) |
+| alpha    | Real  | The alpha of the surface. (default = 1)       |
 
 ### Returns
 

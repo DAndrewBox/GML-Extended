@@ -17,9 +17,9 @@ Converts a color from RGB to RGBA. Returns the color passed as argument with an 
 dec_rgb2rgba(color);
 ```
 
-| Argument | Type  | Description                  |
-| :------- | :---: | :--------------------------- |
-| color    | Real  | The color to convert to RGBA |
+| Argument |          Type          | Description                  |
+| :------- | :--------------------: | :--------------------------- |
+| color    | Real or Constant.Color | The color to convert to RGBA |
 
 ### Returns
 

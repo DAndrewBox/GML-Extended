@@ -37,16 +37,16 @@ function shader_set_ext(_shader, _params) {
 
 
 /// @func	draw_sprite_recolor(sprite, index, x, y, color, blend, xscale, yscale, rot, alpha)
-/// @param	{Real}	sprite
-/// @param	{Real}	index
-/// @param	{Real}	x
-/// @param	{Real}	y
-/// @param	{Real}	color
-/// @param	{Real}	blend
-/// @param	{Real}	xscale
-/// @param	{Real}	yscale
-/// @param	{Real}	rot
-/// @param	{Real}	alpha
+/// @param	{Real}					sprite
+/// @param	{Real}					index
+/// @param	{Real}					x
+/// @param	{Real}					y
+/// @param	{Real|Constant.Color}	color
+/// @param	{Real}					blend
+/// @param	{Real}					xscale
+/// @param	{Real}					yscale
+/// @param	{Real}					rot
+/// @param	{Real}					alpha
 function draw_sprite_recolor(_spr, _index, _x, _y, _color, _blend, _xscale = image_xscale, _yscale = image_yscale, _rot = 0, _alpha = 1) {
 	var _color_normalized = [
 		color_get_red(_color) / 255,
@@ -72,7 +72,7 @@ function draw_sprite_recolor(_spr, _index, _x, _y, _color, _blend, _xscale = ima
 /// @param	{Real}	xscale
 /// @param	{Real}	yscale
 /// @param	{Real}	rot
-/// @param	{Real}	col
+/// @param	{Real|Constant.Color}	color
 /// @param	{Real}	alpha
 function draw_sprite_blur(_spr, _index, _x, _y, _amount, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = 1) {
 	var _w, _h;
@@ -95,7 +95,7 @@ function draw_sprite_blur(_spr, _index, _x, _y, _amount, _xscale = 1, _yscale = 
 /// @param	{Real}	xscale
 /// @param	{Real}	yscale
 /// @param	{Real}	rot
-/// @param	{Real}	col
+/// @param	{Real|Constant.Color}	color
 /// @param	{Real}	alpha
 function draw_surface_blur(_surf, _amount, _x, _y, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = 1) {
 	if !(surface_exists(_surf)) return;
@@ -113,16 +113,16 @@ function draw_surface_blur(_surf, _amount, _x, _y, _xscale = 1, _yscale = 1, _ro
 }
 
 /// @func	draw_surface_recolor(surf, color, blend, x, y, xscale, yscale, rot, col, alpha)
-/// @param	{Real}	surf
-/// @param	{Real}	color
-/// @param	{Real}	blend
-/// @param	{Real}	x
-/// @param	{Real}	y
-/// @param	{Real}	xscale
-/// @param	{Real}	yscale
-/// @param	{Real}	rot
-/// @param	{Real}	col
-/// @param	{Real}	alpha
+/// @param	{Real}					surf
+/// @param	{Real|Constant.Color}	color
+/// @param	{Real}					blend
+/// @param	{Real}					x
+/// @param	{Real}					y
+/// @param	{Real}					xscale
+/// @param	{Real}					yscale
+/// @param	{Real}					rot
+/// @param	{Real|Constant.Color}	color
+/// @param	{Real}					alpha
 function draw_surface_recolor(_surf, _color, _blend, _x, _y, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = 1) {
 	if !(surface_exists(_surf)) return;
 

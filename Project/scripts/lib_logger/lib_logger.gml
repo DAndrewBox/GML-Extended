@@ -22,6 +22,7 @@ function Logger(_fname, _path = working_directory) constructor {
 	
 	/// @func open()
 	/// @desc Open the logger file
+	/// @ignore
 	function open() {
 		if (self.file == -1) return;
 		self.file = (
@@ -33,6 +34,7 @@ function Logger(_fname, _path = working_directory) constructor {
 	
 	/// @func close()
 	/// @desc Closes the logger file
+	/// @ignore
 	function close() {
 		if (self.file == -1) return;
 		file_text_close(self.file);
@@ -41,6 +43,7 @@ function Logger(_fname, _path = working_directory) constructor {
 	/// @func log([*args])
 	/// @param	{String}	[*args]
 	/// @desc	Writes your text into the logger file.
+	/// @ignore
 	function log() {
 		if (self.file == -1) return;
 		var _msg = datetime_get_timestamp() + " ";
@@ -61,7 +64,7 @@ function Logger(_fname, _path = working_directory) constructor {
 	
 		file_text_write_string(self.file, _msg + "\n");
 		
-		if (__gml_ext_comp_is_callable(self.linked.id) && self.linked.onLog) {
+		if (self.linked.id && __gml_ext_comp_is_callable(self.linked.onLog)) {
 			script_execute(self.linked.onLog);
 		}
 	}
@@ -69,6 +72,7 @@ function Logger(_fname, _path = working_directory) constructor {
 	/// @func warn([*args])
 	/// @param	{String}	[*args]
 	/// @desc	Writes a warning into into the logger file.
+	/// @ignore
 	function warn() {
 		var _text = [];
 		for (var i = 0; i < argument_count; i++) {
@@ -76,7 +80,7 @@ function Logger(_fname, _path = working_directory) constructor {
 		}
 	
 		self.log(self.file, "[⚠] ", _text);
-		if (__gml_ext_comp_is_callable(self.linked.id) && self.linked.onWarn) {
+		if (self.linked.id && __gml_ext_comp_is_callable(self.linked.onWarn)) {
 			script_execute(self.linked.onWarn);
 		}
 	}
@@ -84,6 +88,7 @@ function Logger(_fname, _path = working_directory) constructor {
 	/// @func error([*args])
 	/// @param	{String}	[*args]
 	/// @desc	Writes a error into into the logger file.
+	/// @ignore
 	function error() {
 		var _text = [];
 		for (var i = 0; i < argument_count; i++) {
@@ -92,7 +97,7 @@ function Logger(_fname, _path = working_directory) constructor {
 	
 		self.log(self.file, "[❌] ", _text);
 		// Feather ignore once GM1041
-		if (__gml_ext_comp_is_callable(self.linked.id) && self.linked.onError) {
+		if (self.linked.id && __gml_ext_comp_is_callable(self.linked.onError)) {
 			script_execute(self.linked.onError);
 		}
 	}
@@ -101,6 +106,7 @@ function Logger(_fname, _path = working_directory) constructor {
 	/// @param	{Id.Instance}	inst
 	/// @param	{Any}			callbacks
 	/// @desc	Link an instance to execute callbacks when logger is used.
+	/// @ignore
 	function link_instance(_inst, _callbacks) {
 		var _default_callbacks = {
 			onLog: -1,

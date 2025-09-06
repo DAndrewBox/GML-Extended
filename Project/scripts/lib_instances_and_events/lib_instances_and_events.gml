@@ -1,9 +1,9 @@
 /// @func	instance_create(x, y, object_index, depth|layer_name, _params)
-/// @param	{Real}			x
-/// @param	{Real}			y
-/// @param	{Real}			object_index
-/// @param	{real|string}	depth|layer_name
-/// @param	{Struct}		params
+/// @param	{Real}				x
+/// @param	{Real}				y
+/// @param	{Asset.GMObject}	object_index
+/// @param	{Id.Layer|String}	depth|layer_name
+/// @param	{Struct}			params
 function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 	var _is_layer = typeof(_depth_or_layer) == gm_type_string;
 	var _inst = undefined;
@@ -19,11 +19,11 @@ function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 }
 
 /// @func	instance_create_unique(x, y, object_index, depth|layer_name, _params)
-/// @param	{Real}	x
-/// @param	{Real}	y
-/// @param	{Real}	object_index
-/// @param	{Any}	depth|layer_name
-/// @param	{Any}	params
+/// @param	{Real}					x
+/// @param	{Real}					y
+/// @param	{Asset.GMObject}		object_index
+/// @param	{Id.Layer|String|Real}	depth|layer_name
+/// @param	{Struct}				params
 /// @desc	Create a new instance only if it doesn't exists
 function instance_create_unique(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 	var _inst = instance_find(_obj, 0);
@@ -35,7 +35,7 @@ function instance_create_unique(_x, _y, _obj, _depth_or_layer = depth, _params =
 }
 
 /// @func	instance_any_exists(*args)
-/// @param	{Id.Instance|Asset.Object}	*args
+/// @param	{Id.Instance|Asset.GMObject}	*args
 /// @desc	Check if any of the instances on the arguments exists.
 function instance_any_exists() {
 	var _count = 0;
@@ -49,7 +49,7 @@ function instance_any_exists() {
 }
 
 /// @func	instance_in_room(object_index|id)
-/// @param	{Id.Instance|Asset.Object}	object_index|id
+/// @param	{Id.Instance|Asset.GMObject}	object_index|id
 /// @desc	Get a bool telling if the instance is inside the room
 function instance_in_room(_inst) {
 	return	(_inst.bbox_right >= 0 && _inst.bbox_left <= room_width) &&

@@ -33,10 +33,10 @@ A way to get the elements of a dynamically created layer. This is a fix for the 
 layer_get_element_ids_fixed(layer_id, layer_element_type);
 ```
 
-| Argument           |  Type   | Description                                                                                                                                                                                 |
-| :----------------- | :-----: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| layer_id           | Integer | The layer id                                                                                                                                                                                |
-| layer_element_type | Integer | The layer element type (see [Layer Element Types](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Asset_Management/Rooms/General_Layer_Functions/layer_get_element_type.htm)) |
+| Argument           |   Type   | Description                                                                                                                                                                                 |
+| :----------------- | :------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| layer_id           | Id.Layer | The layer id                                                                                                                                                                                |
+| layer_element_type |   Real   | The layer element type (see [Layer Element Types](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Asset_Management/Rooms/General_Layer_Functions/layer_get_element_type.htm)) |
 
 ### Returns
 
@@ -69,9 +69,9 @@ A way to get the background of a layer using the ID or the name. This only serve
 layer_get_background(layer_id | layer_name);
 ```
 
-| Argument            |    Type     | Description                                                |
-| :------------------ | :---------: | :--------------------------------------------------------- |
-| layer_id/layer_name | Real/String | The layer id or the layer name to get the background from. |
+| Argument            |        Type        | Description                                                |
+| :------------------ | :----------------: | :--------------------------------------------------------- |
+| layer_id/layer_name | Id.Layer or String | The layer id or the layer name to get the background from. |
 
 ### Returns
 
@@ -102,9 +102,9 @@ A way to get the tileset of a layer using the ID or the name. This only serves t
 layer_get_tileset(layer_id | layer_name);
 ```
 
-| Argument            |    Type     | Description                                             |
-| :------------------ | :---------: | :------------------------------------------------------ |
-| layer_id/layer_name | Real/String | The layer id or the layer name to get the tileset from. |
+| Argument            |        Type        | Description                                             |
+| :------------------ | :----------------: | :------------------------------------------------------ |
+| layer_id/layer_name | Id.Layer or String | The layer id or the layer name to get the tileset from. |
 
 ### Returns
 

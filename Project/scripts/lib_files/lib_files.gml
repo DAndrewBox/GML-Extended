@@ -1,5 +1,5 @@
 /// @func	file_text_read_whole(file)
-/// @param	{Real}	file
+/// @param	{Id.TextFile}	file
 /// @desc	Read all lines of a file and returns it as a string
 function file_text_read_whole(_file) {
 	if (_file < 0) return "";
@@ -46,7 +46,7 @@ function file_json_create(_filename, _json) {
 }
 
 /// @func	file_json_read(file)
-/// @param	{Real}	file
+/// @param	{Id.TextFile}	file
 /// @desc	Read a file a transforms it into a json struct
 function file_json_read(_file) {
 	try {

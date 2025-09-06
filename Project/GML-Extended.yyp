@@ -86,7 +86,7 @@
     {"id":{"name":"lib_remove_unused_msg","path":"scripts/lib_remove_unused_msg/lib_remove_unused_msg.yy",},},
     {"id":{"name":"lib_server_tcp","path":"scripts/lib_server_tcp/lib_server_tcp.yy",},},
     {"id":{"name":"lib_shaders","path":"scripts/lib_shaders/lib_shaders.yy",},},
-    {"id":{"name":"lib_shortcuts","path":"scripts/lib_shortcuts/lib_shortcuts.yy",},},
+    {"id":{"name":"lib_snippets","path":"scripts/lib_snippets/lib_snippets.yy",},},
     {"id":{"name":"lib_sprites","path":"scripts/lib_sprites/lib_sprites.yy",},},
     {"id":{"name":"lib_strings","path":"scripts/lib_strings/lib_strings.yy",},},
     {"id":{"name":"lib_structs","path":"scripts/lib_structs/lib_structs.yy",},},

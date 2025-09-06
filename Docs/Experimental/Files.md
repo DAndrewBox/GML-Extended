@@ -19,9 +19,9 @@ Transforms a JSON input into a YY string used by GameMaker. Thise function is no
 json2yy(json);
 ```
 
-| Argument |  Type  | Description |
-| :------- | :----: | :---------- |
-| json     | String | The JSON    |
+| Argument |  Type  | Description     |
+| :------- | :----: | :-------------- |
+| json     | String | The JSON string |
 
 ### Returns
 
