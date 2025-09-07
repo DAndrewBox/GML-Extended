@@ -37,7 +37,7 @@ function shader_set_ext(_shader, _params) {
 
 
 /// @func	draw_sprite_recolor(sprite, index, x, y, color, blend, xscale, yscale, rot, alpha)
-/// @param	{Real}					sprite
+///@param	{Asset.GMSprite}		sprite
 /// @param	{Real}					index
 /// @param	{Real}					x
 /// @param	{Real}					y
@@ -64,16 +64,16 @@ function draw_sprite_recolor(_spr, _index, _x, _y, _color, _blend, _xscale = ima
 }
 
 /// @func	draw_sprite_blur(sprite, index, x, y, blur_amount, xscale, yscale, rot, col, alpha)
-/// @param	{Real}	sprite
-/// @param	{Real}	index
-/// @param	{Real}	x
-/// @param	{Real}	y
-/// @param	{Real}	blur_amount
-/// @param	{Real}	xscale
-/// @param	{Real}	yscale
-/// @param	{Real}	rot
+///@param	{Asset.GMSprite}		sprite
+/// @param	{Real}					index
+/// @param	{Real}					x
+/// @param	{Real}					y
+/// @param	{Real}					blur_amount
+/// @param	{Real}					xscale
+/// @param	{Real}					yscale
+/// @param	{Real}					rot
 /// @param	{Real|Constant.Color}	color
-/// @param	{Real}	alpha
+/// @param	{Real}					alpha
 function draw_sprite_blur(_spr, _index, _x, _y, _amount, _xscale = 1, _yscale = 1, _rot = 0, _col = -1, _alpha = 1) {
 	var _w, _h;
 	_w = sprite_get_width(_spr);

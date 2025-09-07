@@ -7,15 +7,15 @@
 #endregion
 
 ///@func	draw_self_ext(sprite, index, x, y, xscale, yscale, rot, col, alpha)
-///@param	{Real}	sprite
-///@param	{Real}	index
-///@param	{Real}	x
-///@param	{Real}	y
-///@param	{Real}	xscale
-///@param	{Real}	yscale
-///@param	{Real}	rot
+///@param	{Asset.GMSprite}		sprite
+///@param	{Real}					index
+///@param	{Real}					x
+///@param	{Real}					y
+///@param	{Real}					xscale
+///@param	{Real}					yscale
+///@param	{Real}					rot
 ///@param	{Real|Constant.Color}	color
-///@param	{Real}	alpha
+///@param	{Real}					alpha
 /// @desc	Draw the sprite of the object with the specified position, scale and rotation. This function is similar to the draw_self function, but it allows you to specify the position, scale and rotation of the sprite.
 function draw_self_ext(_spr=sprite_index, _index=image_index, _x=x, _y=y, _xscale=image_xscale, _yscale=image_yscale, _rot=image_angle, _col=image_blend, _alpha=image_alpha) {
 	draw_sprite_ext(_spr, _index, _x, _y, _xscale, _yscale, _rot, _col, _alpha);
@@ -161,18 +161,18 @@ function draw_text_outline(_x, _y, _string, _width, _colour=c_white, _outline_co
 	draw_text_transformed(_x, _y, _string, _xscale, _yscale, _angle);
 }
 
-/// @func	draw_text_shadow(x, y, string, shadow_xoff, shadow_yoff, text_colour, shadow_colour)
-/// @param	{Real}	x
-/// @param	{Real}	y
+/// @func	draw_text_shadow(x, y, string, shadow_xoff, shadow_yoff, text_colour, shadow_colour, xscale, yscale, angle)
+/// @param	{Real}		x
+/// @param	{Real}		y
 /// @param	{String}	string
-/// @param	{Real}	shadow_xoff
-/// @param	{Real}	shadow_yoff
-/// @param	{Real}	shadow_height
-/// @param	{Real}	text_colour
-/// @param	{Real}	shadow_colour
-/// @param	{Real}	xscale
-/// @param	{Real}	yscale
-/// @param	{Real}	angle
+/// @param	{Real}		shadow_xoff
+/// @param	{Real}		shadow_yoff
+/// @param	{Real}		shadow_height
+/// @param	{Real}		text_colour
+/// @param	{Real}		shadow_colour
+/// @param	{Real}		xscale
+/// @param	{Real}		yscale
+/// @param	{Real}		angle
 /// @desc	Draw a text on the specified position with a shadow specified. The shadow offset is defined in pixels.
 function draw_text_shadow(_x, _y, _string, _shadow_xoff = 1, _shadow_yoff = 1, _text_col = c_white, _shadow_col = c_black, _xscale = 1, _yscale = 1, _angle = 0) {
 	draw_set_colour(_shadow_col);

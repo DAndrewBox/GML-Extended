@@ -18,7 +18,7 @@
 
 # round_dec
 
-Returns a rounded number with N decimal places.
+Returns a rounded number with N decimal places to the nearest tenth.
 
 ### Syntax
 
@@ -54,7 +54,7 @@ The above code will set the var `_x_3dec` as an rounded number with 3 decimal pl
 
 # near
 
-Returns a boolean if the first value is near the second value with an offset.
+Returns a boolean if the first value is near the second value with a defined offset.
 
 ### Syntax
 
@@ -143,9 +143,9 @@ Returns a boolean if the random value is less than the chance. All values must b
 rng(value);
 ```
 
-| Argument | Type  | Description        |
-| :------- | :---: | :----------------- |
-| value    | Real  | The value to check |
+| Argument | Type  | Description                   |
+| :------- | :---: | :---------------------------- |
+| value    | Real  | The normalized value to check |
 
 ### Returns
 
@@ -280,7 +280,7 @@ The output will be `Wrapped value: 4`.
 
 # random_linear ![](https://img.shields.io/badge/v1.4.0-916800?style=flat)
 
-Returns a random value with a linear distribution.
+Returns a random value with a linear distribution. This is more random than `random()` since the .
 
 ### Syntax
 

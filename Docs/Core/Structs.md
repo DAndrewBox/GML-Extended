@@ -138,7 +138,7 @@ The above code will show on console `true` if the key `key1` exists in the struc
 
 # struct_equal ![](https://img.shields.io/badge/v1.4.0-916800?style=flat)
 
-Returns `true` if the structs are equal, `false` otherwise.
+Compare two structs and returns a boolean to check if the structs are equal.
 
 ### Syntax
 

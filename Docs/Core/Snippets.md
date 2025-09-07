@@ -23,12 +23,13 @@ Deletes an instance and executes the destroy event of the object. Serves as a sh
 ### Syntax
 
 ```js
-del(object_index | id);
+del(object_index | instance_id, [execute_event = true]);
 ```
 
-| Argument           |    Type     | Description                                       |
-| :----------------- | :---------: | :------------------------------------------------ |
-| object_index or id | Real or Ref | The index of the object or the id of the instance |
+| Argument           |             Type              | Description                                       |
+| :----------------- | :---------------------------: | :------------------------------------------------ |
+| object_index or id | Id.Instance or Asset.GMObject | The index of the object or the id of the instance |
+| execute_event      |             Bool              | Whether to execute the destroy event or not       |
 
 ### Returns
 
@@ -295,7 +296,7 @@ The above code will get the X and Y position of the current view and print them 
 
 ---
 
-# sprite_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+# sprite_get_index ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
 
 A wrapper for `asset_get_index` that gets the index of a sprite by its name and return the sprite with the correct type to use when Feather is enabled.
 
@@ -326,7 +327,7 @@ The above code will get the index of the sprite with the name "spr_Player" and d
 
 ---
 
-# object_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+# object_get_index ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
 
 A wrapper for `asset_get_index` that gets the index of an object by its name and return the object with the correct type to use when Feather is enabled.
 
@@ -357,7 +358,7 @@ The above code will get the index of the object with the name "obj_Player" and c
 
 ---
 
-# room_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+# room_get_index ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
 
 A wrapper for `asset_get_index` that gets the index of a room by its name and return the room with the correct type to use when Feather is enabled.
 
@@ -388,7 +389,7 @@ The above code will get the index of the room with the name "rm_Level1" and swit
 
 ---
 
-# font_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+# font_get_index ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
 
 A wrapper for `asset_get_index` that gets the index of a font by its name and return the font with the correct type to use when Feather is enabled.
 
@@ -420,7 +421,7 @@ The above code will get the index of the font with the name "fnt_Main", set it a
 
 ---
 
-# sound_get_index ![](https://img.shields.io/badge/v1.5.3-7a6e7e?style=flat)
+# sound_get_index ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
 
 A wrapper for `asset_get_index` that gets the index of a sound by its name and return the sound with the correct type to use when Feather is enabled.
 
