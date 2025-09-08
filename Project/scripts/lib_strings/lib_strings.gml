@@ -56,6 +56,7 @@ function string_remove(_str, _substr) {
 /// @desc	Returns a string with the specified number of characters on the left side. If the string is already bigger than the specified size, the string will be returned as is. If the string is smaller than the specified size, the string will be filled with the specified character on the left side.
 ///	@return	{String}
 function string_pad_left(_str, _char, _size) {
+	_str = string(_str);
 	if (_char == "") return _str;
 	var _pad = "";
 	var _pad_size = _size - string_length(_str);
@@ -74,6 +75,7 @@ function string_pad_left(_str, _char, _size) {
 /// @desc	Returns a string with the specified number of characters on the right side. If the string is already bigger than the specified size, the string will be returned as is. If the string is smaller than the specified size, the string will be filled with the specified character on the right side.
 ///	@return	{String}
 function string_pad_right(_str, _char, _size) {
+	_str = string(_str);
 	if (_char == "") return _str;
 	var _pad = "";
 	var _pad_size = _size - string_length(_str);
