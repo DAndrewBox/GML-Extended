@@ -59,17 +59,17 @@ draw_self_ext(
 );
 ```
 
-| Argument |          Type          | Description                                            |
-| :------- | :--------------------: | :----------------------------------------------------- |
-| sprite   |     Asset.GMSprite     | The sprite to draw. (Default: sprite_index)            |
-| index    |          Real          | The index of the sprite to draw (Default: image_index) |
-| x        |          Real          | The x position of the sprite (Default: object.x)       |
-| y        |          Real          | The y position of the sprite (Default: object.y)       |
-| xscale   |          Real          | The x scale of the sprite (Default: image_xscale)      |
-| yscale   |          Real          | The y scale of the sprite (Default: image_yscale)      |
-| rot      |          Real          | The rotation of the sprite (Default: 0)                |
-| color    | Real or Constant.Color | The color of the sprite (Default: c_white)             |
-| alpha    |          Real          | The alpha of the sprite (Default: 1)                   |
+| Argument |          Type          | Description                                                |
+| :------- | :--------------------: | :--------------------------------------------------------- |
+| sprite   |     Asset.GMSprite     | The sprite to draw. (Default: sprite_index)                |
+| index    |          Real          | The index of the sprite to draw (Default: image_index)     |
+| x        |          Real          | The x position of the sprite (Default: instance.x)         |
+| y        |          Real          | The y position of the sprite (Default: instance.y)         |
+| xscale   |          Real          | The x scale of the sprite (Default: instance.image_xscale) |
+| yscale   |          Real          | The y scale of the sprite (Default: instance.image_yscale) |
+| rot      |          Real          | The rotation of the sprite (Default: instance.image_angle) |
+| color    | Real or Constant.Color | The color of the sprite (Default: instance.image_blend)    |
+| alpha    |          Real          | The alpha of the sprite (Default: instance.image_alpha)    |
 
 ### Returns
 
