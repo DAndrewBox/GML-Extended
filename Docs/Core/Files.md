@@ -121,10 +121,10 @@ Create a file with the contents of a struct. The filename must have the extensio
 file_json_create(filename, struct, [iteration]);
 ```
 
-| Argument |  Type  | Description                    |
-| :------- | :----: | :----------------------------- |
-| filename | String | The name of the file to create |
-| struct   | Struct | The struct to convert to .JSON |
+| Argument |      Type       | Description                    |
+| :------- | :-------------: | :----------------------------- |
+| filename |     String      | The name of the file to create |
+| struct   | Struct or Array | The struct to convert to .JSON |
 
 ### Returns
 

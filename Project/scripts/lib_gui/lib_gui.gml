@@ -26,7 +26,7 @@ function mouse_in_area(_x1, _y1, _x2, _y2) {
 }
 
 /// @func	mouse_in_instance(inst_id)
-/// @param	{Id.Instance|Asset.Object}	inst_id		The instance to check
+/// @param	{Id.Instance|Asset.GMObject}	inst_id		The instance to check
 /// @desc	Returns a boolean if the mouse is inside an instance boundary box.
 ///	@return	{Bool}
 function mouse_in_instance(_inst_id) {

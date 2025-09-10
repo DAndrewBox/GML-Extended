@@ -36,7 +36,7 @@ function instance_create_unique(_x, _y, _obj, _depth_or_layer = depth, _params =
 }
 
 /// @func	instance_any_exists(*args)
-/// @param	{Id.Instance|Asset.Object}	*args	The instances to check existance
+/// @param	{Id.Instance|Asset.GMObject}	*args	The instances to check existance
 /// @desc	Returns true if any instance of the objects passed as arguments exists.
 function instance_any_exists() {
 	var _count = 0;
@@ -50,7 +50,7 @@ function instance_any_exists() {
 }
 
 /// @func	instance_in_room(object_index_or_id)
-/// @param	{Id.Instance|Asset.Object}	object_index_or_id		The index of the object or the id of the instance
+/// @param	{Id.Instance|Asset.GMObject}	object_index_or_id		The index of the object or the id of the instance
 /// @desc	Returns true if an instance of the object exists inside the boundaries of the room.
 function instance_in_room(_inst) {
 	return	(_inst.bbox_right >= 0 && _inst.bbox_left <= room_width) &&

@@ -46,7 +46,7 @@ function layer_get_background(_layer_id) {
 }
 
 /// @func	layer_get_tileset(layer_id_or_name)
-/// @param	{Real|String}	layer_id_or_name	The layer id or the layer name to get the tileset from.
+/// @param	{Id.Layer|String}	layer_id_or_name	The layer id or the layer name to get the tileset from.
 ///	@desc	A way to get the tileset of a layer using the ID or the name. This only serves to simplify the process of getting the tileset of a layer with multiple functions and different variables storing the ids on every step.
 ///	@return	{Real}
 function layer_get_tileset(_layer_id) {

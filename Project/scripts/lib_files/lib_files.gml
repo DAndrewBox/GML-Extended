@@ -46,8 +46,8 @@ function file_json_read(_file) {
 }
 
 /// @func	file_json_create(filename, struct)
-/// @param	{String}	filename	The name of the file to create.
-/// @param	{Struct}	struct		The struct to convert to .JSON.
+/// @param	{String}		filename	The name of the file to create.
+/// @param	{Struct|Array}	struct		The struct to convert to .JSON.
 /// @desc	Create a file with the contents of a struct. The filename must have the extension `.json`. If the file already exists, it will be overwritten.
 ///	@return	{String}
 function file_json_create(_filename, _json) {
