@@ -9,6 +9,7 @@
 	It's known that this file can cause issues in HTML5 exports.
 	Please remove it or comment everything below if that's the case.
 */
+///	@ignore
 function __gml_ext_opt_lib_remove_unused_msg() {
   try {
     var _ = [
@@ -205,6 +206,8 @@ function __gml_ext_opt_lib_remove_unused_msg() {
       gui_height,
       gui_width,
       anim_easeInSine,
+	  GM_VERSION_IS_2022,
+	  GM_VERSION_IS_2023,
       GM_VERSION_IS_2024,
       sort_ascending,
       sort_descending,

@@ -76,7 +76,7 @@ layer_get_background(layer_id | layer_name);
 ### Returns
 
 ```js
-Real;
+Asset.GMSprite;
 ```
 
 ### Example

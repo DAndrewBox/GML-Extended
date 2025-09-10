@@ -376,14 +376,14 @@ Draws a text using a font size specified by the user. The font size is given in 
 ### Syntax
 
 ```js
-draw_text_size(x, y, string, font_size);
+draw_text_size(x, y, text, font_size);
 ```
 
 | Argument  |  Type  | Description                |
 | :-------- | :----: | :------------------------- |
 | x         |  Real  | The x position of the text |
 | y         |  Real  | The y position of the text |
-| string    | String | The text to be drawn       |
+| text      | String | The text to be drawn       |
 | font_size |  Real  | The size of the font       |
 
 ## Returns
@@ -637,10 +637,10 @@ Sets the blend mode of the game. Is a replacement for the `gpu_set_blendmode` an
 draw_set_blendmode(mode_src, [mode_dest]);
 ```
 
-| Argument  | Type  | Description                |
-| :-------- | :---: | :------------------------- |
-| mode_src  | Real  | The source blend mode      |
-| mode_dest | Real  | The destination blend mode |
+| Argument  |                      Type                      | Description                |
+| :-------- | :--------------------------------------------: | :------------------------- |
+| mode_src  | Constant.BlendMode or Constant.BlendModeFactor | The source blend mode      |
+| mode_dest |            Constant.BlendModeFactor            | The destination blend mode |
 
 ## Returns
 
@@ -870,16 +870,16 @@ Creates a new profile for the drawing functions. The profile is used to store th
 draw_create_profile(name, alpha, color, font, halign, valign, depth, blendmode);
 ```
 
-| Argument  |          Type          | Description                          |
-| :-------- | :--------------------: | :----------------------------------- |
-| name      |         String         | The name of the profile              |
-| alpha     |          Real          | The alpha of the profile             |
-| color     | Real or Constant.Color | The color of the profile             |
-| font      |          Font          | The font of the profile              |
-| halign    |          Real          | The horizontal alignment of the text |
-| valign    |          Real          | The vertical alignment of the text   |
-| depth     |          Real          | The depth of the profile             |
-| blendmode |          Real          | The blend mode of the profile        |
+| Argument  |                         Type                          | Description                          |
+| :-------- | :---------------------------------------------------: | :----------------------------------- |
+| name      |                        String                         | The name of the profile              |
+| alpha     |                         Real                          | The alpha of the profile             |
+| color     |                Real or Constant.Color                 | The color of the profile             |
+| font      |                     Asset.GMFont                      | The font of the profile              |
+| halign    |                    Constant.HAlign                    | The horizontal alignment of the text |
+| valign    |                    Constant.VAlign                    | The vertical alignment of the text   |
+| depth     |                         Real                          | The depth of the profile             |
+| blendmode | Constant.BlendMode or Array<Constant.BlendModeFactor> | The blend mode of the profile        |
 
 ## Returns
 

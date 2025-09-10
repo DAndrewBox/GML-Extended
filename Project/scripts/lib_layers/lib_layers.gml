@@ -13,9 +13,9 @@
 /* @DEPRECATED END */
 
 ///	@func	layer_get_element_ids_fixed(layer_id, layer_element_type)
-/// @param	{Real}						layer_id
-/// @param	{Constant.LayerElementType}	layer_element_type
-/// @desc	A way to get the elements of a dynamically created layer.
+/// @param	{Id.Layer}					layer_id				The layer id
+/// @param	{Constant.LayerElementType}	layer_element_type		The layer element type.
+/// @desc	A way to get the elements of a dynamically created layer. This is a fix for the original `layer_get_element_ids` function that doesn't work with dynamically created layers. [Read the documentation for more information]
 function layer_get_element_ids_fixed(_layer, _element_type = layer_element_type_tilemap) {
 	var els = layer_get_all_elements(_layer);
 	var n = get_size(els);
@@ -30,8 +30,10 @@ function layer_get_element_ids_fixed(_layer, _element_type = layer_element_type_
 	return -1;
 }
 
-/// @func	layer_get_background(layer_id|layer_name)
-/// @param	{Asset.GMObject|Id.Layer|String}	layer_id|layer_name
+/// @func	layer_get_background(layer_id_or_name)
+/// @param	{Real|String}	layer_id_or_name	The layer id or the layer name to get the background from.
+///	@desc	A way to get the background of a layer using the ID or the name. This only serves to simplify the process of getting the background of a layer with multiple functions and different variables storing the ids on every step.
+///	@return	{Asset.GMSprite|Real}
 function layer_get_background(_layer_id) {
 	if (is_string(_layer_id)) {
 		_layer_id = layer_get_id(_layer_id);
@@ -43,8 +45,10 @@ function layer_get_background(_layer_id) {
 	return layer_background_get_sprite(_background);
 }
 
-/// @func	layer_get_tileset(layer_id|layer_name)
-/// @param	{Asset.GMObject|Id.Layer|String}	layer_id|layer_name
+/// @func	layer_get_tileset(layer_id_or_name)
+/// @param	{Real|String}	layer_id_or_name	The layer id or the layer name to get the tileset from.
+///	@desc	A way to get the tileset of a layer using the ID or the name. This only serves to simplify the process of getting the tileset of a layer with multiple functions and different variables storing the ids on every step.
+///	@return	{Real}
 function layer_get_tileset(_layer_id) {
 	if (is_string(_layer_id)) {
 		_layer_id = layer_get_id(_layer_id);

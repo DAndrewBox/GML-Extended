@@ -15,7 +15,7 @@
 
 # unix_timestamp
 
-Returns a Unix timestamp for the current or given GameMaker datetime. If no argument is given, the current datetime is used.
+Returns a Unix timestamp for the current or given GameMaker datetime.
 
 Originally written by Xot on [GMLscripts](https://www.gmlscripts.com/script/unix_timestamp).
 
@@ -84,10 +84,10 @@ Returns a formatted datetime from a Unix timestamp. If no argument is given, the
 unix_timestamp_format(timestamp, [(format = "%YYYY-%MM-%DD %HH:%NN:%SS")]);
 ```
 
-| Argument  |  Type  | Description                                                  |
-| :-------- | :----: | :----------------------------------------------------------- |
-| timestamp |  Real  | The Unix timestamp to format.                                |
-| format    | String | The format to use. (default = `"%YYYY-%MM-%DD %HH:%NN:%SS"`) |
+| Argument  |  Type  | Description                                                 |
+| :-------- | :----: | :---------------------------------------------------------- |
+| timestamp |  Real  | The Unix timestamp to format.                               |
+| format    | String | The format to use. (Default: `"%YYYY-%MM-%DD %HH:%NN:%SS"`) |
 
 ### Formats
 
@@ -152,10 +152,14 @@ Returns a GameMaker datetime from a Unix timestamp.
 unix_to_datetime(timestamp);
 ```
 
+| Argument  | Type  | Description         |
+| :-------- | :---: | :------------------ |
+| timestamp | Real  | The Unix timestamp. |
+
 ### Returns
 
 ```js
-Datetime;
+Real;
 ```
 
 ### Example
@@ -205,14 +209,14 @@ A way to test the performance of a function or code block. It will show in conso
 ### Syntax
 
 ```js
-time_performance(function, args, [iterations=1]);
+time_performance(callback, args, [iterations=1]);
 ```
 
-| Argument   |   Type   | Description                                              |
-| :--------- | :------: | :------------------------------------------------------- |
-| function   | Function | The function to test.                                    |
-| args       |  Array   | The arguments to pass to the function.                   |
-| iterations | Integer  | The number of times to run the function. (default = `1`) |
+| Argument   |   Type   | Description                                             |
+| :--------- | :------: | :------------------------------------------------------ |
+| callback   | Function | The function to test.                                   |
+| args       |  Array   | The arguments to pass to the function.                  |
+| iterations |   Real   | The number of times to run the function. (Default: `1`) |
 
 ### Returns
 
@@ -240,7 +244,7 @@ The above code will test the performance of the `unix_timestamp` function 1000 t
 
 # current_week ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
-Returns the current week of the year.
+Returns the current week of the year starting from 1.
 
 ### Syntax
 

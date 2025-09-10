@@ -23,13 +23,13 @@ Creates an instance of an object at the specified position. Similar of how `inst
 instance_create(x, y, object_index, [depth|layer_name = 0], [params = {}]);
 ```
 
-| Argument            |             Type              | Description                                                |
-| :------------------ | :---------------------------: | :--------------------------------------------------------- |
-| x                   |             Real              | The x position of the instance                             |
-| y                   |             Real              | The y position of the instance                             |
-| object_index        | Asset.GMObject or Id.Instance | The index of the object to create                          |
-| depth or layer_name |   Real, String or Id.Layer    | The depth of the instance or the layer to use(default = 0) |
-| params              |            Struct             | The parameters to pass to the instance at creation         |
+| Argument            |             Type              | Description                                                             |
+| :------------------ | :---------------------------: | :---------------------------------------------------------------------- |
+| x                   |             Real              | The x position of the instance                                          |
+| y                   |             Real              | The y position of the instance                                          |
+| object_index        | Asset.GMObject or Id.Instance | The index of the object to create                                       |
+| depth or layer_name |   Real, String or Id.Layer    | The depth of the instance or the layer to use (Default: instance.depth) |
+| params              |            Struct             | The parameters to pass to the instance at creation                      |
 
 ### Returns
 
@@ -109,9 +109,9 @@ Returns true if any instance of the objects passed as arguments exists.
 instance_any_exists(*args);
 ```
 
-| Argument | Type  | Description                           |
-| :------- | :---: | :------------------------------------ |
-| \*args   | Refs  | The arguments to pass to the function |
+| Argument | Type  | Description                      |
+| :------- | :---: | :------------------------------- |
+| \*args   | Refs  | The instances to check existance |
 
 ### Returns
 
@@ -141,9 +141,9 @@ Returns true if an instance of the object exists inside the boundaries of the ro
 instance_in_room(object_index | id);
 ```
 
-| Argument           |             Type              | Description                                       |
-| :----------------- | :---------------------------: | :------------------------------------------------ |
-| object_index or id | Asset.GMObject or Id.Instance | The index of the object or the id of the instance |
+| Argument           |            Type             | Description                                       |
+| :----------------- | :-------------------------: | :------------------------------------------------ |
+| object_index or id | Id.Instance or Asset.Object | The index of the object or the id of the instance |
 
 ### Returns
 
@@ -173,9 +173,9 @@ Returns an array of all instances of the object passed as argument.
 instance_get_all(object_index);
 ```
 
-| Argument     |             Type              | Description             |
-| :----------- | :---------------------------: | :---------------------- |
-| object_index | Asset.GMObject or Id.Instance | The index of the object |
+| Argument     |      Type      | Description             |
+| :----------- | :------------: | :---------------------- |
+| object_index | Asset.GMObject | The index of the object |
 
 ### Returns
 
@@ -302,3 +302,71 @@ event_user_exec(obj_Player, 5);
 ```
 
 The above code will execute `event_user(5)` on the player instance.
+
+---
+
+# instance_first ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
+
+Returns the first created instance of the object passed as argument.
+
+### Syntax
+
+```js
+instance_first(object_index);
+```
+
+| Argument     |      Type      | Description             |
+| :----------- | :------------: | :---------------------- |
+| object_index | Asset.GMObject | The index of the object |
+
+### Returns
+
+```js
+Id.Instance or -1;
+```
+
+### Example
+
+```js
+var _first_player = instance_first(obj_Player);
+if (_first_player != -1) {
+  show_debug_message("The first player x: " + _first_player.x);
+}
+```
+
+The above code will show the x position of the first player created in the room.
+
+---
+
+# instance_last ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
+
+Returns the last created instance of the object passed as argument.
+
+### Syntax
+
+```js
+instance_last(object_index);
+```
+
+| Argument     |      Type      | Description             |
+| :----------- | :------------: | :---------------------- |
+| object_index | Asset.GMObject | The index of the object |
+
+### Returns
+
+```js
+Id.Instance or -1;
+```
+
+### Example
+
+```js
+var _last_player = instance_last(obj_Player);
+if (_last_player != -1) {
+  show_debug_message("The last player x: " + _last_player.x);
+}
+```
+
+The above code will show the x position of the last player created in the room.
+
+---

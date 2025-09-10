@@ -1,11 +1,5 @@
-/// @func	now()
-/// @desc	Returns the unix timestamp from now datetime.
-function now() {
-	return unix_timestamp(date_current_datetime());
-}
-
 /// @func   unix_timestamp(datetime)
-/// @param  {Real}  datetime    date-time value (default current time)
+/// @param  {Real}  datetime    The datetime to get the Unix timestamp from.
 /// @desc   Returns a Unix timestamp for the current or given GameMaker datetime.
 /// @author Xot
 function unix_timestamp(_datetime) {
@@ -13,14 +7,23 @@ function unix_timestamp(_datetime) {
     return floor(date_second_span(_epoch, _datetime));
 }
 
+/// @func	now()
+/// @desc	Returns the unix timestamp from now datetime.
+function now() {
+	return unix_timestamp(date_current_datetime());
+}
+
 /// @func	unix_to_datetime(timestamp)
-/// @param	{Real}	timestamp
+/// @param	{Real}		timestamp	
+///	@desc	Returns a GameMaker datetime from a Unix timestamp.
 function unix_to_datetime(_timestamp) {
 	return date_create_datetime(1970, 1, 1, 0, 0, _timestamp);
 }
 
 /// @func	unix_timestamp_format(timestamp, format)
-/// @param	{Real}	timestamp
+/// @param	{Real}		timestamp	The Unix timestamp to format.
+///	@param	{String}	format		The format to use. (Default: "%YYYY-%MM-%DD %HH:%NN:%SS")
+///	@desc	Returns a formatted datetime from a Unix timestamp. If no argument is given, the current datetime is used. [Read documentation for formatting help.]
 function unix_timestamp_format(_timestamp, _format="%YYYY-%MM-%DD %HH:%NN:%SS") {
 	var _dt = unix_to_datetime(_timestamp);
 	static _month_names = [
@@ -117,9 +120,10 @@ function datetime_get_timestamp() {
 }
 
 /// @func	time_performance(callback, arguments, iterations)
-/// @param	{Function|Asset.GMScript}	function
-/// @param	{Array}	argument
-/// @param	{Real}	iterations
+/// @param	{Function|Asset.GMScript}	callback		The callback function to test.
+/// @param	{Array}						argument		The array of arguments to pass to the function.
+/// @param	{Real}						iterations		The number of times to run the function. (Default: 1)
+///	@desc	A way to test the performance of a function or code block. It will show in console the time it took to execute the code. It's useful for testing the performance of your code.
 function time_performance(_func, _args = [], _iter = 1) {
 	var _time_start = get_timer();
 	
@@ -138,11 +142,13 @@ function time_performance(_func, _args = [], _iter = 1) {
 }
 
 /// @func	current_week()
+///	@desc	Returns the current week of the year starting from 1.
 function current_week() {
 	return date_get_week(date_current_datetime()) + 1;
 }
 
 /// @func	current_day_of_year()
+///	@desc	Returns the current day of the year.
 function current_day_of_year() {
 	return date_get_day_of_year(date_current_datetime());
 }
