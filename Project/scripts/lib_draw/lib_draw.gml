@@ -6,16 +6,16 @@
 #macro	current_draw_valign	draw_get_valign()
 #endregion
 
-///@func	draw_self_ext(sprite, index, x, y, xscale, yscale, rot, col, alpha)
-///@param	{Real}	sprite		Optional. The sprite to draw. (Default: sprite_index)
-///@param	{Real}	index		Optional. The index of the sprite to draw (Default: image_index)
-///@param	{Real}	x			Optional. The x position of the sprite (Default: instance.x)
-///@param	{Real}	y			Optional. The y position of the sprite (Default: instance.y)
-///@param	{Real}	xscale		Optional. The x scale of the sprite (Default: instance.image_xscale)
-///@param	{Real}	yscale		Optional. The y scale of the sprite (Default: instance.image_yscale)
-///@param	{Real}	rot			Optional. The rotation of the sprite (Default: instance.image_angle)
-///@param	{Real}	col			Optional. The color of the sprite (Default: instance.image_blend)
-///@param	{Real}	alpha		Optional. The alpha of the sprite (Default: instance.image_alpha)
+///@func	draw_self_ext(sprite, index, x, y, xscale, yscale, rot, color, alpha)
+///@param	{Asset.GMSprite}		sprite		Optional. The sprite to draw. (Default: sprite_index)
+///@param	{Real}					index		Optional. The index of the sprite to draw (Default: image_index)
+///@param	{Real}					x			Optional. The x position of the sprite (Default: instance.x)
+///@param	{Real}					y			Optional. The y position of the sprite (Default: instance.y)
+///@param	{Real}					xscale		Optional. The x scale of the sprite (Default: instance.image_xscale)
+///@param	{Real}					yscale		Optional. The y scale of the sprite (Default: instance.image_yscale)
+///@param	{Real}					rot			Optional. The rotation of the sprite (Default: instance.image_angle)
+///@param	{Real|Constant.Color}	color		Optional. The color of the sprite (Default: instance.image_blend)
+///@param	{Real}					alpha		Optional. The alpha of the sprite (Default: instance.image_alpha)
 /// @desc	Draw the sprite of the object with the specified position, scale and rotation. This function is similar to the `draw_self` function, but it allows you to specify the position, scale and rotation of the sprite.
 function draw_self_ext(_spr=sprite_index, _index=image_index, _x=x, _y=y, _xscale=image_xscale, _yscale=image_yscale, _rot=image_angle, _col=image_blend, _alpha=image_alpha) {
 	draw_sprite_ext(_spr, _index, _x, _y, _xscale, _yscale, _rot, _col, _alpha);
@@ -46,10 +46,10 @@ function draw_figure(_x, _y, _sides, _size, _rot = 0, _width = 1) {
 }
 
 /// @func	draw_quad(cord_1, cord_2, cord_3, cord_4, color_init, color_final, alpha)
-/// @param  {Array}	cord_1							The x and y position of the first point
-/// @param  {Array}	cord_2							The x and y position of the second point
-/// @param  {Array}	cord_3							The x and y position of the third point
-/// @param  {Array}	cord_4							The x and y position of the fourth point
+/// @param  {Array<Real>}	cord_1					The x and y position of the first point
+/// @param  {Array<Real>}	cord_2					The x and y position of the second point
+/// @param  {Array<Real>}	cord_3					The x and y position of the third point
+/// @param  {Array<Real>}	cord_4					The x and y position of the fourth point
 /// @param  {Real|Constant.Color}	color_init		The color in the top points of the quad 
 /// @param  {Real|Constant.Color}	color_final		The color in the bottom points of the quad
 /// @param  {Real}	alpha							The alpha of the quad 
