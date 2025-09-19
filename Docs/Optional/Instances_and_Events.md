@@ -10,6 +10,8 @@
 - [instance_number_if](#instance_number_if)
 - [instance_get_if](#instance_get_if)
 - [event_user_exec](#event_user_exec)
+- [instance_first](#instance_first)
+- [instance_last](#instance_last)
 
 ---
 
