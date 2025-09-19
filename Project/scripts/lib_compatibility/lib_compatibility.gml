@@ -17,21 +17,19 @@ gml_pragma("global", "__gml_ext_comp_init()");
 /// @func	__gml_ext_comp_init()
 /// @ignore
 function __gml_ext_comp_init() {
-	gm_unit_seconds = 0;
-	gm_unit_frames = 1;
+	global.__gml_ext = {
+		draw_profiles: {},
+		units_seconds: 0,
+		units_frames: 1
+	};
 
 	if (GM_VERSION_IS_2022 || GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor < 8) {
-		global.__gml_ext_mouse_x_last = 0;
-		global.__gml_ext_mouse_x = 0;
-		global.__gml_ext_mouse_y_last = 0;
-		global.__gml_ext_mouse_y = 0;
+		global.__gml_ext.custom_mouse_x_last = 0;
+		global.__gml_ext.custom_mouse_x = 0;
+		global.__gml_ext.custom_mouse_y_last = 0;
+		global.__gml_ext.custom_mouse_y = 0;
 	}
 
-	if (GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor > 4) {
-		gm_unit_seconds = time_source_units_seconds;
-		gm_unit_frames = time_source_units_frames;
-	}
-	
 	show_debug_message(
 		__gml_ext_comp_string_ext(
 			"(GML-Extended) - Running GML-Extended v{0} with GameMaker runtime v{1}.",

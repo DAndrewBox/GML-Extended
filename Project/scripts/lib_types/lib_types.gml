@@ -79,7 +79,7 @@ function is_type(_elem, _type) {
 
 #macro	null				pointer_null
 
-#macro	gm_unit_seconds		global.__gml_ext_time_source_units_seconds
-#macro	gm_unit_frames		global.__gml_ext_time_source_units_frames
+#macro	gm_unit_seconds		global.__gml_ext[$ "units_seconds"]
+#macro	gm_unit_frames		global.__gml_ext[$ "units_frames"]
 #endregion
 

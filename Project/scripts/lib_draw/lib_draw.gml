@@ -358,7 +358,7 @@ function draw_create_profile(_name, _alpha = undefined, _color = undefined, _fon
 		return;
 	}
 	
-	global.__gml_ext_draw_profiles[$ _name] = {
+	global.__gml_ext.draw_profiles[$ _name] = {
 		alpha:	_alpha,
 		color:	_color,
 		font:	_font,
@@ -382,7 +382,7 @@ function draw_set_profile(_name) {
 		return;
 	}
 	
-	if (is_undefined(global.__gml_ext_draw_profiles[$ _name])) {
+	if (is_undefined(global.__gml_ext.draw_profiles[$ _name])) {
 		static _error_msg_2 = false;
 		if (!_error_msg_2) {
 			trace("(GML-Extended) ERROR! - On function draw_set_profile(). Profile with name \"", _name, "\" does not exists.");
@@ -410,7 +410,7 @@ function draw_set_profile(_name) {
 		draw_set_blendmode,
 	];
 	static _props_size = get_size(_props);
-	var _profile = global.__gml_ext_draw_profiles[$ _name];
+	var _profile = global.__gml_ext.draw_profiles[$ _name];
 
 	for (var i = 0; i < _props_size; i++) {
 		var _value = _profile[$ _props[i]];

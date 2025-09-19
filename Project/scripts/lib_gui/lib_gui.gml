@@ -39,13 +39,13 @@ function mouse_in_instance(_inst_id) {
 function mouse_is_moving() {
 	static _use_compatibility = GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor < 8;
 	if (_use_compatibility) {
-		global.__gml_ext_mouse_x_last = global.__gml_ext_mouse_x;
-		global.__gml_ext_mouse_y_last = global.__gml_ext_mouse_y;
+		global.__gml_ext.custom_mouse_x_last = global.__gml_ext.custom_mouse_x;
+		global.__gml_ext.custom_mouse_y_last = global.__gml_ext.custom_mouse_y;
 
-		global.__gml_ext_mouse_x = window_mouse_get_x();
-		global.__gml_ext_mouse_y = window_mouse_get_y();
+		global.__gml_ext.custom_mouse_x = window_mouse_get_x();
+		global.__gml_ext.custom_mouse_y = window_mouse_get_y();
 		
-		return (global.__gml_ext_mouse_x_last == global.__gml_ext_mouse_x && global.__gml_ext_mouse_y_last == global.__gml_ext_mouse_y);
+		return (global.__gml_ext.custom_mouse_x_last == global.__gml_ext.custom_mouse_x && global.__gml_ext.custom_mouse_y_last == global.__gml_ext.custom_mouse_y);
 	}
 	
 	return bool(abs(window_mouse_get_delta_x()) + abs(window_mouse_get_delta_y()));

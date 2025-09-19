@@ -119,7 +119,11 @@ suite(function() {
 				testKey2: undefined,
 				testKey3: 3,
 			};
-			expect(struct_entries(_struct)).toBe([["testKey1", 1], ["testKey3", 3]]);
+			var _struct_entries = struct_entries(_struct);
+			array_sort(_struct_entries, function (_elem1, _elem2) {
+				return _elem2[0] < _elem1[0];
+			});
+			expect(_struct_entries).toBe([["testKey1", 1], ["testKey3", 3]]);
 		});
 	});
 });
