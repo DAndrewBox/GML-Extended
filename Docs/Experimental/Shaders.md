@@ -27,10 +27,10 @@ The main structs should be named `u_float`, `u_int` and `u_texture` for the floa
 shader_set_ext(shader, [(params = {})]);
 ```
 
-| Argument |  Type  | Description                              |
-| :------- | :----: | :--------------------------------------- |
-| shader   | Shader | The shader to setup.                     |
-| params   | Struct | The parameters to setup the shader with. |
+| Argument |      Type      | Description                              |
+| :------- | :------------: | :--------------------------------------- |
+| shader   | Asset.GMShader | The shader to setup.                     |
+| params   |     Struct     | The parameters to setup the shader with. |
 
 ### Returns
 
@@ -96,18 +96,18 @@ draw_sprite_recolor(
 );
 ```
 
-| Argument |  Type  | Description                                |
-| :------- | :----: | :----------------------------------------- |
-| sprite   | Sprite | The sprite to be drawn                     |
-| subimage |  Real  | The subimage of the sprite to be drawn     |
-| x        |  Real  | The x position of the sprite               |
-| y        |  Real  | The y position of the sprite               |
-| color    | Color  | The color to be used to recolor the sprite |
-| blend    |  Real  | The blend of the color                     |
-| xscale   |  Real  | The x scale of the sprite. (default: 1)    |
-| yscale   |  Real  | The y scale of the sprite. (default: 1)    |
-| rot      |  Real  | The rotation of the sprite. (default: 0)   |
-| alpha    |  Real  | The alpha of the sprite. (default: 1)      |
+| Argument |          Type          | Description                                |
+| :------- | :--------------------: | :----------------------------------------- |
+| sprite   |     Asset.GMSprite     | The sprite to be drawn                     |
+| subimage |          Real          | The subimage of the sprite to be drawn     |
+| x        |          Real          | The x position of the sprite               |
+| y        |          Real          | The y position of the sprite               |
+| color    | Real or Constant.Color | The color to be used to recolor the sprite |
+| blend    |          Real          | The blend of the color                     |
+| xscale   |          Real          | The x scale of the sprite. (default: 1)    |
+| yscale   |          Real          | The y scale of the sprite. (default: 1)    |
+| rot      |          Real          | The rotation of the sprite. (default: 0)   |
+| alpha    |          Real          | The alpha of the sprite. (default: 1)      |
 
 ## Returns
 
@@ -152,17 +152,17 @@ draw_sprite_blur(
 );
 ```
 
-| Argument    |  Type  | Description                                           |
-| :---------- | :----: | :---------------------------------------------------- |
-| sprite      | Sprite | The sprite to be drawn                                |
-| subimage    |  Real  | The subimage of the sprite to be drawn                |
-| x           |  Real  | The x position of the sprite                          |
-| y           |  Real  | The y position of the sprite                          |
-| blur_amount |  Real  | The amount of the blur. (recommended from 0.0 to 1.0) |
-| xscale      |  Real  | The x scale of the sprite. (default: 1)               |
-| yscale      |  Real  | The y scale of the sprite. (default: 1)               |
-| rot         |  Real  | The rotation of the sprite. (default: 0)              |
-| alpha       |  Real  | The alpha of the sprite. (default: 1)                 |
+| Argument    |      Type      | Description                                           |
+| :---------- | :------------: | :---------------------------------------------------- |
+| sprite      | Asset.GMSprite | The sprite to be drawn                                |
+| subimage    |      Real      | The subimage of the sprite to be drawn                |
+| x           |      Real      | The x position of the sprite                          |
+| y           |      Real      | The y position of the sprite                          |
+| blur_amount |      Real      | The amount of the blur. (recommended from 0.0 to 1.0) |
+| xscale      |      Real      | The x scale of the sprite. (default: 1)               |
+| yscale      |      Real      | The y scale of the sprite. (default: 1)               |
+| rot         |      Real      | The rotation of the sprite. (default: 0)              |
+| alpha       |      Real      | The alpha of the sprite. (default: 1)                 |
 
 ## Returns
 
@@ -204,17 +204,17 @@ draw_surface_recolor(
 );
 ```
 
-| Argument |  Type   | Description                                 |
-| :------- | :-----: | :------------------------------------------ |
-| surface  | Surface | The surface to be drawn                     |
-| color    |  Color  | The color to be used to recolor the surface |
-| blend    |  Real   | The blend of the color                      |
-| x        |  Real   | The x position of the surface               |
-| y        |  Real   | The y position of the surface               |
-| xscale   |  Real   | The x scale of the surface. (default: 1)    |
-| yscale   |  Real   | The y scale of the surface. (default: 1)    |
-| rot      |  Real   | The rotation of the surface. (default: 0)   |
-| alpha    |  Real   | The alpha of the surface. (default: 1)      |
+| Argument |          Type          | Description                                 |
+| :------- | :--------------------: | :------------------------------------------ |
+| surface  |       Id.Surface       | The surface to be drawn                     |
+| color    | Real or Constant.Color | The color to be used to recolor the surface |
+| blend    |          Real          | The blend of the color                      |
+| x        |          Real          | The x position of the surface               |
+| y        |          Real          | The y position of the surface               |
+| xscale   |          Real          | The x scale of the surface. (default: 1)    |
+| yscale   |          Real          | The y scale of the surface. (default: 1)    |
+| rot      |          Real          | The rotation of the surface. (default: 0)   |
+| alpha    |          Real          | The alpha of the surface. (default: 1)      |
 
 ## Returns
 
@@ -260,16 +260,16 @@ draw_surface_blur(
 );
 ```
 
-| Argument    |  Type   | Description                                           |
-| :---------- | :-----: | :---------------------------------------------------- |
-| surface     | Surface | The surface to be drawn                               |
-| blur_amount |  Real   | The amount of the blur. (recommended from 0.0 to 1.0) |
-| x           |  Real   | The x position of the surface                         |
-| y           |  Real   | The y position of the surface                         |
-| xscale      |  Real   | The x scale of the surface. (default: 1)              |
-| yscale      |  Real   | The y scale of the surface. (default: 1)              |
-| rot         |  Real   | The rotation of the surface. (default: 0)             |
-| alpha       |  Real   | The alpha of the surface. (default: 1)                |
+| Argument    |    Type    | Description                                           |
+| :---------- | :--------: | :---------------------------------------------------- |
+| surface     | Id.Surface | The surface to be drawn                               |
+| blur_amount |    Real    | The amount of the blur. (recommended from 0.0 to 1.0) |
+| x           |    Real    | The x position of the surface                         |
+| y           |    Real    | The y position of the surface                         |
+| xscale      |    Real    | The x scale of the surface. (default: 1)              |
+| yscale      |    Real    | The y scale of the surface. (default: 1)              |
+| rot         |    Real    | The rotation of the surface. (default: 0)             |
+| alpha       |    Real    | The alpha of the surface. (default: 1)                |
 
 ## Returns
 

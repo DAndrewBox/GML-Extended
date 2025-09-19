@@ -2,84 +2,12 @@
 
 ### Table of Contents
 
-- [string_pad_left](#string_pad_left)
-- [string_pad_right](#string_pad_right)
 - [string_contains](#string_contains)
 - [string_title](#string_title)
 - [string_remove](#string_remove)
+- [string_pad_left](#string_pad_left)
+- [string_pad_right](#string_pad_right)
 - [string_percentage](#string_percentage)
-
----
-
-# string_pad_left ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
-
-Returns a string with the specified number of characters on the left side. If the string is already bigger than the specified size, the string will be returned as is. If the string is smaller than the specified size, the string will be filled with the specified character on the left side.
-
-### Syntax
-
-```js
-string_pad_left(string, char, size);
-```
-
-| Argument |  Type  | Description                      |
-| :------- | :----: | :------------------------------- |
-| string   | String | The string to fill               |
-| char     | String | The character to fill the string |
-| size     |  Int   | The final size of the string     |
-
-### Returns
-
-```js
-String;
-```
-
-### Example
-
-```js
-var _str = "123";
-var _size = 9;
-var _score_str = string_pad_left(_str, "0", _size);
-
-show_debug_message(_str_filled);
-```
-
-The above code will set the var `_str_filled` as an string filled with 0's on the left side and the show on console. The result will be `000000123`.
-
----
-
-# string_pad_right ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
-
-Returns a string with the specified number of characters on the right side. If the string is already bigger than the specified size, the string will be returned as is. If the string is smaller than the specified size, the string will be filled with the specified character on the right side.
-
-### Syntax
-
-```js
-string_pad_left(string, char, size);
-```
-
-| Argument |  Type  | Description                      |
-| :------- | :----: | :------------------------------- |
-| string   | String | The string to fill               |
-| char     | String | The character to fill the string |
-| size     |  Int   | The final size of the string     |
-
-### Returns
-
-```js
-String;
-```
-
-### Example
-
-```js
-var _str = "123";
-var _size = 9;
-var _score_str = string_pad_right(_str, "0", _size);
-
-show_debug_message(_str_filled);
-```
-
-The above code will set the var `_str_filled` as an string filled with 0's on the right side and the show on console. The result will be `123000000`.
 
 ---
 
@@ -181,6 +109,78 @@ show_debug_message(string_remove(_str, _sub));
 ```
 
 The above code will show on console the message `, !` since the substring was removed.
+
+---
+
+# string_pad_left ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
+
+Returns a string with the specified number of characters on the left side. If the string is already bigger than the specified size, the string will be returned as is. If the string is smaller than the specified size, the string will be filled with the specified character on the left side.
+
+### Syntax
+
+```js
+string_pad_left(string, char, size);
+```
+
+| Argument |  Type  | Description                      |
+| :------- | :----: | :------------------------------- |
+| string   | String | The string to fill               |
+| char     | String | The character to fill the string |
+| size     |  Int   | The final size of the string     |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+var _str = "123";
+var _size = 9;
+var _score_str = string_pad_left(_str, "0", _size);
+
+show_debug_message(_str_filled);
+```
+
+The above code will set the var `_str_filled` as an string filled with 0's on the left side and the show on console. The result will be `000000123`.
+
+---
+
+# string_pad_right ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
+
+Returns a string with the specified number of characters on the right side. If the string is already bigger than the specified size, the string will be returned as is. If the string is smaller than the specified size, the string will be filled with the specified character on the right side.
+
+### Syntax
+
+```js
+string_pad_left(string, char, size);
+```
+
+| Argument |  Type  | Description                      |
+| :------- | :----: | :------------------------------- |
+| string   | String | The string to fill               |
+| char     | String | The character to fill the string |
+| size     |  Int   | The final size of the string     |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+var _str = "123";
+var _size = 9;
+var _score_str = string_pad_right(_str, "0", _size);
+
+show_debug_message(_str_filled);
+```
+
+The above code will set the var `_str_filled` as an string filled with 0's on the right side and the show on console. The result will be `123000000`.
 
 ---
 

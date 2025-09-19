@@ -52,7 +52,7 @@
     {"name":"lib_math","order":3,"path":"scripts/lib_math/lib_math.yy",},
     {"name":"lib_remove_unused_msg","order":1,"path":"scripts/lib_remove_unused_msg/lib_remove_unused_msg.yy",},
     {"name":"lib_server_tcp","order":5,"path":"scripts/lib_server_tcp/lib_server_tcp.yy",},
-    {"name":"lib_shortcuts","order":4,"path":"scripts/lib_shortcuts/lib_shortcuts.yy",},
+    {"name":"lib_snippets","order":4,"path":"scripts/lib_snippets/lib_snippets.yy",},
     {"name":"lib_sprites","order":1,"path":"scripts/lib_sprites/lib_sprites.yy",},
     {"name":"lib_strings","order":5,"path":"scripts/lib_strings/lib_strings.yy",},
     {"name":"lib_structs","order":6,"path":"scripts/lib_structs/lib_structs.yy",},

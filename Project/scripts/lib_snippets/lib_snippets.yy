@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"lib_shortcuts",
+  "%Name":"lib_snippets",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"lib_shortcuts",
+  "name":"lib_snippets",
   "parent":{
     "name":"Core",
     "path":"folders/Libraries/GML-Extended/Functions/Core.yy",

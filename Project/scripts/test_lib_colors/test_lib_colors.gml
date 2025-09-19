@@ -53,11 +53,37 @@ suite(function() {
 		});
 	});
 	
-	describe("dec2hex", function() {
+	describe("color_to_hex_rgb", function() {
 		it("Should return HEX string of Decimal", function() {
-			expect(dec2hex(c_black)).toBe("000000");
-			expect(dec2hex(c_white)).toBe("FFFFFF");
-			expect(dec2hex(#FF0000)).toBe("0000FF");
+			expect(color_to_hex_rgb(c_black)).toBe("000000");
+			expect(color_to_hex_rgb(c_white)).toBe("FFFFFF");
+			expect(color_to_hex_rgb(#FF0000)).toBe("FF0000");
+		});
+	});
+	
+	describe("color_to_hex_rgba", function() {
+		it("Should return the HEX string of a RGBA decimal", function() {
+			expect(color_to_hex_rgba(c_black)).toBe("000000FF");
+			expect(color_to_hex_rgba(c_white, 1.0)).toBe("FFFFFFFF");
+			expect(color_to_hex_rgba(#FF0000, 0.5)).toBe("FF00007F");
+		});
+	});
+	
+	describe("color_hex_rgba_to_abgr", function() {
+		it("Should return an HEX RGBA input to an HEX RGB string", function() {
+			expect(color_hex_rgba_to_abgr("AABBCCFF")).toBe("FFCCBBAA");
+			expect(color_hex_rgba_to_abgr("001122FF")).toBe("FF221100");
+			expect(color_hex_rgba_to_abgr("01234567")).toBe("67452301");
+		});
+	});
+	
+	describe("color_rgba_get_alpha", function() {
+		it("Should return the alpha of a decimal value input", function() {
+			expect(color_rgba_get_alpha($FFFFFFFF)).toBe(1.0);
+		});
+		
+		it("The alpha value should be near 0.01", function() {
+			expect(near(color_rgba_get_alpha($7F000000), 0.50, 0.01)).toBeTruthy();
 		});
 	});
 });

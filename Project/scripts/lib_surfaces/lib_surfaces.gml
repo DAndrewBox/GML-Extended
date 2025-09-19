@@ -47,8 +47,8 @@ function Surface(_width, _height, _name="") constructor {
 	}
 	
 	/// @func	clear(color, alpha)
-	/// @param	{Real}	color
-	/// @param	{Real}	alpha
+	/// @param	{Real|Constant.Color}	color
+	/// @param	{Real}					alpha
 	/// @desc	Clear the surface canvas.
 	function clear(_col=c_fuchsia, _alpha=.0) {
 		self.setTarget();
@@ -117,7 +117,7 @@ function Surface(_width, _height, _name="") constructor {
 	/// @param	{Real}	xscale
 	/// @param	{Real}	yscale
 	/// @param	{Real}	rot
-	/// @param	{Real}	col
+	/// @param	{Real|Constant.Color}	color
 	/// @param	{Real}	alpha
 	/// @desc	Draws the surface on screen.
 	function draw(_x, _y, _xscale=1, _yscale=1, _rot=0, _col=-1, _alpha=draw_get_alpha(), _from_center=false) {
@@ -137,7 +137,7 @@ function Surface(_width, _height, _name="") constructor {
 	/// @param	{Real}	height
 	/// @param	{Real}	xscale
 	/// @param	{Real}	yscale
-	/// @param	{Real}	col
+	/// @param	{Real|Constant.Color}	color
 	/// @param	{Real}	alpha
 	/// @desc	Draws a part of the surface on screen.
 	function drawPart(_x, _y, _left=0, _top=0, _width=self.width, _height=self.height, _xscale=1, _yscale=1, _col=-1, _alpha=draw_get_alpha()) {
@@ -149,7 +149,7 @@ function Surface(_width, _height, _name="") constructor {
 	/// @param	{Real}	y
 	/// @param	{Real}	width
 	/// @param	{Real}	height
-	/// @param	{Real}	col
+	/// @param	{Real|Constant.Color}	color
 	/// @param	{Real}	alpha
 	/// @desc	Draws the surface stretched on screen.
 	function drawStretched(_x, _y, _width=self.width, _height=self.height, _col=-1, _alpha=draw_get_alpha()) {
@@ -161,7 +161,7 @@ function Surface(_width, _height, _name="") constructor {
 	/// @param	{Real}	y
 	/// @param	{Real}	xscale
 	/// @param	{Real}	yscale
-	/// @param	{Real}	col
+	/// @param	{Real|Constant.Color}	color
 	/// @param	{Real}	alpha
 	/// @desc	Draws the surface tiled on screen.
 	function drawTiled(_x, _y, _xscale=1, _yscale=1, _col=-1, _alpha=draw_get_alpha()) {

@@ -6,6 +6,7 @@
 - [game_get_param_value](#game_get_param_value)
 - [game_get_param_exists](#game_get_param_exists)
 - [game_throw_error](#game_throw_error)
+- [game_get_framerate](#game_get_framerate)
 
 ---
 
@@ -164,3 +165,33 @@ if (game_get_param_exists("--error")) {
 ```
 
 The above code will set the var `_params` as an array with the game launch parameters and show on console. The result will be `["--error", "This is an error message"]`. Then, if the game launch parameters contains `--error`, the game will throw an error and stop.
+
+---
+
+# game_get_framerate ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
+
+Returns the current game set framerate.
+
+### Syntax
+
+```js
+game_get_framerate();
+```
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _framerate = game_get_framerate();
+
+show_debug_message("Current framerate: " + string(_framerate));
+```
+
+The above code will return the current game set framerate and show on console. The result will be `60` if the game framerate is set to `60`.
+
+---

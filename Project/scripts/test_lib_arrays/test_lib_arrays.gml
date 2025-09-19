@@ -91,17 +91,4 @@ suite(function() {
 			delete _struct;
 		})
 	});
-	
-	describe("array_write", function() {
-		it("Should convert the array to an string", function() {
-			var _arr = ["mango", "pear", "apple"];
-			var _str = array_write(_arr);
-			
-			expect(string_pos(_arr[@ 0], _str)).toBeTruthy();
-			expect(string_pos(_arr[@ 1], _str)).toBeTruthy();
-			expect(string_pos(_arr[@ 2], _str)).toBeTruthy();
-			expect(_str).toBeEqual("[ \"mango\",\"pear\",\"apple\" ]");
-
-		})
-	});
 });

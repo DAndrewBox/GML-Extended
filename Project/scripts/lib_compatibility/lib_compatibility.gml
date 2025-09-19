@@ -5,7 +5,7 @@
 
 #macro	GML_EXT_FORCE_COMPATIBILITY_MODE	false
 
-#macro	GML_EXT_CURRENT_VERSION	"1.5.2"
+#macro	GML_EXT_CURRENT_VERSION	"1.5.3"
 #macro	GM_CURRENT_VERSION	__gml_ext_comp_set_gamemaker_version()
 #macro	GM_VERSION_IS_2_3	string_copy(GM_runtime_version, 1, 3) == "2.3"
 #macro	GM_VERSION_IS_2022	__gml_ext_comp_is_gamemaker_major_version(2022)
@@ -17,21 +17,19 @@ gml_pragma("global", "__gml_ext_comp_init()");
 /// @func	__gml_ext_comp_init()
 /// @ignore
 function __gml_ext_comp_init() {
-	gm_unit_seconds = 0;
-	gm_unit_frames = 1;
+	global.__gml_ext = {
+		draw_profiles: {},
+		units_seconds: 0,
+		units_frames: 1
+	};
 
 	if (GM_VERSION_IS_2022 || GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor < 8) {
-		global.__gml_ext_mouse_x_last = 0;
-		global.__gml_ext_mouse_x = 0;
-		global.__gml_ext_mouse_y_last = 0;
-		global.__gml_ext_mouse_y = 0;
+		global.__gml_ext.custom_mouse_x_last = 0;
+		global.__gml_ext.custom_mouse_x = 0;
+		global.__gml_ext.custom_mouse_y_last = 0;
+		global.__gml_ext.custom_mouse_y = 0;
 	}
 
-	if (GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor > 4) {
-		gm_unit_seconds = time_source_units_seconds;
-		gm_unit_frames = time_source_units_frames;
-	}
-	
 	show_debug_message(
 		__gml_ext_comp_string_ext(
 			"(GML-Extended) - Running GML-Extended v{0} with GameMaker runtime v{1}.",
@@ -106,11 +104,11 @@ function __gml_ext_comp_is_callable(_value) {
 }
 
 /// @func	__gml_ext_comp_instance_create_layer(x, y, layer_name, object_index, _params)
-/// @param	{Real}		x
-/// @param	{Real}		y
-/// @param	{String}	layer_name
-/// @param	{Real}		object_index
-/// @param	{Struct}	params
+/// @param	{Real}				x
+/// @param	{Real}				y
+/// @param	{String|Id.Layer}	layer_name
+/// @param	{Asset.GMObject}	object_index
+/// @param	{Struct}			params
 /// @desc	Compatibility function for `instance_create_layer()`.
 /// @ignore
 function __gml_ext_comp_instance_create_layer(_x, _y, _layer, _obj, _params = {}) {
@@ -132,11 +130,11 @@ function __gml_ext_comp_instance_create_layer(_x, _y, _layer, _obj, _params = {}
 }
 
 /// @func	__gml_ext_comp_instance_create_depth(x, y, depth, object_index, _params)
-/// @param	{Real}		x
-/// @param	{Real}		y
-/// @param	{Real}		depth
-/// @param	{Real}		object_index
-/// @param	{Struct}	params
+/// @param	{Real}				x
+/// @param	{Real}				y
+/// @param	{Real}				depth
+/// @param	{Asset.GMObject}	object_index
+/// @param	{Struct}			params
 /// @desc	Compatibility function for `instance_create_depth()`.
 /// @ignore
 function __gml_ext_comp_instance_create_depth(_x, _y, _depth,  _obj, _params = {}) {

@@ -87,9 +87,9 @@ Gets the RGB values of the color passed as argument. Serves as a shortcut for `c
 color_get_rgb(color);
 ```
 
-| Argument | Type  | Description                          |
-| :------- | :---: | :----------------------------------- |
-| color    | Real  | The color to get the RGB values from |
+| Argument |          Type          | Description                          |
+| :------- | :--------------------: | :----------------------------------- |
+| color    | Real or Constant.Color | The color to get the RGB values from |
 
 ### Returns
 
@@ -117,9 +117,9 @@ Gets the HSV values of the color passed as argument. Serves as a shortcut for `c
 color_get_hsv(color);
 ```
 
-| Argument | Type  | Description                          |
-| :------- | :---: | :----------------------------------- |
-| color    | Real  | The color to get the HSV values from |
+| Argument |          Type          | Description                          |
+| :------- | :--------------------: | :----------------------------------- |
+| color    | Real or Constant.Color | The color to get the HSV values from |
 
 ### Returns
 
@@ -147,9 +147,9 @@ Gets the RGB values of the color passed as argument, normalized between 0 and 1.
 color_get_rgb_normalized(color);
 ```
 
-| Argument | Type  | Description                                     |
-| :------- | :---: | :---------------------------------------------- |
-| color    | Real  | The color to get the normalized RGB values from |
+| Argument |          Type          | Description                                     |
+| :------- | :--------------------: | :---------------------------------------------- |
+| color    | Real or Constant.Color | The color to get the normalized RGB values from |
 
 ### Returns
 
@@ -176,9 +176,9 @@ Gets the HSV values of the color passed as argument, normalized between 0 and 1.
 color_get_hsv_normalized(color);
 ```
 
-| Argument | Type  | Description                                     |
-| :------- | :---: | :---------------------------------------------- |
-| color    | Real  | The color to get the normalized HSV values from |
+| Argument |          Type          | Description                                     |
+| :------- | :--------------------: | :---------------------------------------------- |
+| color    | Real or Constant.Color | The color to get the normalized HSV values from |
 
 ### Returns
 
@@ -205,9 +205,9 @@ Converts a decimal color value to a hexadecimal string. The resulting string wil
 color_to_hex_rgb(color);
 ```
 
-| Argument | Type  | Description                        |
-| :------- | :---: | :--------------------------------- |
-| color    | Real  | The decimal color value to convert |
+| Argument |          Type          | Description                        |
+| :------- | :--------------------: | :--------------------------------- |
+| color    | Real or Constant.Color | The decimal color value to convert |
 
 ### Returns
 
@@ -235,10 +235,10 @@ Converts a decimal color value to a hexadecimal string. The resulting string wil
 color_to_hex_rgba(color, alpha);
 ```
 
-| Argument | Type  | Description                             |
-| :------- | :---: | :-------------------------------------- |
-| color    | Real  | The decimal color value to convert      |
-| alpha    | Real  | The normalized alpha value of the color |
+| Argument |          Type          | Description                             |
+| :------- | :--------------------: | :-------------------------------------- |
+| color    | Real or Constant.Color | The decimal color value to convert      |
+| alpha    |          Real          | The normalized alpha value of the color |
 
 ### Returns
 

@@ -121,7 +121,7 @@ array_find_index_by_value(array, value);
 
 | Argument | Type  | Description              |
 | :------- | :---: | :----------------------- |
-| array    | array | The array to search into |
+| array    | Array | The array to search into |
 | value    |  any  | The value to find        |
 
 ### Returns
@@ -159,7 +159,7 @@ array_to_ds_list(array);
 ### Returns
 
 ```js
-ds_list;
+Id.DsList;
 ```
 
 ### Example
@@ -184,9 +184,9 @@ Converts a ds list to an array with all its values and the returns it.
 ds_list_to_array(list);
 ```
 
-| Argument |  Type   | Description                    |
-| :------- | :-----: | :----------------------------- |
-| list     | ds_list | The list to convert into array |
+| Argument |   Type    | Description                    |
+| :------- | :-------: | :----------------------------- |
+| list     | Id.DsList | The list to convert into array |
 
 ### Returns
 
@@ -222,7 +222,7 @@ array_to_struct(array);
 
 | Argument | Type  | Description          |
 | :------- | :---: | :------------------- |
-| array    | array | The array to convert |
+| array    | Array | The array to convert |
 
 ### Returns
 

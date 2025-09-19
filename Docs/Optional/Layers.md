@@ -6,6 +6,7 @@
 - [layer_get_element_ids_fixed](#layer_get_element_ids_fixed)
 - [layer_get_background](#layer_get_background)
 - [layer_get_tileset](#layer_get_tileset)
+- [layer_set_depth](#layer_set_depth)
 
 # macros ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
@@ -33,10 +34,10 @@ A way to get the elements of a dynamically created layer. This is a fix for the 
 layer_get_element_ids_fixed(layer_id, layer_element_type);
 ```
 
-| Argument           |  Type   | Description                                                                                                                                                                                 |
-| :----------------- | :-----: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| layer_id           | Integer | The layer id                                                                                                                                                                                |
-| layer_element_type | Integer | The layer element type (see [Layer Element Types](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Asset_Management/Rooms/General_Layer_Functions/layer_get_element_type.htm)) |
+| Argument           |   Type   | Description                                                                                                                                                                                 |
+| :----------------- | :------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| layer_id           | Id.Layer | The layer id                                                                                                                                                                                |
+| layer_element_type |   Real   | The layer element type (see [Layer Element Types](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Asset_Management/Rooms/General_Layer_Functions/layer_get_element_type.htm)) |
 
 ### Returns
 
@@ -69,14 +70,14 @@ A way to get the background of a layer using the ID or the name. This only serve
 layer_get_background(layer_id | layer_name);
 ```
 
-| Argument            |    Type     | Description                                                |
-| :------------------ | :---------: | :--------------------------------------------------------- |
-| layer_id/layer_name | Real/String | The layer id or the layer name to get the background from. |
+| Argument            |        Type        | Description                                                |
+| :------------------ | :----------------: | :--------------------------------------------------------- |
+| layer_id/layer_name | Id.Layer or String | The layer id or the layer name to get the background from. |
 
 ### Returns
 
 ```js
-Real;
+Asset.GMSprite;
 ```
 
 ### Example
@@ -102,9 +103,9 @@ A way to get the tileset of a layer using the ID or the name. This only serves t
 layer_get_tileset(layer_id | layer_name);
 ```
 
-| Argument            |    Type     | Description                                             |
-| :------------------ | :---------: | :------------------------------------------------------ |
-| layer_id/layer_name | Real/String | The layer id or the layer name to get the tileset from. |
+| Argument            |        Type        | Description                                             |
+| :------------------ | :----------------: | :------------------------------------------------------ |
+| layer_id/layer_name | Id.Layer or String | The layer id or the layer name to get the tileset from. |
 
 ### Returns
 
@@ -122,3 +123,38 @@ var _layer_tileset = layer_get_tileset(_layer_id);
 ```
 
 The above code will return the tileset id of the layer.
+
+---
+
+# layer_set_depth ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
+
+Sets the depth of a layer by using jus the name of the layer. This is useful when you don't have the layer id stored in a variable or want to check the depth of a layer by its name.
+
+### Syntax
+
+```js
+layer_set_depth(layer_name, depth);
+```
+
+| Argument   |  Type  | Description                             |
+| :--------- | :----: | :-------------------------------------- |
+| layer_name | String | The name of the layer to set the depth. |
+| depth      |  Real  | The depth to set the layer to.          |
+
+### Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+layer_set_depth("Instances", -100);
+var _layer_depth = layer_get_depth(layer_get_id("Instances"));
+show_debug_message("Layer depth: " + string(_layer_depth));
+```
+
+The above code will set the depth of the layer named "Instances" to -100 and then show the depth on console.
+
+---

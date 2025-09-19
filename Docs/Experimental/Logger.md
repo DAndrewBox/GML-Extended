@@ -11,12 +11,12 @@ A new logger object can be created using `gloabal.logger = new Logger(filename, 
 
 ### Internal Parameters
 
-| Parameter |  Type   | Description                       |
-| :-------- | :-----: | :-------------------------------- |
-| file      | File ID | The logger file index             |
-| filename  | String  | The logger filename               |
-| filepath  | String  | The logger filepath               |
-| linked    | Struct  | The logger linked instance struct |
+| Parameter |    Type     | Description                       |
+| :-------- | :---------: | :-------------------------------- |
+| file      | Id.TextFile | The logger file index             |
+| filename  |   String    | The logger filename               |
+| filepath  |   String    | The logger filepath               |
+| linked    |   Struct    | The logger linked instance struct |
 
 The following methods are available:
 
@@ -107,9 +107,9 @@ If there's any linked instance, the loger will execute the `onLog` callback on i
 Logger.log([*args]);
 ```
 
-| Argument | Type | Description                                                                                            |
-| :------- | :--: | :----------------------------------------------------------------------------------------------------- |
-| \*args   | Any  | The message to write to the logger file. Can be separated by commas and will be converted to a string. |
+| Argument | Type  | Description                                                                                            |
+| :------- | :---: | :----------------------------------------------------------------------------------------------------- |
+| \*args   |  Any  | The message to write to the logger file. Can be separated by commas and will be converted to a string. |
 
 ### Returns
 
@@ -147,9 +147,9 @@ If there's any linked instance, the loger will execute the `onWarn` callback on 
 Logger.warn([*args]);
 ```
 
-| Argument | Type | Description                                                                                            |
-| :------- | :--: | :----------------------------------------------------------------------------------------------------- |
-| \*args   | Any  | The message to write to the logger file. Can be separated by commas and will be converted to a string. |
+| Argument | Type  | Description                                                                                            |
+| :------- | :---: | :----------------------------------------------------------------------------------------------------- |
+| \*args   |  Any  | The message to write to the logger file. Can be separated by commas and will be converted to a string. |
 
 ### Returns
 
@@ -187,9 +187,9 @@ If there's any linked instance, the loger will execute the `onError` callback on
 Logger.error([*args]);
 ```
 
-| Argument | Type | Description                                                                                            |
-| :------- | :--: | :----------------------------------------------------------------------------------------------------- |
-| \*args   | Any  | The message to write to the logger file. Can be separated by commas and will be converted to a string. |
+| Argument | Type  | Description                                                                                            |
+| :------- | :---: | :----------------------------------------------------------------------------------------------------- |
+| \*args   |  Any  | The message to write to the logger file. Can be separated by commas and will be converted to a string. |
 
 ### Returns
 

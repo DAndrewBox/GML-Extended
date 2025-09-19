@@ -27,12 +27,12 @@ Returns a boolean if the mouse is inside a GUI area.
 mouse_in_gui_area(x1, y1, x2, y2);
 ```
 
-| Argument | Type  | Description                 |
-| :------- | :---: | :-------------------------- |
-| x1       | Real  | The x1 position of the area |
-| y1       | Real  | The y1 position of the area |
-| x2       | Real  | The x2 position of the area |
-| y2       | Real  | The y2 position of the area |
+| Argument | Type  | Description                       |
+| :------- | :---: | :-------------------------------- |
+| x1       | Real  | The left x position of the area   |
+| y1       | Real  | The top y position of the area    |
+| x2       | Real  | The right x position of the area  |
+| y2       | Real  | The bottom y position of the area |
 
 ### Returns
 
