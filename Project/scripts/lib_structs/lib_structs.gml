@@ -72,6 +72,7 @@ function struct_entries(_struct) {
 	for (var i = 0; i < _struct_len; i++) {
 		var _key = _struct_keys[i];
 		var _value = _struct[$ _key];
+		if (is_undefined(_value)) continue;
 		array_push(_array, [_key, _value]);
 	}
 	

@@ -10,6 +10,7 @@
 - [range](#range)
 - [wrap](#wrap)
 - [random_linear](#random_linear)
+- [random_range_linear](#random_range_linear)
 - [uuid_v4](#uuid_v4)
 - [percentage](#percentage)
 - [dec2hex](#dec2hex)
@@ -309,6 +310,39 @@ show_debug_message("Random value: " + string(_val));
 The above code will return a random value with a linear distribution. Then it will show the random value on console.
 
 ---
+
+# random_linear_range ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
+
+Returns a random value with a linear distribution within a range. This is more random than `random_range()`.
+
+### Syntax
+
+```js
+random_linear_range(n1, n2);
+```
+
+| Argument | Type  | Description                          |
+| :------- | :---: | :----------------------------------- |
+| n1       | Real  | Minimum value of the range to check. |
+| n2       | Real  | Maximum value of the range to check. |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _val = random_linear_range(5, 15);
+show_debug_message("Random value: " + string(_val));
+```
+
+The above code will return a random value with a linear distribution between `5` and `15`. Then it will show the random value on console.
+
+---
+
 
 # uuid_v4 ![](https://img.shields.io/badge/v1.4.0-916800?style=flat)
 

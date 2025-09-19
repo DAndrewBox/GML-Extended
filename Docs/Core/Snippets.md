@@ -15,6 +15,9 @@
 - [room_get_index](#room_get_index)
 - [font_get_index](#font_get_index)
 - [sound_get_index](#sound_get_index)
+- [rand](#rand)
+- [irand](#irand)
+- [rand_linear](#rand_linear)
 
 # del ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
@@ -449,3 +452,110 @@ audio_play_sound(_sound_index, 1, false);
 ```
 
 The above code will get the index of the sound with the name "snd_Jump" and play it once. Using `sound_get_index` ensures that the returned value is of type `Asset.GMSound`, which is compatible with Feather and will not give an error.
+
+---
+
+# rand ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
+
+Snippet for `random` and `random_range`. If only one argument is provided, `random` is used, if two parameters are provided, it uses `random_range`.
+
+### Syntax
+
+```js
+rand(n1, [n2 = undefined]);
+```
+
+| Argument | Type  | Description                                                                    |
+| :------- | :---: | :----------------------------------------------------------------------------- |
+| n1       | Real  | The minimum value to check. If 'n2' is not provided this is the maximum value. |
+| n2       | Real  | The maximum value to check.                                                    |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _val1 = rand(10);       // Random value between 0 and 10
+var _val2 = rand(5, 15);   // Random value between 5 and 15
+
+show_debug_message("Random value 1: " + string(_val1));
+show_debug_message("Random value 2: " + string(_val2));
+```
+
+The above code will return a random value between `0` and `10` for `_val1`, and a random value between `5` and `15` for `_val2`. Then it will show the random values on console.
+
+---
+
+# irand ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
+
+Snippet for `irandom` and `irandom_range`. If only one argument is provided, `irandom` is used, if two parameters are provided, it uses `irandom_range`.
+
+### Syntax
+
+```js
+irand(n1, [n2 = undefined]);
+```
+
+| Argument | Type  | Description                                                                    |
+| :------- | :---: | :----------------------------------------------------------------------------- |
+| n1       | Real  | The minimum value to check. If 'n2' is not provided this is the maximum value. |
+| n2       | Real  | The maximum value to check.                                                    |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _val1 = irand(10);       // Random integer between 0 and 10
+var _val2 = irand(5, 15);   // Random integer between 5 and 15
+
+show_debug_message("Random integer 1: " + string(_val1));
+show_debug_message("Random integer 2: " + string(_val2));
+```
+
+The above code will return a random integer between `0` and `10` for `_val1`, and a random integer between `5` and `15` for `_val2`. Then it will show the random integers on console.
+
+---
+
+# rand_linear ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
+
+Snippet for `random_linear` and `random_linear_range`. If only one argument is provided, `random_linear` is used, if two parameters are provided, it uses `random_linear_range`.
+
+### Syntax
+
+```js
+rand_linear(n1, [n2 = undefined]);
+```
+
+| Argument | Type  | Description                                                                    |
+| :------- | :---: | :----------------------------------------------------------------------------- |
+| n1       | Real  | The minimum value to check. If 'n2' is not provided this is the maximum value. |
+| n2       | Real  | The maximum value to check.                                                    |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+var _val1 = rand_linear(10);       // Random value with linear distribution between 0 and 10
+var _val2 = rand_linear(5, 15);   // Random value with linear distribution between 5 and 15
+
+show_debug_message("Random linear value 1: " + string(_val1));
+show_debug_message("Random linear value 2: " + string(_val2));
+```
+
+The above code will return a random value with a linear distribution between `0` and `10` for `_val1`, and a random value with a linear distribution between `5` and `15` for `_val2`. Then it will show the random values on console.
+
+---

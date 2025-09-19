@@ -6,6 +6,7 @@
 - [layer_get_element_ids_fixed](#layer_get_element_ids_fixed)
 - [layer_get_background](#layer_get_background)
 - [layer_get_tileset](#layer_get_tileset)
+- [layer_set_depth](#layer_set_depth)
 
 # macros ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
@@ -122,3 +123,38 @@ var _layer_tileset = layer_get_tileset(_layer_id);
 ```
 
 The above code will return the tileset id of the layer.
+
+---
+
+# layer_set_depth ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
+
+Sets the depth of a layer by using jus the name of the layer. This is useful when you don't have the layer id stored in a variable or want to check the depth of a layer by its name.
+
+### Syntax
+
+```js
+layer_set_depth(layer_name, depth);
+```
+
+| Argument   |  Type  | Description                             |
+| :--------- | :----: | :-------------------------------------- |
+| layer_name | String | The name of the layer to set the depth. |
+| depth      |  Real  | The depth to set the layer to.          |
+
+### Returns
+
+```js
+None;
+```
+
+### Example
+
+```js
+layer_set_depth("Instances", -100);
+var _layer_depth = layer_get_depth(layer_get_id("Instances"));
+show_debug_message("Layer depth: " + string(_layer_depth));
+```
+
+The above code will set the depth of the layer named "Instances" to -100 and then show the depth on console.
+
+---

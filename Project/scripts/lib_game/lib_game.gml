@@ -36,3 +36,10 @@ function game_get_param_exists(_param) {
 function game_throw_error(_msg) {
 	show_error(__gml_ext_comp_string_ext("Error: {0}", [_msg]), true);
 }
+
+///	@func	game_get_framerate()
+///	@desc	Returns the current game set framerate.
+///	@return	{Real}
+function game_get_framerate() {
+	return game_get_speed(gamespeed_fps);
+}

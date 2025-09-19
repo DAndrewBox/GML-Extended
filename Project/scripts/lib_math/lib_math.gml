@@ -95,6 +95,15 @@ function random_linear(_n = 1) {
 	return sqrt(random(_n))
 }
 
+/// @func	random_range_linear(n1, n2)
+/// @param	{Real}	n1	Minimum value of the range to check.
+/// @param	{Real}	n2	Maximum value of the range to check.
+/// @desc	Returns a random value with a linear distribution within a range. This is more random than `random_range()`.
+///	@return	{Real}
+function random_range_linear(_n1, _n2) {
+	return sqrt(random_range(_n1, _n2));
+}
+
 /// @func	uuid_v4()
 /// @desc	Returns a random UUID v4.
 ///	@return	{String}

@@ -175,3 +175,48 @@ function room_get_index(_name) {
 	// Feather ignore once GM1045 - `asset_get_index` always return type "Asset" and tend to cause errors.
 	return asset_get_index(_name);
 }
+
+/// @func	rand(n1, n2)
+///	@param	{Real}	n1	The minimum value to check. If 'n2' is not provided this is the maximum value.
+///	@param	{Real}	n2	Optional. The maximum value to check.
+///	@desc	Snippet for 'random' and 'random_range'. If only one argument is provided, 'random' is used, if two parameters are provided, it uses 'random_range'.
+///	@return	{Real}	
+function rand(_n1, _n2 = undefined) {
+	if (is_undefined(_n2)) {
+		return random(_n1);
+	}
+	
+	var _min = min(_n1, _n2);
+	var _max = max(_n1, _n2);
+	return random_range(_min, _max);
+}
+
+/// @func	irand(n1, n2)
+///	@param	{Real}	n1	The minimum value to check. If 'n2' is not provided this is the maximum value.
+///	@param	{Real}	n2	Optional. The maximum value to check.
+///	@desc	Snippet for 'irandom' and 'irandom_range'. If only one argument is provided, 'irandom' is used, if two parameters are provided, it uses 'irandom_range'.
+///	@return	{Real}	
+function irand(_n1, _n2 = undefined) {
+	if (is_undefined(_n2)) {
+		return irandom(_n1);
+	}
+	
+	var _min = min(_n1, _n2);
+	var _max = max(_n1, _n2);
+	return irandom_range(_min, _max);
+}
+
+/// @func	rand_linear(n1, n2)
+///	@param	{Real}	n1	The minimum value to check. If 'n2' is not provided this is the maximum value.
+///	@param	{Real}	n2	Optional. The maximum value to check.
+///	@desc	Snippet for 'random_linear' and 'random_range_linear'. If only one argument is provided, 'random_linear' is used, if two parameters are provided, it uses 'random_range_linear'.
+///	@return	{Real}	
+function rand_linear(_n1, _n2 = undefined) {
+	if (is_undefined(_n2)) {
+		return random_linear(_n1);
+	}
+	
+	var _min = min(_n1, _n2);
+	var _max = max(_n1, _n2);
+	return random_range_linear(_min, _max);
+}

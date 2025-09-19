@@ -40,7 +40,7 @@ function file_json_read(_file) {
 		return json_parse(_str);
 	} catch (e) {
 		trace("(GML-Extended) - ERROR! An error ocurred in function 'file_json_read'. Returning an empty struct.");
-		trace($"(GML-Extended) - {e.message}")
+		trace("(GML-Extended) - ", e.message);
 		return {};
 	}
 }

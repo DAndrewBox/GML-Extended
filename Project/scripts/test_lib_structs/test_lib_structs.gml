@@ -98,4 +98,28 @@ suite(function() {
 			expect(struct_equal(_struct_1, _struct_2)).toBeFalsy();
 		});
 	});
+	
+	describe("struct_entries", function() {
+		it("Should return all entries if the struct has elements", function() {
+			var _struct = {
+				testKey1: 1,
+				testKey2: 2,
+			};
+			expect(struct_entries(_struct)).toBe([["testKey1", 1], ["testKey2", 2]]);
+		});
+		
+		it("Should return all entries if the struct is empty", function() {
+			var _struct = {};
+			expect(struct_entries(_struct)).toBe([]);
+		});
+		
+		it("Should return all entries if the struct has undefined elements", function() {
+			var _struct = {
+				testKey1: 1,
+				testKey2: undefined,
+				testKey3: 3,
+			};
+			expect(struct_entries(_struct)).toBe([["testKey1", 1], ["testKey3", 3]]);
+		});
+	});
 });

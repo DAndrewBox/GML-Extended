@@ -79,7 +79,8 @@ function color_get_hsv_normalized(_color) {
 /// @desc	Converts a decimal color value to a hexadecimal string. The resulting string will be in the format `RRGGBB`.
 ///	@return	{String}
 function color_to_hex_rgb(_color) {
-    return dec2hex(_color, 6);
+	var _dec = (_color & 16711680) >> 16 | (_color & 65280) | (_color & 255) << 16;
+    return dec2hex(_dec, 6);
 }
 
 /// @func	color_to_hex_rgba(color_rgb, alpha)
@@ -88,8 +89,7 @@ function color_to_hex_rgb(_color) {
 /// @desc	Converts a decimal color given a normalized alpha value to a 8-char long hexadecimal string. The resulting string will be in the format `RRGGBBAA`.
 ///	@return	{String}
 function color_to_hex_rgba(_rgb_dec, _alpha = 1.) {
-	var _dec = (_rgb_dec & 16711680) >> 16 | (_rgb_dec & 65280) | (_rgb_dec & 255) << 16;
-	var _hex = color_to_hex_rgb(_dec);
+	var _hex = color_to_hex_rgb(_rgb_dec);
 	var _hex_alpha = dec2hex(floor(_alpha * 255), 2);
 	
 	return _hex + _hex_alpha;
