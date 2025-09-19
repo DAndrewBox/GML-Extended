@@ -15,7 +15,7 @@ Any of the releases of this extension are compatible with GameMaker Studio from 
 
 ✅: Fully compatible. (\*: Recommended for this version.)
 
-⚠️: Compatible but could have some issues with the new features of the version.
+⚠️: May be incompatible in some versions.
 
 ❌: Not compatible.
 
