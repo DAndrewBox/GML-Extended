@@ -14,6 +14,10 @@
 - [uuid_v4](#uuid_v4)
 - [percentage](#percentage)
 - [dec2hex](#dec2hex)
+- [approach](#approach)
+- [lerp_angle](#lerp_angle)
+- [normalize](#normalize)
+- [snap](#snap)
 
 ---
 
@@ -436,3 +440,131 @@ show_debug_message("Hex: " + _hex);
 ```
 
 The above code will convert the decimal number `255` to a hexadecimal string with a minimum length of `4`. The resulting string will be `00FF`. Then it will show the hexadecimal string on console.
+
+---
+
+# approach ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Moves a value towards a target by a fixed step without ever overshooting it, and returns the target once it is reached. The sign of the step is ignored, so it always moves in the right direction.
+
+### Syntax
+
+```js
+approach(value, target, step);
+```
+
+| Argument       | Type                     | Description |
+| :------------- | :----------------------- | :---------- |
+| value          | Real                     | The current value |
+| target         | Real                     | The value to move towards |
+| step           | Real                     | How much to move on this call |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+// Step event, smoothly bring the speed down to 0
+hsp = approach(hsp, 0, friction_amount);
+```
+
+---
+
+# lerp_angle ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Interpolates between two angles taking the shortest way around the circle, so going from 350 to 10 moves forward through 0 instead of all the way back.
+
+### Syntax
+
+```js
+lerp_angle(angle1, angle2, amount);
+```
+
+| Argument       | Type                     | Description |
+| :------------- | :----------------------- | :---------- |
+| angle1         | Real                     | The angle to start from, in degrees |
+| angle2         | Real                     | The angle to move towards, in degrees |
+| amount         | Real                     | The normalized amount to move (0.0-1.0) |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+// Step event, turn the turret smoothly towards the mouse
+image_angle = lerp_angle(image_angle, point_direction(x, y, mouse_x, mouse_y), 0.2);
+```
+
+---
+
+# normalize ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Converts a value from one range to another. With the default arguments it normalizes the value between 0 and 1. The value is not clamped, so a value outside the input range lands outside the output range too.
+
+### Syntax
+
+```js
+normalize(value, in_min, in_max, [(out_min = 0)], [(out_max = 1)]);
+```
+
+| Argument       | Type                     | Description |
+| :------------- | :----------------------- | :---------- |
+| value          | Real                     | The value to convert |
+| in_min         | Real                     | Minimum of the range the value belongs to |
+| in_max         | Real                     | Maximum of the range the value belongs to |
+| out_min        | Real                     | Minimum of the range to convert to |
+| out_max        | Real                     | Maximum of the range to convert to |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+show_debug_message(normalize(5, 0, 10)); // 0.5
+show_debug_message(normalize(hp, 0, hp_max, 0, sprite_get_width(s_bar))); // bar width
+```
+
+---
+
+# snap ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Rounds a value to the closest multiple of `grid`. A grid of 0 returns the value as it is.
+
+### Syntax
+
+```js
+snap(value, grid);
+```
+
+| Argument       | Type                     | Description |
+| :------------- | :----------------------- | :---------- |
+| value          | Real                     | The value to snap |
+| grid           | Real                     | The size of the grid to snap to |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+// Snap the instance to a 16px tile grid
+x = snap(mouse_x, 16);
+y = snap(mouse_y, 16);
+```
+
+---

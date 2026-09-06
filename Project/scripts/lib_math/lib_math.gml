@@ -176,3 +176,54 @@ function dec2hex(_dec, _hex_len = 6) {
  
     return string_pad_left(_hex, "0", _hex_len);
 }
+
+/// @func	approach(value, target, step)
+/// @param	{Real}	value	The current value.
+/// @param	{Real}	target	The value to move towards.
+/// @param	{Real}	step	How much to move on this call. The sign is ignored.
+/// @desc	Moves a value towards a target by a fixed step without ever overshooting it. Returns the target once it is reached.
+///	@return	{Real}
+function approach(_val, _target, _step) {
+	_step = abs(_step);
+
+	if (_val < _target) return min(_val + _step, _target);
+	return max(_val - _step, _target);
+}
+
+/// @func	lerp_angle(angle1, angle2, amount)
+/// @param	{Real}	angle1	The angle to start from, in degrees.
+/// @param	{Real}	angle2	The angle to move towards, in degrees.
+/// @param	{Real}	amount	The normalized amount to move. (0.0-1.0)
+/// @desc	Interpolates between two angles taking the shortest way around the circle, so going from 350 to 10 moves forward instead of all the way back.
+///	@return	{Real}
+function lerp_angle(_angle_1, _angle_2, _amount) {
+	return _angle_1 + angle_difference(_angle_2, _angle_1) * _amount;
+}
+
+/// @func	normalize(value, in_min, in_max, [out_min], [out_max])
+/// @param	{Real}	value	The value to convert.
+/// @param	{Real}	in_min	The minimum of the range the value belongs to.
+/// @param	{Real}	in_max	The maximum of the range the value belongs to.
+/// @param	{Real}	out_min	Optional. The minimum of the range to convert the value to. (Default: 0)
+/// @param	{Real}	out_max	Optional. The maximum of the range to convert the value to. (Default: 1)
+/// @desc	Converts a value from one range to another. With the default arguments it normalizes the value between 0 and 1. The value is not clamped, so a value outside the input range lands outside the output range too.
+///	@return	{Real}
+function normalize(_val, _in_min, _in_max, _out_min = 0, _out_max = 1) {
+	if (_in_min == _in_max) {
+		trace("(GML-Extended) - ERROR! On function \"normalize()\". \"in_min\" and \"in_max\" cannot be the same value.");
+		return _out_min;
+	}
+
+	return _out_min + (_val - _in_min) / (_in_max - _in_min) * (_out_max - _out_min);
+}
+
+/// @func	snap(value, grid)
+/// @param	{Real}	value	The value to snap.
+/// @param	{Real}	grid	The size of the grid to snap the value to.
+/// @desc	Rounds a value to the closest multiple of `grid`. A grid of 0 returns the value as it is.
+///	@return	{Real}
+function snap(_val, _grid) {
+	if (_grid == 0) return _val;
+
+	return round(_val / _grid) * _grid;
+}

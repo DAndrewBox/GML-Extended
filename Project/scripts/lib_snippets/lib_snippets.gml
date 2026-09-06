@@ -1,7 +1,7 @@
 /// @func	del(object_index, [exec_event])
 /// @param	{Id.Instance|Asset.GMObject}	object_index	The index of the object or the id of the instance.
 /// @param	{Bool}							exec_event		Optional. Whether to execute the destroy event or not after delete.
-/// @desc	Deletes an instance and executes the destroy event of the object. Serves as a shortcut for `instance_destroy`.
+/// @desc	Deletes an instance and executes the destroy event of the object. Serves as a alias for `instance_destroy`.
 ///	@return	{Undefined}
 function del(_obj = id, _exec_ev = true) {
 	instance_destroy(_obj, _exec_ev);
@@ -44,7 +44,7 @@ function get_size(_e, _type = noone) {
 /// @param	{Any}		find_this		The element to check if it's inside.
 /// @param	{Any}		search_here		The container to check if the element is in.
 /// @param	{String|Real}	container_type	Optional. The type of the container. Prefer using `gm_type_*` or `ds_type_*`.
-/// @desc	Checks if an element is inside a container. Serves as a shortcut for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
+/// @desc	Checks if an element is inside a container. Serves as a alias for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
 ///	@return	{Bool}
 function contains(_elem, _container, _container_type = "") {
 	static _forbidden_elem_types = [
@@ -115,7 +115,7 @@ function contains(_elem, _container, _container_type = "") {
 
 /// @func	trace(*args)
 /// @param	{Any}	*args	The messages to print.
-/// @desc	Prints a message to the console. Serves as a shortcut for `show_debug_message`.
+/// @desc	Prints a message to the console. Serves as a alias for `show_debug_message`.
 ///	@return	{Undefined}
 function trace() {
 	var _str = "";
@@ -127,7 +127,7 @@ function trace() {
 
 /// @func	alert(*args)
 /// @param	{Any}	*args	The message to show.
-/// @desc	Shows an alert dialog with the message passed as argument. The dialog will stop anything happening in the game until the user clicks the OK button. Server as a shortcut for `show_message`.
+/// @desc	Shows an alert dialog with the message passed as argument. The dialog will stop anything happening in the game until the user clicks the OK button. Server as a alias for `show_message`.
 ///	@return	{Undefined}
 function alert() {
 	var _args = array_create(argument_count, undefined);
@@ -139,7 +139,7 @@ function alert() {
 
 /// @func	alert_async(*args)
 /// @param	{Any}	*args	The message to show
-/// @desc	Shows an alert dialog with the message passed as argument. The dialog **will not** stop anything happening in the game. Server as a shortcut for `show_message_async`.
+/// @desc	Shows an alert dialog with the message passed as argument. The dialog **will not** stop anything happening in the game. Server as a alias for `show_message_async`.
 ///	@return	{Undefined}
 function alert_async() {
 	var _args = array_create(argument_count, undefined);
@@ -151,7 +151,7 @@ function alert_async() {
 
 /// @func	view_get_x(view)
 /// @param	{Real}	view	The view index to get the X position from.
-/// @desc	Gets the X position of the view passed as argument. Serves as a shortcut for `camera_get_view_x(view_camera[view_current])`.
+/// @desc	Gets the X position of the view passed as argument. Serves as a alias for `camera_get_view_x(view_camera[view_current])`.
 ///	@return	{Real}
 function view_get_x(_view = view_current) {
 	return camera_get_view_x(view_camera[_view]);
@@ -159,7 +159,7 @@ function view_get_x(_view = view_current) {
 
 /// @func	view_get_y(view)
 /// @param	{Real}	view	The view index to get the Y position from.
-/// @desc	Gets the Y position of the view passed as argument. Serves as a shortcut for `camera_get_view_y(view_camera[view_current])`.
+/// @desc	Gets the Y position of the view passed as argument. Serves as a alias for `camera_get_view_y(view_camera[view_current])`.
 ///	@return	{Real}
 function view_get_y(_view = view_current) {
 	return camera_get_view_y(view_camera[_view]);
@@ -253,4 +253,22 @@ function rand_linear(_n1, _n2 = undefined) {
 	var _min = min(_n1, _n2);
 	var _max = max(_n1, _n2);
 	return random_range_linear(_min, _max);
+}
+
+/// @func	trace_once(*args)
+/// @param	{Any}	*args	The messages to print.
+/// @desc	Prints a message to the console the first time it is used and ignores it from then on. Useful inside a Step event where `trace` would spam the log every frame. Messages are told apart by their text, so a message with a changing value prints again every time it changes.
+///	@return	{Undefined}
+function trace_once() {
+	static _seen = {};
+	var _str = "";
+
+	for (var i = 0; i < argument_count; i++) {
+		_str += string(argument[i]);
+	}
+
+	if (variable_struct_exists(_seen, _str)) return;
+
+	_seen[$ _str] = true;
+	show_debug_message(_str);
 }

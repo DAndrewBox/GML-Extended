@@ -48,12 +48,28 @@ function instance_any_exists() {
 	return false;
 }
 
-/// @func	instance_in_room(object_index_or_id)
-/// @param	{Id.Instance|Asset.GMObject}	object_index_or_id		The index of the object or the id of the instance
-/// @desc	Returns true if an instance of the object exists inside the boundaries of the room.
-function instance_in_room(_inst) {
+/// @func	is_inside_room([instance], [full])
+/// @param	{Id.Instance|Asset.GMObject}	instance	Optional. The instance to check. (Default: id)
+/// @param	{Bool}							full		Optional. Require the whole bounding box to be inside the room. (Default: false)
+/// @desc	Returns `true` if the bounding box of the instance is inside the room boundaries. Any overlap counts by default, set `full` to `true` to require the whole bounding box to be inside the room. Returns `false` if the instance does not exist.
+///	@return	{Bool}
+function is_inside_room(_inst = id, _full = false) {
+	if (!instance_exists(_inst)) return false;
+
+	if (_full) {
+		return	(_inst.bbox_left >= 0 && _inst.bbox_right <= room_width) &&
+				(_inst.bbox_top >= 0 && _inst.bbox_bottom <= room_height);
+	}
+
 	return	(_inst.bbox_right >= 0 && _inst.bbox_left <= room_width) &&
 			(_inst.bbox_bottom >= 0 && _inst.bbox_top <= room_height);
+}
+
+/// @func	instance_in_room(object_index_or_id)
+/// @param	{Id.Instance|Asset.GMObject}	object_index_or_id		The index of the object or the id of the instance
+/// @desc	Returns true if an instance of the object exists inside the boundaries of the room. Serves as an alias for `is_inside_room`.
+function instance_in_room(_inst) {
+	return is_inside_room(_inst);
 }
 
 /// @func	instance_get_all(object_index)

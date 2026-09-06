@@ -2,7 +2,7 @@
   "$GMProject":"v1",
   "%Name":"GML-Extended",
   "AudioGroups":[
-    {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
     "children":[],
@@ -71,6 +71,7 @@
     {"id":{"name":"lib_colors_experimental","path":"scripts/lib_colors_experimental/lib_colors_experimental.yy",},},
     {"id":{"name":"lib_colors","path":"scripts/lib_colors/lib_colors.yy",},},
     {"id":{"name":"lib_compatibility","path":"scripts/lib_compatibility/lib_compatibility.yy",},},
+    {"id":{"name":"lib_data_structures","path":"scripts/lib_data_structures/lib_data_structures.yy",},},
     {"id":{"name":"lib_draw","path":"scripts/lib_draw/lib_draw.yy",},},
     {"id":{"name":"lib_ease","path":"scripts/lib_ease/lib_ease.yy",},},
     {"id":{"name":"lib_files_experimental","path":"scripts/lib_files_experimental/lib_files_experimental.yy",},},
@@ -97,6 +98,7 @@
     {"id":{"name":"test_lib_arrays","path":"scripts/test_lib_arrays/test_lib_arrays.yy",},},
     {"id":{"name":"test_lib_ease","path":"scripts/test_lib_ease/test_lib_ease.yy",},},
     {"id":{"name":"test_lib_colors","path":"scripts/test_lib_colors/test_lib_colors.yy",},},
+    {"id":{"name":"test_lib_data_structures","path":"scripts/test_lib_data_structures/test_lib_data_structures.yy",},},
     {"id":{"name":"test_lib_instances_and_events","path":"scripts/test_lib_instances_and_events/test_lib_instances_and_events.yy",},},
     {"id":{"name":"test_lib_math","path":"scripts/test_lib_math/test_lib_math.yy",},},
     {"id":{"name":"test_lib_shortcuts","path":"scripts/test_lib_shortcuts/test_lib_shortcuts.yy",},},

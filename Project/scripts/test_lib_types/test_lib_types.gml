@@ -16,6 +16,40 @@ suite(function() {
 		});
 	});
 
+	describe("trunc", function() {
+		it("Should drop the decimals of a positive value", function() {
+			expect(trunc(10.5)).toBe(10);
+			expect(trunc(0.99)).toBe(0);
+			expect(trunc(100)).toBe(100);
+		});
+
+		it("Should truncate towards zero for a negative value", function() {
+			expect(trunc(-10.5)).toBe(-10);
+			expect(trunc(-0.99)).toBe(0);
+			expect(trunc(-100)).toBe(-100);
+		});
+
+		it("Should never round up", function() {
+			expect(trunc(9.999)).toBe(9);
+			expect(trunc(-9.999)).toBe(-9);
+		});
+
+		it("Should be symmetric around zero", function() {
+			expect(trunc(7.75)).toBe(-trunc(-7.75));
+			expect(trunc(0)).toBe(0);
+		});
+
+		it("Should convert a numeric string", function() {
+			expect(trunc("12.9")).toBe(12);
+			expect(trunc("-12.9")).toBe(-12);
+		});
+
+		it("Should match int for every value", function() {
+			expect(trunc(10.5)).toBe(int(10.5));
+			expect(trunc(-10.5)).toBe(int(-10.5));
+		});
+	});
+
 	describe("int", function() {
 		it("Should return a value as integer", function() {
 			expect(int(100)).toBe(100);

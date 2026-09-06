@@ -230,4 +230,270 @@ suite(function() {
 			expect(_arr[2]).toBeEqual([1, 2, 3]);
 		});
 	});
+
+	describe("array_chunk", function() {
+		it("Should split the array in even chunks", function() {
+			expect(array_chunk([1, 2, 3, 4], 2)).toBeEqual([[1, 2], [3, 4]]);
+		});
+
+		it("Should put the remainder in the last chunk", function() {
+			var _chunks = array_chunk([1, 2, 3, 4, 5], 2);
+
+			expect(_chunks).toHaveLength(3);
+			expect(_chunks[2]).toBeEqual([5]);
+		});
+
+		it("Should return one chunk when the size is bigger than the array", function() {
+			expect(array_chunk([1, 2], 10)).toBeEqual([[1, 2]]);
+		});
+
+		it("Should return one chunk per element for a size of 1", function() {
+			expect(array_chunk([1, 2, 3], 1)).toBeEqual([[1], [2], [3]]);
+		});
+
+		it("Should return an empty array for an empty input", function() {
+			expect(array_chunk([], 2)).toBeEqual([]);
+		});
+
+		it("Should return an empty array for a size of 0 or less", function() {
+			expect(array_chunk([1, 2, 3], 0)).toBeEqual([]);
+			expect(array_chunk([1, 2, 3], -1)).toBeEqual([]);
+		});
+	});
+
+	describe("array_flatten", function() {
+		it("Should unwrap one level of nesting", function() {
+			expect(array_flatten([[1, 2], [3, 4]])).toBeEqual([1, 2, 3, 4]);
+		});
+
+		it("Should unwrap every level by default", function() {
+			expect(array_flatten([1, [2, [3, [4]]]])).toBeEqual([1, 2, 3, 4]);
+		});
+
+		it("Should stop at the given depth", function() {
+			expect(array_flatten([1, [2, [3]]], 1)).toBeEqual([1, 2, [3]]);
+			expect(array_flatten([1, [2, [3]]], 0)).toBeEqual([1, [2, [3]]]);
+		});
+
+		it("Should keep a flat array as it is", function() {
+			expect(array_flatten([1, 2, 3])).toBeEqual([1, 2, 3]);
+		});
+
+		it("Should drop empty nested arrays", function() {
+			expect(array_flatten([1, [], [2]])).toBeEqual([1, 2]);
+		});
+
+		it("Should return an empty array for an empty input", function() {
+			expect(array_flatten([])).toBeEqual([]);
+		});
+
+		it("Should not modify the original array", function() {
+			var _arr = [1, [2, 3]];
+			array_flatten(_arr);
+
+			expect(_arr).toHaveLength(2);
+			expect(_arr[1]).toBeEqual([2, 3]);
+		});
+	});
+
+	describe("array_group_by", function() {
+		it("Should group the elements by the callback result", function() {
+			var _groups = array_group_by([1, 2, 3, 4, 5], function (_value) {
+				return (_value mod 2 == 0) ? "even" : "odd";
+			});
+
+			expect(_groups.even).toBeEqual([2, 4]);
+			expect(_groups.odd).toBeEqual([1, 3, 5]);
+		});
+
+		it("Should pass the index to the callback", function() {
+			var _groups = array_group_by(["a", "b", "c"], function (_value, _index) {
+				return _index < 2 ? "first" : "rest";
+			});
+
+			expect(_groups.first).toBeEqual(["a", "b"]);
+			expect(_groups.rest).toBeEqual(["c"]);
+		});
+
+		it("Should convert the key to a string", function() {
+			var _groups = array_group_by([1, 2], function (_value) {
+				return _value;
+			});
+
+			expect(struct_key_exists(_groups, "1")).toBeTruthy();
+			expect(struct_key_exists(_groups, "2")).toBeTruthy();
+		});
+
+		it("Should return a single group when every key matches", function() {
+			var _groups = array_group_by([1, 2, 3], function (_value) {
+				return "all";
+			});
+
+			expect(_groups).toHaveLength(1);
+			expect(_groups.all).toBeEqual([1, 2, 3]);
+		});
+
+		it("Should return an empty struct for an empty array", function() {
+			expect(array_group_by([], function (_value) { return "a"; })).toHaveLength(0);
+		});
+	});
+
+	describe("array_sum", function() {
+		it("Should add up every number", function() {
+			expect(array_sum([1, 2, 3, 4])).toBe(10);
+			expect(array_sum([1.5, 2.5])).toBe(4);
+			expect(array_sum([-5, 5])).toBe(0);
+		});
+
+		it("Should ignore the values that are not numbers", function() {
+			expect(array_sum([1, "two", 3, undefined])).toBe(4);
+		});
+
+		it("Should return 0 for an empty array", function() {
+			expect(array_sum([])).toBe(0);
+			expect(array_sum(["a", "b"])).toBe(0);
+		});
+	});
+
+	describe("array_mean", function() {
+		it("Should return the average of the numbers", function() {
+			expect(array_mean([1, 2, 3])).toBe(2);
+			expect(array_mean([10, 20])).toBe(15);
+			expect(array_mean([5])).toBe(5);
+		});
+
+		it("Should only count the numeric values", function() {
+			expect(array_mean([1, "skip", 3])).toBe(2);
+		});
+
+		it("Should return 0 for an array without numbers", function() {
+			expect(array_mean([])).toBe(0);
+			expect(array_mean(["a"])).toBe(0);
+		});
+	});
+
+	describe("array_median", function() {
+		it("Should return the middle value of an odd amount", function() {
+			expect(array_median([1, 2, 3])).toBe(2);
+			expect(array_median([5, 1, 3])).toBe(3);
+		});
+
+		it("Should average the two middle values of an even amount", function() {
+			expect(array_median([1, 2, 3, 4])).toBe(2.5);
+			expect(array_median([4, 1, 3, 2])).toBe(2.5);
+		});
+
+		it("Should not depend on the order of the array", function() {
+			expect(array_median([9, 1, 5])).toBe(array_median([1, 5, 9]));
+		});
+
+		it("Should not modify the original array", function() {
+			var _arr = [3, 1, 2];
+			array_median(_arr);
+
+			expect(_arr).toBeEqual([3, 1, 2]);
+		});
+
+		it("Should only count the numeric values", function() {
+			expect(array_median([1, "skip", 3, "skip", 5])).toBe(3);
+		});
+
+		it("Should return 0 for an array without numbers", function() {
+			expect(array_median([])).toBe(0);
+			expect(array_median(["a"])).toBe(0);
+		});
+	});
+
+	describe("array_sample", function() {
+		it("Should return an array with the requested amount", function() {
+			expect(array_sample([1, 2, 3, 4, 5], 3)).toHaveLength(3);
+			expect(array_sample([1, 2, 3], 1)).toHaveLength(1);
+		});
+
+		it("Should default to a single element", function() {
+			expect(array_sample([1, 2, 3])).toHaveLength(1);
+		});
+
+		it("Should only return elements of the array", function() {
+			var _source = ["a", "b", "c", "d"];
+
+			repeat (50) {
+				var _sample = array_sample(_source, 2);
+				expect(contains(_sample[0], _source)).toBeTruthy();
+				expect(contains(_sample[1], _source)).toBeTruthy();
+			}
+		});
+
+		it("Should never repeat an element by default", function() {
+			repeat (50) {
+				var _sample = array_sample([1, 2, 3, 4], 4);
+				array_sort(_sample, sort_ascending);
+				expect(_sample).toBeEqual([1, 2, 3, 4]);
+			}
+		});
+
+		it("Should cap an unique sample to the array length", function() {
+			expect(array_sample([1, 2], 10)).toHaveLength(2);
+		});
+
+		it("Should allow repeats when unique is false", function() {
+			expect(array_sample([1], 5, false)).toBeEqual([1, 1, 1, 1, 1]);
+			expect(array_sample([1, 2], 10, false)).toHaveLength(10);
+		});
+
+		it("Should return an empty array for an empty input or a count below 1", function() {
+			expect(array_sample([], 3)).toBeEqual([]);
+			expect(array_sample([1, 2], 0)).toBeEqual([]);
+			expect(array_sample([1, 2], -1)).toBeEqual([]);
+		});
+
+		it("Should not modify the original array", function() {
+			var _arr = [1, 2, 3];
+			array_sample(_arr, 3);
+
+			expect(_arr).toBeEqual([1, 2, 3]);
+		});
+	});
+
+	describe("array_swap", function() {
+		it("Should swap the two elements in place", function() {
+			var _arr = [1, 2, 3];
+			array_swap(_arr, 0, 2);
+
+			expect(_arr).toBeEqual([3, 2, 1]);
+		});
+
+		it("Should return the same array", function() {
+			var _arr = [1, 2];
+
+			expect(array_swap(_arr, 0, 1)).toBeEqual([2, 1]);
+			expect(_arr).toBeEqual([2, 1]);
+		});
+
+		it("Should do nothing when both indexes are the same", function() {
+			var _arr = [1, 2, 3];
+			array_swap(_arr, 1, 1);
+
+			expect(_arr).toBeEqual([1, 2, 3]);
+		});
+
+		it("Should leave the array untouched for an index out of bounds", function() {
+			var _arr = [1, 2, 3];
+
+			array_swap(_arr, 0, 5);
+			expect(_arr).toBeEqual([1, 2, 3]);
+
+			array_swap(_arr, -1, 1);
+			expect(_arr).toBeEqual([1, 2, 3]);
+		});
+
+		it("Should swap values of different types", function() {
+			var _arr = ["a", 2];
+			array_swap(_arr, 0, 1);
+
+			expect(_arr[0]).toBe(2);
+			expect(_arr[1]).toBe("a");
+		});
+	});
+
 });

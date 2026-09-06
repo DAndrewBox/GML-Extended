@@ -93,6 +93,52 @@ suite(function() {
 		});
 	});
 
+	describe("string_remove_duplicate_chars", function() {
+		it("Should collapse repeated spaces by default", function() {
+			expect(string_remove_duplicate_chars("a  b")).toBe("a b");
+			expect(string_remove_duplicate_chars("one     two")).toBe("one two");
+			expect(string_remove_duplicate_chars("  lead and trail  ")).toBe(" lead and trail ");
+		});
+
+		it("Should collapse any given character", function() {
+			expect(string_remove_duplicate_chars("a..b", ".")).toBe("a.b");
+			expect(string_remove_duplicate_chars("a.....b", ".")).toBe("a.b");
+			expect(string_remove_duplicate_chars("x---y", "-")).toBe("x-y");
+		});
+
+		it("Should collapse every run in the string", function() {
+			expect(string_remove_duplicate_chars("a  b   c    d")).toBe("a b c d");
+			expect(string_remove_duplicate_chars("..a..b..", ".")).toBe(".a.b.");
+		});
+
+		it("Should leave a string without repeats untouched", function() {
+			expect(string_remove_duplicate_chars("a b c")).toBe("a b c");
+			expect(string_remove_duplicate_chars("no dots here", ".")).toBe("no dots here");
+		});
+
+		it("Should keep the other characters as they are", function() {
+			expect(string_remove_duplicate_chars("aaa  bbb", " ")).toBe("aaa bbb");
+		});
+
+		it("Should collapse a multi character sequence", function() {
+			expect(string_remove_duplicate_chars("aXYXYb", "XY")).toBe("aXYb");
+			expect(string_remove_duplicate_chars("XYXYXY", "XY")).toBe("XY");
+		});
+
+		it("Should handle empty inputs", function() {
+			expect(string_remove_duplicate_chars("", " ")).toBe("");
+			expect(string_remove_duplicate_chars("a  b", "")).toBe("a  b");
+		});
+
+		it("Should collapse a string made only of the character", function() {
+			expect(string_remove_duplicate_chars("     ")).toBe(" ");
+		});
+
+		it("Should convert a non string value first", function() {
+			expect(string_remove_duplicate_chars(1100, "0")).toBe("110");
+		});
+	});
+
 	describe("string_pad_left", function() {
 		it("Should add chars at the start", function() {
 			expect(string_pad_left("Hello World", " ", 20)).toBe("         Hello World");
@@ -173,4 +219,155 @@ suite(function() {
 			expect(string_percentage(50, 0)).toBe("0%");
 		});
 	});
+
+	describe("string_truncate", function() {
+		it("Should leave a short enough string untouched", function() {
+			expect(string_truncate("Hello", 10)).toBe("Hello");
+			expect(string_truncate("Hello", 5)).toBe("Hello");
+		});
+
+		it("Should cut the string and add the suffix", function() {
+			expect(string_truncate("Hello World", 8)).toBe("Hello...");
+			expect(string_truncate("abcdefghij", 5)).toBe("ab...");
+		});
+
+		it("Should never return more than max_length chars", function() {
+			expect(string_truncate("Hello World", 8)).toHaveLength(8);
+			expect(string_truncate("Hello World", 4)).toHaveLength(4);
+			expect(string_truncate("Hello World", 1)).toHaveLength(1);
+		});
+
+		it("Should use a custom suffix", function() {
+			expect(string_truncate("Hello World", 7, "~")).toBe("Hello ~");
+			expect(string_truncate("Hello World", 6, "")).toBe("Hello ");
+		});
+
+		it("Should cut the suffix when it does not fit", function() {
+			expect(string_truncate("Hello World", 2)).toBe("..");
+			expect(string_truncate("Hello World", 3)).toBe("...");
+		});
+
+		it("Should return an empty string for a max length of 0 or less", function() {
+			expect(string_truncate("Hello", 0)).toBe("");
+			expect(string_truncate("Hello", -5)).toBe("");
+		});
+
+		it("Should convert a non string value first", function() {
+			expect(string_truncate(1234567, 5)).toBe("12...");
+		});
+	});
+
+	describe("string_to_snake", function() {
+		it("Should convert spaced words", function() {
+			expect(string_to_snake("Hello World")).toBe("hello_world");
+			expect(string_to_snake("this is a test")).toBe("this_is_a_test");
+		});
+
+		it("Should convert camelCase and PascalCase", function() {
+			expect(string_to_snake("helloWorld")).toBe("hello_world");
+			expect(string_to_snake("HelloWorld")).toBe("hello_world");
+			expect(string_to_snake("myVariableName")).toBe("my_variable_name");
+		});
+
+		it("Should convert dashes and keep single underscores", function() {
+			expect(string_to_snake("hello-world")).toBe("hello_world");
+			expect(string_to_snake("hello_world")).toBe("hello_world");
+		});
+
+		it("Should collapse repeated separators", function() {
+			expect(string_to_snake("hello   world")).toBe("hello_world");
+			expect(string_to_snake("hello -_ world")).toBe("hello_world");
+		});
+
+		it("Should not start with a separator", function() {
+			expect(string_to_snake("  hello")).toBe("hello");
+			expect(string_to_snake("_hello")).toBe("hello");
+		});
+
+		it("Should keep digits as part of the word", function() {
+			expect(string_to_snake("item2Name")).toBe("item2_name");
+		});
+
+		it("Should handle an empty string", function() {
+			expect(string_to_snake("")).toBe("");
+		});
+	});
+
+	describe("string_to_camel", function() {
+		it("Should convert snake_case and spaced words", function() {
+			expect(string_to_camel("hello_world")).toBe("helloWorld");
+			expect(string_to_camel("hello world")).toBe("helloWorld");
+			expect(string_to_camel("this is a test")).toBe("thisIsATest");
+		});
+
+		it("Should lowercase the first letter", function() {
+			expect(string_to_camel("HelloWorld")).toBe("helloWorld");
+			expect(string_to_camel("Hello World")).toBe("helloWorld");
+		});
+
+		it("Should convert dashes", function() {
+			expect(string_to_camel("hello-world-again")).toBe("helloWorldAgain");
+		});
+
+		it("Should collapse repeated separators", function() {
+			expect(string_to_camel("hello___world")).toBe("helloWorld");
+			expect(string_to_camel("hello   world")).toBe("helloWorld");
+		});
+
+		it("Should ignore leading separators", function() {
+			expect(string_to_camel("_hello_world")).toBe("helloWorld");
+			expect(string_to_camel("  hello world")).toBe("helloWorld");
+		});
+
+		it("Should handle an empty string", function() {
+			expect(string_to_camel("")).toBe("");
+		});
+
+		it("Should be reversible with string_to_snake", function() {
+			expect(string_to_snake(string_to_camel("my_long_key_name"))).toBe("my_long_key_name");
+		});
+	});
+
+	describe("string_slugify", function() {
+		it("Should lowercase and join words with a dash", function() {
+			expect(string_slugify("Hello World")).toBe("hello-world");
+			expect(string_slugify("My Cool Game Title")).toBe("my-cool-game-title");
+		});
+
+		it("Should drop the special characters", function() {
+			expect(string_slugify("Hello, World!")).toBe("hello-world");
+			expect(string_slugify("what?? really!!")).toBe("what-really");
+		});
+
+		it("Should keep the allowed characters", function() {
+			expect(string_slugify("hello_world", "_")).toBe("hello_world");
+			expect(string_slugify("a.b.c", ".")).toBe("a.b.c");
+			expect(string_slugify("keep_this.and-that", "_.")).toBe("keep_this.and-that");
+		});
+
+		it("Should keep digits", function() {
+			expect(string_slugify("Level 42 Boss")).toBe("level-42-boss");
+		});
+
+		it("Should collapse runs of removed characters", function() {
+			expect(string_slugify("a   b")).toBe("a-b");
+			expect(string_slugify("a - ? - b")).toBe("a-b");
+		});
+
+		it("Should not start or end with a separator", function() {
+			expect(string_slugify("  Hello World  ")).toBe("hello-world");
+			expect(string_slugify("!!!Hello!!!")).toBe("hello");
+		});
+
+		it("Should use a custom separator", function() {
+			expect(string_slugify("Hello World", "", "_")).toBe("hello_world");
+			expect(string_slugify("Hello World", "", "")).toBe("helloworld");
+		});
+
+		it("Should return an empty string when nothing is kept", function() {
+			expect(string_slugify("!!!")).toBe("");
+			expect(string_slugify("")).toBe("");
+		});
+	});
+
 });

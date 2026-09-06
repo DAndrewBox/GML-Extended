@@ -335,4 +335,131 @@ suite(function() {
 			}
 		});
 	});
+
+	describe("approach", function() {
+		it("Should move up towards the target", function() {
+			expect(approach(0, 10, 3)).toBe(3);
+			expect(approach(3, 10, 3)).toBe(6);
+		});
+
+		it("Should move down towards the target", function() {
+			expect(approach(10, 0, 3)).toBe(7);
+			expect(approach(0, -10, 4)).toBe(-4);
+		});
+
+		it("Should never overshoot the target", function() {
+			expect(approach(9, 10, 5)).toBe(10);
+			expect(approach(1, 0, 5)).toBe(0);
+			expect(approach(-1, 0, 5)).toBe(0);
+		});
+
+		it("Should return the target once it is reached", function() {
+			expect(approach(10, 10, 3)).toBe(10);
+		});
+
+		it("Should ignore the sign of the step", function() {
+			expect(approach(0, 10, -3)).toBe(3);
+			expect(approach(10, 0, -3)).toBe(7);
+		});
+
+		it("Should not move for a step of 0", function() {
+			expect(approach(5, 10, 0)).toBe(5);
+		});
+
+		it("Should always reach the target after enough calls", function() {
+			var _val = 0;
+			repeat (100) {
+				_val = approach(_val, 7.5, 0.3);
+			}
+			expect(_val).toBe(7.5);
+		});
+	});
+
+	describe("lerp_angle", function() {
+		it("Should return the start and end angles at 0 and 1", function() {
+			expect(lerp_angle(0, 90, 0)).toBe(0);
+			expect(lerp_angle(0, 90, 1)).toBe(90);
+		});
+
+		it("Should return the middle angle at 0.5", function() {
+			expect(lerp_angle(0, 90, 0.5)).toBe(45);
+			expect(lerp_angle(90, 180, 0.5)).toBe(135);
+		});
+
+		it("Should take the shortest way around the circle", function() {
+			// Going from 350 to 10 is 20 degrees forward, not 340 backwards.
+			expect(lerp_angle(350, 10, 0.5)).toBe(360);
+			expect(lerp_angle(10, 350, 0.5)).toBe(0);
+		});
+
+		it("Should handle a negative shortest way", function() {
+			expect(lerp_angle(10, 340, 0.5)).toBe(-5);
+		});
+
+		it("Should return the same angle when both are equal", function() {
+			expect(lerp_angle(45, 45, 0.5)).toBe(45);
+		});
+	});
+
+	describe("normalize", function() {
+		it("Should normalize between 0 and 1 by default", function() {
+			expect(normalize(5, 0, 10)).toBe(0.5);
+			expect(normalize(0, 0, 10)).toBe(0);
+			expect(normalize(10, 0, 10)).toBe(1);
+		});
+
+		it("Should convert to a custom output range", function() {
+			expect(normalize(5, 0, 10, 0, 100)).toBe(50);
+			expect(normalize(0.5, 0, 1, -1, 1)).toBe(0);
+			expect(normalize(75, 0, 100, 0, 255)).toBe(191.25);
+		});
+
+		it("Should work with a negative input range", function() {
+			expect(normalize(0, -10, 10)).toBe(0.5);
+			expect(normalize(-10, -10, 10)).toBe(0);
+		});
+
+		it("Should not clamp a value outside the input range", function() {
+			expect(normalize(20, 0, 10)).toBe(2);
+			expect(normalize(-5, 0, 10)).toBe(-0.5);
+		});
+
+		it("Should invert the range when out_min is bigger than out_max", function() {
+			expect(normalize(0, 0, 10, 1, 0)).toBe(1);
+			expect(normalize(10, 0, 10, 1, 0)).toBe(0);
+		});
+
+		it("Should return out_min when the input range is empty", function() {
+			expect(normalize(5, 3, 3)).toBe(0);
+			expect(normalize(5, 3, 3, 7, 9)).toBe(7);
+		});
+	});
+
+	describe("snap", function() {
+		it("Should snap to the closest multiple", function() {
+			expect(snap(7, 5)).toBe(5);
+			expect(snap(8, 5)).toBe(10);
+			expect(snap(12, 10)).toBe(10);
+		});
+
+		it("Should keep an exact multiple as it is", function() {
+			expect(snap(10, 5)).toBe(10);
+			expect(snap(0, 16)).toBe(0);
+		});
+
+		it("Should snap negative values", function() {
+			expect(snap(-7, 5)).toBe(-5);
+			expect(snap(-8, 5)).toBe(-10);
+		});
+
+		it("Should snap to a decimal grid", function() {
+			expect(snap(0.34, 0.25)).toBe(0.25);
+			expect(snap(0.4, 0.25)).toBe(0.5);
+		});
+
+		it("Should return the value as it is for a grid of 0", function() {
+			expect(snap(7.5, 0)).toBe(7.5);
+		});
+	});
+
 });

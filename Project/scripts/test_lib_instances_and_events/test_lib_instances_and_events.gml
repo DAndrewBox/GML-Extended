@@ -204,6 +204,63 @@ suite(function() {
 		});
 	});
 
+	describe("is_inside_room", function() {
+		it("Should return true for an instance at the center of the room", function() {
+			var _inst = instance_create_depth(room_width / 2, room_height / 2, 0, o_gml_ext_test_dummy);
+
+			expect(is_inside_room(_inst)).toBeTruthy();
+			expect(is_inside_room(_inst, true)).toBeTruthy();
+
+			instance_destroy(_inst);
+		});
+
+		it("Should return false for an instance far outside the room", function() {
+			var _inst = instance_create_depth(-100000, -100000, 0, o_gml_ext_test_dummy);
+
+			expect(is_inside_room(_inst)).toBeFalsy();
+			expect(is_inside_room(_inst, true)).toBeFalsy();
+
+			_inst.x = room_width + 100000;
+			_inst.y = room_height + 100000;
+
+			expect(is_inside_room(_inst)).toBeFalsy();
+			expect(is_inside_room(_inst, true)).toBeFalsy();
+
+			instance_destroy(_inst);
+		});
+
+		it("Should tell a partly outside instance from a fully inside one", function() {
+			var _inst = instance_create_depth(room_width / 2, room_height / 2, 0, o_gml_ext_test_dummy);
+
+			// Shift it left until the bounding box ends exactly on the room edge.
+			_inst.x -= _inst.bbox_right;
+
+			expect(is_inside_room(_inst)).toBeTruthy();
+			expect(is_inside_room(_inst, true)).toBeFalsy();
+
+			instance_destroy(_inst);
+		});
+
+		it("Should return false for an instance that does not exist", function() {
+			var _inst = instance_create_depth(0, 0, 0, o_gml_ext_test_dummy);
+			instance_destroy(_inst);
+
+			expect(is_inside_room(_inst)).toBeFalsy();
+			expect(is_inside_room(_inst, true)).toBeFalsy();
+		});
+
+		it("Should behave the same as instance_in_room", function() {
+			var _inst = instance_create_depth(room_width / 2, room_height / 2, 0, o_gml_ext_test_dummy);
+
+			expect(instance_in_room(_inst)).toBe(is_inside_room(_inst));
+
+			_inst.x = -100000;
+			expect(instance_in_room(_inst)).toBe(is_inside_room(_inst));
+
+			instance_destroy(_inst);
+		});
+	});
+
 	describe("instance_first / instance_last", function() {
 		it("Should return the first and the last instance of the object", function() {
 			var _a = instance_create_depth(0, 0, 0, o_gml_ext_test_dummy);

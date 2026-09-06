@@ -4,6 +4,7 @@
 
 - [macros](#macros)
 - [str](#str)
+- [trunc](#trunc)
 - [int](#int)
 - [int8](#int8)
 - [int16](#int16)
@@ -58,6 +59,38 @@ var str_value = str(10);
 ```
 
 The above code will convert the number 10 to a string.
+
+---
+
+# trunc ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Removes the decimals of a value without rounding it. The value is truncated towards zero, so `trunc(-10.9)` returns `-10`. GameMaker has no built-in for this, `floor` rounds down and turns `-10.9` into `-11`.
+
+### Syntax
+
+```js
+trunc(value);
+```
+
+| Argument | Type  | Description           |
+| :------- | :---: | :-------------------- |
+| value    | Real  | The value to truncate |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+show_debug_message(trunc(10.9)); // 10
+show_debug_message(trunc(-10.9)); // -10
+show_debug_message(floor(-10.9)); // -11
+```
+
+The above code shows the difference between `trunc` and `floor` for negative values.
 
 ---
 

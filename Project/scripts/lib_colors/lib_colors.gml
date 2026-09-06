@@ -28,7 +28,7 @@ function hsv(_h, _s, _v) {
 
 /// @func	color_get_rgb(color)
 /// @param	{Real|Constant.Color}	color	The color to get the RGB values from.
-/// @desc	Gets the RGB values of the color passed as argument. Serves as a shortcut for `color_get_red`, `color_get_green`, and `color_get_blue`.
+/// @desc	Gets the RGB values of the color passed as argument. Serves as a alias for `color_get_red`, `color_get_green`, and `color_get_blue`.
 ///	@return	{Array<Real>}
 function color_get_rgb(_color) {
 	return [
@@ -40,7 +40,7 @@ function color_get_rgb(_color) {
 
 /// @func	color_get_hsv(color)
 /// @param	{Real|Constant.Color}	color	The color to get the HSV values from.
-/// @desc	Gets the HSV values of the color passed as argument. Serves as a shortcut for `color_get_hue`, `color_get_saturation`, and `color_get_value`.
+/// @desc	Gets the HSV values of the color passed as argument. Serves as a alias for `color_get_hue`, `color_get_saturation`, and `color_get_value`.
 ///	@return	{Array<Real>}
 function color_get_hsv(_color) {
 	return [
