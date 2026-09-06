@@ -5,9 +5,14 @@
 - [string_contains](#string_contains)
 - [string_title](#string_title)
 - [string_remove](#string_remove)
+- [string_remove_duplicate_chars](#string_remove_duplicate_chars)
 - [string_pad_left](#string_pad_left)
 - [string_pad_right](#string_pad_right)
 - [string_percentage](#string_percentage)
+- [string_truncate](#string_truncate)
+- [string_to_snake](#string_to_snake)
+- [string_to_camel](#string_to_camel)
+- [string_slugify](#string_slugify)
 
 ---
 
@@ -109,6 +114,39 @@ show_debug_message(string_remove(_str, _sub));
 ```
 
 The above code will show on console the message `, !` since the substring was removed.
+
+---
+
+# string_remove_duplicate_chars ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Returns a string where every run of the given character is collapsed into a single one. Useful to turn double spaces into one space, `..` into `.`, and so on. The character can also be a multi character sequence.
+
+### Syntax
+
+```js
+string_remove_duplicate_chars(string, [(char = " ")]);
+```
+
+| Argument |  Type  | Description                                        |
+| :------- | :----: | :------------------------------------------------- |
+| string   | String | The string to clean up                             |
+| char     | String | The character or sequence to collapse (default " ") |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+show_debug_message(string_remove_duplicate_chars("Hello    World"));      // "Hello World"
+show_debug_message(string_remove_duplicate_chars("Wait...", "."));        // "Wait."
+show_debug_message(string_remove_duplicate_chars("a---b", "-"));          // "a-b"
+```
+
+The above code collapses every run of the given character into a single one. Passing an empty `char` returns the string unchanged.
 
 ---
 
@@ -215,3 +253,123 @@ show_debug_message(string_percentage(_current, _total));
 ```
 
 The above code will show on console the message `10%` since the current value is 10% of the total value.
+
+# string_truncate ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Returns a string no longer than `max_length`, adding the suffix at the end when it had to be cut. If the suffix does not fit in `max_length` the suffix itself is cut instead.
+
+### Syntax
+
+```js
+string_truncate(string, max_length, [(suffix = "...")]);
+```
+
+| Argument       | Type                     | Description |
+| :------------- | :----------------------- | :---------- |
+| string         | String                   | The string to truncate |
+| max_length     | Real                     | Max length of the result, suffix included |
+| suffix         | String                   | Text added when the string is cut (default `"..."`) |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+show_debug_message(string_truncate("A very long item name", 10)); // "A very ..."
+show_debug_message(string_truncate("Short", 10)); // "Short"
+```
+
+---
+
+# string_to_snake ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Returns the string in `snake_case`. Spaces, dashes and underscores separate words, and a capital letter right after a lowercase one starts a new word.
+
+### Syntax
+
+```js
+string_to_snake(string);
+```
+
+| Argument       | Type                     | Description |
+| :------------- | :----------------------- | :---------- |
+| string         | String                   | The string to convert |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+show_debug_message(string_to_snake("Hello World")); // "hello_world"
+show_debug_message(string_to_snake("myVariableName")); // "my_variable_name"
+```
+
+---
+
+# string_to_camel ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Returns the string in `camelCase`. Spaces, dashes and underscores separate words, the first letter is always lowercased and every following word is capitalized.
+
+### Syntax
+
+```js
+string_to_camel(string);
+```
+
+| Argument       | Type                     | Description |
+| :------------- | :----------------------- | :---------- |
+| string         | String                   | The string to convert |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+show_debug_message(string_to_camel("hello_world")); // "helloWorld"
+show_debug_message(string_to_camel("My Cool Key")); // "myCoolKey"
+```
+
+---
+
+# string_slugify ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Returns a lowercase URL friendly version of the string. Letters and digits are always kept, every character listed in `allowed` is kept too, and any run of the remaining characters becomes a single separator. Leading and trailing separators are removed.
+
+### Syntax
+
+```js
+string_slugify(string, [(allowed = "")], [(separator = "-")]);
+```
+
+| Argument       | Type                     | Description |
+| :------------- | :----------------------- | :---------- |
+| string         | String                   | The string to convert |
+| allowed        | String                   | Special characters to keep as they are |
+| separator      | String                   | Text replacing every other character (default `"-"`) |
+
+### Returns
+
+```js
+String;
+```
+
+### Example
+
+```js
+show_debug_message(string_slugify("My Cool Game Title!")); // "my-cool-game-title"
+show_debug_message(string_slugify("save_file.02", "_.")); // "save_file.02"
+```
+
+---

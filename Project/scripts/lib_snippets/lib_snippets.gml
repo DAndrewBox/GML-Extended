@@ -1,7 +1,7 @@
 /// @func	del(object_index, [exec_event])
 /// @param	{Id.Instance|Asset.GMObject}	object_index	The index of the object or the id of the instance.
 /// @param	{Bool}							exec_event		Optional. Whether to execute the destroy event or not after delete.
-/// @desc	Deletes an instance and executes the destroy event of the object. Serves as a shortcut for `instance_destroy`.
+/// @desc	Deletes an instance and executes the destroy event of the object. Serves as a alias for `instance_destroy`.
 ///	@return	{Undefined}
 function del(_obj = id, _exec_ev = true) {
 	instance_destroy(_obj, _exec_ev);
@@ -9,9 +9,23 @@ function del(_obj = id, _exec_ev = true) {
 
 /// @func	get_size(element, [type])
 /// @param	{Any}		element		The element to get the size of.
-/// @param	{String}	type		Optional. The type of the element. Prefer using `gm_type_*`.
+/// @param	{String|Real}	type	Optional. The type of the element. Prefer using `gm_type_*` or `ds_type_*`.
 /// @desc	Returns the size or length of the element. Read documentation for more details.
 function get_size(_e, _type = noone) {
+	// Data structures are plain reals at runtime, so they need an explicit `ds_type_*`.
+	if (_type != noone && is_real(_type)) {
+		switch (_type) {
+			case ds_type_list:		return ds_exists(_e, ds_type_list) ? ds_list_size(_e) : -1;
+			case ds_type_map:		return ds_exists(_e, ds_type_map) ? ds_map_size(_e) : -1;
+			case ds_type_grid:		return ds_exists(_e, ds_type_grid) ? ds_grid_width(_e) * ds_grid_height(_e) : -1;
+			case ds_type_queue:		return ds_exists(_e, ds_type_queue) ? ds_queue_size(_e) : -1;
+			case ds_type_stack:		return ds_exists(_e, ds_type_stack) ? ds_stack_size(_e) : -1;
+			case ds_type_priority:	return ds_exists(_e, ds_type_priority) ? ds_priority_size(_e) : -1;
+		}
+		
+		return -1;
+	}
+	
 	_type = _type == noone ? typeof(_e) : _type;
 	
 	switch(_type) {
@@ -29,8 +43,8 @@ function get_size(_e, _type = noone) {
 /// @func	contains(find_this, search_here, [container_type])
 /// @param	{Any}		find_this		The element to check if it's inside.
 /// @param	{Any}		search_here		The container to check if the element is in.
-/// @param	{String}	container_type	Optional. The type of the container. Prefer using `gm_type_*`.
-/// @desc	Checks if an element is inside a container. Serves as a shortcut for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
+/// @param	{String|Real}	container_type	Optional. The type of the container. Prefer using `gm_type_*` or `ds_type_*`.
+/// @desc	Checks if an element is inside a container. Serves as a alias for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
 ///	@return	{Bool}
 function contains(_elem, _container, _container_type = "") {
 	static _forbidden_elem_types = [
@@ -47,21 +61,41 @@ function contains(_elem, _container, _container_type = "") {
 		gm_type_undefined,
 	];
 	var _elem_type = typeof(_elem);
-	_container_type = _container_type == "" ? typeof(_container) : _container_type;
+	if (is_string(_container_type) && _container_type == "") {
+		_container_type = typeof(_container);
+	}
 	
 	if (is_type(_elem, _forbidden_elem_types)) {
-		trace("(GML-Extended) - WARNING! On function \"contains()\" ", _elem, " is type ", _elem_type, " and cannot be search in ", _container, ".");
+		trace("[GML-Extended] - WARNING! On function \"contains()\" ", _elem, " is type ", _elem_type, " and cannot be search in ", _container, ".");
 		return false;
 	}
 	
 	if (is_type(_container, _forbidden_container_types)) {
-		trace("(GML-Extended) - WARNING! On function \"contains()\" ", _container, " is type ", _container_type, " and cannot be used to be searched.");
+		trace("[GML-Extended] - WARNING! On function \"contains()\" ", _container, " is type ", _container_type, " and cannot be used to be searched.");
+		return false;
+	}
+	
+	// Data structures are plain reals at runtime, so they need an explicit `ds_type_*`.
+	if (is_real(_container_type)) {
+		switch (_container_type) {
+			case ds_type_list:
+				return ds_exists(_container, ds_type_list) && ds_list_find_index(_container, _elem) >= 0;
+			
+			case ds_type_map:
+				return ds_exists(_container, ds_type_map) && ds_map_exists(_container, _elem);
+			
+			case ds_type_grid:
+				if (!ds_exists(_container, ds_type_grid)) return false;
+				return ds_grid_value_exists(_container, 0, 0, ds_grid_width(_container) - 1, ds_grid_height(_container) - 1, _elem);
+		}
+		
+		trace("[GML-Extended] - WARNING! On function \"contains()\" ", _container_type, " is not a searchable data structure type.");
 		return false;
 	}
 	
 	switch (_container_type) {
 		case gm_type_string:
-			return string_contains(_container, _elem);
+			return string_contains(_container, string(_elem));
 		
 		case gm_type_number:
 		case gm_type_int32:
@@ -75,13 +109,13 @@ function contains(_elem, _container, _container_type = "") {
 			return struct_key_exists(_container, string(_elem));
 	}
 	
-	trace("(GML-Extended) - ERROR! On function \"contains()\". This is unexpected and shouldn't happen.");
+	trace("[GML-Extended] - ERROR! On function \"contains()\". This is unexpected and shouldn't happen.");
 	return false;
 }
 
 /// @func	trace(*args)
 /// @param	{Any}	*args	The messages to print.
-/// @desc	Prints a message to the console. Serves as a shortcut for `show_debug_message`.
+/// @desc	Prints a message to the console. Serves as a alias for `show_debug_message`.
 ///	@return	{Undefined}
 function trace() {
 	var _str = "";
@@ -93,7 +127,7 @@ function trace() {
 
 /// @func	alert(*args)
 /// @param	{Any}	*args	The message to show.
-/// @desc	Shows an alert dialog with the message passed as argument. The dialog will stop anything happening in the game until the user clicks the OK button. Server as a shortcut for `show_message`.
+/// @desc	Shows an alert dialog with the message passed as argument. The dialog will stop anything happening in the game until the user clicks the OK button. Server as a alias for `show_message`.
 ///	@return	{Undefined}
 function alert() {
 	var _args = array_create(argument_count, undefined);
@@ -105,7 +139,7 @@ function alert() {
 
 /// @func	alert_async(*args)
 /// @param	{Any}	*args	The message to show
-/// @desc	Shows an alert dialog with the message passed as argument. The dialog **will not** stop anything happening in the game. Server as a shortcut for `show_message_async`.
+/// @desc	Shows an alert dialog with the message passed as argument. The dialog **will not** stop anything happening in the game. Server as a alias for `show_message_async`.
 ///	@return	{Undefined}
 function alert_async() {
 	var _args = array_create(argument_count, undefined);
@@ -117,7 +151,7 @@ function alert_async() {
 
 /// @func	view_get_x(view)
 /// @param	{Real}	view	The view index to get the X position from.
-/// @desc	Gets the X position of the view passed as argument. Serves as a shortcut for `camera_get_view_x(view_camera[view_current])`.
+/// @desc	Gets the X position of the view passed as argument. Serves as a alias for `camera_get_view_x(view_camera[view_current])`.
 ///	@return	{Real}
 function view_get_x(_view = view_current) {
 	return camera_get_view_x(view_camera[_view]);
@@ -125,7 +159,7 @@ function view_get_x(_view = view_current) {
 
 /// @func	view_get_y(view)
 /// @param	{Real}	view	The view index to get the Y position from.
-/// @desc	Gets the Y position of the view passed as argument. Serves as a shortcut for `camera_get_view_y(view_camera[view_current])`.
+/// @desc	Gets the Y position of the view passed as argument. Serves as a alias for `camera_get_view_y(view_camera[view_current])`.
 ///	@return	{Real}
 function view_get_y(_view = view_current) {
 	return camera_get_view_y(view_camera[_view]);
@@ -219,4 +253,22 @@ function rand_linear(_n1, _n2 = undefined) {
 	var _min = min(_n1, _n2);
 	var _max = max(_n1, _n2);
 	return random_range_linear(_min, _max);
+}
+
+/// @func	trace_once(*args)
+/// @param	{Any}	*args	The messages to print.
+/// @desc	Prints a message to the console the first time it is used and ignores it from then on. Useful inside a Step event where `trace` would spam the log every frame. Messages are told apart by their text, so a message with a changing value prints again every time it changes.
+///	@return	{Undefined}
+function trace_once() {
+	static _seen = {};
+	var _str = "";
+
+	for (var i = 0; i < argument_count; i++) {
+		_str += string(argument[i]);
+	}
+
+	if (variable_struct_exists(_seen, _str)) return;
+
+	_seen[$ _str] = true;
+	show_debug_message(_str);
 }

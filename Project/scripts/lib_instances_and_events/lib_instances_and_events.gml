@@ -15,7 +15,6 @@ function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 		_inst = __gml_ext_comp_instance_create_depth(_x, _y, _depth_or_layer, _obj, _params);
 	}
 	
-	delete _params;
 	return _inst;
 }
 
@@ -25,7 +24,7 @@ function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 /// @param	{Asset.GMObject|Id.Instance}	object_index			The index of the object to create
 /// @param	{Real|String}					depth_or_layer_name		Optional. The depth of the instance or the layer to use. (Default: instance.depth)
 /// @param	{Struct}						params					Optional. The parameters to pass to the instance at creation
-/// @desc	Functions the same as `instance_create`, but **if an instance of the object already exists, it will return -1 and will not create the instance**. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
+/// @desc	Functions the same as `instance_create`, but **if an instance of the object already exists, it will return that instance and will not create a new one**. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
 function instance_create_unique(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 	var _inst = instance_find(_obj, 0);
 	if (_inst == noone) {
@@ -49,12 +48,28 @@ function instance_any_exists() {
 	return false;
 }
 
-/// @func	instance_in_room(object_index_or_id)
-/// @param	{Id.Instance|Asset.GMObject}	object_index_or_id		The index of the object or the id of the instance
-/// @desc	Returns true if an instance of the object exists inside the boundaries of the room.
-function instance_in_room(_inst) {
+/// @func	is_inside_room([instance], [full])
+/// @param	{Id.Instance|Asset.GMObject}	instance	Optional. The instance to check. (Default: id)
+/// @param	{Bool}							full		Optional. Require the whole bounding box to be inside the room. (Default: false)
+/// @desc	Returns `true` if the bounding box of the instance is inside the room boundaries. Any overlap counts by default, set `full` to `true` to require the whole bounding box to be inside the room. Returns `false` if the instance does not exist.
+///	@return	{Bool}
+function is_inside_room(_inst = id, _full = false) {
+	if (!instance_exists(_inst)) return false;
+
+	if (_full) {
+		return	(_inst.bbox_left >= 0 && _inst.bbox_right <= room_width) &&
+				(_inst.bbox_top >= 0 && _inst.bbox_bottom <= room_height);
+	}
+
 	return	(_inst.bbox_right >= 0 && _inst.bbox_left <= room_width) &&
 			(_inst.bbox_bottom >= 0 && _inst.bbox_top <= room_height);
+}
+
+/// @func	instance_in_room(object_index_or_id)
+/// @param	{Id.Instance|Asset.GMObject}	object_index_or_id		The index of the object or the id of the instance
+/// @desc	Returns true if an instance of the object exists inside the boundaries of the room. Serves as an alias for `is_inside_room`.
+function instance_in_room(_inst) {
+	return is_inside_room(_inst);
 }
 
 /// @func	instance_get_all(object_index)
@@ -65,7 +80,7 @@ function instance_get_all(_obj) {
 	var _inst_ids = [];
 	
 	var _inst = -1;
-	for (var i = 0; i < get_size(_inst_count); i++) {
+	for (var i = 0; i < _inst_count; i++) {
 		_inst = instance_find(_obj, i);
 		array_push(_inst_ids, _inst);
 	}
@@ -96,7 +111,7 @@ function instance_get_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
 	var _inst_got = [];
 	for (var i = 0; i < get_size(_inst_ids); i++) {
-		if (_callback(_inst_ids[@ i])) continue;
+		if !(_callback(_inst_ids[@ i])) continue;
 		array_push(_inst_got, _inst_ids[@ i]);
 	}
 	

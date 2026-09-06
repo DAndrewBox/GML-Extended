@@ -13,9 +13,14 @@
 
 ---
 
+> [!IMPORTANT]
+> `unix_timestamp` converts the calendar values of a datetime, not the instant behind it. A given date always produces the same timestamp on every machine, no matter its timezone or its daylight saving rules, and `unix_to_datetime` is its exact inverse. What the local timezone does decide is which calendar values `date_current_datetime` reports, so `now()` returns the local wall clock as a timestamp. Call `date_set_timezone(timezone_utc)` at game start if you need `now()` to line up with an external UTC clock, such as a server.
+
+---
+
 # unix_timestamp
 
-Returns a Unix timestamp for the current or given GameMaker datetime.
+Returns a Unix timestamp for the current or given GameMaker datetime, rounded to the nearest whole second.
 
 Originally written by Xot on [GMLscripts](https://www.gmlscripts.com/script/unix_timestamp).
 

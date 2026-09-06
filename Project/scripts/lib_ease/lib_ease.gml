@@ -234,7 +234,10 @@ function anim_easeInElastic(_val, _factor = 1) {
 	return _factor * (
 		_val == 0
 		? 0
-		: -power(2, 10 * _val - 9) * sin((_val * 10 - 10) * _c4)
+		: (_val == 1
+			? 1
+			: -power(2, 10 * _val - 10) * sin((_val * 10 - 10.75) * _c4)
+		)
 	);
 }
 
@@ -249,7 +252,7 @@ function anim_easeOutElastic(_val, _factor = 1) {
 		? 0
 		: (_val == 1
 			? 1
-			: power(2, -10 * _val) * sin((_val * 10 - 10) * _c4) + 1
+			: power(2, -10 * _val) * sin((_val * 10 - 0.75) * _c4) + 1
 		)
 	);
 }
@@ -266,8 +269,8 @@ function anim_easeInOutElastic(_val, _factor = 1) {
 		: (_val == 1
 			? 1
 			: (_val < 0.5
-				? -(power(2, 20 * _val - 10) * sin((20 * _val - 11.125) * _c5)) / 2 + 0.5
-				: (power(2, -20 * _val + 10) * sin((20 * _val - 11.125) * _c5)) / 2 + 0.5
+				? -(power(2, 20 * _val - 10) * sin((20 * _val - 11.125) * _c5)) / 2
+				: (power(2, -20 * _val + 10) * sin((20 * _val - 11.125) * _c5)) / 2 + 1
 			)
 		)
 	);
@@ -279,7 +282,7 @@ function anim_easeInOutElastic(_val, _factor = 1) {
 /// @param	{Real}	value	The value to animate.
 /// @param	{Real}	factor	The factor of the animation. (Default: 1)
 function anim_easeInBounce(_val, _factor = 1) {
-	return 1 - anim_easeOutBounce(1 - _val, _factor);
+	return _factor * (1 - anim_easeOutBounce(1 - _val));
 }
 
 /// @func anim_easeOutBounce(value, factor)
@@ -305,7 +308,7 @@ function anim_easeOutBounce(_val, _factor = 1) {
 /// @param	{Real}	factor	The factor of the animation. (Default: 1)
 function anim_easeInOutBounce(_val, _factor = 1) {
 	return _val < 0.5
-		? (1 - anim_easeOutBounce(1 - 2 * _val, _factor)) / 2
-		: (1 + anim_easeOutBounce(2 * _val - 1, _factor)) / 2;
+		? _factor * (1 - anim_easeOutBounce(1 - 2 * _val)) / 2
+		: _factor * (1 + anim_easeOutBounce(2 * _val - 1)) / 2;
 }
 #endregion

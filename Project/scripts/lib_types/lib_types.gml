@@ -6,12 +6,21 @@ function str(_val) {
 	return string(_val)
 }
 
+/// @func	trunc(value)
+/// @param	{Real}	value	The value to truncate.
+/// @desc	Removes the decimals of a value without rounding it. The value is truncated towards zero, so `trunc(-10.9)` returns `-10`. GameMaker has no built-in for this.
+///	@return	{Real}
+function trunc(_val) {
+	var _n = real(_val);
+	return sign(_n) * floor(abs(_n));
+}
+
 /// @func	int(value)
 /// @param	{Real}	value	The value to convert to an integer
-/// @desc	Converts a value to an integer (removes all decimals).
+/// @desc	Converts a value to an integer (removes all decimals). Serves as an alias for `trunc`.
 ///	@return	{Real}
 function int(_val) {
-	return floor(real(_val));
+	return trunc(_val);
 }
 
 /// @func	int8(value)
@@ -59,7 +68,10 @@ function is_type(_elem, _type) {
 				return true;
 			}
 		}
+		
+		return false;
 	}
+	
 	return typeof(_elem) == _type;
 }
 

@@ -20,7 +20,7 @@ function string_title(_str) {
 		var _char = string_char_at(_str, i);
 		if (_prev_char == " ") {
 			_out += string_upper(_char);
-			_prev_char = "";
+			_prev_char = _char;
 			continue;
 		}
 		
@@ -47,6 +47,37 @@ function string_remove(_str, _substr) {
 	}
 	
 	return string_replace_all(_str, _substr, "");
+}
+
+/// @func	string_remove_duplicate_chars(string, [char])
+/// @param	{String}	string		The string to clean up.
+/// @param	{String}	char		Optional. The character or sequence to collapse. (Default: " ")
+/// @desc	Returns a string where every run of the given character is collapsed into a single one. Useful to turn double spaces into one space, `..` into `.`, and so on.
+///	@return	{String}
+function string_remove_duplicate_chars(_str, _char = " ") {
+	_str = string(_str);
+	if (_char == "") return _str;
+
+	var _char_len = string_length(_char);
+	var _str_len = string_length(_str);
+	var _out = "";
+	var _pos = 1;
+	var _was_char = false;
+
+	while (_pos <= _str_len) {
+		if (string_copy(_str, _pos, _char_len) == _char) {
+			if (!_was_char) _out += _char;
+			_was_char = true;
+			_pos += _char_len;
+			continue;
+		}
+
+		_was_char = false;
+		_out += string_char_at(_str, _pos);
+		_pos++;
+	}
+
+	return _out;
 }
 
 /// @func	string_pad_left(string, char, size)
@@ -94,4 +125,121 @@ function string_pad_right(_str, _char, _size) {
 ///	@return	{String}
 function string_percentage(_val, _max) {	
 	return string(percentage(_val, _max)) + "%";
+}
+
+/// @func	string_truncate(string, max_length, [suffix])
+/// @param	{String}	string		The string to truncate.
+/// @param	{Real}		max_length	The maximum length of the resulting string, suffix included.
+/// @param	{String}	suffix		Optional. The text added at the end when the string is cut. (Default: "...")
+/// @desc	Returns a string no longer than `max_length`, adding the suffix at the end when it had to be cut. If the suffix does not fit in `max_length` the suffix itself is cut instead.
+///	@return	{String}
+function string_truncate(_str, _max_len, _suffix = "...") {
+	_str = string(_str);
+	if (string_length(_str) <= _max_len) return _str;
+	if (_max_len <= 0) return "";
+
+	var _suffix_len = string_length(_suffix);
+	if (_suffix_len >= _max_len) return string_copy(_suffix, 1, _max_len);
+
+	return string_copy(_str, 1, _max_len - _suffix_len) + _suffix;
+}
+
+/// @func	string_to_snake(string)
+/// @param	{String}	string		The string to convert.
+/// @desc	Returns the string in `snake_case`. Spaces, dashes and underscores separate words, and a capital letter after a lowercase one starts a new word.
+///	@return	{String}
+function string_to_snake(_str) {
+	_str = string(_str);
+	var _str_len = string_length(_str);
+	var _out = "";
+	var _prev_lower = false;
+
+	for (var i = 1; i <= _str_len; i++) {
+		var _char = string_char_at(_str, i);
+
+		if (_char == " " || _char == "-" || _char == "_") {
+			if (_out != "" && string_char_at(_out, string_length(_out)) != "_") _out += "_";
+			_prev_lower = false;
+			continue;
+		}
+
+		// A capital right after a lowercase letter starts a new word.
+		var _is_upper = (_char != string_lower(_char));
+		if (_is_upper && _prev_lower && _out != "") _out += "_";
+
+		_out += string_lower(_char);
+		_prev_lower = !_is_upper;
+	}
+
+	return _out;
+}
+
+/// @func	string_to_camel(string)
+/// @param	{String}	string		The string to convert.
+/// @desc	Returns the string in `camelCase`. Spaces, dashes and underscores separate words, the first letter is always lowercased and every following word is capitalized.
+///	@return	{String}
+function string_to_camel(_str) {
+	_str = string(_str);
+	var _str_len = string_length(_str);
+	var _out = "";
+	var _next_upper = false;
+
+	for (var i = 1; i <= _str_len; i++) {
+		var _char = string_char_at(_str, i);
+
+		if (_char == " " || _char == "-" || _char == "_") {
+			_next_upper = (_out != "");
+			continue;
+		}
+
+		if (_next_upper) {
+			_out += string_upper(_char);
+			_next_upper = false;
+			continue;
+		}
+
+		_out += (_out == "" ? string_lower(_char) : _char);
+	}
+
+	return _out;
+}
+
+/// @func	string_slugify(string, [allowed], [separator])
+/// @param	{String}	string		The string to convert.
+/// @param	{String}	allowed		Optional. The special characters to keep as they are. (Default: "")
+/// @param	{String}	separator	Optional. The text used to replace every other character. (Default: "-")
+/// @desc	Returns a lowercase URL friendly version of the string. Letters and digits are always kept, every character listed in `allowed` is kept too, and any run of the remaining characters becomes a single separator. Leading and trailing separators are removed.
+///	@return	{String}
+function string_slugify(_str, _allowed = "", _separator = "-") {
+	_str = string_lower(string(_str));
+	var _str_len = string_length(_str);
+	var _out = "";
+	var _was_sep = true;
+
+	for (var i = 1; i <= _str_len; i++) {
+		var _char = string_char_at(_str, i);
+		var _ord = string_ord_at(_str, i);
+		var _is_kept = (_ord >= 97 && _ord <= 122)
+			|| (_ord >= 48 && _ord <= 57)
+			|| (_allowed != "" && string_pos(_char, _allowed) > 0);
+
+		if (_is_kept) {
+			_out += _char;
+			_was_sep = false;
+			continue;
+		}
+
+		// Any run of removed characters collapses into a single separator.
+		if (!_was_sep) _out += _separator;
+		_was_sep = true;
+	}
+
+	// Drop the separator left behind by the characters at the end of the string.
+	var _sep_len = string_length(_separator);
+	var _out_len = string_length(_out);
+	if (_sep_len > 0 && _out_len >= _sep_len && string_copy(_out, _out_len - _sep_len + 1, _sep_len) == _separator) {
+		_out = string_copy(_out, 1, _out_len - _sep_len);
+	}
+
+	return _out;
 }

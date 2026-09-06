@@ -5,6 +5,7 @@
 - [instance_create](#instance_create)
 - [instance_create_unique](#instance_create_unique)
 - [instance_any_exists](#instance_any_exists)
+- [is_inside_room](#is_inside_room)
 - [instance_in_room](#instance_in_room)
 - [instance_get_all](#instance_get_all)
 - [instance_number_if](#instance_number_if)
@@ -58,7 +59,7 @@ The above code will create a player and an enemy. The player will be created on 
 
 # instance_create_unique ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
-Functions the same as `instance_create`, but **if an instance of the object already exists, it will return -1 and will not create the instance**. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
+Functions the same as `instance_create`, but **if an instance of the object already exists, it will return that instance and will not create a new one**. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
 
 ### Syntax
 
@@ -133,9 +134,48 @@ The above code will show a debug message if there is a player or an enemy in the
 
 ---
 
+# is_inside_room ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Returns `true` if the bounding box of the instance is inside the room boundaries. Any overlap counts by default, set `full` to `true` to require the whole bounding box to be inside the room. Returns `false` if the instance does not exist, so it is safe to call on an instance that may have been destroyed.
+
+### Syntax
+
+```js
+is_inside_room([(instance = id)], [(full = false)]);
+```
+
+| Argument |             Type              | Description                                              |
+| :------- | :---------------------------: | :------------------------------------------------------- |
+| instance | Asset.GMObject or Id.Instance | The instance to check (default `id`)                     |
+| full     |             Bool              | Require the whole bounding box to be inside (default `false`) |
+
+### Returns
+
+```js
+Bool;
+```
+
+### Example
+
+```js
+// Step event of a bullet
+if (!is_inside_room()) {
+  instance_destroy();
+}
+
+// Only spawn the pickup once it is fully on screen
+if (is_inside_room(inst_pickup, true)) {
+  inst_pickup.active = true;
+}
+```
+
+The above code destroys the bullet as soon as it stops touching the room, and only activates the pickup once its whole bounding box is inside the room.
+
+---
+
 # instance_in_room ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
-Returns true if an instance of the object exists inside the boundaries of the room.
+Returns true if an instance of the object exists inside the boundaries of the room. Serves as an alias for [is_inside_room](#is_inside_room), which also accepts a `full` argument and is safe to call on a destroyed instance.
 
 ### Syntax
 

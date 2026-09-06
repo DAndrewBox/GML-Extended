@@ -4,6 +4,7 @@
 
 - [macros](#macros)
 - [str](#str)
+- [trunc](#trunc)
 - [int](#int)
 - [int8](#int8)
 - [int16](#int16)
@@ -61,9 +62,41 @@ The above code will convert the number 10 to a string.
 
 ---
 
+# trunc ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Removes the decimals of a value without rounding it. The value is truncated towards zero, so `trunc(-10.9)` returns `-10`. GameMaker has no built-in for this, `floor` rounds down and turns `-10.9` into `-11`.
+
+### Syntax
+
+```js
+trunc(value);
+```
+
+| Argument | Type  | Description           |
+| :------- | :---: | :-------------------- |
+| value    | Real  | The value to truncate |
+
+### Returns
+
+```js
+Real;
+```
+
+### Example
+
+```js
+show_debug_message(trunc(10.9)); // 10
+show_debug_message(trunc(-10.9)); // -10
+show_debug_message(floor(-10.9)); // -11
+```
+
+The above code shows the difference between `trunc` and `floor` for negative values.
+
+---
+
 # int ![](https://img.shields.io/badge/v1.4.0-916800?style=flat)
 
-Converts a value to an integer.
+Converts a value to an integer, dropping the decimals. The value is truncated towards zero, so a negative value keeps its whole part (`int(-10.5)` returns `-10`).
 
 ### Syntax
 
@@ -85,9 +118,10 @@ Real;
 
 ```js
 var int_value = int(10.5);
+var int_value_negative = int(-10.5);
 ```
 
-The above code will convert the number 10.5 to an integer. The result will be 10.
+The above code will convert the number 10.5 to an integer. The result will be 10, and `int_value_negative` will be -10.
 
 ---
 

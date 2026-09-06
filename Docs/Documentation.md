@@ -24,6 +24,7 @@ The documentation is also available inside the `Docs` folder of this repository 
 > [!NOTE]
 > This are optional functions that you can import into your projects only if you need them. You can import them all or just the ones you need.
 
+- [**Data Structures**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Optional/DataStructures.md)
 - [**Draw**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Optional/Draw.md)
 - [**Ease**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Optional/Ease.md)
 - [**Game**](https://github.com/DAndrewBox/GML-Extended/blob/main/Docs/Optional/Game.md)

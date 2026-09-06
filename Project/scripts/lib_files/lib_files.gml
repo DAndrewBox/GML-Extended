@@ -39,8 +39,8 @@ function file_json_read(_file) {
 		var _str = file_text_read_whole(_file);
 		return json_parse(_str);
 	} catch (e) {
-		trace("(GML-Extended) - ERROR! An error ocurred in function 'file_json_read'. Returning an empty struct.");
-		trace("(GML-Extended) - ", e.message);
+		trace("[GML-Extended] - ERROR! An error ocurred in function 'file_json_read'. Returning an empty struct.");
+		trace("[GML-Extended] - ", e.message);
 		return {};
 	}
 }
@@ -59,6 +59,6 @@ function file_json_create(_filename, _json) {
 		return _str;
 	}
 	
-	trace("(GML-Extended) - WARNING! 'filename' cannot be empty string (\"\") on 'file_json_create'.");
+	trace("[GML-Extended] - WARNING! 'filename' cannot be empty string (\"\") on 'file_json_create'.");
 	return "";
 }

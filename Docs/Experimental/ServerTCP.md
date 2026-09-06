@@ -5,7 +5,7 @@
 
 ### Table of Contents
 
-- [Macros & Constants](#macros--constants)
+- [Macros and Constants](#macros-and-constants)
 - [server_tcp_init](#server_tcp_init)
 - [server_tcp_send_data](#server_tcp_send_data)
 - [server_tcp_send_ping](#server_tcp_send_ping)
@@ -14,7 +14,7 @@
 
 ---
 
-# Macros & Constants
+# Macros and Constants
 
 | Name                |  Type   | Description                                                                           |
 | :------------------ | :-----: | :------------------------------------------------------------------------------------ |

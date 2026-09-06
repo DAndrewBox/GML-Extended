@@ -18,10 +18,11 @@
 - [rand](#rand)
 - [irand](#irand)
 - [rand_linear](#rand_linear)
+- [trace_once](#trace_once)
 
 # del ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
-Deletes an instance and executes the destroy event of the object. Serves as a shortcut for `instance_destroy`.
+Deletes an instance and executes the destroy event of the object. Serves as a alias for `instance_destroy`.
 
 ### Syntax
 
@@ -63,10 +64,12 @@ Returns the size or length of the element. If the element is an array, it will r
 get_size(element, [type]);
 ```
 
-| Argument |                Type                 | Description                    |
-| :------- | :---------------------------------: | :----------------------------- |
-| element  | Real, String, Bool, Array or Struct | The element to get the size of |
-| type     |             `gm_type_*`             | The type of the element        |
+| Argument |                     Type                      | Description                    |
+| :------- | :-------------------------------------------: | :----------------------------- |
+| element  | Real, String, Bool, Array, Struct or DS Id     | The element to get the size of |
+| type     |          `gm_type_*` or `ds_type_*`           | The type of the element        |
+
+Data structures are plain numbers at runtime, so they cannot be detected automatically. Pass the matching `ds_type_*` constant as the second argument to size a `ds_list`, `ds_map`, `ds_grid`, `ds_queue`, `ds_stack` or `ds_priority`. A `ds_grid` returns `width * height`. If the id does not point at a live data structure of that type, `-1` is returned.
 
 ### Returns
 
@@ -99,11 +102,22 @@ Struct size: 3
 Real size: 3
 ```
 
+To size a data structure, pass its type:
+
+```js
+var _list = ds_list_create();
+ds_list_add(_list, "a", "b", "c");
+
+show_debug_message("List size: " + string(get_size(_list, ds_type_list)));
+```
+
+The above code will show `List size: 3` on console.
+
 ---
 
 # contains ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
 
-Checks if an element is inside a container. Serves as a shortcut for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
+Checks if an element is inside a container. Serves as a alias for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
 
 ### Syntax
 
@@ -111,11 +125,13 @@ Checks if an element is inside a container. Serves as a shortcut for `ds_list_fi
 contains(element, container, [container_type]);
 ```
 
-| Argument       |                Type                 | Description                                 |
-| :------------- | :---------------------------------: | :------------------------------------------ |
-| element        | Real, String, Bool, Array or Struct | The element to check if it's inside         |
-| container      | Real, String, Bool, Array or Struct | The container to check if the element is in |
-| container_type |             `gm_type_*`             | The type of the container                   |
+| Argument       |                     Type                      | Description                                 |
+| :------------- | :-------------------------------------------: | :------------------------------------------ |
+| element        | Real, String or Bool                          | The element to check if it's inside         |
+| container      | Real, String, Array, Struct or DS Id          | The container to check if the element is in |
+| container_type |          `gm_type_*` or `ds_type_*`           | The type of the container                   |
+
+Data structures are plain numbers at runtime, so they cannot be detected automatically. Pass `ds_type_list`, `ds_type_map` or `ds_type_grid` as the third argument to search one. A `ds_list` and a `ds_grid` are searched by value, a `ds_map` is searched by key. Every other container type is detected automatically.
 
 ### Returns
 
@@ -137,13 +153,13 @@ show_debug_message("Struct contains 'b': " + string(contains("b", _struct)));
 show_debug_message("Real contains 3: " + string(contains(3, _real)));
 ```
 
-The above code will check if the element is inside the container. If it is, it will return the index of the element in the container. If it's not, it will return -1.
+The above code will check if the element is inside the container. It returns `true` when the element is found and `false` otherwise.
 
 ---
 
 # trace ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
-Prints a message to the console. Serves as a shortcut for `show_debug_message`.
+Prints a message to the console. Serves as a alias for `show_debug_message`.
 
 ### Syntax
 
@@ -173,7 +189,7 @@ The above code will print "Hello World!" to the console.
 
 # alert ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
-Shows an alert dialog with the message passed as argument. The dialog will stop anything happening in the game until the user clicks the OK button. Server as a shortcut for `show_message`.
+Shows an alert dialog with the message passed as argument. The dialog will stop anything happening in the game until the user clicks the OK button. Server as a alias for `show_message`.
 
 ### Syntax
 
@@ -203,7 +219,7 @@ The above code will show an alert dialog with the message "Hello World!".
 
 # alert_async ![](https://img.shields.io/badge/v1.2.3-3e5f4a?style=flat)
 
-Shows an alert dialog with the message passed as argument. The dialog **will not** stop anything happening in the game. Server as a shortcut for `show_message_async`.
+Shows an alert dialog with the message passed as argument. The dialog **will not** stop anything happening in the game. Server as a alias for `show_message_async`.
 
 ### Syntax
 
@@ -233,7 +249,7 @@ The above code will show an alert dialog with the message "Hello World!".
 
 # view_get_x ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
-Gets the X position of the view passed as argument. Serves as a shortcut for `camera_get_view_x(view_camera[view_current])`.
+Gets the X position of the view passed as argument. Serves as a alias for `camera_get_view_x(view_camera[view_current])`.
 
 ### Syntax
 
@@ -267,7 +283,7 @@ The above code will get the X and Y position of the current view and print them 
 
 # view_get_y ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
-Gets the Y position of the view passed as argument. Serves as a shortcut for `camera_get_view_y(view_camera[view_current])`.
+Gets the Y position of the view passed as argument. Serves as a alias for `camera_get_view_y(view_camera[view_current])`.
 
 ### Syntax
 
@@ -557,5 +573,38 @@ show_debug_message("Random linear value 2: " + string(_val2));
 ```
 
 The above code will return a random value with a linear distribution between `0` and `10` for `_val1`, and a random value with a linear distribution between `5` and `15` for `_val2`. Then it will show the random values on console.
+
+---
+
+---
+
+# trace_once ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
+
+Prints a message to the console the first time it is used and ignores it from then on. Useful inside a Step event where [trace](#trace) would spam the log every frame. Messages are told apart by their text, so a message carrying a changing value prints again every time that value changes.
+
+### Syntax
+
+```js
+trace_once(*args);
+```
+
+| Argument       | Type                     | Description |
+| :------------- | :----------------------- | :---------- |
+| *args          | Any                      | The messages to print |
+
+### Returns
+
+```js
+Undefined;
+```
+
+### Example
+
+```js
+// Step event, prints only on the first frame the state is wrong
+if (state == undefined) {
+  trace_once("Enemy ", id, " has no state!");
+}
+```
 
 ---

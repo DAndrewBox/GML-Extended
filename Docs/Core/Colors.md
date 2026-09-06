@@ -15,7 +15,7 @@
 
 # rgb
 
-Creates a color from the RGB values passed as arguments. Serves as a shortcut for `make_color_rgb`. The values passed as arguments will be wrapped between 0 and 255.
+Creates a color from the RGB values passed as arguments. Serves as a alias for `make_color_rgb`. The values passed as arguments will be wrapped between 0 and 255.
 
 ### Syntax
 
@@ -47,7 +47,7 @@ The above code will create a color with the RGB values of 255, 0, 0.
 
 # hsv
 
-Creates a color from the HSV values passed as arguments. Serves as a shortcut for `make_color_hsv`. The values passed as arguments will be wrapped between 0 and 255.
+Creates a color from the HSV values passed as arguments. Serves as a alias for `make_color_hsv`. The values passed as arguments will be wrapped between 0 and 255.
 
 ### Syntax
 
@@ -79,7 +79,7 @@ The above code will create a color with the HSV values of 0, 255, 255.
 
 # color_get_rgb ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
-Gets the RGB values of the color passed as argument. Serves as a shortcut for `color_get_red`, `color_get_green`, and `color_get_blue`.
+Gets the RGB values of the color passed as argument. Serves as a alias for `color_get_red`, `color_get_green`, and `color_get_blue`.
 
 ### Syntax
 
@@ -109,7 +109,7 @@ The above code will get the RGB values of the color 25000 and store them in the 
 
 # color_get_hsv ![](https://img.shields.io/badge/v1.3.0-7a6e7e?style=flat)
 
-Gets the HSV values of the color passed as argument. Serves as a shortcut for `color_get_hue`, `color_get_saturation`, and `color_get_value`.
+Gets the HSV values of the color passed as argument. Serves as a alias for `color_get_hue`, `color_get_saturation`, and `color_get_value`.
 
 ### Syntax
 

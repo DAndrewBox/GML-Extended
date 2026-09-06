@@ -9,7 +9,7 @@
 /// @ignore
 function __obsolete_trace(_old, _new) {
 	trace(
-		"(GML-Extended) - WARNING! Function '",
+		"[GML-Extended] - WARNING! Function '",
 		_old,
 		"' is obsolete and will be deprecated. Please use '",
 		_new,

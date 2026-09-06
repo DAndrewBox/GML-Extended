@@ -79,7 +79,7 @@ function Logger(_fname, _path = working_directory) constructor {
 			array_push(_text, string(argument[i]));
 		}
 	
-		self.log(self.file, "[⚠] ", _text);
+		self.log("[⚠] ", _text);
 		if (self.linked.id && __gml_ext_comp_is_callable(self.linked.onWarn)) {
 			script_execute(self.linked.onWarn);
 		}
@@ -95,7 +95,7 @@ function Logger(_fname, _path = working_directory) constructor {
 			array_push(_text, string(argument[i]));
 		}
 	
-		self.log(self.file, "[❌] ", _text);
+		self.log("[❌] ", _text);
 		// Feather ignore once GM1041
 		if (self.linked.id && __gml_ext_comp_is_callable(self.linked.onError)) {
 			script_execute(self.linked.onError);
