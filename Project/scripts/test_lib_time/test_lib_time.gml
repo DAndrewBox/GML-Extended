@@ -7,6 +7,39 @@ suite(function() {
 		it("Should return the known timestamp of a known date", function() {
 			expect(unix_timestamp(date_create_datetime(2022, 1, 1, 0, 0, 0))).toBe(1640995200);
 		});
+
+		it("Should count the seconds between two datetimes of the same day", function() {
+			var _from = unix_timestamp(date_create_datetime(2024, 3, 9, 1, 0, 0));
+			var _to = unix_timestamp(date_create_datetime(2024, 3, 9, 2, 30, 0));
+
+			expect(_to - _from).toBe(5400);
+		});
+
+		it("Should be the exact inverse of unix_to_datetime", function() {
+			expect(unix_timestamp(unix_to_datetime(0))).toBe(0);
+			expect(unix_timestamp(unix_to_datetime(1640995200))).toBe(1640995200);
+			expect(unix_timestamp(unix_to_datetime(1700000000))).toBe(1700000000);
+		});
+
+		it("Should return the same timestamp on both sides of a daylight saving change", function() {
+			// January and July fall on a different UTC offset wherever DST is observed.
+			expect(unix_timestamp(date_create_datetime(2024, 1, 15, 0, 0, 0))).toBe(1705276800);
+			expect(unix_timestamp(date_create_datetime(2024, 7, 4, 0, 0, 0))).toBe(1720051200);
+		});
+
+		it("Should count a leap day", function() {
+			var _from = unix_timestamp(date_create_datetime(2024, 2, 28, 0, 0, 0));
+			var _to = unix_timestamp(date_create_datetime(2024, 3, 1, 0, 0, 0));
+
+			expect(_to - _from).toBe(86400 * 2);
+		});
+
+		it("Should skip the leap day on a non leap year", function() {
+			var _from = unix_timestamp(date_create_datetime(2023, 2, 28, 0, 0, 0));
+			var _to = unix_timestamp(date_create_datetime(2023, 3, 1, 0, 0, 0));
+
+			expect(_to - _from).toBe(86400);
+		});
 	});
 
 	describe("unix_to_datetime", function() {
@@ -99,6 +132,20 @@ suite(function() {
 				var _ts = unix_timestamp(date_create_datetime(2024, 1, 1 + i, 0, 0, 0));
 				expect(unix_timestamp_format(_ts, "%dd")).toBe(_names[i]);
 			}
+		});
+
+		it("Should not drift across a daylight saving change", function() {
+			var _winter = unix_timestamp(date_create_datetime(2024, 1, 15, 9, 8, 7));
+			var _summer = unix_timestamp(date_create_datetime(2024, 7, 4, 9, 8, 7));
+
+			expect(unix_timestamp_format(_winter, "%YYYY-%MM-%DD %HH:%NN:%SS")).toBe("2024-01-15 09:08:07");
+			expect(unix_timestamp_format(_summer, "%YYYY-%MM-%DD %HH:%NN:%SS")).toBe("2024-07-04 09:08:07");
+		});
+
+		it("Should format a leap day", function() {
+			var _ts = unix_timestamp(date_create_datetime(2024, 2, 29, 12, 0, 0));
+
+			expect(unix_timestamp_format(_ts, "%YYYY-%MM-%DD")).toBe("2024-02-29");
 		});
 
 		it("Should leave text without tokens untouched", function() {

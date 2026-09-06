@@ -1,23 +1,83 @@
 /// @func   unix_timestamp(datetime)
 /// @param  {Real}  datetime    The datetime to get the Unix timestamp from.
-/// @desc   Returns a Unix timestamp for the current or given GameMaker datetime.
+/// @desc   Returns a Unix timestamp for the given GameMaker datetime. The calendar values of the datetime are used, so the result is the same on every machine no matter its timezone or daylight saving rules. Use `date_set_timezone(timezone_utc)` if you need `now()` to line up with an external UTC clock.
 /// @author Xot
+///	@return	{Real}
 function unix_timestamp(_datetime) {
-    static _epoch = floor(date_create_datetime(1970, 1, 1, 0, 0, 0));
-    return floor(date_second_span(_epoch, _datetime));
+	// Built from the calendar values instead of a span between two datetimes, which would
+	// drift whenever the epoch and the given date fall on different UTC offsets.
+	var _days = __gml_ext_internal_days_from_civil(
+		date_get_year(_datetime),
+		date_get_month(_datetime),
+		date_get_day(_datetime)
+	);
+	
+	return _days * 86400
+		+ date_get_hour(_datetime) * 3600
+		+ date_get_minute(_datetime) * 60
+		+ date_get_second(_datetime);
 }
 
 /// @func	now()
-/// @desc	Returns the unix timestamp from now datetime.
+/// @desc	Returns the unix timestamp from now datetime. Reads the clock in the timezone GameMaker is set to, see `unix_timestamp`.
+///	@return	{Real}
 function now() {
 	return unix_timestamp(date_current_datetime());
 }
 
 /// @func	unix_to_datetime(timestamp)
-/// @param	{Real}		timestamp	
-///	@desc	Returns a GameMaker datetime from a Unix timestamp.
+/// @param	{Real}		timestamp	The Unix timestamp to convert.
+///	@desc	Returns a GameMaker datetime from a Unix timestamp. Exact inverse of `unix_timestamp`, so the calendar values always survive the round trip.
+///	@return	{Real}
 function unix_to_datetime(_timestamp) {
-	return date_create_datetime(1970, 1, 1, 0, 0, _timestamp);
+	_timestamp = round(_timestamp);
+	
+	var _days = floor(_timestamp / 86400);
+	var _secs = _timestamp - _days * 86400;
+	var _date = __gml_ext_internal_civil_from_days(_days);
+	
+	return date_create_datetime(
+		_date[0], _date[1], _date[2],
+		_secs div 3600, (_secs div 60) mod 60, _secs mod 60
+	);
+}
+
+/// @func	__gml_ext_internal_days_from_civil(year, month, day)
+/// @param	{Real}	year	The year of the date.
+/// @param	{Real}	month	The month of the date. (1-12)
+/// @param	{Real}	day		The day of the date. (1-31)
+///	@desc	Returns the whole days between 1970-01-01 and the given calendar date, negative for any date before it.
+/// @ignore
+function __gml_ext_internal_days_from_civil(_year, _month, _day) {
+	// Civil calendar algorithm by Howard Hinnant, the year starts on March so the leap day
+	// always lands at the end of it.
+	_year -= (_month <= 2);
+	
+	var _era = (_year >= 0 ? _year : _year - 399) div 400;
+	var _yoe = _year - _era * 400;
+	var _doy = ((153 * (_month + (_month > 2 ? -3 : 9)) + 2) div 5) + _day - 1;
+	var _doe = _yoe * 365 + (_yoe div 4) - (_yoe div 100) + _doy;
+	
+	return _era * 146097 + _doe - 719468;
+}
+
+/// @func	__gml_ext_internal_civil_from_days(days)
+/// @param	{Real}	days	The whole days since 1970-01-01.
+///	@desc	Returns the calendar date of a day count as an array holding the year, the month and the day.
+/// @ignore
+function __gml_ext_internal_civil_from_days(_days) {
+	// Inverse of `__gml_ext_internal_days_from_civil`.
+	_days += 719468;
+	
+	var _era = (_days >= 0 ? _days : _days - 146096) div 146097;
+	var _doe = _days - _era * 146097;
+	var _yoe = (_doe - (_doe div 1460) + (_doe div 36524) - (_doe div 146096)) div 365;
+	var _doy = _doe - (365 * _yoe + (_yoe div 4) - (_yoe div 100));
+	var _mp = (5 * _doy + 2) div 153;
+	var _day = _doy - ((153 * _mp + 2) div 5) + 1;
+	var _month = _mp + (_mp < 10 ? 3 : -9);
+	
+	return [_yoe + _era * 400 + (_month <= 2), _month, _day];
 }
 
 /// @func	unix_timestamp_format(timestamp, format)
