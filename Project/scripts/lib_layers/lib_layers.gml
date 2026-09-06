@@ -40,9 +40,9 @@ function layer_get_background(_layer_id) {
 	if (is_string(_layer_id)) {
 		_layer_id = layer_get_id(_layer_id);
 	}
-	if (!_layer_id) return -1;
+	if (_layer_id == -1) return -1;
 	var _background = layer_background_get_id(_layer_id);
-	if (!_background) return -1;
+	if (_background == -1) return -1;
 	
 	return layer_background_get_sprite(_background);
 }
@@ -55,9 +55,9 @@ function layer_get_tileset(_layer_id) {
 	if (is_string(_layer_id)) {
 		_layer_id = layer_get_id(_layer_id);
 	}
-	if (!_layer_id) return -1;
+	if (_layer_id == -1) return -1;
 	var _tilemap = layer_tilemap_get_id(_layer_id);
-	if (!_tilemap) return -1;
+	if (_tilemap == -1) return -1;
 	
 	return tilemap_get_tileset(_tilemap);
 }

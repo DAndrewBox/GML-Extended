@@ -110,12 +110,9 @@ function TestCase(_val, _args) constructor {
 	/// @param	{Any}	expected_result
 	function toHaveReturnedWith(_expectedResult) {
 		var _isValid = !is_undefined(__internal_value) && is_callable(__internal_value);
+		var _received = undefined;
 		
-		_isValid = __not ? !_isValid : _isValid;
-		if (!_isValid) {
-			__gmtl_internal_fn_stacktrace();
-			
-			var _received = undefined;
+		if (_isValid) {
 			var _fn_to_run = __gmtl_internal_fn_get_fn_index(__internal_value);
 			if (is_callable(_fn_to_run)) {
 				try {
@@ -127,6 +124,15 @@ function TestCase(_val, _args) constructor {
 					gmtl_indent = _prev_indent;
 				}
 			}
+			
+			_isValid = (is_array(_received) && is_array(_expectedResult))
+				? array_equals(_received, _expectedResult)
+				: _received == _expectedResult;
+		}
+		
+		_isValid = __not ? !_isValid : _isValid;
+		if (!_isValid) {
+			__gmtl_internal_fn_stacktrace();
 			
 			array_push(gmtl_test_log, $"> expect({__internal_value}, {__internal_args}).toHaveReturnedWith({_expectedResult}):");
 			array_push(gmtl_test_log, $"- Expected Result: {__not_str_expected == "" ? _expectedResult : $"{__not_str_expected} {_expectedResult}"}");
@@ -383,8 +389,16 @@ function TestCase(_val, _args) constructor {
 			case "string":
 				_isValid = (__internal_value == "");
 				break;
+			case "number":
+			case "int32":
+			case "int64":
+				_isValid = (__internal_value <= 0);
+				break;
+			case "undefined":
+				_isValid = true;
+				break;
 			default:
-				_isValid = is_undefined(__internal_value) || __internal_value <= 0;
+				_isValid = false;
 		}
 		
 		_isValid = __not ? !_isValid : _isValid;
@@ -413,8 +427,16 @@ function TestCase(_val, _args) constructor {
 			case "string":
 				_isValid = (__internal_value != "");
 				break;
+			case "number":
+			case "int32":
+			case "int64":
+				_isValid = (__internal_value > 0);
+				break;
+			case "undefined":
+				_isValid = false;
+				break;
 			default:
-				_isValid = !is_undefined(__internal_value) || __internal_value > 0;
+				_isValid = !is_undefined(__internal_value);
 		}
 		
 		_isValid = __not ? !_isValid : _isValid;

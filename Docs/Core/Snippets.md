@@ -63,10 +63,12 @@ Returns the size or length of the element. If the element is an array, it will r
 get_size(element, [type]);
 ```
 
-| Argument |                Type                 | Description                    |
-| :------- | :---------------------------------: | :----------------------------- |
-| element  | Real, String, Bool, Array or Struct | The element to get the size of |
-| type     |             `gm_type_*`             | The type of the element        |
+| Argument |                     Type                      | Description                    |
+| :------- | :-------------------------------------------: | :----------------------------- |
+| element  | Real, String, Bool, Array, Struct or DS Id     | The element to get the size of |
+| type     |          `gm_type_*` or `ds_type_*`           | The type of the element        |
+
+Data structures are plain numbers at runtime, so they cannot be detected automatically. Pass the matching `ds_type_*` constant as the second argument to size a `ds_list`, `ds_map`, `ds_grid`, `ds_queue`, `ds_stack` or `ds_priority`. A `ds_grid` returns `width * height`. If the id does not point at a live data structure of that type, `-1` is returned.
 
 ### Returns
 
@@ -99,6 +101,17 @@ Struct size: 3
 Real size: 3
 ```
 
+To size a data structure, pass its type:
+
+```js
+var _list = ds_list_create();
+ds_list_add(_list, "a", "b", "c");
+
+show_debug_message("List size: " + string(get_size(_list, ds_type_list)));
+```
+
+The above code will show `List size: 3` on console.
+
 ---
 
 # contains ![](https://img.shields.io/badge/v1.5.0-5cd3b4?style=flat)
@@ -111,11 +124,13 @@ Checks if an element is inside a container. Serves as a shortcut for `ds_list_fi
 contains(element, container, [container_type]);
 ```
 
-| Argument       |                Type                 | Description                                 |
-| :------------- | :---------------------------------: | :------------------------------------------ |
-| element        | Real, String, Bool, Array or Struct | The element to check if it's inside         |
-| container      | Real, String, Bool, Array or Struct | The container to check if the element is in |
-| container_type |             `gm_type_*`             | The type of the container                   |
+| Argument       |                     Type                      | Description                                 |
+| :------------- | :-------------------------------------------: | :------------------------------------------ |
+| element        | Real, String or Bool                          | The element to check if it's inside         |
+| container      | Real, String, Array, Struct or DS Id          | The container to check if the element is in |
+| container_type |          `gm_type_*` or `ds_type_*`           | The type of the container                   |
+
+Data structures are plain numbers at runtime, so they cannot be detected automatically. Pass `ds_type_list`, `ds_type_map` or `ds_type_grid` as the third argument to search one. A `ds_list` and a `ds_grid` are searched by value, a `ds_map` is searched by key. Every other container type is detected automatically.
 
 ### Returns
 
@@ -137,7 +152,7 @@ show_debug_message("Struct contains 'b': " + string(contains("b", _struct)));
 show_debug_message("Real contains 3: " + string(contains(3, _real)));
 ```
 
-The above code will check if the element is inside the container. If it is, it will return the index of the element in the container. If it's not, it will return -1.
+The above code will check if the element is inside the container. It returns `true` when the element is found and `false` otherwise.
 
 ---
 

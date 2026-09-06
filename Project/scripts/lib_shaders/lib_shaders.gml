@@ -23,7 +23,7 @@ function shader_set_ext(_shader, _params) {
 			var _value = _uniforms[$ _u_names[j]];
 			
 			if (_key == "u_texture") {
-				_shd_u = _shd_callbacks[$ _key](_shader, _uniforms[i]);
+				_shd_u = _shd_callbacks[$ _key](_shader, _u_names[j]);
 				texture_set_stage(_shd_u, _value);
 				continue;
 			}
@@ -31,8 +31,6 @@ function shader_set_ext(_shader, _params) {
 			_shd_callbacks[$ _key][is_array(_value)](_shd_u, _value);
 		}
 	}
-	
-	delete _params;
 }
 
 

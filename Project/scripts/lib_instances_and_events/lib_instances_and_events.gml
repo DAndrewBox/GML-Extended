@@ -15,7 +15,6 @@ function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 		_inst = __gml_ext_comp_instance_create_depth(_x, _y, _depth_or_layer, _obj, _params);
 	}
 	
-	delete _params;
 	return _inst;
 }
 
@@ -25,7 +24,7 @@ function instance_create(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 /// @param	{Asset.GMObject|Id.Instance}	object_index			The index of the object to create
 /// @param	{Real|String}					depth_or_layer_name		Optional. The depth of the instance or the layer to use. (Default: instance.depth)
 /// @param	{Struct}						params					Optional. The parameters to pass to the instance at creation
-/// @desc	Functions the same as `instance_create`, but **if an instance of the object already exists, it will return -1 and will not create the instance**. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
+/// @desc	Functions the same as `instance_create`, but **if an instance of the object already exists, it will return that instance and will not create a new one**. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
 function instance_create_unique(_x, _y, _obj, _depth_or_layer = depth, _params = {}) {
 	var _inst = instance_find(_obj, 0);
 	if (_inst == noone) {
@@ -65,7 +64,7 @@ function instance_get_all(_obj) {
 	var _inst_ids = [];
 	
 	var _inst = -1;
-	for (var i = 0; i < get_size(_inst_count); i++) {
+	for (var i = 0; i < _inst_count; i++) {
 		_inst = instance_find(_obj, i);
 		array_push(_inst_ids, _inst);
 	}
@@ -96,7 +95,7 @@ function instance_get_if(_obj, _callback) {
 	var _inst_ids = instance_get_all(_obj);
 	var _inst_got = [];
 	for (var i = 0; i < get_size(_inst_ids); i++) {
-		if (_callback(_inst_ids[@ i])) continue;
+		if !(_callback(_inst_ids[@ i])) continue;
 		array_push(_inst_got, _inst_ids[@ i]);
 	}
 	

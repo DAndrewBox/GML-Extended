@@ -345,10 +345,6 @@ function draw_reset() {
 /// @param	{Constant.BlendMode|Array<Constant.BlendModeFactor>}	blendmode		The blend mode of the profile
 /// @desc	Creates a new profile for the drawing functions. The profile is used to store the drawing settings and can be used to switch between different drawing settings.
 function draw_create_profile(_name, _alpha = undefined, _color = undefined, _font = undefined, _halign = undefined, _valign = undefined, _depth = undefined, _blendmode = undefined) {
-	if (!variable_global_exists("__gml_ext_draw_profiles")) {
-		variable_global_set("__gml_ext_draw_profiles", {});
-	}
-	
 	if (!is_string(_name)) {
 		static _error_msg = false;
 		if (!_error_msg) {
@@ -373,7 +369,7 @@ function draw_create_profile(_name, _alpha = undefined, _color = undefined, _fon
 /// @param	{String}	profile_name	The name of the profile to set
 /// @desc	Sets the profile for the drawing functions. The profile is used to store the drawing settings and can be used to switch between different drawing settings.
 function draw_set_profile(_name) {
-	if (!variable_global_exists("__gml_ext_draw_profiles")) {
+	if (get_size(global.__gml_ext.draw_profiles) == 0) {
 		static _error_msg_1 = false;
 		if (!_error_msg_1) {
 			trace("(GML-Extended) ERROR! - On function draw_set_profile(). No profiles created, please use draw_create_profile() first.");

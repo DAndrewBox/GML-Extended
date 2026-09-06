@@ -11,7 +11,8 @@ function str(_val) {
 /// @desc	Converts a value to an integer (removes all decimals).
 ///	@return	{Real}
 function int(_val) {
-	return floor(real(_val));
+	var _n = real(_val);
+	return sign(_n) * floor(abs(_n));
 }
 
 /// @func	int8(value)
@@ -59,7 +60,10 @@ function is_type(_elem, _type) {
 				return true;
 			}
 		}
+		
+		return false;
 	}
+	
 	return typeof(_elem) == _type;
 }
 

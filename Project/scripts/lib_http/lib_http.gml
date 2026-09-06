@@ -24,7 +24,10 @@ function http_request_send(_url="", _method=http_method_get, _body={}, _headers=
 		_map[? _headers_keys[i]] = _headers[$ _headers_keys[i]];
 	}
 	
-	return http_request(_url, _method, _map, __gml_ext_comp_json_stringify(_body));
+	var _request = http_request(_url, _method, _map, __gml_ext_comp_json_stringify(_body));
+	ds_map_destroy(_map);
+	
+	return _request;
 }
 
 /// @func	http_async_get_message(show_on_console)

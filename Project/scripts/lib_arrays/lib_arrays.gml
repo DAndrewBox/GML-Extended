@@ -1,8 +1,8 @@
 #region Definitions
 #macro	sort_ascending		function (a,b) {return a - b}
 #macro	sort_descending		function (a,b) {return b - a}
-#macro	sort_elem_size_asc	function (a,b) {return get_size(a) > get_size(b)}
-#macro	sort_elem_size_desc	function (a,b) {return get_size(b) < get_size(b)}
+#macro	sort_elem_size_asc	function (a,b) {return get_size(a) - get_size(b)}
+#macro	sort_elem_size_desc	function (a,b) {return get_size(b) - get_size(a)}
 #endregion
 
 ///	@func	array_fill(array, value)

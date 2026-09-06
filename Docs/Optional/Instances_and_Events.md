@@ -58,7 +58,7 @@ The above code will create a player and an enemy. The player will be created on 
 
 # instance_create_unique ![](https://img.shields.io/badge/v1.2.1-3e5f4a?style=flat)
 
-Functions the same as `instance_create`, but **if an instance of the object already exists, it will return -1 and will not create the instance**. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
+Functions the same as `instance_create`, but **if an instance of the object already exists, it will return that instance and will not create a new one**. The object index is the index of the object in the object list (not the id). The depth is the depth of the instance (if the layer doesn't exists, it will be created). The params argument is a struct with the parameters to pass to the instance at creation.
 
 ### Syntax
 

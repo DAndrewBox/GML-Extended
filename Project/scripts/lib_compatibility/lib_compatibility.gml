@@ -5,7 +5,7 @@
 
 #macro	GML_EXT_FORCE_COMPATIBILITY_MODE	false
 
-#macro	GML_EXT_CURRENT_VERSION	"1.5.3"
+#macro	GML_EXT_CURRENT_VERSION	"1.6.0"
 #macro	GM_CURRENT_VERSION	__gml_ext_comp_set_gamemaker_version()
 #macro	GM_VERSION_IS_2_3	string_copy(GM_runtime_version, 1, 3) == "2.3"
 #macro	GM_VERSION_IS_2022	__gml_ext_comp_is_gamemaker_major_version(2022)
@@ -257,10 +257,10 @@ function __gml_ext_comp_array_contains(_array, _value, _offset = 0, _len = infin
 		_len = is_infinity(_len) ? _array_len : _len;
 		var _go_forward = (_len >= 0);
 		var _start_pos	= _go_forward ? _offset : _array_len - _offset ;
-		var _end_pos	= _go_forward ? _len : _array_len - _len;
+		var _end_pos	= _go_forward ? min(_offset + _len, _array_len) : _array_len + _len;
 		var _val_to_add = _go_forward ? 1 : -1;
 		
-		for (var i = _start_pos; (_go_forward ? i < _end_pos : i >= _end_pos); _val_to_add++) {
+		for (var i = _start_pos; (_go_forward ? i < _end_pos : i >= _end_pos); i += _val_to_add) {
 			if (_value == _array[i]) {
 				_elem_in_array = true;
 				break;

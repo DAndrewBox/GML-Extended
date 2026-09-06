@@ -27,6 +27,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"o_gml_ext_tests_draw","order":1,"path":"objects/o_gml_ext_tests_draw/o_gml_ext_tests_draw.yy",},
+    {"name":"o_gml_ext_test_dummy","order":2,"path":"objects/o_gml_ext_test_dummy/o_gml_ext_test_dummy.yy",},
     {"name":"r_gml_ext_test_ease","order":1,"path":"rooms/r_gml_ext_test_ease/r_gml_ext_test_ease.yy",},
     {"name":"GMTL_core_test_events","order":1,"path":"scripts/GMTL_core_test_events/GMTL_core_test_events.yy",},
     {"name":"GMTL_core_test_setup","order":2,"path":"scripts/GMTL_core_test_setup/GMTL_core_test_setup.yy",},
@@ -65,6 +66,10 @@
     {"name":"test_lib_strings","order":4,"path":"scripts/test_lib_strings/test_lib_strings.yy",},
     {"name":"test_lib_structs","order":5,"path":"scripts/test_lib_structs/test_lib_structs.yy",},
     {"name":"test_lib_types","order":6,"path":"scripts/test_lib_types/test_lib_types.yy",},
+    {"name":"test_lib_arrays","order":7,"path":"scripts/test_lib_arrays/test_lib_arrays.yy",},
+    {"name":"test_lib_ease","order":8,"path":"scripts/test_lib_ease/test_lib_ease.yy",},
+    {"name":"test_lib_time","order":9,"path":"scripts/test_lib_time/test_lib_time.yy",},
+    {"name":"test_lib_instances_and_events","order":10,"path":"scripts/test_lib_instances_and_events/test_lib_instances_and_events.yy",},
     {"name":"shd_gml_ext_blur_gauss","order":1,"path":"shaders/shd_gml_ext_blur_gauss/shd_gml_ext_blur_gauss.yy",},
     {"name":"shd_gml_ext_recolor","order":2,"path":"shaders/shd_gml_ext_recolor/shd_gml_ext_recolor.yy",},
   ],

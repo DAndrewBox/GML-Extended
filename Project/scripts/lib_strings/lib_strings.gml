@@ -20,7 +20,7 @@ function string_title(_str) {
 		var _char = string_char_at(_str, i);
 		if (_prev_char == " ") {
 			_out += string_upper(_char);
-			_prev_char = "";
+			_prev_char = _char;
 			continue;
 		}
 		

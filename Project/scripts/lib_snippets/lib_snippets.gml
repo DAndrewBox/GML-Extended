@@ -9,9 +9,23 @@ function del(_obj = id, _exec_ev = true) {
 
 /// @func	get_size(element, [type])
 /// @param	{Any}		element		The element to get the size of.
-/// @param	{String}	type		Optional. The type of the element. Prefer using `gm_type_*`.
+/// @param	{String|Real}	type	Optional. The type of the element. Prefer using `gm_type_*` or `ds_type_*`.
 /// @desc	Returns the size or length of the element. Read documentation for more details.
 function get_size(_e, _type = noone) {
+	// Data structures are plain reals at runtime, so they need an explicit `ds_type_*`.
+	if (_type != noone && is_real(_type)) {
+		switch (_type) {
+			case ds_type_list:		return ds_exists(_e, ds_type_list) ? ds_list_size(_e) : -1;
+			case ds_type_map:		return ds_exists(_e, ds_type_map) ? ds_map_size(_e) : -1;
+			case ds_type_grid:		return ds_exists(_e, ds_type_grid) ? ds_grid_width(_e) * ds_grid_height(_e) : -1;
+			case ds_type_queue:		return ds_exists(_e, ds_type_queue) ? ds_queue_size(_e) : -1;
+			case ds_type_stack:		return ds_exists(_e, ds_type_stack) ? ds_stack_size(_e) : -1;
+			case ds_type_priority:	return ds_exists(_e, ds_type_priority) ? ds_priority_size(_e) : -1;
+		}
+		
+		return -1;
+	}
+	
 	_type = _type == noone ? typeof(_e) : _type;
 	
 	switch(_type) {
@@ -29,7 +43,7 @@ function get_size(_e, _type = noone) {
 /// @func	contains(find_this, search_here, [container_type])
 /// @param	{Any}		find_this		The element to check if it's inside.
 /// @param	{Any}		search_here		The container to check if the element is in.
-/// @param	{String}	container_type	Optional. The type of the container. Prefer using `gm_type_*`.
+/// @param	{String|Real}	container_type	Optional. The type of the container. Prefer using `gm_type_*` or `ds_type_*`.
 /// @desc	Checks if an element is inside a container. Serves as a shortcut for `ds_list_find_index`, `ds_map_find_value`, `ds_grid_value`, `array_find_value`, `string_pos`, and more.
 ///	@return	{Bool}
 function contains(_elem, _container, _container_type = "") {
@@ -47,7 +61,9 @@ function contains(_elem, _container, _container_type = "") {
 		gm_type_undefined,
 	];
 	var _elem_type = typeof(_elem);
-	_container_type = _container_type == "" ? typeof(_container) : _container_type;
+	if (is_string(_container_type) && _container_type == "") {
+		_container_type = typeof(_container);
+	}
 	
 	if (is_type(_elem, _forbidden_elem_types)) {
 		trace("(GML-Extended) - WARNING! On function \"contains()\" ", _elem, " is type ", _elem_type, " and cannot be search in ", _container, ".");
@@ -59,9 +75,27 @@ function contains(_elem, _container, _container_type = "") {
 		return false;
 	}
 	
+	// Data structures are plain reals at runtime, so they need an explicit `ds_type_*`.
+	if (is_real(_container_type)) {
+		switch (_container_type) {
+			case ds_type_list:
+				return ds_exists(_container, ds_type_list) && ds_list_find_index(_container, _elem) >= 0;
+			
+			case ds_type_map:
+				return ds_exists(_container, ds_type_map) && ds_map_exists(_container, _elem);
+			
+			case ds_type_grid:
+				if (!ds_exists(_container, ds_type_grid)) return false;
+				return ds_grid_value_exists(_container, 0, 0, ds_grid_width(_container) - 1, ds_grid_height(_container) - 1, _elem);
+		}
+		
+		trace("(GML-Extended) - WARNING! On function \"contains()\" ", _container_type, " is not a searchable data structure type.");
+		return false;
+	}
+	
 	switch (_container_type) {
 		case gm_type_string:
-			return string_contains(_container, _elem);
+			return string_contains(_container, string(_elem));
 		
 		case gm_type_number:
 		case gm_type_int32:

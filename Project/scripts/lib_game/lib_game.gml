@@ -3,7 +3,7 @@
 function game_params() {
 	static _param_count = parameter_count();
 	static _param_list = array_create_ext(_param_count, function (i) {
-		return parameter_string(i);
+		return parameter_string(i + 1);
 	});
 	
 	return _param_list;

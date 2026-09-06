@@ -311,14 +311,14 @@ The above code will return a random value with a linear distribution. Then it wi
 
 ---
 
-# random_linear_range ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
+# random_range_linear ![](https://img.shields.io/badge/v1.5.3-5cd3b4?style=flat)
 
 Returns a random value with a linear distribution within a range. This is more random than `random_range()`.
 
 ### Syntax
 
 ```js
-random_linear_range(n1, n2);
+random_range_linear(n1, n2);
 ```
 
 | Argument | Type  | Description                          |
@@ -335,7 +335,7 @@ Real;
 ### Example
 
 ```js
-var _val = random_linear_range(5, 15);
+var _val = random_range_linear(5, 15);
 show_debug_message("Random value: " + string(_val));
 ```
 
@@ -408,7 +408,7 @@ The above code will return the percentage of the `_current` value compared to th
 
 # dec2hex ![](https://img.shields.io/badge/v1.5.2-5cd3b4?style=flat)
 
-Converts a decimal number to a hexadecimal string. The resulting string will have a minimum length, padded with leading zeros if necessary.
+Converts a decimal number to a hexadecimal string. The resulting string will have a minimum length, padded with leading zeros if necessary. Decimals are dropped and negative values are clamped to `0`.
 
 ### Syntax
 

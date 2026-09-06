@@ -21,7 +21,7 @@ function Surface(_width, _height, _name="") constructor {
 	/// @func	exists()
 	/// @desc	Returns if the surface still exists.
 	function exists() {
-		return surface_exists(self.surf) != -1;
+		return surface_exists(self.surf);
 	}
 	
 	/// @func	free()
