@@ -97,7 +97,24 @@ suite(function() {
 		it("Should split a string the same way as the built-in", function() {
 			expect(__gml_ext_comp_string_split("a,b,c", ",")).toBeEqual(["a", "b", "c"]);
 			expect(__gml_ext_comp_string_split("single", ",")).toBeEqual(["single"]);
-			expect(__gml_ext_comp_string_split("", ",")).toBeEqual([]);
+		});
+
+		it("Should keep the empty chunks the built-in keeps", function() {
+			// GameMaker splits an empty string into a single empty chunk.
+			expect(__gml_ext_comp_string_split("", ",")).toBeEqual([""]);
+			expect(__gml_ext_comp_string_split("a,", ",")).toBeEqual(["a", ""]);
+			expect(__gml_ext_comp_string_split(",a", ",")).toBeEqual(["", "a"]);
+			expect(__gml_ext_comp_string_split("a,,b", ",")).toBeEqual(["a", "", "b"]);
+		});
+
+		it("Should drop the empty chunks when asked to", function() {
+			expect(__gml_ext_comp_string_split("a,,b", ",", true)).toBeEqual(["a", "b"]);
+			expect(__gml_ext_comp_string_split("a,", ",", true)).toBeEqual(["a"]);
+			expect(__gml_ext_comp_string_split("", ",", true)).toBeEqual([]);
+		});
+
+		it("Should split on a delimiter longer than one character", function() {
+			expect(__gml_ext_comp_string_split("a::b::c", "::")).toBeEqual(["a", "b", "c"]);
 		});
 
 		it("Should fill in the placeholders of a string", function() {
@@ -124,7 +141,21 @@ suite(function() {
 
 		it("Should tell a callable from a plain value", function() {
 			expect(__gml_ext_comp_is_callable(function () {})).toBeTruthy();
-			expect(__gml_ext_comp_is_callable(5)).toBeFalsy();
+			// A small real is a valid script index, so only a number that cannot be one is safe here.
+			expect(__gml_ext_comp_is_callable(999999)).toBeFalsy();
+			expect(__gml_ext_comp_is_callable(-1)).toBeFalsy();
+		});
+
+		it("Should treat a script index as callable", function() {
+			// Script assets are reals in GameMaker, so their index is a callable value.
+			expect(__gml_ext_comp_is_callable(asset_get_index("__gml_ext_comp_has"))).toBeTruthy();
+		});
+
+		it("Should return false for a value that cannot be a script index", function() {
+			expect(__gml_ext_comp_is_callable("not callable")).toBeFalsy();
+			expect(__gml_ext_comp_is_callable({})).toBeFalsy();
+			expect(__gml_ext_comp_is_callable([])).toBeFalsy();
+			expect(__gml_ext_comp_is_callable(undefined)).toBeFalsy();
 		});
 
 		it("Should stringify a struct back into readable json", function() {

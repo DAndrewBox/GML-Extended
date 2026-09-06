@@ -217,13 +217,14 @@ function normalize(_val, _in_min, _in_max, _out_min = 0, _out_max = 1) {
 	return _out_min + (_val - _in_min) / (_in_max - _in_min) * (_out_max - _out_min);
 }
 
-/// @func	snap(value, grid)
+/// @func	snap(value, grid, [offset])
 /// @param	{Real}	value	The value to snap.
 /// @param	{Real}	grid	The size of the grid to snap the value to.
-/// @desc	Rounds a value to the closest multiple of `grid`. A grid of 0 returns the value as it is.
+/// @param	{Real}	offset	Optional. The value the grid starts from. (Default: 0)
+/// @desc	Rounds a value to the closest point of a grid. The grid starts at 0 unless an `offset` is given, so `snap(x, 16, 8)` snaps to 8, 24, 40 and so on. A grid of 0 returns the value as it is.
 ///	@return	{Real}
-function snap(_val, _grid) {
+function snap(_val, _grid, _offset = 0) {
 	if (_grid == 0) return _val;
 
-	return round(_val / _grid) * _grid;
+	return round((_val - _offset) / _grid) * _grid + _offset;
 }

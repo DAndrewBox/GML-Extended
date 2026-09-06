@@ -540,18 +540,19 @@ show_debug_message(normalize(hp, 0, hp_max, 0, sprite_get_width(s_bar))); // bar
 
 # snap ![](https://img.shields.io/badge/v1.6.0-6ed35c?style=flat)
 
-Rounds a value to the closest multiple of `grid`. A grid of 0 returns the value as it is.
+Rounds a value to the closest point of a grid. The grid starts at 0 unless an `offset` is given, so `snap(x, 16, 8)` snaps to 8, 24, 40 and so on. A grid of 0 returns the value as it is.
 
 ### Syntax
 
 ```js
-snap(value, grid);
+snap(value, grid, [(offset = 0)]);
 ```
 
 | Argument       | Type                     | Description |
 | :------------- | :----------------------- | :---------- |
 | value          | Real                     | The value to snap |
 | grid           | Real                     | The size of the grid to snap to |
+| offset         | Real                     | The value the grid starts from |
 
 ### Returns
 
@@ -565,6 +566,10 @@ Real;
 // Snap the instance to a 16px tile grid
 x = snap(mouse_x, 16);
 y = snap(mouse_y, 16);
+
+// Snap to the center of each tile instead of its corner
+x = snap(mouse_x, 16, 8);
+y = snap(mouse_y, 16, 8);
 ```
 
 ---

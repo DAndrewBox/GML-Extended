@@ -175,7 +175,7 @@ function __gml_ext_comp_json_stringify(_json, _pretty = false, _filter_func = un
 function __gml_ext_comp_is_callable(_value) {
 	static _has = GM_HAS("is_callable");
 	
-	if (!_has) return (script_exists(_value) || is_method(_value));
+	if (!_has) return is_method(_value) || (is_real(_value) && script_exists(_value));
 	
 	return script_execute(is_callable, _value);
 }
@@ -264,26 +264,28 @@ function __gml_ext_comp_string_split(_str, _delim, _remove_empty = false, _max_s
 
 	if (!_has) {
 		var _str_array = [];
+		var _str_len = string_length(_str);
+		// A delimiter can be longer than a single character, and an empty one never matches.
+		var _delim_len = max(1, string_length(_delim));
+		var _new_str = "";
 		var _count = 1;
 		
-		var _new_str = "";
-		while (_count <= string_length(_str)) {
-			var _char = string_char_at(_str, _count);
-			
-			if (_char == _delim && get_size(_str_array) < _max_splits) {
+		while (_count <= _str_len) {
+			if (array_length(_str_array) < _max_splits && string_copy(_str, _count, _delim_len) == _delim) {
 				if (_new_str != "" || !_remove_empty) {
 					array_push(_str_array, _new_str);
 				}
 				_new_str = "";
-				_count++;
+				_count += _delim_len;
 				continue;
 			}
 			
-			_new_str += _char;
+			_new_str += string_char_at(_str, _count);
 			_count++;
 		}
 		
-		if (string_length(_new_str) > 0) {
+		// The built-in keeps the last chunk even when it is empty.
+		if (_new_str != "" || !_remove_empty) {
 			array_push(_str_array, _new_str);
 		}
 		

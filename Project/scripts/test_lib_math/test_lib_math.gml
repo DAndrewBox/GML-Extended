@@ -459,6 +459,34 @@ suite(function() {
 
 		it("Should return the value as it is for a grid of 0", function() {
 			expect(snap(7.5, 0)).toBe(7.5);
+			expect(snap(7.5, 0, 3)).toBe(7.5);
+		});
+
+		it("Should start the grid on the given offset", function() {
+			// With an offset of 2 the grid points are 2, 7, 12, ...
+			expect(snap(7, 5, 2)).toBe(7);
+			expect(snap(8, 5, 2)).toBe(7);
+			expect(snap(10, 5, 2)).toBe(12);
+			expect(snap(2, 5, 2)).toBe(2);
+		});
+
+		it("Should keep every result on the offset grid", function() {
+			for (var i = 0; i <= 40; i++) {
+				// Every snapped value has to sit exactly on a grid point.
+				expect((snap(i, 16, 8) - 8) mod 16).toBe(0);
+			}
+		});
+
+		it("Should behave like an offset of 0 by default", function() {
+			expect(snap(7, 5)).toBe(snap(7, 5, 0));
+			expect(snap(-8, 5)).toBe(snap(-8, 5, 0));
+		});
+
+		it("Should snap with a negative offset", function() {
+			// Grid points are -3, 2, 7, ...
+			expect(snap(2, 5, -3)).toBe(2);
+			expect(snap(0, 5, -3)).toBe(2);
+			expect(snap(-2, 5, -3)).toBe(-3);
 		});
 	});
 

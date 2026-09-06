@@ -33,4 +33,4 @@ Any of the releases of this extension are compatible with GameMaker Studio from 
 |        2026 / LTS |       ❌        |       ❌        |       ❌        |       ⚠️        |       ✅        |       ✅        |      ✅\*       |
 
 > [!IMPORTANT]
-> Previously there were branches for every GameMaker version respectively, but now the branches are merged into the `main` branch since the extension is compatible with all the versions from v2.3.7 to v2024. **It is recommended to use GML-Extended version 1.5.0+ for the best compatibility and performance with all GameMaker Versions.**
+> Previously there were branches for every GameMaker version respectively, but now the branches are merged into the `main` branch since the extension is compatible with all the versions from v2.3.7 to v2026. **It is recommended to use GML-Extended version 1.5.0+ for the best compatibility and performance with all GameMaker Versions.**
