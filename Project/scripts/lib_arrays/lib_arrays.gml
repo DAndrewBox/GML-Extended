@@ -102,7 +102,7 @@ function array_chunk(_array, _size) {
 	_size = floor(_size);
 
 	if (_size < 1) {
-		trace("(GML-Extended) - ERROR! On function \"array_chunk()\". \"size\" must be greater than 0.");
+		trace("[GML-Extended] - ERROR! On function \"array_chunk()\". \"size\" must be greater than 0.");
 		return _chunks;
 	}
 
@@ -269,7 +269,7 @@ function array_swap(_array, _index_1, _index_2) {
 	var _len = array_length(_array);
 
 	if (_index_1 < 0 || _index_1 >= _len || _index_2 < 0 || _index_2 >= _len) {
-		trace("(GML-Extended) - ERROR! On function \"array_swap()\". Index out of bounds.");
+		trace("[GML-Extended] - ERROR! On function \"array_swap()\". Index out of bounds.");
 		return _array;
 	}
 

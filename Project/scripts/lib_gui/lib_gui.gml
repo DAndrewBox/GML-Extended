@@ -37,8 +37,9 @@ function mouse_in_instance(_inst_id) {
 /// @func	mouse_is_moving()
 ///	@desc	[WARNING] This function is not available in GameMaker versions before v2024.1. Returns a boolean if the mouse is moving.
 function mouse_is_moving() {
-	static _use_compatibility = GM_VERSION_IS_2023 && GM_CURRENT_VERSION.minor < 8;
-	if (_use_compatibility) {
+	static _has = GM_HAS("window_mouse_delta");
+	
+	if (!_has) {
 		global.__gml_ext.custom_mouse_x_last = global.__gml_ext.custom_mouse_x;
 		global.__gml_ext.custom_mouse_y_last = global.__gml_ext.custom_mouse_y;
 

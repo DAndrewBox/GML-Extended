@@ -66,7 +66,7 @@ function range(_to, _from = 0, _step = 1) {
 	
 	// A step of 0 or less never reaches `to` and would loop forever.
 	if (_step <= 0) {
-		trace("(GML-Extended) - ERROR! On function \"range()\". \"steps\" must be greater than 0.");
+		trace("[GML-Extended] - ERROR! On function \"range()\". \"steps\" must be greater than 0.");
 		return _arr;
 	}
 	
@@ -144,12 +144,12 @@ function uuid_v4() {
 ///	@desc	Returns the percentage of the given values.
 function percentage(_val, _max) {
 	if (!is_real(_val) || !is_real(_max)) {
-		trace("(GML-Extended) - ERROR! On function \"percentage()\". \"current_value\" and/or \"100%_value\" are not numbers.");
+		trace("[GML-Extended] - ERROR! On function \"percentage()\". \"current_value\" and/or \"100%_value\" are not numbers.");
 		return 0;
 	}
 	
 	if (_max == 0) {
-		trace("(GML-Extended) - ERROR! On function \"percentage()\". \"total_value\" cannot be 0.");
+		trace("[GML-Extended] - ERROR! On function \"percentage()\". \"total_value\" cannot be 0.");
 		return 0;
 	}
 	
@@ -210,7 +210,7 @@ function lerp_angle(_angle_1, _angle_2, _amount) {
 ///	@return	{Real}
 function normalize(_val, _in_min, _in_max, _out_min = 0, _out_max = 1) {
 	if (_in_min == _in_max) {
-		trace("(GML-Extended) - ERROR! On function \"normalize()\". \"in_min\" and \"in_max\" cannot be the same value.");
+		trace("[GML-Extended] - ERROR! On function \"normalize()\". \"in_min\" and \"in_max\" cannot be the same value.");
 		return _out_min;
 	}
 

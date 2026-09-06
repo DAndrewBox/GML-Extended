@@ -66,12 +66,12 @@ function contains(_elem, _container, _container_type = "") {
 	}
 	
 	if (is_type(_elem, _forbidden_elem_types)) {
-		trace("(GML-Extended) - WARNING! On function \"contains()\" ", _elem, " is type ", _elem_type, " and cannot be search in ", _container, ".");
+		trace("[GML-Extended] - WARNING! On function \"contains()\" ", _elem, " is type ", _elem_type, " and cannot be search in ", _container, ".");
 		return false;
 	}
 	
 	if (is_type(_container, _forbidden_container_types)) {
-		trace("(GML-Extended) - WARNING! On function \"contains()\" ", _container, " is type ", _container_type, " and cannot be used to be searched.");
+		trace("[GML-Extended] - WARNING! On function \"contains()\" ", _container, " is type ", _container_type, " and cannot be used to be searched.");
 		return false;
 	}
 	
@@ -89,7 +89,7 @@ function contains(_elem, _container, _container_type = "") {
 				return ds_grid_value_exists(_container, 0, 0, ds_grid_width(_container) - 1, ds_grid_height(_container) - 1, _elem);
 		}
 		
-		trace("(GML-Extended) - WARNING! On function \"contains()\" ", _container_type, " is not a searchable data structure type.");
+		trace("[GML-Extended] - WARNING! On function \"contains()\" ", _container_type, " is not a searchable data structure type.");
 		return false;
 	}
 	
@@ -109,7 +109,7 @@ function contains(_elem, _container, _container_type = "") {
 			return struct_key_exists(_container, string(_elem));
 	}
 	
-	trace("(GML-Extended) - ERROR! On function \"contains()\". This is unexpected and shouldn't happen.");
+	trace("[GML-Extended] - ERROR! On function \"contains()\". This is unexpected and shouldn't happen.");
 	return false;
 }
 

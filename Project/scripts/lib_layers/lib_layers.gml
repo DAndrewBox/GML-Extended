@@ -69,7 +69,7 @@ function layer_get_tileset(_layer_id) {
 function layer_set_depth(_layer_name, _depth) {
 	var _layer = layer_get_id(_layer_name);
 	if (!layer_exists(_layer)) {
-		trace("(GML-Extended) WARNING! - layer_set_depth - layer with that name doesn't exists.");
+		trace("[GML-Extended] WARNING! - layer_set_depth - layer with that name doesn't exists.");
 		return;
 	}
 	

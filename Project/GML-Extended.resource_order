@@ -71,6 +71,7 @@
     {"name":"test_lib_time","order":9,"path":"scripts/test_lib_time/test_lib_time.yy",},
     {"name":"test_lib_instances_and_events","order":10,"path":"scripts/test_lib_instances_and_events/test_lib_instances_and_events.yy",},
     {"name":"test_lib_data_structures","order":11,"path":"scripts/test_lib_data_structures/test_lib_data_structures.yy",},
+    {"name":"test_lib_compatibility","order":12,"path":"scripts/test_lib_compatibility/test_lib_compatibility.yy",},
     {"name":"shd_gml_ext_blur_gauss","order":1,"path":"shaders/shd_gml_ext_blur_gauss/shd_gml_ext_blur_gauss.yy",},
     {"name":"shd_gml_ext_recolor","order":2,"path":"shaders/shd_gml_ext_recolor/shd_gml_ext_recolor.yy",},
   ],

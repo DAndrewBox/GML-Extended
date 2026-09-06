@@ -4,7 +4,7 @@
 ///	@return	{String}
 function ds_grid_write_buffer(_grid) {
 	if (!ds_exists(_grid, ds_type_grid)) {
-		trace("(GML-Extended) - ERROR! On function \"ds_grid_write_buffer()\". The given grid does not exist.");
+		trace("[GML-Extended] - ERROR! On function \"ds_grid_write_buffer()\". The given grid does not exist.");
 		return "";
 	}
 
@@ -39,7 +39,7 @@ function ds_grid_write_buffer(_grid) {
 ///	@return	{Id.DsGrid}
 function ds_grid_read_buffer(_grid, _b64_str) {
 	if (!ds_exists(_grid, ds_type_grid)) {
-		trace("(GML-Extended) - ERROR! On function \"ds_grid_read_buffer()\". The given grid does not exist.");
+		trace("[GML-Extended] - ERROR! On function \"ds_grid_read_buffer()\". The given grid does not exist.");
 		return _grid;
 	}
 
@@ -48,7 +48,7 @@ function ds_grid_read_buffer(_grid, _b64_str) {
 	buffer_delete(_compressed);
 
 	if (_buffer < 0) {
-		trace("(GML-Extended) - ERROR! On function \"ds_grid_read_buffer()\". The given string is not a valid grid buffer.");
+		trace("[GML-Extended] - ERROR! On function \"ds_grid_read_buffer()\". The given string is not a valid grid buffer.");
 		return _grid;
 	}
 
@@ -75,7 +75,7 @@ function ds_grid_read_buffer(_grid, _b64_str) {
 ///	@return	{String}
 function ds_list_write_buffer(_list) {
 	if (!ds_exists(_list, ds_type_list)) {
-		trace("(GML-Extended) - ERROR! On function \"ds_list_write_buffer()\". The given list does not exist.");
+		trace("[GML-Extended] - ERROR! On function \"ds_list_write_buffer()\". The given list does not exist.");
 		return "";
 	}
 
@@ -89,13 +89,13 @@ function ds_list_write_buffer(_list) {
 ///	@return	{Id.DsList}
 function ds_list_read_buffer(_list, _b64_str) {
 	if (!ds_exists(_list, ds_type_list)) {
-		trace("(GML-Extended) - ERROR! On function \"ds_list_read_buffer()\". The given list does not exist.");
+		trace("[GML-Extended] - ERROR! On function \"ds_list_read_buffer()\". The given list does not exist.");
 		return _list;
 	}
 
 	var _str = __gml_ext_internal_b64_to_string(_b64_str);
 	if (is_undefined(_str)) {
-		trace("(GML-Extended) - ERROR! On function \"ds_list_read_buffer()\". The given string is not a valid list buffer.");
+		trace("[GML-Extended] - ERROR! On function \"ds_list_read_buffer()\". The given string is not a valid list buffer.");
 		return _list;
 	}
 
@@ -111,7 +111,7 @@ function ds_list_read_buffer(_list, _b64_str) {
 ///	@return	{String}
 function ds_map_write_buffer(_map) {
 	if (!ds_exists(_map, ds_type_map)) {
-		trace("(GML-Extended) - ERROR! On function \"ds_map_write_buffer()\". The given map does not exist.");
+		trace("[GML-Extended] - ERROR! On function \"ds_map_write_buffer()\". The given map does not exist.");
 		return "";
 	}
 
@@ -125,13 +125,13 @@ function ds_map_write_buffer(_map) {
 ///	@return	{Id.DsMap}
 function ds_map_read_buffer(_map, _b64_str) {
 	if (!ds_exists(_map, ds_type_map)) {
-		trace("(GML-Extended) - ERROR! On function \"ds_map_read_buffer()\". The given map does not exist.");
+		trace("[GML-Extended] - ERROR! On function \"ds_map_read_buffer()\". The given map does not exist.");
 		return _map;
 	}
 
 	var _str = __gml_ext_internal_b64_to_string(_b64_str);
 	if (is_undefined(_str)) {
-		trace("(GML-Extended) - ERROR! On function \"ds_map_read_buffer()\". The given string is not a valid map buffer.");
+		trace("[GML-Extended] - ERROR! On function \"ds_map_read_buffer()\". The given string is not a valid map buffer.");
 		return _map;
 	}
 
@@ -147,7 +147,7 @@ function ds_map_read_buffer(_map, _b64_str) {
 ///	@return	{String}
 function struct_write_buffer(_struct) {
 	if (!is_struct(_struct) && !is_array(_struct)) {
-		trace("(GML-Extended) - ERROR! On function \"struct_write_buffer()\". The given value is not a struct or an array.");
+		trace("[GML-Extended] - ERROR! On function \"struct_write_buffer()\". The given value is not a struct or an array.");
 		return "";
 	}
 
@@ -165,11 +165,11 @@ function struct_read_buffer(_b64_str) {
 		try {
 			return json_parse(_str);
 		} catch (e) {
-			trace("(GML-Extended) - ERROR! On function \"struct_read_buffer()\". ", e.message);
+			trace("[GML-Extended] - ERROR! On function \"struct_read_buffer()\". ", e.message);
 		}
 	}
 
-	trace("(GML-Extended) - ERROR! On function \"struct_read_buffer()\". The given string is not a valid struct buffer.");
+	trace("[GML-Extended] - ERROR! On function \"struct_read_buffer()\". The given string is not a valid struct buffer.");
 	return {};
 }
 
