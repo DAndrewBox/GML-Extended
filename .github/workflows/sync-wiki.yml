@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "Docs/**"
+      - ".github/scripts/build_wiki.py"
+      - ".github/workflows/sync-wiki.yml"
   workflow_dispatch:
 
 permissions:
@@ -25,9 +27,8 @@ jobs:
           path: wiki
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Copy Docs to wiki
-        run: |
-          cp -r Docs/. wiki/
+      - name: Build wiki pages from Docs
+        run: python3 .github/scripts/build_wiki.py Docs wiki
 
       - name: Commit and push wiki
         working-directory: wiki
